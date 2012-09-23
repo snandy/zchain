@@ -1,0 +1,158 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>仅在窗口范围拖拽的模态对话框</title>
+    <meta charset="utf-8">
+ 	<style type="text/css">
+ 		body {margin:0;padding:0;}
+        .md-dialog {
+            width: 314px;
+        }
+        .md-dialog .hd {
+            background: url("images/pops_t.png") no-repeat scroll 0 0 transparent;
+            height: 8px;
+            overflow: hidden;
+            width: 314px;
+        }
+        .md-dialog .bd {
+            background: url("images/pops_c.png") repeat-y scroll 0 0 transparent;
+            position: relative;
+            width: 314px;
+        }
+        .md-dialog .ft {
+            background: url("images/pops_t.png") no-repeat scroll 0 -8px transparent;
+            height: 8px;
+            overflow: hidden;
+            width: 314px;
+        }
+        .md-head {
+            border-bottom: 1px solid #ECF1F4;
+            color: #788892;
+            font-family: "Microsoft Yahei";
+            font-size: 12px;
+            height: 17px;
+            margin: 0 3px 0 1px;
+            cursor: move;    
+        }
+        .md-head label {
+            margin-left: 8px;
+        }
+        .md-head .md-close {
+            background: url("images/ico_close.png") no-repeat scroll 0 0 transparent;
+            height: 16px;
+            overflow: hidden;
+            position: absolute;
+            right: 8px;
+            text-indent: -9999px;
+            top: 0;
+            width: 16px;
+        }
+        .md-head .md-close:hover {
+            background-position: 0 -16px;
+            cursor: pointer;
+        }
+        .md-body {
+            color: #000000;
+            overflow: auto;
+            padding: 0 23px 23px 20px;
+        }
+        .md-body .success {
+            margin: 28px auto 0;
+            width: 260px;
+        }
+        .md-body .success span {
+            background: url("images/ico_ok.png") no-repeat scroll 0 0 transparent;
+            float: left;
+            height: 50px;
+            margin-right: 10px;
+            width: 50px;
+        }
+        .md-body .success p {
+            color: #000000;
+            font-size: 14px;
+            line-height: 50px;
+        }
+        .md-body .alert {
+            width:260px;
+            margin:28px auto 0;
+        }
+        .md-body .alert p {
+            line-height:50px;
+            font-size:14px;
+            color:#000;
+        }
+        .md-body .alert span {
+            background: url("images/ico_alert.png") no-repeat scroll 0 0 transparent;
+            float: left;
+            height: 50px;
+            margin-right: 10px;
+            width: 50px;
+        }
+        .md-body .submit {
+            margin-top: 18px;
+            overflow: hidden;
+            padding-left: 80px;
+        }
+        
+        .md-body a.btn {
+            background: url("images/btn06.png") no-repeat scroll right -22px transparent;
+            float: left;
+            height: 22px;
+            margin-right: 10px;
+            padding-right: 12px;
+            text-decoration: none;
+        }
+        .md-body a.btn:hover {
+            background-position:right -66px;
+            text-decoration:none;
+        }
+        .md-body a.btn span {
+            background: url("images/btn06.png") no-repeat scroll 0 0 transparent;
+            border: 0 none;
+            color: #FFFFFF;
+            cursor: pointer;
+            float: left;
+            font-family: "Microsoft Yahei";
+            font-size: 12px;
+            height: 22px;
+            line-height: 22px;
+            padding: 0 0 0 12px;
+            text-decoration: none;
+            white-space: nowrap;
+        }
+        .md-body a.btn:hover span {
+            background-position: 0 -44px;
+        }
+ 	</style>
+	<script type="text/javascript" src="ModelDialog-0.5.js"></script>
+	<script type="text/javascript">		
+		function test(){
+		    var strSubmit = '<div class="submit"><a href="#" class="btn confirm"><span>确定</span></a>' + 
+                    '<a href="#" class="btn cancel"><span>取消</span></a></div>';
+                    
+            var strSucc = '<div class="success"><span></span><p>发送成功</p></div>' + strSubmit;
+    
+            var strTimeout = '<div class="alert"><span></span><p>请您30秒后再次尝试发送</p></div>' + strSubmit;
+
+    		var dialog = new ModelDialog({
+    			template : strSucc,
+    			//shadowOpy : 0.1,
+    			//dragable : false,
+    			dragInWin : true
+    			//area : [0,500,0,500]
+    		});
+            function callback(e) {
+                if(e) e.preventDefault();
+                dialog.close();
+            }
+            //$(dialog.body).delegate('.confirm', 'click', callback);
+            //$(dialog.body).delegate('.cancel', 'click', callback);
+		}
+
+	</script>
+  </head>
+  
+  <body style='height:1900px;'>
+  	<button onclick="test();">TEST</button><br/>
+  </body>
+</html>

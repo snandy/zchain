@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+	<head>
+		<title>modJS</title>
+		<meta charset="utf-8">
+	</head>
+	<body>
+		<input type="button" value="Button"/>
+		<script src="scripts/require-1.0.5.js"></script>
+		<script type="text/javascript">
+			var boot = window.boot || window.require;
+			boot.config({
+				baseUrl: 'scripts'
+			});
+			
+			require(['event', 'selector'], function(E, S) {
+				// var el = S.get('input');
+				// E.bind(el, 'click', function() {
+					// alert(this);
+				// });
+				// console.log(S.bind)
+			});
+		</script>
+	</body>
+</html>

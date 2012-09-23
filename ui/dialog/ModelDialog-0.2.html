@@ -1,0 +1,55 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>可拖拽的模态弹出框</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 	<style type="text/css">
+ 		body {margin:0;padding:0;}
+		.md-dialog {
+			border:1px solid #666666;
+			color:#666666;
+			font-size:14px;
+			text-align:left;
+			width:360px;
+		}
+		.md-head {
+			background:url("images/bg_flttit.gif") repeat-x scroll 0 0 transparent;
+			border:1px solid #FFFFFF;
+			color:#323232;
+			font-weight:bold;
+			height:35px;
+			line-height:35px;
+			padding-left:15px;
+			position:relative;
+		}
+		.md-close {
+			background:url("images/icon_close.gif") no-repeat scroll 0 0 transparent;
+			display:block;
+			height:10px;
+			position:absolute;
+			right:12px;
+			top:11px;
+			width:10px;
+			cursor:pointer;
+		}
+		.md-body {
+			background:none repeat scroll 0 0 #FFFFFF;
+			padding:0 16px 20px;
+			height : 100px;
+		}
+ 	</style>
+	<script type="text/javascript" src="ModelDialog_0.2.js"></script>
+	<script type="text/javascript">		
+		function fn(){
+			var str = '<div>这里自定义HTML模板</div>';
+			new DodelDialog({template:str});
+		}
+
+	</script>
+  </head>
+  
+  <body>
+  	<button onclick="fn();">TEST</button><br/>
+
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>LazyLoad js</title>
+		<!--
+		<script src="lazyload.js"></script>
+		-->
+		<script src="LazyLoad_0.1.js"></script>
+		<script type="text/javascript">
+			var ary1 = [
+				'http://files.cnblogs.com/snandy/a.css',
+				'b.css',
+				'c.css'
+			];
+			var ary3 = [
+				{src:'a.js', fn: function(){alert('a.js is loaded.');}},
+				{src:'b.js', fn: function(){alert('b.js is loaded.');}},
+				{src:'c.js', fn: function(){alert('c.js is loaded.');}}
+			];
+			LazyLoad.css(ary1,function(){
+				console.log('css done');
+			});
+
+//
+//			function clk(){
+//				LazyLoad.js(['a.js'], function(){
+//					alert('b');
+//				});
+//			}
+
+		</script>
+	</head>
+	<body>
+		<p>HELLO</p>
+		<button onclick="clk()">第二次加载a.js</button>
+	</body>
+</html>

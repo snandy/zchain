@@ -1,0 +1,5 @@
+E:\work\zchain\modJS>node ../r.js -o name=main out=main.js baseUrl=scripts optimize=none
+
+# include boot JS with runner.js
+# E:\work\zchain\modJS
+node ../r.js -o name=runner out=runner.js baseUrl=scripts optimize=none paths.requireLib=boot include=boot 

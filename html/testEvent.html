@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/>
+</head>
+<body>
+	请输入任意字符：<input type="text"/>
+</body>
+
+<script type="text/javascript">
+	window.onload = function(){ 
+		var input = document.getElementsByTagName('input')[0],
+			content = input.value ? input.value : '',
+			result = null,//输出的字符
+			map = {27: 'Esc', 112: 'F1', 113: 'F2', 114: 'F3', 115: 'F4', 116: 'F5', 117: 'F6', 118: 'F7', 119: 'F8', 120: 'F9', 121: 'F10', 122: 'F11', 123: 'F12',
+					9: 'Tab', 20: 'Caps Lock', 16: 'Shift', 17: 'Ctrl', 91: 'metaKey', 18: 'Alt', 32: 'Space', 92: 'metaKey', 13: 'Enter', 8: 'Backspace', 
+					45: 'Insert', 36: 'Home', 33: 'Page Up', 46: 'Delete', 35: 'End', 34: 'Page Down', 38: 'Up', 40: 'Down', 37: 'Left', 39: 'Right', 
+					144: 'Num Lock', 145: 'Scroll Lock', 19: 'Pause Break', 44: 'Print Screen'
+					//这个字符很奇怪，浏览器不支持keypress字符码
+				},
+			isUpper = false, //是否开启大写
+			isCN = false,//是否开启中文输入法
+			cnCase = {192: ['~', '·'], 49: ['！', '1'], 50: ['@', '2'], 51: ['#', '3'], 52: ['￥', '4'], 
+						53: ['%', '5'], 54: ['……', '6'], 55: ['&', '7'], 56: ['*', '8'], 57: ['（', '9'], 
+						48: ['）', '0'], 189: ['——', '-'], 187: ['+', '='], 219: ['｛', '【'], 221: ['｝', '】'], 
+						220: ['|', '、'], 186: ['：', '；'], 222: ['“', '‘'], 188: ['《', '，'], 190: ['》', '。'], 191: ['？', '、']
+				};
+		input.focus();
+		input.onkeydown = outputChar;
+		input.onkeypress = outputChar;
+		input.onkeyup = outputChar;
+
+		function outputChar(e){
+			e = e || window.event;
+			var type = e.type,
+				keyCode = e.keyCode ? e.keyCode : e.which;//如果是keypress，keyCode就是字符码，不然就是按键码
+//p(keyCode)
+			switch(type){
+				case 'keydown':
+					result = keyCode;
+					if(result === 9 || //Tab
+						(result >= 112 && result <= 123)){ //F1-F12
+						p('1您输入的是：' + map[result]);
+					}
+					break;
+					
+				case 'keypress':
+					if(keyCode !== result){
+						result = String.fromCharCode(keyCode);//避免出现按键码和字符码重叠，赶紧先做了
+						p('2您输入的是：' + result);
+					}
+					break;
+					
+				case 'keyup':
+//p('keyup')		
+					if(result >= 112 && result <= 123){
+						return;//F1-F12统一在keydown处理
+					}
+					if(typeof result === 'string'){
+						return;//字符码统一在keypress处理
+					}
+					
+					if(!result){//只触发keyup的情况
+						result = keyCode;
+					}else if(result === 229){//开启中文输入法，keydown的keyCode总是229
+						isCN = true;
+						result = keyCode;
+					}
+					p(isCN?'========= 开启中文输入法 ========':' ')
+					
+					
+					if(map[result]){//处理无关语系的字符
+						result = map[result];
+					}else{
+						p(result+'  '+String.fromCharCode(result));
+						if(isCN){
+							if(cnCase[result]){
+								result = cnCase[result];
+							}else{
+								result = String.fromCharCode(result);
+							}
+							//判断是否锁定大写
+							if(e.shiftKey){p('=============')
+								result = result[0] ? result[0] : result;
+							}else{
+								result = result[1] ? result[1] : result.toLowerCase();
+							}
+						}else{
+							result = result === 222 ? '\'' : String.fromCharCode(result);
+						}
+					}
+					
+					p('3您输入的是：' + result);
+					result = null;//清理
+					break;
+			}
+			
+		}
+	}
+	function p(s){
+		console.log(s);
+	}
+</script>
+</html>
+<!-- 65-90为大写， 97-122是小写 -->

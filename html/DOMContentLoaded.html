@@ -1,0 +1,94 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <!-- Copyright © Microsoft Corporation. All Rights Reserved. -->    
+    <title>DOMContentLoaded</title>
+    <meta name="t_omni_demopage" content="1" /><meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="stylesheet" type="text/css" href="../../Includes/Styles/BaseStyles.css" />
+    <link rel="stylesheet" type="text/css" href="../../Includes/Styles/DemoTemplate.css" />
+    <link rel="stylesheet" type="text/css" href="../../Includes/Styles/ReturnAndShareControls.css" />
+    <link rel="stylesheet" type="text/css" href="http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/Demo.css" />
+    <link rel="shortcut icon" href="../../Includes/Image/FavIcon.ico" />
+</head>
+<body>
+    <div id="ReturnAndShareControls"></div>
+    <h1 id="DemoTitle">
+        DOMContentLoaded
+    </h1>
+    <div id="DemoIntroduction">
+        The DOMContentLoaded event fires when parsing of the current page is complete; the
+        load event fires when all files have finished loading from all resources, including
+        ads and images. DOMContentLoaded is a great event to use to hookup UI functionality
+        to complex web pages.
+    </div>
+    <div id="DemoContent">
+        <h3>
+            When each event fires, the word "DONE!" is printed to the screen. To try the test
+            again, press Ctrl+F5 (to refresh this page without using cached images).</h3>
+        <div id="timing">
+            <div class="timing-result">
+                <strong>"DOMContentLoaded"</strong>
+                <div id="DCL">
+                    Waiting...</div>
+            </div>
+            <div class="timing-result">
+                Difference:
+                <div id="delta">
+                    --</div>
+            </div>
+            <div class="timing-result">
+                <strong>"load"</strong>
+                <div id="load">
+                    Waiting...</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+var timeDCL;
+
+function addListener(obj, eventName, listener) {
+	if(obj.addEventListener) {
+		obj.addEventListener(eventName, listener, false);
+	} else {
+		obj.attachEvent("on" + eventName, listener);
+	}
+}
+
+function finishedDCL() {
+	timeDCL = new Date();
+	document.getElementById('DCL').innerHTML = "<span class='done'>DONE!</span>";
+}
+
+function finishedLoad() {
+	if(timeDCL) {
+		var delta = new Date() - timeDCL;
+		document.getElementById('delta').innerHTML = delta + "ms";
+	}
+	document.getElementById('load').innerHTML = "<span class='done'>DONE!</span>";
+}
+
+addListener(document, "DOMContentLoaded", finishedDCL);
+addListener(window, "load", finishedLoad);
+
+if(!window.addEventListener) {
+	document.getElementById('DCL').innerHTML = "(not supported)";
+}
+
+    </script>
+
+    <hr />
+    <div id="images">
+        <img src="http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/whidbey.jpg" />
+        <img src="http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/window.jpg" />
+        <img src="http://ie.microsoft.com/testdrive/HTML5/DOMContentLoaded/whidbey2.jpg" />
+        <p>
+            The &gt; 2MB images above should delay the load event, but not the DOMContentLoaded
+            event</p>
+    </div>
+
+    <script type="text/javascript" src="Demo.js"></script>
+    <script type="text/javascript" src="../../Includes/Script/TestDriveCommon.js"></script>
+    <script type="text/javascript" src="../../Includes/Script/ReturnAndShareControls.js"></script>
+</body>
+</html>

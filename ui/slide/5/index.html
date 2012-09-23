@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
+<title>无标题文档</title>
+<link href="style/style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+<div class="page-body-wrapper">
+	<ul class="page-nav-wrapper">
+    	<li class="fir"><a href="#">首页</a></li>
+        <li class="sec"><a href="#">大赛简介</a></li>
+        <li><a href="#">大赛动态</a></li>
+        <li ><a href="#">公益30强</a></li>
+        <li ><a href="#">获胜奖励</a></li>
+        <li ><a href="#">作品展示</a></li>
+        <li class="last"><a href="#">FAQ</a></li>
+    </ul>
+    <div class="page-con">
+   	  <a href="#" class="pre">前翻</a>
+      <a href="#" class="next">后翻</a>
+        <div class="photo-list-wrapper">
+        	<ul></ul>
+        </div>
+    </div>
+    <div class="page-logo-list">
+    	<ul>
+        	<li class="ksf"><a href="#">康师傅</a></li>
+            <li class="zdt"><a href="#">早稻田</a></li>
+            <li class="blog"><a href="#">搜狐博客</a></li>
+            <li class="t"><a href="#">搜狐微博</a></li>
+            <li class="npi"><a href="#">恩派</a></li>
+        </ul>
+    </div>
+</div>
+<script src="../jquery-1.7.1.js"></script>
+<script src="js/jquery-scrollImg.js"></script>
+<script>
+
+$(function() {
+	var imgs = [
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich',
+			d: '标准会主任'
+		},
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack22',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily22',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James22',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John22',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich22',
+			d: '标准会主任'
+		},
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack33',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily33',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James33',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John33',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich33',
+			d: '标准会主任'
+		},
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack44',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily44',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James44',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John44',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich44',
+			d: '标准会主任'
+		},
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack55',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily55',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James55',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John55',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich55',
+			d: '标准会主任'
+		},
+		{
+			s: 'style/ad/ad1.jpg',
+			n: 'Jack66',
+			d: '天堂里的魔主'
+		},
+		{
+			s: 'style/ad/ad2.jpg',
+			n: 'Lily66',
+			d: '幼儿园老师'
+		},
+		{
+			s: 'style/ad/ad3.jpg',
+			n: 'James66',
+			d: '清华大学老师'
+		},
+		{
+			s: 'style/ad/ad4.jpg',
+			n: 'John66',
+			d: 'IT民工'
+		},
+		{
+			s: 'style/ad/ad5.jpg',
+			n: 'Eich66',
+			d: '标准会主任'
+		}
+	];
+	
+	$('.page-con').scrollImg({}, imgs);
+});
+	
+</script>
+</body>
+</html>

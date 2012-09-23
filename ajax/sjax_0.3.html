@@ -1,0 +1,31 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>sjax_0.3.js by snandy</title>
+	<script src="sjax_0.3.js"></script>
+</head> 
+<body>
+<input type="button" value="Get Name 1" onclick="clk1()"/>
+<input type="button" value="Get Name 2" onclick="clk2()"/>
+<script type="text/javascript">
+
+function clk1(){
+	Sjax.load({
+		url : 'http://localhost:9000/www/servlet/json',
+		param : {name:'33',age:44},
+		success : function(){alert(jsonp.name)},
+		failure : function(){alert('error');}
+	});
+}
+function clk2(){
+	Sjax.load({
+		url : 'jsonp66.js',
+		success : function(){alert(jsonp.name)},
+		failure : function(){alert('error');}
+	});
+}
+</script>
+</body>
+</html>
+

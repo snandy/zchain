@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+
+<script src="event-0.8.js"></script>
+
+<script type="text/javascript">
+
+	window.onload=function(){
+		d1 = document.getElementById('d1');
+		
+		function f1(){alert(1)}
+		function f2(){alert(2)}
+		function f3(){alert(3)}
+		E.on(d1, 'click', f1);
+		E.on(d1, 'click', f1);
+		E.on(d1, 'click', f1);
+		E.on(d1, 'mouseover', f2);
+		//E.un(d1, 'click', f1);
+		//E.un(d1);
+		//E.un(d1, 'click');
+		
+
+	}
+	
+</script>
+</head>
+<body>
+<input id="txt1" type="text" value=""/>
+<div id="d1" style="width:200px;height:50px;border:1px solid gray;background:gold;">click me</div>
+<br/><br/>
+<div id="d2" style="width:200px;height:50px;border:1px solid gray;background:gold;"></div>
+</body>
+</html>

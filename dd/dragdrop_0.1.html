@@ -1,0 +1,47 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>dragdrop_0.1.html</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 	<style type="text/css">
+ 		body {margin:0;padding:0;}
+ 	</style>
+	<script type="text/javascript" src="dragdrop_0.1.js"></script>
+	<script type="text/javascript">
+		// 元素只能在窗口范围内拖拽
+		
+		function getWinHeight(){
+			if (window['innerHeight'])
+				return window.innerHeight;
+			if (document['documentElement'])
+				return document.documentElement.clientHeight;
+			return 0;
+		}
+		function getWinWidth(){
+			if (window['innerWidth'])
+				return window.innerWidth;
+			if (document['documentElement'])
+				return document.documentElement.clientWidth;
+			return 0;
+		}
+		window.onload = function(){
+			var ele = document.getElementById('d1');
+			var bodyWidth = getWinWidth(),
+				bodyHeight = getWinHeight();
+			var maxX = bodyWidth - Math.max(ele.offsetWidth,ele.clientWidth);
+			var maxY = bodyHeight - Math.max(ele.offsetHeight,ele.clientHeight);
+			
+			Dragdrop(ele, {
+				area : [0,maxX,0,maxY]
+			});
+		}
+	</script>
+  </head>
+  
+  <body>
+	<div id="d1" style="width:200px;height:50px;background:gold;text-align:center;">
+		Drag me.
+	</div>
+
+  </body>
+</html>

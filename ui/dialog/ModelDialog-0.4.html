@@ -1,0 +1,68 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>仅在窗口范围拖拽的模态对话框</title>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+ 	<style type="text/css">
+ 		body {margin:0;padding:0;}
+		.md-dialog {
+			border:1px solid #666666;
+			color:#666666;
+			font-size:14px;
+			text-align:left;
+			width:360px;
+			box-shadow:0 0 3px 3px #BBBBBB;
+		}
+		.md-head {
+			background:url("images/bg_flttit.gif") repeat-x scroll 0 0 transparent;
+			border:1px solid #FFFFFF;
+			color:#323232;
+			font-weight:bold;
+			height:35px;
+			line-height:35px;
+			padding-left:15px;
+			position:relative;
+		}
+		.md-close {
+			background:url("images/icon_close.gif") no-repeat scroll 0 0 transparent;
+			display:block;
+			height:10px;
+			position:absolute;
+			right:12px;
+			top:11px;
+			width:10px;
+			cursor:pointer;
+		}
+		.md-body {
+			background:none repeat scroll 0 0 #FFFFFF;
+			padding:0 16px 20px;
+			height : 100px;
+		}
+ 	</style>
+	<script type="text/javascript" src="ModelDialog_0.4.js"></script>
+	<script type="text/javascript">		
+		function test(){
+		var str = '<div>这里自定义HTML模板</div><p><input type="button" value="关闭"/></p>';
+		var dialog = new ModelDialog({
+			template : str,
+			//shadowOpy : 0.1,
+			//dragable : false
+			dragInWin : true
+			//area : [0,500,0,500]
+		});
+		var btn = dialog.body.getElementsByTagName('input')[0];
+		btn.onclick = function() {
+			dialog.onClose();
+		};
+			dialog['onbi'] = function(){
+			 	//alert('关闭了')
+			}
+		}
+
+	</script>
+  </head>
+  
+  <body style='height:1900px;'>
+  	<button onclick="test();">TEST</button><br/>
+  </body>
+</html>

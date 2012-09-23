@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+	<head>
+		<title>RequireJS</title>
+		<meta charset="utf-8">
+		<script src="scripts/boot.js"></script>
+		<script src=""></script>
+		<script>
+			boot.config({
+				baseUrl: 'scripts'
+				// paths: {
+					// mod: 'html/module.html'
+				// }
+				// urlArgs: "bust=" +  (new Date()).getTime(),
+				// priority: ['data']
+			});
+			var loginResource = ['http://s.suc.itc.cn/loader.action?key=ppdialog'];
+			require(loginResource, function(){
+				
+			});
+			
+		</script>
+		
+	</head>
+	<body>
+		<input type="button" value="test"/>
+		
+		<script>
+			
+		</script>
+	</body>
+</html>

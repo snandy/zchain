@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>pictures auto paly</title>
+
+<link href="css/reset.css" rel="stylesheet" type="text/css" />
+<link href="css/home.css" rel="stylesheet" type="text/css" />
+<script src="../jquery-1.7.1.js"></script>
+<script src="js/jquery.focusImg.js"></script>
+</head>
+
+<body>
+	<div style="margin:0 auto;" class="focus-pic"></div>
+	<script>
+		var imgs = [
+			{
+				p: 'http://i1.itc.cn/20120209/3ab_28e81ccb_8694_65ad_6eb6_801b4d9d0cdf_5.jpg',
+				l: 'http://mikesakai.blog.sohu.com/203130261.html',
+				t: '博友实拍日本史上最猛烈降雪'
+			},
+			{
+				p: 'http://i3.itc.cn/20120209/3ab_28e81ccb_8694_65ad_6eb6_801b4d9d0cdf_4.jpg',
+				l: 'http://dysyb.blog.sohu.com/203153767.html',
+				t: '吉林市民寒风中站立打麻将'
+			},
+			{
+				p: 'http://i2.itc.cn/20120209/3ab_28e81ccb_8694_65ad_6eb6_801b4d9d0cdf_3.jpg',
+				l: 'http://elle-vip.blog.sohu.com/203132673.html',
+				t: '两岸三地嫩模火辣身材比拼'
+			},
+			{
+				p: 'http://i0.itc.cn/20120209/3ab_28e81ccb_8694_65ad_6eb6_801b4d9d0cdf_2.jpg',
+				l: 'http://hldhym.blog.sohu.com/203149767.html',
+				t: '元宵夜拍花灯'
+			},
+			{
+				p: 'http://i0.itc.cn/20120209/3ab_28e81ccb_8694_65ad_6eb6_801b4d9d0cdf_1.jpg',
+				l: 'http://wlypx.blog.sohu.com/203082764.html',
+				t: '中国最美风光'
+			}
+		];
+		var conf = {
+			width: 340,
+			height: 200
+		};
+		$('.focus-pic').focusImg(conf, imgs);
+	</script>
+</body>
+</html>

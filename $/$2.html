@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="selector.js"></script>
+</head>
+<body>
+<div><a href="http://www.sina.com.cn">SINA</a></div>
+
+<div id="d1" _action="doao" act="a">
+	<p><a href="http://www.sina.com.cn">SINA</a></p>
+</div>
+<script type="text/javascript">	
+	alert($('[act]')[0].tagName)
+</script>
+</body>
+</html>

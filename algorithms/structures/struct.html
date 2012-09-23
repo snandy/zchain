@@ -1,0 +1,29 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <TITLE>双向链表</TITLE>
+        <script src="LinkedList-0.2.js"></script>
+        <script>
+            var list = new LinkedList();
+            list.add(0,'one');
+            list.add(1,'two');
+            list.addLast('three');
+            list.addLast('four');
+            //list.add(0,'five');
+            //list.addFirst('five');
+            //list.addLast('five');
+            //console.log(list.size());
+            //console.log(list.get(1));
+            //list.remove(1);
+            list.remove('two');
+            //list.clear();
+            //list.set(3, 'six');
+            console.log(list.size());
+            console.log(list.getLast());
+            console.log(list.contains('one'))
+            alert(list);
+        </script>
+    </HEAD>
+    <BODY>
+    </BODY>
+</HTML>

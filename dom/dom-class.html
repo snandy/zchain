@@ -1,0 +1,63 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+	<meta charset="utf-8" />
+	<title>dom module</title>
+	<style type="text/css">
+		body{
+			marg9in:0;
+		}
+		.blue {
+			background: blue;
+		}
+		.red {
+			background : red;
+			border : 10px solid gray;
+			color : blue;
+			padding : 10px;
+			top:10px;
+		}
+		.border {
+			border : 5px solid gray;
+		}
+	</style>
+	<script type="text/javascript" src="dom-class.js"></script>
+ </HEAD>
+
+ <BODY>
+ 	
+ 	<div class='red'>div 1</div>
+ 	<div class='border'>div 2</div>
+ 	<div class=''>div 3</div>
+ 	<div class='border'>div 4</div>
+
+	<script type="text/javascript">
+		
+		var div1 = document.getElementsByTagName('div')[0];
+		var div2 = document.getElementsByTagName('div')[1];
+		var div3 = document.getElementsByTagName('div')[2];
+		var div4 = document.getElementsByTagName('div')[3];
+
+        
+        // hasClass
+        var boo = domClass.has(div1,'red');
+        console.log(boo);
+        
+        // addClass
+        domClass.add(div1, 'blue border');
+        
+        // removeClass
+        var str = domClass.remove(div2, 'border');
+        console.log(str);
+        
+        // toggleClass
+        document.onclick = function() {
+            //domClass.toggle(div3, 'red');
+            domClass.remove(div1, 'red blue border')
+        };
+        
+        // replaceClass
+        domClass.replace(div4, 'border', 'red');
+	</script>	
+ </BODY>
+</HTML>

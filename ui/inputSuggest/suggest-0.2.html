@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>suggest-0.2.js</title>
+		<style type="text/css">
+			body{margin:0;padding:0;}
+			input{width:200px;}
+			.suggest-container{border:1px solid #C1C1C1;visibility:hidden;}
+			.suggest-item{padding:3px 2px;}
+			.suggest-active {background:#33CCFF;color:white;padding:3px 2px;}
+		</style>
+		<script type="text/javascript" src="suggest-0.2.js"></script>
+		
+		<script type="text/javascript">
+			
+			window.onload = function(){
+				var sinaSuggest = new InputSuggest({
+					input: document.getElementById('sina'),
+					data: ['sina.cn','sina.com','vip.sina.com.cn','2008.sina.com','263.sina.com']
+				});
+				var sohuSuggest = new InputSuggest({
+					width: 300,
+					opacity: 0.3,
+					input: document.getElementById('sohu'),
+					data: ['sohu.com','sogou.com','chinaren.com','vip.sohu.com','sohu.net','2008.sohu.com','sms.sohu.com']
+				});
+				
+			}
+		</script>
+	</head>
+	<body>
+		<div style="width:400px;margin:30px auto;text-align:center;">
+			<label>新浪</label>
+			<input type="text" id="sina"/>
+			<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+			<label>搜狐</label>
+			<input type="text" id="sohu"/>
+		</div>
+	</body>
+</html>

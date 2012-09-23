@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>Test case</title>
+</head> 
+<body>
+
+<div id="d1" style="width:200px;height:200px;background:gold;">
+	<p id="p1">p1</p>
+</div>
+
+<script>
+function parseJsonParams(json, parent){
+	var key, value, type, cache = [];
+	parent = parent || '';
+	if(parent !== ''){
+		parent = parent + '.';
+	}
+	if(typeof json === 'object' && typeof json !== 'function'){
+		for( key in json ){
+			if( !json.hasOwnProperty(key) ) 
+				continue;
+			value = json[key];
+			type = typeof value;
+			
+			if (type !== 'object' && type !== 'function') {
+				cache.push(parent + key + '=' + value);
+			} else if (value.length && value.slice && value.constructor == Array) {
+				for(var i = 0; i < value.length; i++) {
+					cache.push(parent + key + '=' + value[i]);
+				}
+			} else if (type !== 'function') {
+				cache.push(parseJsonParams(value, key));
+			}
+		}
+		return cache.join('&');
+	}
+}
+var obj = {
+	length : 4,
+	slice : 1,
+	constructor : Array
+};
+
+function isAry(value){
+	return value.length && value.slice && value.constructor == Array;
+}
+
+alert(isAry(obj));
+</script>
+<script>
+	var sc = document.getElementsByTagName('script')[0];
+	//alert(sc.text);
+</script>
+</body>
+</html>
+

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>zchain.js</title>
+		<script type="text/javascript" src="zchain.js"></script>
+	</head>
+	<body>
+		<input type="text"/>
+		<input type="radio"/>
+		<input type="checkbox"/>
+	<script>
+		$('input').keyup(function(e){
+			document.body.appendChild(document.createTextNode(e));
+		});
+		$(document).click(function(){
+			//console.log($('[type=text]').val())
+			console.log($('[type=checkbox]').val())
+		});
+	</script>
+	</body>
+</html>

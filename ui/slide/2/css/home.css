@@ -1,0 +1,109 @@
+@charset "utf-8";
+
+.focus-pic{
+	width: 300px;
+	height: 295px;
+	position: relative;
+}
+.focus-pic .big-pics{
+	width: 300px;
+	height: 295px;
+	overflow: hidden;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+.focus-pic .big-pics .big-pic{
+	height: 295px;
+	position: absolute;
+	width: 10000px;
+}
+.focus-pic .big-pics .big-pic ul li{
+	float:left;
+	height: 295px;
+}
+.focus-pic .big-pics .big-pic ul li img{
+	height: 100%;
+}
+
+
+.focus-pic .fi-tts{
+	width: 300px;
+	height: 33px;
+	line-height: 33px;
+	overflow: hidden;
+	position: absolute;
+	bottom: 30px;
+	left: 0;
+}
+
+.focus-pic .fi-tts .fi-tt{
+	position: absolute;
+	width: 300px;
+	height: 33px;
+	line-height: 33px;
+	z-index:20;
+}
+.focus-pic .fi-tts .tt-bg{
+	height:100%;
+	width: 100%;
+	position: absolute;
+	background-color:#000;
+	opacity: 0.8;
+	filter: alpha(opacity=80);
+	z-index:10;
+	top:0;
+	left:0;
+}
+.focus-pic .fi-tts .fi-tt ul{
+	height: 33px;
+	width: 100%;
+}
+.focus-pic .fi-tts .fi-tt ul li{
+	height: 100%;
+	width: 100%;
+	text-indent:10px;
+}
+.focus-pic .fi-tts .fi-tt ul li h3{
+	font: 16px/30px 'Microsoft YaHei',simsun;
+}
+.focus-pic .fi-tts .fi-tt ul li a{
+	text-decoration: none;
+	color:#fff;
+}
+
+
+.focus-pic .thum-nums{
+	width: 300px;
+	overflow: hidden;
+	position: absolute;
+	left: 0;
+	bottom: 6px;
+	text-align: right;
+}
+
+.focus-pic .thum-nums .thum-num{
+
+}
+.focus-pic .thum-nums .thum-num span{
+	width: 18px;
+	height: 18px;
+	text-align: center;
+	line-height:18px;
+	background-color:#000;
+	font-weight: 600;
+	opacity: 0.7;
+	filter: alpha(opacity=70);
+	display: inline-block;
+	color:#fff;
+	cursor:pointer;
+	margin-right: 3px;
+	text-decoration: none;
+}
+.focus-pic .thum-nums .thum-num span.cur{
+	opacity: 1;
+	filter: alpha(opacity=100);
+	background-color:#d70c19;
+	display: inline-block;
+}
+

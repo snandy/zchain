@@ -1,0 +1,21 @@
+<!DOCTYPE HTML>
+<html> 
+<head> 
+	<meta charset="utf-8"> 
+	<title>sjax_0.2.js by snandy</title>
+	<script src="http://files.cnblogs.com/snandy/sjax_0.2.js"></script>
+</head> 
+<body>
+<input type="button" value="Get Name" onclick="clk()"/>
+<script type="text/javascript">
+	function clk(){
+		Sjax.load('http://files.cnblogs.com/snandy/jsonp.js', {
+			fn : function(){alert(jsonp.name)},
+			data : {a:'1',b:'2',c:[11,22]},
+			timestamp : true
+		});
+	}
+</script>
+</body>
+</html>
+

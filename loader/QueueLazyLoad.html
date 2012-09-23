@@ -1,0 +1,24 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>QueueLazyLoad_0.2.js</title>
+		<script src="http://files.cnblogs.com/snandy/QueueLazyLoad-0.1.js"></script>
+		<script type="text/javascript">
+			var libs = [
+				{url:'http://files.cnblogs.com/snandy/a.js', fn: function(){alert('a.js is loaded.');}},
+				{url:'http://files.cnblogs.com/snandy/b.js', fn: function(){alert('b.js is loaded.');}},
+				{url:'http://files.cnblogs.com/snandy/c.js', fn: function(){alert('c.js is loaded.');}}
+			];
+			QueueLazyLoad.js(libs);
+			function clk(){
+				QueueLazyLoad.js([{url:'http://files.cnblogs.com/snandy/a.js'}], function(){
+					alert('a');
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="clk()">loading a.js again</button>
+	</body>
+</html>

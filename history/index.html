@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>0</title>
+<script>
+var h_list = [];
+var h_index = 0;
+var tit = 0;
+
+function saveHistory() {
+	if(document.getElementById('history')) {
+		h_index++;
+		h_list[h_index] = document.getElementById("info").innerHTML;
+		document.getElementById('history').src = 'history.html?' + h_index;
+	}
+}
+
+function getHisStory(curIndex) {
+	if(curIndex != h_index) {
+		if(h_list[curIndex]) {
+			h_index=curIndex;
+			document.getElementById("info").innerHTML = h_list[curIndex];
+			document.title = h_list[curIndex];
+		}
+	}
+}
+
+function test() {
+	document.getElementById('info').innerHTML = ((document.getElementById('info').innerHTML-0)+1);
+	document.title = ++tit;
+	saveHistory();
+}
+</script>
+</head>
+<body>
+	<input type="button" value="加1" onclick="test();" />
+	<div id="info" style="border:red 1px solid;width:200px;padding:10px;margin:5px;">0</div>
+	<iframe id="history" src="history.html?0" height="0px" frameborder="no"></iframe>
+	<script>
+		h_list[0]=document.getElementById("info").innerHTML;
+	</script>
+</body>
+</html>
+

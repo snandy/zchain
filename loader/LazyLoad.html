@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>LazyLoad_0.4.js</title>
+		<script src="LazyLoad-0.1.js"></script>
+		<script type="text/javascript">
+			var ary = [
+				'http://files.cnblogs.com/snandy/a.js',
+				'http://files.cnblogs.com/snandy/b.js',
+				'http://files.cnblogs.com/snandy/c.js'
+			];
+			LazyLoad.js(ary, {
+				callback: function(){c()}
+			});
+			function clk(){
+				LazyLoad.js(['http://files.cnblogs.com/snandy/a.js'], function(){
+					alert('b');
+				});
+			}
+		</script>
+	</head>
+	<body>
+		<button onclick="clk()">loading a.js again</button>
+	</body>
+</html>

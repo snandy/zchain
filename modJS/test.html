@@ -1,0 +1,70 @@
+<!doctype html>
+<html>
+	<head>
+		<title>modJS</title>
+		<meta charset="utf-8">
+		<script src="runner.js"></script>
+		<script type="text/javascript">
+			boot.config({
+				// baseUrl: 'scripts'
+				// urlArgs: "bust=" +  (new Date()).getTime(),
+				// priority: ['data']
+			});
+			
+
+		</script>
+		
+	</head>
+	<body>
+		<div id="aa">
+			<p>test</p>
+		</div>
+		<input type="button" value="test"/>
+		<span>BUTTON</span>
+		<script type="text/javascript">
+			var ipt = document.getElementsByTagName('input')[0];
+			// require(['main'], function(){
+				// require(['selector', 'event'], function(R, E){
+					// //alert(R.$('aa'))
+					// E.bind(R.$('aa'), 'click', function(e){
+						// alert(e.originalEvent)
+					// })
+				// })
+			// });
+			// require(['event'], function(E){
+				// E.bind(ipt, 'click', function(){
+					// alert(3)
+				// });
+// 				
+			// });
+			// require(['event'], function(E){
+				// E.bind(ipt, 'mouseover', function(){
+					// alert(3)
+				// });
+// 				
+			// });
+// 			
+			// var span = document.getElementsByTagName('span')[0];
+			// span.onclick = function() {
+				// require(['event'], function(E){
+					// E.unbind(ipt, 'mouseover');
+					// E.trigger(ipt, 'click')
+				// })
+			// }
+			
+			// require(['json'], function(ajax){
+				// console.log(ajax)
+			// })
+			
+			// window.onload = function() {
+				// require(['selector', 'event'], function(R, E){
+					// E.bind(R.$('aa'), 'click', function(e){
+						// alert(e.originalEvent)
+					// })
+				// });
+// 				
+			// };
+
+		</script>
+	</body>
+</html>

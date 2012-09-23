@@ -1,0 +1,74 @@
+/**
+ * 	reset
+ */ 
+html, body, div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+    background: none repeat scroll 0 0 transparent;
+    border: 0 none;
+    margin: 0;
+    outline: 0 none;
+    padding: 0;
+    vertical-align: baseline;
+}
+body {
+    color: #000000;
+    font: 12px/24px simsun,Arial,Helvetica,sans-serif;
+}
+
+.scroll-pic{
+	background-color:#efefef;
+	overflow:hidden;
+	padding-top: 15px;
+	border-top:3px solid #e5e5e5;
+	zoom:1;
+}
+.scroll-pic .s-btn{
+	float:left;
+	width: 22px;
+	height: 80px;
+	background: url("../images/btn_scroll.gif") no-repeat scroll 0 0;
+	cursor: pointer;
+	display:inline;
+}
+.scroll-pic .s-btn-left{
+	margin:0 5px 0 15px;	
+	background-position: 0 0;
+}
+.scroll-pic .s-btn-left-forbid{
+	background-position: -27px 0;
+}
+.scroll-pic .s-btn-right{
+	margin:0 5px 0 5px;
+	background-position: -54px 0;
+}
+.scroll-pic .s-btn-right-forbid{
+	background-position: -81px 0;
+}
+.scroll-pic .s-show{
+	float:left;
+	width: 864px;
+	height: 110px;
+	overflow: hidden;
+	position: relative;
+}
+.scroll-pic .s-show ul {
+	position: absolute;
+	width: 10000px;
+}
+.scroll-pic .s-show ul li{
+	float:left;
+	padding: 0 14px;
+	width: 80px;
+	overflow: hidden;
+}
+.scroll-pic .s-show ul li img{
+	width: 76px;
+	height: 76px;
+	padding: 1px;
+	border: 1px solid #D5D5D5;
+}
+.scroll-pic .s-show ul li p{
+	text-align: center;
+	width: 78px;
+	overflow: hidden;
+	height: 24px;
+}

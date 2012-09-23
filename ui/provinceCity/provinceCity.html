@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<script type="text/javascript" src="province.js"></script>
+	<script type="text/javascript">
+		
+		window.onload = function(){
+			var province = document.myform.province,
+				city	 = document.myform.city;			
+			var pobj = new ProvinceCity(province,city);
+		}
+		
+	</script>	
+ </HEAD>
+
+ <BODY>
+	<form name="myform" style="width:300px;margin:0 auto;">
+		<select name="province"></select>
+		<select name="city"><option>---</option></select>
+	</div>
+ </BODY>
+</HTML>

@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>A simple tool used to get the element's default style</title>
+	</head>
+	<body>
+<div id="myContainer">
+<p>元素名称：<input /> 例如“textarea”</p>
+<p>CSS属性  ：<input /> 例如“overflow”</p>
+<input type="button" value="获  取" />
+<div style="border:1px solid gold;width:350px;height:100px;padding:5px;margin:5px 0;"></div>
+</div>
+<script>
+(function(){
+	
+	function getStyleProperty(el, name) {
+		var cssStyleDeclaration, val;
+		if(window.getComputedStyle) {
+			cssStyleDeclaration = window.getComputedStyle(el, null);
+		}else{
+			cssStyleDeclaration = el.currentStyle;
+		}
+		return cssStyleDeclaration.getPropertyValue(name);
+	}
+	var container = document.getElementById('myContainer');
+	var iptNodeName = container.getElementsByTagName('input')[0],
+		iptCssName = container.getElementsByTagName('input')[1],
+		btn = container.getElementsByTagName('input')[2],
+		div = container.getElementsByTagName('div')[0];
+		
+	btn.onclick = function() {
+		var el, val, cssName = iptCssName.value;
+		try{
+			el = document.createElement(iptNodeName.value);
+			document.body.appendChild(el);
+			val = getStyleProperty(el, cssName);
+			document.body.removeChild(el);
+		}catch(e){
+			alert('非法的元素名称或CSS属性');
+			return;
+		}
+		div.innerHTML = '<span style="color:blue">' + cssName + '</span>: <span style="color:red;">' + val + '</span>';
+		
+	};
+	
+})();
+</script>
+	</body>
+</html>

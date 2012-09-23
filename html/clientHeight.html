@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE> New Document </TITLE>
+  <META NAME="Generator" CONTENT="EditPlus">
+  <META NAME="Author" CONTENT="">
+  <META NAME="Keywords" CONTENT="">
+  <META charset="utf-8">
+ </HEAD>
+<style>
+*{padding:0;margin:0;}
+</style>
+ <BODY>
+ <div id="model" style="width:100%; background:gray; position:absolute; left:0;top:0;opacity:.5;filter:alpha(opacity=50);display:none;font-size:80px;">点击关闭</div>
+  <p>ddddd</p>
+    <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>  <p>ddddd</p>
+<p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p>
+<p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p><p>ddddd</p>
+<button id="test">test</button>
+
+	<script>
+	document.getElementById('test').onclick = function(){
+	var w = document.compatMode == 'CSS1Compat' ? document.documentElement.clientWidth + document.documentElement.scrollLeft : document.body.clientWidth + document.body.scrollLeft;
+	var h = document.compatMode == 'CSS1Compat' ? document.documentElement.clientHeight + document.documentElement.scrollTop : document.body.clientHeight + document.body.scrollTop;
+	document.getElementById('model').style.height = w+'px';
+	document.getElementById('model').style.height = h+'px';
+	document.getElementById('model').style.display = 'block';
+	}
+	document.getElementById('model').onclick = function(){
+		this.style.display = 'none';
+	}
+	</script>
+ </BODY>
+</HTML>

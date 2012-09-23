@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title></title>
+<script type="text/javascript" src="observer-0.1.js"></script>
+</head>
+
+<body style="height:2000px;">
+
+</body>
+<script type="text/javascript">
+
+var obj = {};
+function f1(){alert(1)}
+function f2(){alert(this)}
+function f3(a) {alert(a)}
+//Observer.on(obj,'click',f1,true);
+Observer.on(obj,'click',f2);
+Observer.on(obj,'click',f3);
+Observer.on(obj,'mouse',f2);
+// Observer.fire(obj,'click', ['hello']);
+// Observer.un(obj,'mouse');
+// Observer.un(obj);
+Observer.un(obj, 'click', f3);
+// Observer.fire(obj,'mouse');
+Observer.fire(obj,'click');
+
+
+//obj['click'] = function(){
+//	alert('click');
+//}
+//obj['click']();
+
+// 添加自定义事件
+function addEvent(obj, type, handler) {
+	obj[type] = handler;
+}
+
+// 移除自定义事件
+function removeEvent(obj, type) {
+	delete obj[type];
+}
+
+// 触发/派发自定义事件
+function dispatchEvent(obj, type) {
+	obj[type]();
+}
+
+
+// addEvent(obj, 'click', f1);
+// dispatchEvent(obj, 'click');
+
+
+</script>
+</html>

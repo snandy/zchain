@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<script src="event-jq-0.3.js"></script>
+
+</head>
+<body>
+<p>重要的是不要使自己成为传教士，不要认为自己是兜售圣经的人，这样的人已经太多了。</p>
+<div style="border:1px solid gray;">
+	<a href="http://www.sohu.com">sohu</a>
+	
+	<form action="http://www.qq.com"></form>
+</div>
+<p>test</p>
+<script type="text/javascript">
+	var el = document.getElementsByTagName('p')[0];
+	function f1(e){
+		alert(2);
+	}
+	
+	function f2(){
+		return false;
+	}
+	function f3(e){
+		console.log("hello");
+		
+	}
+	var obj = {
+		click : f1,
+		mouseover : f2
+	};
+
+	E.bind(el, 'click', f1);
+	// E.bind(el, 'click', f3);
+	E.bind(el, 'mouseover', f1);
+	// E.unbind(el);
+	//E.unbind(el);
+	//E.trigger(document.forms[0], 'submit!');
+	
+	// console.log(E.dataManager.data(el))
+	
+	var div = document.getElementsByTagName('div')[0];
+	div.onclick = function() {
+		E.unbind(el, 'click')
+	}
+</script>
+</body>
+</html>

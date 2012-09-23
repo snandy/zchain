@@ -1,0 +1,75 @@
+一、requirejs初始化执行流程
+
+1 if (isBrowser)
+2 req(cfg)
+3 context.configure()
+4 context.require(cfg.deps || [], cfg.callback)
+5 resume()
+6 req.load
+7 req.attach(url, context, moduleName);
+
+二、require()细节
+
+1 可通过require.config方法配置baseUrl
+2 文件名一般不用加".js"，如果有".js"文件一定是与引入requirejs的html在同一个目录
+
+
+三、够狠，一个newContext方法，有1k多行
+
+四、require流程
+
+1 require([xx], fn)
+2 context.require(deps, callback, relModuleMap)
+3 main(null, deps, callback, relModuleMap);
+4 makeModuleMap(depArg, (name ? moduleMap : relModuleMap)) 每次调用生成 module对象
+	{
+        prefix: 
+        name: 
+        parentMap: 
+        url: 
+        originalName: 
+        fullName: 
+    }
+5 getManager(map, shouldQueue) 生成的manager结构如下
+    manager = {
+        id: 
+        map: map, // 为上面makeModuleMap结构
+        depCount: 0,
+        depDone: [],
+        depCallbacks: [],
+        deps: [],
+        listeners: [],22722
+        add: managerAdd
+    };
+6 resume()
+7 req.load(context, fullName, url);
+8 req.attach(url, context, moduleName);
+9 req.addScriptToDom(node);
+
+callback
+1 req.onScriptLoad
+2 context.completeLoad(moduleName);
+3 callDefMain
+4 main(name, deps, callback)
+5 execManager(manager)
+6 
+
+五、configurePackageDir函数在context.configure调用。即配置requirejs时。
+
+六、context.defined 中存储各个模块
+
+
+十、瑕疵
+1 requirejs/define/resume 多余的 return undefined
+2 req.execCb 多余的参数name
+3 forceExec/checkLoaded return undefined 改为 return; 最后的return undefined去掉
+
+
+十一、剃掉的
+1 isBrowser 非浏览器环境的支持
+2 r.js 相关代码 
+3 requireWait 标示符 / 佳璐说是模拟script的load
+4 queueDependency 内仅一行，仅被调用一次（getManager中）
+5 
+
+

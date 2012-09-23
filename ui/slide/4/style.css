@@ -1,0 +1,1425 @@
+.area{
+	clear: both;
+	width: 960px;
+}
+.blog-fashion{
+	text-align: left;
+	width: 960px;
+	margin: 0 auto;
+}
+
+.blog-fashion-top{
+	margin: 15px 0;
+}
+.blog-fashion-top .logo{
+	float:left;
+	height: 46px;
+	line-height:46px;
+	padding: 7px 0 0 0;
+}
+.blog-fashion-top .logo a{
+	float:left;
+}
+.blog-fashion-top .logo a.logo-blog{
+	border-right: 1px solid #000;
+	padding: 0 14px;
+}
+.blog-fashion-top .logo a.logo-fashion{
+	color:#ea1c24;
+	font: 18px 'Microsoft YaHei',simsun;
+	margin: 8px 0 0 20px;
+}
+.blog-fashion-top .ad{
+	float:right;
+}
+
+.blog-fashion-nav{
+	height: 36px;
+	background: url('images/bg_nav.gif') repeat-x scroll 0 0 transparent;
+}
+.blog-fashion-nav ul{
+	padding-left: 10px;
+}
+.blog-fashion-nav ul li{
+	float:left;
+	padding-top: 7px;
+	height: 29px;
+	background: url('images/bg_nav_li.gif') no-repeat scroll right center transparent;
+}
+.blog-fashion-nav ul li.none{
+	background: none;
+}
+.blog-fashion-nav ul li span{
+	display: block;
+	width: 74px;
+	height: 29px;
+	padding: 0 42px;
+}
+.blog-fashion-nav ul li span.none{
+	border-right: 0 none;
+}
+.blog-fashion-nav ul li a{
+	display: block;
+	width: 74px;
+	height: 20px;
+	padding-bottom: 5px;
+}
+.blog-fashion-nav ul li a.cur{
+	border-bottom: 4px solid #000;
+}
+.blog-fashion-nav ul li a:hover{
+	border-bottom: 4px solid #000;
+}
+.blog-fashion-nav ul li span.n01 a{
+	background: url('images/img_nav_01.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_01.png");
+
+}
+.blog-fashion-nav ul li span.n02 a{
+	background: url('images/img_nav_02.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_02.png");
+
+}
+.blog-fashion-nav ul li span.n03 a{
+	background: url('images/img_nav_03.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_03.png");
+
+}
+.blog-fashion-nav ul li span.n04 a{
+	background: url('images/img_nav_04.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_04.png");
+
+}
+.blog-fashion-nav ul li span.n05 a{
+	background: url('images/img_nav_05.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_05.png");
+
+}
+.blog-fashion-nav ul li span.n06 a{
+	background: url('images/img_nav_06.png') no-repeat scroll 0 0 transparent;
+	 _background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/img_nav_06.png");
+
+}
+/* content*/
+.blog-fashion-content{
+	
+}
+.blog-fashion-content .content-top{
+	margin-top: 20px;
+}
+
+.blog-fashion-content .content-top .ct-lt{
+	float:left;
+	width: 288px;
+}
+.blog-fashion-content .content-top .ct-lt .tt{
+	width: 100%;
+	height: 29px;
+	line-height:29px;
+	border-bottom: 1px solid #ea1c24;
+	
+}
+.blog-fashion-content .content-top .ct-lt .tt h3{
+	float:left;
+	padding: 0 19px 0 12px;
+	font-size: 14px;
+	color:#fff;
+	font-weight: 600;
+	background: #ea1c24 url('images/bg_tt_h3.gif') no-repeat scroll right 0;
+}
+.blog-fashion-content .content-top .ct-lt .tt h4{
+	float:left;
+	font-size: 16px;
+	padding-left: 5px;
+	color:#cdcdcd;
+	font-style:italic;
+	font-family: Arial;
+}
+.blog-fashion-content .content-top .ct-lt .tt p{
+	float:right;
+	padding-right: 8px;
+	background: url('images/icon_right.gif') no-repeat scroll right center;
+	
+}
+
+.blog-fashion-content .content-top .ct-lt .blog-mlc{
+	margin-bottom: 20px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus{
+	margin-top: 1px;
+	position: relative;
+	width: 288px;
+	height:456px;
+	background: url('images/bg_focus.gif') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus a.btn-f{
+	position: absolute;
+	width: 20px;
+	height: 42px;
+	display: block;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus a.btn-f-left{
+	left: 0;
+	top: 345px;
+	background: url('images/btn_f_left.png') no-repeat scroll 0 0;
+	_background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/btn_f_left.png");
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus a.btn-f-right{
+	right: 0;
+	top: 345px;
+	background: url('images/btn_f_right.png') no-repeat scroll 0 0;
+	_background:none;
+     _filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src="images/btn_f_right.png");
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-show{
+	width: 276px;
+	height: 296px;
+	overflow: hidden;
+	padding-left: 6px;
+	padding-top: 6px;
+	position: relative;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-show ul li{
+	width: 276px;
+	height: 296px;
+	position: relative;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-show ul li span.bg{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width: 100%;
+	height: 45px;
+	display: block;
+	background-color:#000;
+	opacity: 0.7;
+	_filter: alpha(opacity=70);
+	z-index: 1;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-show ul li span.con{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width: 100%;
+	text-align: center;
+	height: 45px;
+	line-height: 45px;
+	display: block;
+	z-index: 5;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-show ul li span.con a{
+	color:#fff;
+	font-size: 14px;
+	font-weight: bold;
+}
+
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum{
+	position: relative;
+	width: 248px;
+	height: 140px;
+	overflow: hidden;
+	margin: 20px 0 0 20px;
+}
+
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul{
+	position: absolute;
+	height: 130px;
+	width: 10000px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li{
+	float:left;
+	width: 76px;
+	height: 130px;
+	padding: 0 4px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .pic{
+	width: 68px;
+	height: 78px;
+	padding: 8px 4px 4px 4px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .cur{
+	background: url('images/bg_focus_li.gif') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .pic img{
+	width: 68px;
+	height: 78px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .pic img{
+	width: 68px;
+	height: 78px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .txt{
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-mlc .img-focus .img-thum ul li .txt a{
+	color:#333;
+}
+
+
+
+
+
+
+
+.blog-fashion-content .content-top .ct-lt .blog-zbtj{
+	margin-bottom: 20px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-zbtj ul{
+	padding-top: 15px;
+}
+.blog-fashion-content .content-top .ct-lt .blog-zbtj ul li{
+	padding: 6px 0 6px 10px;
+	background: url('images/icon_arrow.gif') no-repeat scroll left center;
+}
+.blog-fashion-content .content-top .ct-lt .blog-zbtj ul li span.name{
+	float:right;
+}
+
+
+.blog-fashion-content .content-top .ct-md{
+	float:left;
+	width: 372px;
+	margin-left: 20px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril{
+	width: 372px;
+	height: 486px;
+	background: url('images/img_cover_girl.jpg') no-repeat scroll 0 0;
+	position: relative;
+	margin-bottom: 15px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a{
+	position: absolute;
+	display: block;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a:hover{
+	border: 1px solid #ff0000;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a.l01{
+	width: 110px;
+	height: 55px;
+	top: 210px;
+	left: 15px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a.l02{
+	width: 120px;
+	height: 45px;
+	top: 270px;
+	left: 15px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a.l03{
+	width: 125px;
+	height: 45px;
+	top: 340px;
+	left: 15px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a.l04{
+	width: 140px;
+	height: 75px;
+	top: 288px;
+	right: 5px;
+}
+.blog-fashion-content .content-top .ct-md .cover-gril a.l05{
+	width: 278px;
+	height: 65px;
+	top: 408px;
+	left:48px;
+}
+
+.blog-fashion-content .content-top .ct-md .cover-recommend{
+	width: 372px;
+	background: url('images/bg_cover.gif') no-repeat scroll right 0;
+	overflow: hidden;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote{
+	background-color:#f8f8f8;
+	border: 1px solid #ebebeb;
+	float:left;
+	width: 258px;
+	padding: 3px 2px;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li{
+	float:left;
+	width: 125px;
+	padding: 2px;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .pic{
+	width: 125px;
+	height: 160px;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text{
+	width: 125px;
+	padding:10px 0 5px 0;
+	text-align: center;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span{
+	display: inline-block;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span.info{
+	color:#5e5e5e;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span.info a{
+	color:#ea1c24;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span.toup{
+	color:#fff;
+	background-color:#ea1c24;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span.toup em{
+	display: inline-block;
+	width: 9px;
+	height:8px;
+	margin: 0 2px 0 0;
+	background: url('images/icon_heart.gif') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .vote ul li .text span.toup a{
+	color:#fff;
+}
+
+.blog-fashion-content .content-top .ct-md .cover-recommend .bm{
+	float:right;
+	margin-top: 148px;
+	width:98px;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .bm a{
+	width:98px;
+	text-indent: 15px;
+	height: 36px;
+	line-height: 44px;
+	display: block;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 0;
+	font-weight: 600;
+	font-size: 14px;
+	color:#fff;
+}
+.blog-fashion-content .content-top .ct-md .cover-recommend .bm a:hover{
+	text-decoration: none;
+	background-position: 0 -38px;
+}
+
+.blog-fashion-content .content-top .ct-rt{
+	width: 260px;
+	float:right;
+}
+
+.blog-fashion-content .content-top .ct-rt .Calendar{
+	background-color:#f8f8f8;
+	margin-top: 18px;
+	padding-bottom: 10px;
+}
+
+.blog-fashion-content .content-top .ct-rt .Calendar .tt{
+	width: 100%;
+	height: 35px;
+	padding-top: 5px;
+	background:url('images/bg_Calendar.gif') no-repeat scroll right 0;
+	margin-bottom: 5px;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .tt h3{
+	float:left;
+	padding: 3px 0 0 18px;
+	font-size: 14px;
+	color:#fff;
+	font-weight: 600;
+	
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .tt h4{
+	float:left;
+	font-size: 16px;
+	padding-left: 15px;
+	color:#cdcdcd;
+	font-style:italic;
+	font-family: Arial;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list{
+	width: 252px;
+	padding: 0 4px;
+
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li{
+	padding: 5px 0;
+	border-bottom: 1px dotted #8e8e8e;
+	overflow: hidden;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li.none{
+	border-bottom: 0 none;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li.cur{
+	background-color:#FFF;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .txt{
+	font-size: 14px;
+	padding: 5px 0 5px 15px;
+	background: url('images/icon_point.gif') no-repeat scroll 5px center;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .pic-t{
+	padding: 5px 10px 5px 20px;
+	overflow: hidden;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .pic-t .img{
+	float:left;
+	width: 84px;
+	height:88px;
+	padding-top: 6px;
+	text-align: center;
+	background: url('images/bg_img.gif') no-repeat scroll 0 center;
+	margin-right: 10px;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .pic-t p{
+	color:#666;
+	line-height:18px;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .total{
+	padding: 5px 5px 5px 15px;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .total .join{
+	float:right;
+	background: url('images/icon_add.gif') no-repeat scroll 0 0;
+	padding-left: 15px;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .total .join a{
+	color:#ea1c24;
+}
+.blog-fashion-content .content-top .ct-rt .Calendar .list ul li .total .date{
+	padding-right: 10px;
+}
+
+
+
+.blog-fashion-content .content-part{
+	
+}
+.blog-fashion-content .content-part .title{
+	width: 100%;
+	height: 78px;
+	margin-bottom: 25px;
+	position: relative;
+	background: url('images/img_content_tt.jpg') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-part .title a{
+	position: absolute;
+}
+.blog-fashion-content .content-part .title a.more{
+	top: 8px;
+	right: 8px;
+	color:#fff;
+}
+.blog-fashion-content .content-part .title a.more em{
+	font-style: normal;
+	font-size: 10px;
+}
+.blog-fashion-content .content-part .title a.quanzi{
+	top: 45px;
+	left: 620px;
+	color:#333;
+	padding-right: 5px;
+	background: url('images/icon_right.gif') no-repeat scroll right center;
+}
+.blog-fashion-content .content-part .title a.show{
+	top: 46px;
+	right: 92px;
+	color:#fff;
+	width: 52px;
+	height: 24px;
+	padding: 4px 0 0 8px;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 -85px;
+}
+.blog-fashion-content .content-part .title a.show:hover{
+	text-decoration: none;
+	background-position: 0 -118px;
+}
+
+.blog-fashion-content .content-part .content-section{
+	
+}
+.blog-fashion-content .content-part .content-section .cs-lt{
+	float:left;
+	width: 240px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item{
+	margin-bottom: 25px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .zl{
+	margin-bottom: 40px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .tit{
+	height: 30px;
+	line-height:30px;
+	color:#fff;
+	text-indent: 12px;
+	font-size: 14px;
+	font-weight: bold;
+	background-color:#ea1c24;
+	position: relative;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .tit em{
+	position: absolute;
+	display: block;
+	overflow: hidden;
+	width: 15px;
+	height:8px;
+	background: url('images/icon_down.gif') repeat scroll 0 0;
+	top: 30px;
+	right: 18px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con{
+	padding: 4px;
+	width: 232px;
+	background: url('images/bg_content_lt.gif') repeat scroll 0 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .lxzb,.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfzh,.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfqz{
+	background-color:#f8f8f8;
+	padding: 6px 6px 0 6px;
+	width: 220px;
+	
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .lxzb ul,.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfzh ul{
+	border-bottom: 1px dotted #8e8e8e;
+	padding-bottom: 6px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con h3{
+	color:#ea1c24;
+	font-size: 14px;
+	font-weight: bold;
+	height: 32px;
+	line-height: 32px;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li{
+	overflow: hidden;
+	zoom:1;
+	padding-bottom: 8px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li .pho{
+	float:left;
+	background-color:#FFF;
+	margin-right: 12px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li .pho img{
+	width:70px;
+	height: 70px;
+	padding: 3px;
+	border: 1px solid #d8d8d8;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li p{
+	line-height: 16px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .lxzb ul li h4{
+	color:#333;
+	padding: 10px 0 6px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .lxzb ul li h4 a{
+	color:#333;
+}
+
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfzh h4,.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfqz h4{
+	font-size: 14px;
+	font-weight: bold;
+	padding: 0 0 5px 0;
+}
+
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li .btn-follow{
+	display: inline-block;
+	width: 61px;
+	height: 20px;
+	margin-top: 5px;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 -154px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li a.btn-follow:hover{
+	background-position: 0 -179px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li .btn-ask{
+	display: inline-block;
+	width: 61px;
+	height: 20px;
+	margin-top: 5px;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 -484px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li a.btn-ask:hover{
+	background-position: 0 -514px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li .btn-join{
+	display: inline-block;
+	width: 61px;
+	height: 20px;
+	margin-top: 5px;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 -204px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con ul li a.btn-join:hover{
+	background-position: 0 -229px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .gfqz{
+	padding-bottom: 20px;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .pinpai{
+	background:transparent url('images/bg_tt_pinpai.gif') no-repeat scroll 0 0;
+	text-indent: 82px;
+	margin-bottom: -18px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 25px 6px 6px 6px;
+	width: 220px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li span.num{
+	float:left;
+	padding: 0 15px 0 5px;
+	color:#a8a8a8;
+	font-weight: bold;
+	font-size: 14px;
+	font-family: Arial;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li span.red{
+	color:#ff8085;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li{
+	padding: 15px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li .pho{
+	float:left;
+	background-color:#FFF;
+	margin-right: 12px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li .pho img{
+	width:78px;
+	height: 78px;
+	border: 1px solid #d8d8d8;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li h4{
+	font-size: 14px;
+	line-height:18px;
+	padding-bottom: 5px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li p{
+	color:#333;
+	line-height: 20px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li p span.info{
+	color:#5e5e5e;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pptjl ul li p span.info a{
+	color:#ea1c24;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 6px 0px 6px 6px;
+	width: 226px;
+	position: relative;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .design{
+	background:transparent url('images/bg_tt_design.gif') no-repeat scroll 0 0;
+	height: 30px;
+	text-indent: 128px;
+	position: relative;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl .pho{
+	float:left;
+	margin-top: -22px;
+	margin-right: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl .pho img{
+	padding: 3px;
+	background-color:#FFF;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl h4{
+	color:#a8a8a8;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 15px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl p{
+	padding-right: 8px;
+	line-height: 18px;
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl p.info{
+	text-align: right;
+	padding-top: 5px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl p.info a{
+	color:#ea1c24;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl span.icon-left{
+	position: absolute;
+	right: 10px;
+	top: -4px;
+	width:25px;
+	height: 14px;
+	background:transparent url('images/icon_left.gif') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .sjszl span.design-logo{
+	position: absolute;
+	bottom:-20px;
+	left: 5px;
+	width:152px;
+	height: 46px;
+	background:transparent url('images/img_designer.gif') no-repeat scroll 0 0;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 15px 0 15px 6px;
+	width: 226px;
+	overflow: hidden;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture ul li{
+	padding: 5px 5px 5px 0;
+	float:left;
+	width: 108px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture ul li .img{
+	
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture ul li .t-name{
+	width: 100%;
+	text-align: center;
+	padding-top: 8px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture ul li .t-name a{
+	color:#666;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .picture ul li .img img{
+	padding:3px;
+	border: 1px solid #d8d8d8;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 0 6px 5px 6px;
+	width: 220px;
+	overflow: hidden;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part{
+	border-bottom: 1px dotted #8e8e8e;
+	padding: 15px 0 0 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .none{
+	border-bottom: 0 none;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt{
+	overflow: hidden;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt .pho{
+	float:left;
+	background-color:#FFF;
+	margin-right: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt img{
+	width: 104px;
+	height: 124px;
+	background-color: #FFFFFF;
+    padding: 3px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt p{
+	line-height: 16px;
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt p.introduce{
+	color:#666;
+	padding-bottom: 5px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt h4{
+	color:#333;
+	padding: 0 0 6px 0;
+	font-size: 14px;
+	font-weight: bold;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt h4 a{
+	color:#333;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt .btn-follow{
+	display: inline-block;
+	width: 61px;
+	height: 20px;
+	margin-top: 10px;
+	background: url('images/bg_btn.gif') no-repeat scroll 0 -154px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-pt a.btn-follow:hover{
+	background-position: 0 -179px;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-list{
+	overflow: hidden;
+	padding: 10px 0;
+	width: 220px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-list ul li{
+	padding: 0 10px 6px 5px;
+	width: 210px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pt-list .part .l-list ul li .date{
+	float:right;
+}
+
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 0 6px 5px 6px;
+	width: 220px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li{
+	padding:8px 0 8px 5px;
+	border-bottom: 1px dotted #d8d8d8;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li.none{
+	border-bottom: 0 none;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .num{
+	float:left;
+	color: #666666;
+    float: left;
+    font-family: Arial;
+    font-size: 14px;
+    font-weight: bold;
+    margin: 0 10px 0 0;
+    display: inline;
+    width: 20px;
+    text-align: center;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .top3{
+	line-height:20px;
+	height:20px;
+	margin-top: 20px;
+	color:#fff;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .first{
+	background-color:#ea1c24;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .second{
+	background-color:#ea511c;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .third{
+	background-color:#ea951c;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .name{
+	float:left;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .con{
+	float:left;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .pho{
+	float:left;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li .pho img{
+	width: 50px;
+	height:50px;
+	padding: 3px;
+	border: 1px solid #dadada;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li h4{
+	font-weight: bold;
+	padding:6px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li h4 a{
+	color:#333333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .tit .change-tt{
+	width: 152px;
+	position: absolute;
+	right: 0;
+	bottom: 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .tit .change-tt span{
+	float:left;
+	display: inline;
+	width: 45px;
+	text-indent: 0;
+	text-align: center;
+	height: 22px;
+	line-height:22px;
+	background-color:#FFF;
+	color:#ea1c24;
+	margin-right: 5px;
+	font-weight: 300;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .tit .change-tt span.cur{
+	font-weight: bold;
+	height:26px;
+	margin-bottom: -4px;
+	background-color:#f8f8f8;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li span.name{
+	padding-right: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li span.name a{
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li span.con a{
+	color:#666;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li p{
+	color:#333333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li p.jj{
+	color:#666;
+	padding-bottom: 5px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li.num1 .pho{
+	position: relative;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li.num1 .pho img{
+	width: 81px;
+	height: 81px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .ph-list ul li.num1 .pho .first{
+	position: absolute;
+	right:0;
+	bottom:0;
+	margin: 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 0 6px 5px 6px;
+	width: 220px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li{
+	padding: 15px 3px;
+	width: 214px;
+	border-bottom: 1px dotted #e3e3e3;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li.none{
+	border-bottom:0 none;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .message{
+	overflow: hidden;
+	margin-bottom: 11px;
+	_margin-bottom: 16px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .message .img{
+	float:left;
+	margin-right: 12px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .message .img img{
+	width: 50px;
+	height:50px;
+	padding: 3px;
+	border: 1px solid #dadada;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .message h4{
+	font-weight: bold;
+	padding: 5px 0 8px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .message h4 a{
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .ask{
+	width: 210px;
+	height: 42px;
+	border: 1px solid #dadada;
+	position: relative;
+	background:#fff url('images/bg_ask.jpg') no-repeat scroll right bottom;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .ask .icon-up{
+	display: block;
+	position: absolute;
+	width: 13px;
+	height: 8px;
+	background:url('images/icon_up.gif') no-repeat scroll 0 0;
+	top: -8px;
+	left: 32px
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa ul li .ask p{
+	padding: 3px 5px;
+	line-height:18px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .qa-follow{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 5px 6px 15px 6px;
+	width: 220px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith{
+	position: relative;
+	height: 90px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show{
+	width: 195px;
+	height: 90px;
+	position: relative;
+	overflow: hidden;
+	margin-left: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show ul{
+	width: 9999px;
+	position: absolute;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show ul li{
+	float:left;
+	width: 58px;
+	padding: 0 4px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show ul li .pic{
+	
+}	
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show ul li .pic img{
+	width: 50px;
+	height:50px;
+	border: 1px solid #dadada;
+	padding: 3px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .pic-show ul li .name{
+	width: 100%;
+	text-align: center;
+	padding-top: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .btn-swith{
+	position: absolute;
+	width: 8px;
+	height: 48px;
+	background:url('images/btn_swith.gif') no-repeat scroll 0 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .btn-left{
+	top: 10px;
+	left:0;
+	background-position: 0 -48px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .btn-left:hover{
+	background-position: 0 -96px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .btn-right{
+	top: 10px;
+	right:0;
+	background-position: 0 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-swith .btn-right:hover{
+	top: 10px;
+	right:0;
+	background-position: 0 -144px;
+}
+
+
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .text-list{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 12px 6px 18px 10px;
+	width: 216px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .text-list ul li{
+	padding: 6px 0 6px 12px;
+	background:url('images/icon_arrow.gif') no-repeat scroll 0 center;
+}
+
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list{
+	padding-bottom: 20px;
+	background-color:#f8f8f8;
+	padding: 5px 0 15px 6px;
+	width: 226px;
+	overflow: hidden;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul{
+	width: 226px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li{
+	float:left;
+	width: 72px;
+	padding: 10px 1px 13px 1px;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li div{
+	width: 100%;
+	text-align: center;
+}
+
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li .pic{
+	
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li .pic img{
+	width: 66px;
+	height: 66px;
+	padding: 2px;
+	border: 1px solid #d9d9d9;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li .name{
+	width: 100%;
+	text-align: center;
+	padding: 5px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li .name a{
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-lt .item .item-con .pic-list ul li .zw{
+	width: 100%;
+	text-align: center;
+	color:#999;
+}
+
+
+
+
+
+
+
+
+
+
+.blog-fashion-content .content-part .content-section .cs-rt{
+	float:right;
+	width: 702px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list{
+	width: 226px;
+	float:left;
+	padding-left: 8px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li{
+	border: 1px solid #ddd;
+	width: 224px;
+	padding-top: 12px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .pic-wrap{
+	width:100%;
+	text-align: center;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .pic-wrap img{
+	width: 200px;
+	height: auto;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .share-content{
+	padding-left: 12px;
+	height:32px;
+	line-height: 32px;
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .share-content a{
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block{
+	color:#333;
+	padding-left:12px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block span.forward{
+	padding-right: 20px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block .btn-forward{
+	background: url("images/bg_btn.gif") no-repeat scroll 0 -383px transparent;
+    display: inline-block;
+    height: 19px;
+    width: 53px;
+    margin-right: 3px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block .btn-forward:hover{
+	background-position: 0 -407px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block .btn-comment{
+	background: url("images/bg_btn.gif") no-repeat scroll 0 -431px transparent;
+    display: inline-block;
+    height: 19px;
+    width: 53px;
+    margin-right: 3px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block .btn-comment:hover{
+	background-position: 0 -455px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .data-block *{
+	vertical-align: middle;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .user-block{
+	padding: 7px 0 11px 0;
+	background-color:#f9f9f9;
+	overflow: hidden;
+	margin-top: 20px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .user-block .user-pho{
+	float:left;
+	margin: 0 12px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .user-block .user-pho img{
+	width: 32px;
+	height: 32px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .user-block h4{
+	font-weight: bold;
+	color:#7f7f7f;
+	height: 32px;
+	line-height: 32px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .column-list ul li .user-block h4 a{
+	color:#7f7f7f;	
+}
+
+
+.blog-fashion-content .beauty .title{
+	background-position: 0 -88px; 
+}
+.blog-fashion-content .emotional .title{
+	background-position: 0 -176px; 
+}
+
+
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left{
+	float:left;
+	width: 335px;
+	padding-right: 22px;
+	padding-left: 10px;
+	_padding-left: 9px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-right{
+	float:right;
+	width: 335px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .tt-list{
+	padding: 5px 6px 25px 10px;
+	width: 319px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .media-bottom{
+	padding: 20px 6px 0 10px;
+	width: 319px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .tt-list ul li{
+	padding: 5px 0 5px 12px;
+	width: 307px;
+	background:url('images/icon_arrow.gif') no-repeat scroll 0 center;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .media-bottom ul li{
+	font-size: 14px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .tt-list ul li span.user{
+	float:right;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .tt-list ul li span.user a{
+	color:#999;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .photo{
+	padding-bottom: 20px;
+}
+
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation{
+	width: 330px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .tt{
+	width: 330px;
+	padding-bottom:10px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt{
+	width: 330px;
+	overflow: hidden;
+	padding-bottom: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt .pho{
+	float:left;
+	margin-right: 10px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt .pho img{
+	width: 140px;
+	height: 175px;
+	padding: 3px;
+	border: 1px solid #d8d8d8;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt h3{
+	font-size: 14px;
+	font-weight: bold;
+	padding: 5px 0 10px 0;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt h3 a{
+	color:#ea1c24;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt h4{
+	font-size: 14px;
+	font-weight: bold;
+	padding:0 0 10px 0;
+}	
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt h4 a{
+	color:#333;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt p{
+	line-height:20px;
+}
+
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt p span.info {
+    color: #5E5E5E;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation .coo-pt p span.info a{
+    color: #EA1C24;
+}
+
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation ul{
+	width: 330px;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation ul li{
+	width: 155px;
+	float:left;
+	font-size: 14px;
+	padding:5px 0 5px 10px;
+	background:url('images/icon_point.gif') no-repeat scroll 0 center;
+}
+.blog-fashion-content .content-part .content-section .cs-rt .cs-rt-left .cooperation ul li a{
+	
+}
+
+
+.blog-fashion-bom{
+	
+}
+.blog-fashion-bom span{
+	display: inline-block;
+	padding: 0 30px;
+}
+
+
+
+
+
+
+.blog-fashion-content .content-top .ct-rt .loginCard{
+
+}
+.blog-fashion-content .content-top .ct-rt .loginCard .passportc{
+	width: 258px;
+}
+.blog-fashion-content .content-top .ct-rt .loginCard .ppcontent{
+	width: 248px;
+}
+.blog-fashion-content .content-top .ct-rt .loginCard .passportc ul {
+	padding: 0 0 0 10px;
+}
+.blog-fashion-content .content-top .ct-rt .loginCard .passportc .card dt span{
+	margin: 5px 10px 0 38px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

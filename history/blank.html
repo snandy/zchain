@@ -1,0 +1,15 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<title>blank.html</title>
+</head>
+<body>
+    <script>
+        var url= location.href;
+        if(url.indexOf('?')>-1) {
+            var idx = url.substr(url.indexOf('?')+1);
+            parent.History.get(idx);
+        }
+    </script>
+</body>
+</html>
