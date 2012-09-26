@@ -36,11 +36,9 @@ var uuid = 0,
 	
 	doc = window.document,
 	
-	w3c = !!doc.addEventListener,
+	w3c = !!doc.addEventListener, triggered,
 
 	expando = 'snandy' + (''+Math.random()).replace(/\D/g, ''),
-	
-	triggered,
 
 	addListener = w3c ?
 		function(el, type, fn) { el.addEventListener(type, fn, false); } :
@@ -51,13 +49,10 @@ var uuid = 0,
 		function(el, type, fn) { el.detachEvent('on' + type, fn); };
 		
 	dataManager = {
-		
-		data : function ( elem, name, data ) {
+		data : function (elem, name, data) {
 			var getByName = typeof name === 'string', 
 				
-				thisCache,
-				
-				isNode = elem.nodeType,
+				thisCache, isNode = elem.nodeType,
 				
 				cache = isNode ? globalCache : elem,
 				
@@ -78,13 +73,9 @@ var uuid = 0,
 				}
 		
 				return getByName ? thisCache[name] : thisCache;
-			
 		},
-		
-		removeData : function  ( elem, name ) {
-			var id = elem[expando],
-				
-				thisCache = globalCache[id];
+		removeData : function  (elem, name) {
+			var id = elem[expando], thisCache = globalCache[id];
 				
 				if (!id || !thisCache) {
 					return;
@@ -117,7 +108,7 @@ function isEmptyObject(obj){
 	return true;
 }
 
-function addEvent (elem, types, handler, data) {
+function addEvent(elem, types, handler, data) {
 	if ( elem.nodeType === 3 || elem.nodeType === 8 ) {
 		return;
 	}
@@ -128,7 +119,7 @@ function addEvent (elem, types, handler, data) {
 		return;
 	}
 	
-	var elemData = dataManager.data( elem ),
+	var elemData = dataManager.data(elem),
 		events   = elemData.events,
 		eventHandle = elemData.handle,
 		types = types.split(' ');
@@ -138,7 +129,7 @@ function addEvent (elem, types, handler, data) {
 	}
 	
 	if (!eventHandle) {
-		elemData.handle = eventHandle = function ( e ) {
+		elemData.handle = eventHandle = function (e) {
 			return triggered !== e.type ? 
 				evtHandle.apply( eventHandle.elem, arguments ) : 
 				undefined;
@@ -149,7 +140,7 @@ function addEvent (elem, types, handler, data) {
 	
 	var type, i = 0, namespaces;
 	
-	while ( type = types[i++] ) {
+	while (type = types[i++]) {
 		var handleObj = {handler : handler, data : data},
 			handlers  = events[type];
 	
@@ -158,7 +149,6 @@ function addEvent (elem, types, handler, data) {
 			namespaces = type.split('.');
 			type = namespaces.shift();
 			handleObj.namespace = namespaces.slice(0).join('.');
-
 		} else {
 			handleObj.namespace = '';
 		}
@@ -175,11 +165,12 @@ function addEvent (elem, types, handler, data) {
 }
 
 function trigger(elem, event, data, onlyHandlers) {
+	if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 ) {
+		return;
+	}
 	
 	// Event object or event type
-	var type = event.type || event,
-		namespaces = [],
-		exclusive;
+	var type = event.type || event, namespaces = [], exclusive;
 
 	if (type.indexOf('!') >= 0) {
 		// Exclusive events trigger only for the exact event (no namespaces)
@@ -192,10 +183,6 @@ function trigger(elem, event, data, onlyHandlers) {
 		namespaces = type.split('.');
 		type = namespaces.shift();
 		namespaces.sort();
-	}
-	
-	if ( !elem || elem.nodeType === 3 || elem.nodeType === 8 ) {
-		return;
 	}
 	
 	// Caller can pass in an Event, Object, or just an event type string
@@ -252,17 +239,14 @@ function trigger(elem, event, data, onlyHandlers) {
 	// If nobody prevented the default action, do it now
 	if ( !event.isDefaultPrevented() ) {
 		var old;
-
 		if ( !(type === 'click' && elem.nodeName === 'A') ) {
-
 			// Call a native DOM method on the target with the same name name as the event.
 			// Can't use an .isFunction)() check here because IE6/7 fails that test.
 			// IE<9 dies on focus to hidden element (#1486), may want to revisit a try/catch.
 			try {
-				if ( ontype && elem[type] ) {
+				if (ontype && elem[type]) {
 					// Don't re-trigger an onFOO event when we call its FOO() method
 					old = elem[ontype];
-
 					if (old) {
 						elem[ontype] = null;
 					}
@@ -270,7 +254,6 @@ function trigger(elem, event, data, onlyHandlers) {
 					elem[type]();
 				}
 			} catch (ieError) {}
-
 			if (old) {
 				elem[ontype] = old;
 			}
@@ -283,7 +266,7 @@ function trigger(elem, event, data, onlyHandlers) {
 }
 
 function evtHandle (event) {
-	event = fixEvent( event || window.event );
+	event = fixEvent(event);
 	
 	var handlers = ((dataManager.data(this, 'events') || {})[event.type] || []).slice(0),
 		run_all = !event.exclusive && !event.namespace,
@@ -293,7 +276,6 @@ function evtHandle (event) {
 	
 	for (var j = 0, l = handlers.length; j < l; j++) {
 		var handleObj = handlers[j];
-
 		// Triggered event must 1) be non-exclusive and have no namespace, or
 		// 2) have namespace(s) a subset or equal to those in the bound event.
 		if ( run_all || event.namespace_re.test(handleObj.namespace) ) {
@@ -316,7 +298,6 @@ function evtHandle (event) {
 			}
 			
 		}	
-
 	}
 	
 	return event.result;

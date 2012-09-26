@@ -155,7 +155,7 @@ E = function(window){
 	}
 	
 	function evtHandle( event ) {
-		event = fixEvent( event || window.event );
+		event = fixEvent(event);
 		
 		var handlers = ((dataManager.data(this, "events") || {})[event.type] || []).slice(0);
 
