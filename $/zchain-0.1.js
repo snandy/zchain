@@ -4,7 +4,7 @@
  * Version:  0.1
  * weibo: @snandy
  * Blog: http://snandy.cnblogs.com
- * Date: 2012-04-17
+ * Date: 2011-04-17
  * 
  * 1, 重写了选择器，已支持id，className, tagName, attribute
  * 2, 重写了事件模块
@@ -246,53 +246,42 @@ zChain.prototype = {
 		}
 		
 	},
-	
 	length: 0,
-	
 	_toSelf: function(els) {
 		push.apply(this, makeArray(els));
 	},
-	
 	find: function(selector, idx) {
 		var context = idx === undefined ? this[0] : this[idx];
 		return new zChain.prototype.init(selector, context);
 	},
-	
 	toArray: function() {
 		return makeArray(this);
 	},
-	
 	slice: function() {
 		var ret = zChain(), ary = slice.apply(this,arguments);
 		push.apply(ret,ary);
 		return ret;
 	},
-	
 	eq: function(i) {
 		return i === -1 ?
 		this.slice( i ) :
 		this.slice( i, +i + 1 );
 	},
-	
 	first: function() {
 		return this.eq(0);
 	},
-	
 	last: function() {
 		return this.eq(-1);
 	},
-	
 	get: function(i) {
 		return i == null ?
 		this.toArray() :
 		(i < 0 ? this.slice(i)[0] : this[i]);
 	},
-	
 	each: function(fn) {
 		zChain.each(this, fn);
 		return this;
 	},
-	
 	attr: function(name, val) {
 		if (val === undefined) {
 			var el = this[0];
@@ -320,7 +309,6 @@ zChain.prototype = {
 			return this;
 		}
 	},
-	
 	prop: function(name, val) {
 		if (val === undefined) {
 			return this[0][name];
@@ -331,7 +319,6 @@ zChain.prototype = {
 			return this;
 		}
 	},
-	
 	css: function(name, val) {
 		if (typeof name === 'object') {
 			for (var k in name) {
@@ -390,7 +377,6 @@ zChain.prototype = {
 			return this;
 		}
 	},
-	
 	offsetParent: function() {
 		var parent = this[0].offsetParent || document.body;
 		while ( parent && (!rroot.test(parent.nodeName) && zChain(parent).css('position') === 'static') ) {
@@ -399,12 +385,11 @@ zChain.prototype = {
 		
 		return zChain(parent);
 	},
-	
 	pos: function() {
 		if (!this[0]) {
 			return null;
 		}
-
+		
 		var $parent = this.offsetParent(),
 		offset      = this.offset(),
 		parentOffset = rroot.test($parent[0].nodeName) ? { top: 0, left: 0 } : $parent.offset();
@@ -420,7 +405,6 @@ zChain.prototype = {
 			left: offset.left - parentOffset.left
 		};
 	},
-	
 	offset: function(options) {
 		if (arguments.length) {
 			return options === undefined ? this :
@@ -437,19 +421,15 @@ zChain.prototype = {
 	
 		return getOffset(el, doc, doc.documentElement);
 	},
-	
 	isStyle: function(name, val) {
 		return this.css(name) == val;
 	},
-	
 	text: function(val) {
 		return this.prop(this[0].innerText === undefined ? 'innerText' : 'textContent', val);
 	},
-	
 	html: function(val) {
 		return this.prop('innerHTML', val);
 	},
-	
 	val: function(val) {
 		if (val === undefined) {
 			var el = this[0];
@@ -461,35 +441,29 @@ zChain.prototype = {
 			return this.prop('value', val);
 		}
 	},
-	
 	hasClass: function(name) {
 		return domClass.has(this[0], name);
 	},
-	
 	addClass: function(name) {
 		return this.each( function(el) {
 			domClass.add(el, name);
 		});
 	},
-	
 	removeClass: function(name) {
 		return this.each( function(el) {
 			domClass.remove(el, name);
 		});
 	},
-	
 	toggleClass: function(name) {
 		return this.each( function(el) {
 			domClass.toggle(el, name);
 		});
 	},
-	
 	replaceClass: function(oCls, nCls) {
 		return this.each( function(el) {
 			domClass.replace(el, oCls, nCls);
 		});
 	},
-	
 	on: function(type, fn, once, /* Internal use only */liveHandler) {
 		return this.each( function(el) {
 			zChain.event.add({
@@ -501,7 +475,6 @@ zChain.prototype = {
 			});
 		});
 	},
-	
 	un: function(type,fn) {
 		return this.each( function(el) {
 			zChain.event.remove({
@@ -511,13 +484,11 @@ zChain.prototype = {
 			});
 		});
 	},
-	
 	fire: function(type) {
 		this.each( function(el) {
 			zChain.event.dispatch(el,type);
 		});
 	},
-	
 	delegate: function(selector, type, fn) {
 		if(arguments.length === 2 && zChain.isFunction(type)) {
 			fn = type;
@@ -534,13 +505,11 @@ zChain.prototype = {
 			}, null, fn);
 		});
 	},
-	
 	undelegate: function(selector, type, fn) {
 		return this.each( function(el) {
 			zChain(el).un(type, fn);
 		} );
 	},
-	
 	hover: function(fnIn,fnOut) {
 		this.each( function(el) {
 			zChain(el).mouseenter(fnIn).mouseleave(fnOut);
@@ -631,24 +600,18 @@ var domClass = function() {
 		toggle : toggle,
 		replace : replace
 	};
-
 }();
 
 zChain.extend({
 	uuid : 0,
-	
 	cache : {},
-	
-	expando : 'zChain' + ( ''+Math.random() ).replace( /\D/g, '' ),
-
+	expando : 'zChain' + (''+Math.random()).replace(/\D/g, ''),
 	data : function(el, name, data) {
 		var internalKey = zChain.expando, 
 		
 			getByName = typeof name === 'string', 
 			
-			thisCache,
-			
-			isNode = el.nodeType,
+			thisCache, isNode = el.nodeType,
 			
 			cache = isNode ? zChain.cache : el,
 			
@@ -669,25 +632,20 @@ zChain.extend({
 			}
 	
 			return getByName ? thisCache[name] : thisCache;
-		
 	},
-	
 	removeData : function(el, name) {
-		var internalKey = zChain.expando,
-		
-			id = el[internalKey],
-			
+		var internalKey = zChain.expando, id = el[internalKey],
 			thisCache = zChain.cache[ id ];
 			
-			if (!id || !thisCache) {
-				return;
-			}
-			
-			if (typeof name === 'string') {
-				delete thisCache[name];
-			} else {
-				delete zChain.cache[id];
-			}
+		if (!id || !thisCache) {
+			return;
+		}
+		
+		if (typeof name === 'string') {
+			delete thisCache[name];
+		} else {
+			delete zChain.cache[id];
+		}
 	}
 });
 
@@ -705,7 +663,6 @@ zChain.fn.extend({
 			});
 		}
 	},
-	
 	removeData : function(key) {
 		return this.each(function() {
 			zChain.removeData(this, key);
@@ -717,30 +674,25 @@ zChain.extend({
 	isFunction: function(f) {
 		return typeof f === 'function';
 	},
-	
 	isPlainObject: function(o) {
 		if (!o || o === window || o === doc || o === doc.body) {
 			return false;
 		}
 		return 'isPrototypeOf' in o && OP.toString.call(o) === '[object Object]';
 	},
-	
 	isEmptyObject: function(o) {
 		for (var a in o) {
 			return false;
 		}
 		return true;
 	},
-	
 	isPrimitive: function(b) {
 		var a = typeof b;
 		return !!(b === undefined || b === null || a == 'boolean' || a == 'number' || a == 'string');
 	},
-	
 	isWindow: function(obj) {
 		return obj != null && obj == obj.window;
 	},
-	
 	ready: (function(fn) {
 		var init, bindReady, fns = [], 
 			isReady = 0, isBind = 0,
@@ -866,10 +818,8 @@ zChain.extend({
 	},
 	
 	map: function(obj, fn) {
-		var value, key, ret = [], i = 0,
-			length = obj.length,
+		var value, key, ret = [], i = 0, length = obj.length,
 			isArray = length !== undefined && typeof length === 'number';
-
 		if ( isArray ) {
 			for ( ; i < length; i++ ) {
 				value = fn(obj[i], i);
@@ -878,7 +828,6 @@ zChain.extend({
 					ret[ret.length] = value;
 				}
 			}
-
 		} else {
 			for (key in obj) {
 				value = fn(obj[key], key);
@@ -888,7 +837,6 @@ zChain.extend({
 				}
 			}
 		}
-
 		// Flatten any nested arrays
 		return ret.concat.apply( [], ret );
 	},
@@ -1171,7 +1119,7 @@ var event = function() {
 	function returnFalse() {return false;}
 	function returnTrue() {return true;}
 	
-	function Event( src ) {
+	function Event(src) {
 		this.originalEvent = src;
 		this.type = src.type;
 		this.timeStamp = now();
@@ -1326,9 +1274,7 @@ var event = function() {
 		
 	}
 	function remove(opt) {
-		var el	  = opt.el,
-			fn	 = opt.fn,
-			type = opt.type;
+		var el = opt.el, fn = opt.fn, type = opt.type;
 		
 		var events = zChain.data(el, 'events');
 		
@@ -1363,7 +1309,6 @@ var event = function() {
 		remove: remove,
 		dispatch: dispatch
 	};
-	
 }();
 
 zChain.extend({
@@ -1382,10 +1327,11 @@ zChain.each('click,dblclick,mouseover,mouseout,mouseenter,mouseleave,mousedown,m
 	};
 });
 
-window.zChain = window.$ = zChain;
-
-// AMD support
-if(typeof define === 'function' && define.amd && define.amd.zChain) {
+// Expose $ to the global object or as AMD module
+if(typeof define === 'function' && define.amd && define.amd) {
 	define('zchain', [], function() { return zChain; });
+} else {
+	window.zChain = window.$ = zChain;
 }
+
 })(this);
