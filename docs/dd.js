@@ -27,139 +27,116 @@
  * 
  */
 
-Dragdrop = function(window) {
-	
-var doc = window.document
-
-function Config(opt) {
-	this.target   = opt.target
-	this.bridge   = opt.bridge
-	this.dragable = opt.dragable != false
-	this.dragX    = opt.dragX != false
-	this.dragY    = opt.dragY != false
-	this.area     = opt.area
+function DragDrop(elem, config) {
+	if (elem.nodeType === 3 || elem.nodeType === 9) return
+	config = config || {}
+	this.target   = elem
+	this.bridge   = config.bridge
+	this.dragable = config.dragable != false
+	this.dragX    = config.dragX != false
+	this.dragY    = config.dragY != false
+	this.area     = config.area
+	this.inwin    = config.inwin
+	this.elDown   = this.bridge || this.target
+	this.init()
 }
-	
-return function(opt) {
-	var conf, defaultConf, diffX, diffY, dd
-	
-	function Dragdrop(opt) {
-		var elDown
-		if (!opt) return
-		
-		conf = new Config(opt)
-		defaultConf = new Config(opt)
-		elDown = conf.bridge || conf.target
-		
-		E.on(elDown, 'mouseover', function() {
-			this.style.cursor = 'move'
+
+DragDrop.prototype = {
+	init: function() {
+		var elDown = this.bridge || this.target
+		E.on(elDown, 'mouseover', {
+			context: this,
+			handler: this.onMouseOver
 		})
-		E.on(elDown, 'mousedown', mousedown)
-	}
-	Dragdrop.prototype = {
-		dragX: function() {
-			conf.dragX = true
-			conf.dragY = false
-		},
-		dragY: function(b) {
-			conf.dragY = true
-			conf.dragX = false
-		},
-		dragAll: function() {
-			conf.dragX = true
-			conf.dragY = true
-		},
-		setArea: function(a) {
-			conf.area = a
-		},
-		setBridge: function(b) {
-			conf.bridge = b
-		},
-		setDragable: function(b) {
-			conf.dragable = b
-		},
-		reStore: function() {
-			conf = new Config(defaultConf)
-			conf.target.style.top = '0px'
-			conf.target.style.left = '0px'
-		},
-		getDragX: function() {
-			return conf.dragX
-		},
-		getDragY: function() {
-			return conf.dragY
-		}
-	}
-	function mousedown(e) {
-		var el = conf.target
+		E.on(elDown, 'mousedown', {
+			context: this,
+			handler: this.onMouseDown
+		})
+	},
+	onMouseOver: function() {
+		this.elDown.style.cursor = 'move'
+	},
+	onMouseDown: function(e) {
+		var el = this.target
 		el.style.position = 'absolute'
 		
 		if(window.captureEvents){ //标准DOM
 			e.stopPropagation()
 			e.preventDefault()
-			E.on(window, "blur", mouseup)
+			E.on(window, "blur", {
+				context: this,
+				handler: this.onMouseUp
+			})
 		}else if(el.setCapture){ //IE
 			el.setCapture()
 			e.cancelBubble = true
-			E.on(el, "losecapture", mouseup)
+			E.on(el, "losecapture", {
+				context: this,
+				handler: this.onMouseUp
+			})
 		}
 		
-		diffX = e.clientX - el.offsetLeft
-		diffY = e.clientY - el.offsetTop
-		E.on(doc, 'mousemove', mousemove)
-		E.on(doc, 'mouseup', mouseup)
+		this.diffX = e.clientX - el.offsetLeft
+		this.diffY = e.clientY - el.offsetTop
+		E.on(document, 'mousemove', {
+			context: this,
+			handler: this.onMouseMove
+		})
+		E.on(document, 'mouseup', {
+			context: this,
+			handler: this.onMouseUp
+		})
 		
 		// dragstart event
-		if (dd.ondragstart) {
-			dd.ondragstart()
+		if (this.ondragstart) {
+			this.ondragstart()
 		}
-	}
-	function mousemove(e) {
-		var el = conf.target, minX, maxX, minY, maxY
-		moveX = e.clientX - diffX
-		moveY = e.clientY - diffY
+	},
+	onMouseMove: function(e) {
+		var el = this.target, minX, maxX, minY, maxY, area,
+			moveX = e.clientX - this.diffX,
+			moveY = e.clientY - this.diffY
 		
-		if (conf.area) {
-			minX = conf.area[0]
-			maxX = conf.area[1]
-			minY = conf.area[2]
-			maxY = conf.area[3]
+		if (this.area) {
+			area = this.area
+			minX = area[0]
+			maxX = area[1]
+			minY = area[2]
+			maxY = area[3]
 			moveX < minX && (moveX = minX) // left 最小值
 			moveX > maxX && (moveX = maxX) // left 最大值
 			moveY < minY && (moveY = minY) // top 最小值
 			moveY > maxY && (moveY = maxY) // top 最大值
 		}
-		if (conf.dragable) {
+		if (this.dragable) {
 			//设置位置，并修正margin
 			moveX = moveX - (parseInt(el.style.marginLeft, 10) || 0)
 			moveY = moveY - (parseInt(el.style.marginTop, 10) || 0)
-			conf.dragX && (el.style.left = moveX + 'px')
-			conf.dragY && (el.style.top =  moveY + 'px')
+			this.dragX && (el.style.left = moveX + 'px')
+			this.dragY && (el.style.top =  moveY + 'px')
 		}
 		// drag event
-		if (dd.ondrag) {
-			dd.ondrag()
-		}
-	}
-	function mouseup(e) {
-		var el = conf.target
+		if (this.ondrag) {
+			this.ondrag()
+		}	
+	},
+	onMouseUp: function() {
+		var el = this.target
 		el.style.cursor = ''
-		E.un(doc, 'mousemove', mousemove)
-		E.un(doc, 'mouseup', mouseup)
+		E.un(document, 'mousemove', this.onMouseMove)
+		E.un(document, 'mouseup', this.onMouseUp)
 		
 		if (window.releaseEvents) { //标准DOM
-			E.un(window, 'blur', mouseup)
+			E.un(window, 'blur', this.onMouseUp)
 		} else if(el.releaseCapture) { //IE
-			E.un(el, 'losecapture', mouseup)
+			E.un(el, 'losecapture', this.onMouseUp)
 			el.releaseCapture()
 		}
 		// dragend evnet
-		if (dd.ondragend) {
-			dd.ondragend()
+		if (this.ondragend) {
+			this.ondragend()
 		}
 	}
 	
-	return dd = new Dragdrop(opt)
 }
-	
-}(this);
+

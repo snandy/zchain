@@ -1,0 +1,39 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>拖拽事件</title>
+    <meta charset="UTF-8">
+ 	<style type="text/css">
+ 		body {margin:0;padding:0;}
+ 	</style>
+ 	<script src="util.js"></script>
+ 	<script src="e.js"></script>
+	<script src="dd.js"></script>
+	<script type="text/javascript">
+		window.onload = function(){
+			var el = document.getElementById('d1')
+			var dd = new DragDrop(el)
+			
+			// dargstart
+			dd.ondragstart = function() {
+				console.log('dragstart')
+			}
+			
+			// drag
+			dd.ondrag = function() {
+				console.log('drag')
+			}
+			
+			// dragend
+			dd.ondragend = function() {
+				console.log('dragend')
+			}
+		}
+	</script>
+  </head>
+  <body>
+		<div id="d1" style="width:100px;height:50px;background:gold;text-align:center;position:absolute;left:0px;top:0px;">
+			Drag me.
+		</div>
+  </body>
+</html>
