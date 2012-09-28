@@ -10,9 +10,10 @@
  	<script src="e.js"></script>
 	<script src="dd.js"></script>
 	<script type="text/javascript">
+		var el, dd
 		window.onload = function(){
-			var el = document.getElementById('d1')
-			var dd = new DragDrop(el)
+			el = document.getElementById('d1')
+			dd = new DragDrop(el)
 			
 			// dargstart
 			dd.ondragstart = function() {

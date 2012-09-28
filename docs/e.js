@@ -349,7 +349,7 @@ function unbind(elem, type, handler) {
 			remove(elem, type, id)
 			break
 		case 3:
-			U.each(handlers, function(i, handlerObj) {
+			U.each(handlers, function(handlerObj, i) {
 				if (handlerObj.handler === handler || handlerObj.special === handler) {
 					handlers.splice(i, 1)
 					return true
