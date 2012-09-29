@@ -24,6 +24,16 @@ U.each = each = function(obj, iterator, context) {
 	}
 }
 
+U.map = function(obj, iterator, context) {
+	var results = []
+	if (obj == null) return results
+	each(obj, function(value, index, list) {
+		results[results.length] = iterator.call(context, value, index, list)
+	})
+	if (obj.length === +obj.length) results.length = obj.length
+	return results
+}
+
 
 each(['Array', 'Arguments', 'Boolean', 'Function', 'Object', 'String', 'Number', 'Date', 'RegExp'], function(name) {
 	U['is' + name] = function(obj) {
