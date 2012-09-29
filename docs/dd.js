@@ -40,14 +40,13 @@ function DragDrop(elem, config) {
 	this.elDown   = this.bridge || this.target
 	this.init()
 }
-
 DragDrop.prototype = {
 	init: function() {
 		var elDown = this.bridge || this.target
-		E.on(elDown, 'mouseover', {
-			context: this,
-			handler: this.onMouseOver
-		})
+		// E.on(elDown, 'mouseover', {
+			// context: this,
+			// handler: this.onMouseOver
+		// })
 		E.on(elDown, 'mousedown', {
 			context: this,
 			handler: this.onMouseDown
@@ -60,14 +59,14 @@ DragDrop.prototype = {
 		var el = this.target
 		el.style.position = 'absolute'
 		
-		if(window.captureEvents){ //标准DOM
+		if(window.captureEvents) { //标准DOM
 			e.stopPropagation()
 			e.preventDefault()
 			E.on(window, "blur", {
 				context: this,
 				handler: this.onMouseUp
 			})
-		}else if(el.setCapture){ //IE
+		}else if(el.setCapture) { //IE
 			el.setCapture()
 			e.cancelBubble = true
 			E.on(el, "losecapture", {
@@ -78,6 +77,7 @@ DragDrop.prototype = {
 		
 		this.diffX = e.clientX - el.offsetLeft
 		this.diffY = e.clientY - el.offsetTop
+		
 		E.on(document, 'mousemove', {
 			context: this,
 			handler: this.onMouseMove
@@ -86,7 +86,6 @@ DragDrop.prototype = {
 			context: this,
 			handler: this.onMouseUp
 		})
-		
 		// dragstart event
 		if (this.ondragstart) {
 			this.ondragstart()
@@ -118,7 +117,7 @@ DragDrop.prototype = {
 		// drag event
 		if (this.ondrag) {
 			this.ondrag()
-		}	
+		}
 	},
 	onMouseUp: function() {
 		var el = this.target
@@ -136,7 +135,38 @@ DragDrop.prototype = {
 		if (this.ondragend) {
 			this.ondragend()
 		}
-	}
-	
+	},
+	setX: function() {
+		this.dragX = true
+		this.dragY = false
+	},
+	setY: function(b) {
+		this.dragY = true
+		this.dragX = false
+	},
+	dragAll: function() {
+		this.dragX = true
+		this.dragY = true
+	},
+	setArea: function(a) {
+		this.area = a
+	},
+	setBridge: function(b) {
+		this.bridge = b
+	},
+	setDragable: function(b) {
+		this.dragable = b
+	},
+	reStore: function() {
+		this.dragAll()
+		this.target.style.top = '0px'
+		this.target.style.left = '0px'
+	},
+	getX: function() {
+		return this.dragX
+	},
+	getY: function() {
+		return this.dragY
+	}	
 }
 
