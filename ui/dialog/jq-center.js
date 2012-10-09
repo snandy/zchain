@@ -7,10 +7,9 @@
  * }
  * 
  */
-
 (function(global) {
 	
-	var $ = global.jQuery;
+	var $ = global.jQuery
 	
 	if (!$) return
 	
@@ -34,10 +33,7 @@
 	
 	$.fn.center = function(conf) {
 		conf || (conf = {})
-		var 
-		position = conf.position || 'absolute',
-		zIndex = conf.zIndex || 9999
-		
+		var position = conf.position || 'absolute', zIndex = conf.zIndex || 9999
 		this.css({
 			display: 'block',
 			position: position,

@@ -6,7 +6,6 @@
  * }) 
  * 
  */
-
 (function(global) {
 	
 	var $ = global.jQuery
@@ -49,10 +48,9 @@
 	$.mask = function(conf) {
 		conf || (conf={})
 		
-		var 
-		opacity = conf.opactiy || 0.2,
-		bgColor = conf.bgColor || 'gray',
-		zIndex  = conf.zIndex || 100
+		var opacity = conf.opactiy || 0.2,
+			bgColor = conf.bgColor || 'gray',
+			zIndex  = conf.zIndex || 100
 		
 		mask.css({
 			opacity: opacity,
