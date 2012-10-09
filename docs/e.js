@@ -396,6 +396,36 @@ var E = {
 	unbind: unbind,
 	fire: trigger,
 	trigger: trigger,
+	one: function(elem, type, handler) {
+		bind(elem, type, {
+			once: true,
+			handler: handler
+		})
+	},
+	delay: function(elem, type, handler, wait) {
+		bind(elem, type, {
+			delay: wait,
+			handler: handler
+		})
+	},
+	debounce: function(elem, type, handler, wait) {
+		bind(elem, type, {
+			debounce: wait,
+			handler: handler
+		})
+	},
+	immediate: function(elem, type, handler, wait) {
+		bind(elem, type, {
+			immediate: wait,
+			handler: handler
+		})
+	},
+	throttle: function(elem, type, handler, wait) {
+		bind(elem, type, {
+			throttle: wait,
+			handler: handler
+		})
+	},
 	viewCache: function() {
 		if (window.console) {
 			console.log(cache)
