@@ -10,7 +10,10 @@ var slice          = AP.slice,
 	hasOwnProperty = OP.hasOwnProperty
 
 // for internal usage only
-var each
+var each, some,
+	defIterator = function(obj) {
+		return obj
+	}
 
 U.each = each = function(obj, iterator, context) {
 	if ( obj.length === +obj.length ) {
@@ -34,6 +37,29 @@ U.map = function(obj, iterator, context) {
 	return results
 }
 
+U.some = some = function(obj, iterator, context) {
+	var result = false
+	if (obj == null) return result
+	iterator = iterator || defIterator
+	each(obj, function(value, index, list) {
+		if ( iterator.call(context, value, index, list) ) {
+			result = true
+			return result
+		}
+	})
+	return result
+}
+
+U.find = function(obj, iterator, context) {
+	var result
+	some(obj, function(value, index, list) {
+		if (iterator.call(context, value, index, list)) {
+			result = value
+			return true
+		}
+	})
+	return result
+}
 
 each(['Array', 'Arguments', 'Boolean', 'Function', 'Object', 'String', 'Number', 'Date', 'RegExp'], function(name) {
 	U['is' + name] = function(obj) {
