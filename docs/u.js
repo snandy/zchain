@@ -1,3 +1,7 @@
+/**
+ * Utiltity functions
+ * 
+ */
 
 ~function(window) {
 
