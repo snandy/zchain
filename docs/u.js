@@ -149,7 +149,7 @@ U.throttle = function(func, wait) {
 
 // Expose E to the global object or as AMD module
 if (typeof define === 'function' && define.amd) {
-	define('U', [], function () { return E } )
+	define('U', [], function () { return U } )
 } else {
 	window.U = U
 }
