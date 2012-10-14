@@ -155,7 +155,7 @@ function Event(event) {
 			this.namespace = ''
 		}
 	}
-	this.timeStamp     = now()
+	this.timeStamp = now()
 }
 Event.prototype = {
 	preventDefault: function() {
