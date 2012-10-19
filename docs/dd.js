@@ -27,6 +27,8 @@
  * 
  */
 
+-function(){
+	
 function DragDrop(elem, config) {
 	if (elem.nodeType === 3 || elem.nodeType === 9) return
 	config = config || {}
@@ -170,3 +172,11 @@ DragDrop.prototype = {
 	}
 }
 
+// Expose E to the global object or as AMD module
+if (typeof define === 'function' && define.amd) {
+	define('DragDrop', [], function () { return DragDrop } )
+} else {
+	window.DragDrop = DragDrop
+}
+
+}()

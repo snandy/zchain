@@ -1,12 +1,12 @@
 /**
- * JavaScript DodelDialog v0.2
+ * JavaScript ModelDialog v0.2
  * Copyright (c) 2010 snandy
  * Blog: http://snandy.javaeye.com/
  * QQ群: 34580561
  * Date: 2010-09-08 
  * 
  * 可自由拖拽的模态对话框
- * new DodelDialog({
+ * new ModelDialog({
  * 		caption 	标题 '对话框标题'(默认)
  * 		template 	主体内容 ''(默认)
  * 		dialogCls 	对话框className 'md-dialog'(默认)
@@ -19,7 +19,7 @@
  * 
  * 
  */
-DodelDialog =
+ModelDialog =
 function(){
 	var px = 'px';
 	var isIE = function(){
@@ -67,7 +67,7 @@ function(){
 	}
 	$.prototype.init.prototype = $.prototype;
 	
-	function DodelDialog(opt){
+	function ModelDialog(opt){
 		this.dialogCls = opt.dialogCls || 'md-dialog';
 		this.headCls = opt.headCls || 'md-head';
 		this.btnCloseCls = opt.btnCloseCls || 'md-close';
@@ -84,7 +84,7 @@ function(){
 		this.shadow = null;
 		this.init();
 	}
-	DodelDialog.prototype = {
+	ModelDialog.prototype = {
 		init : function(){
 			var _this = this;
 			this.dialog = $('div').setCls(this.dialogCls).css('position:absolute;z-index:100;')[0];
@@ -231,5 +231,5 @@ function(){
 		}()
 		
 	}
-	return DodelDialog;
+	return ModelDialog;
 }();

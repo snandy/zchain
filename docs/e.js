@@ -8,8 +8,12 @@
 ~function(window, document) {
 	
 // Variables -------------------------------------------------------------------------------------
-	// 每个element上绑定的一个唯一属性，递增
-var	guid = 1,
+
+var // 每个element上绑定的一个唯一属性，递增
+	guid = 1,
+	
+	guidStr = '__guid__',
+	
 	// 存放所有事件handler, 以guid为key, cache[1] = {}
 	// cache[1] = {handle: evnetHandle, events: {}}, events = {click: [handler1, handler2, ..]}
 	cache = {},
@@ -51,7 +55,7 @@ function excuteHandler(elem, e, args/*only for trigger*/) {
 	
 	var e      = fix(e, elem),
 		type   = e.type,
-		id     = elem.guid,
+		id     = elem[guidStr],
 		elData = cache[id],
 		events = elData.events,
 		handlers = events[type]
@@ -155,7 +159,7 @@ function Event(event) {
 			this.namespace = ''
 		}
 	}
-	this.timeStamp     = now()
+	this.timeStamp = now()
 }
 Event.prototype = {
 	preventDefault: function() {
@@ -235,7 +239,7 @@ function bind(elem, type, handler) {
 		return
 	}
 	
-	var id     = elem.guid = elem.guid || guid++,
+	var id     = elem[guidStr] = elem[guidStr] || guid++,
 		elData = cache[id] = cache[id] || {},
 		events = elData.events,
 		handle = elData.handle,
@@ -337,7 +341,7 @@ function unbind(elem, type, handler) {
 		return
 	}
 	
-	var id       = elem.guid,
+	var id       = elem[guidStr],
 		elData   = id && cache[id],
 		events   = elData && elData.events,
 		handlers = events && events[type],
@@ -373,7 +377,7 @@ function trigger(elem, type) {
 	if (!elem || elem.nodeType === 3 || elem.nodeType === 8) {
 		return
 	}
-	var id       = elem.guid,
+	var id       = elem[guidStr],
 		elData   = id && cache[id],
 		events   = elData && elData.events,
 		handlers = events && events[type],
