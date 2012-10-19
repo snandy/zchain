@@ -51,7 +51,6 @@ InputSuggest.prototype = {
             }else{
                 me.onKeyup(e);
             }
-            
         });
         // blur会在click前发生，这里使用mousedown
         this.on(input,'blur',function(e){
@@ -59,7 +58,6 @@ InputSuggest.prototype = {
         });
         this.onMouseover();
         this.onMousedown();
-        
     },
     $C: function(tag){
         return this.doc.createElement(tag);
@@ -180,8 +178,7 @@ InputSuggest.prototype = {
                     return;
                     
             }
-        
-        }    
+        }
         if(e.keyCode==27){ // ESC键
             this.hide();
             input.value = this.attr(input,'curr_val');

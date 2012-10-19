@@ -8,8 +8,8 @@
 ~function(window, document) {
 	
 // Variables -------------------------------------------------------------------------------------
-var // 每个element上绑定的一个唯一属性，递增
-	guid = 1,
+	// 每个element上绑定的一个唯一属性，递增
+var	guid = 1,
 	// 存放所有事件handler, 以guid为key, cache[1] = {}
 	// cache[1] = {handle: evnetHandle, events: {}}, events = {click: [handler1, handler2, ..]}
 	cache = {},
