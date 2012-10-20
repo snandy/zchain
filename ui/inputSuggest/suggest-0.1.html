@@ -13,7 +13,6 @@
 		<script type="text/javascript" src="suggest-0.1.js"></script>
 		
 		<script type="text/javascript">
-			
 			window.onload = function(){
 				var sinaSuggest = new InputSuggest({
 					input: document.getElementById('sina'),
@@ -29,12 +28,15 @@
 		</script>
 	</head>
 	<body>
-		<div style="width:400px;margin:30px auto;text-align:center;">
-			<label>新浪</label>
-			<input type="text" id="sina"/>
-			<br/><br/><br/><br/><br/><br/><br/><br/><br/>
-			<label>搜狐</label>
-			<input type="text" id="sohu"/>
+		<div style="width:520px;margin:30px auto;text-align:center;">
+			<div style="float:left">
+				<label>新浪</label>
+				<input type="text" id="sina"/>
+			</div>
+			<div style="float:right">
+				<label>搜狐</label>
+				<input type="text" id="sohu"/>
+			</div>
 		</div>
 	</body>
 </html>

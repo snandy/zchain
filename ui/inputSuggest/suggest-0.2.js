@@ -33,6 +33,7 @@ function InputSuggest(opt){
     this.opacity = opt.opacity;
     this.data = opt.data || [];
     this.active = null;
+    this.finalValue = '';
     this.visible = false;
     this.init();
 }
@@ -156,7 +157,7 @@ InputSuggest.prototype = {
                             this.attr(this.active, 'class', iCls);
                             this.active = null;
                             input.focus();
-                            input.value = input.getAttribute("curr_val");
+                            input.value = this.finalValue;
                         }
                     }
                     return;
@@ -175,18 +176,18 @@ InputSuggest.prototype = {
                             this.attr(this.active, 'class', iCls);
                             this.active = null;
                             input.focus();
-                            input.value = input.getAttribute("curr_val");
+                            input.value = this.finalValue;
                         }
                     }
                     return;
+               	case 27: // ESC
+		            this.hide();
+		            input.value = this.finalValue;
+		            return;
             }
         }
-        if (e.keyCode === 27) { // ESC键
-            this.hide();
-            input.value = this.attr(input,'curr_val');
-            return;
-        }
-        if (this.attr(input,'curr_val') != input.value) {
+
+        if (this.finalValue != input.value) {
             this.container.innerHTML = '';
             var val = input.value, strs = [];
             if (input.value.indexOf('@') !== -1) {
@@ -202,7 +203,7 @@ InputSuggest.prototype = {
             for (var i=0; i<ary.length; i++) {
                 this.createItem(strs[0]||val, ary[i]);
             }
-            this.attr(input,'curr_val',input.value);
+            this.finalValue = val;
         }
         this.show();
     },

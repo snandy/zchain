@@ -33,6 +33,7 @@ function InputSuggest(opt){
 	this.opacity = opt.opacity;
 	this.data = opt.data || [];
 	this.active = null;
+	this.finalValue = '';
 	this.visible = false;
 	this.init();
 }
@@ -77,13 +78,13 @@ InputSuggest.prototype = {
 			brow = this.brow, 
 			width = this.width,
 			opacity = this.opacity,
-			container = this.container;
-			
+			container = this.container
+		
+		// IE6/7/8/9/Chrome/Safari input[type=text] border默认为2，Firefox为1，因此取offsetWidth-2保证与FF一致
 		container.style.cssText =
 			'position:absolute;overflow:hidden;left:' 
 			+ pos[0] + 'px;top:'
 			+ (pos[1]+input.offsetHeight) + 'px;width:'
-			// IE6/7/8/9/Chrome/Safari input[type=text] border默认为2，Firefox为1，因此取offsetWidth-2保证与FF一致
 			+ (brow.firefox ? input.clientWidth : input.offsetWidth-2) + 'px;';
 			
 		if (width) {
@@ -151,7 +152,7 @@ InputSuggest.prototype = {
 							this.attr(this.active, 'class', iCls);
 							this.active = null;
 							input.focus();
-							input.value = input.getAttribute("curr_val");
+							input.value = this.finalValue;
 						}
 					}
 					return;
@@ -170,13 +171,13 @@ InputSuggest.prototype = {
 							this.attr(this.active, 'class', iCls);
 							this.active = null;
 							input.focus();
-							input.value = input.getAttribute("curr_val");
+							input.value = this.finalValue;
 						}
 					}
 					return;
 				case 27: // ESC键
 					this.hide();
-					input.value = this.attr(input,'curr_val');
+					input.value = this.finalValue;
 					return;
 			}
 		}
@@ -184,8 +185,7 @@ InputSuggest.prototype = {
 		if (input.value.indexOf('@') != -1) return;
 		
 		this.items = [];
-		
-		if (this.attr(input,'curr_val') != input.value) {
+		if (this.finalValue != input.value) {
 			this.container.innerHTML = '';
 			for (var i = 0, len = this.data.length; i<len; i++) {
 				var item = this.$C('div');
@@ -194,7 +194,7 @@ InputSuggest.prototype = {
 				this.items[i] = item;
 				this.container.appendChild(item);
 			}
-			this.attr(input,'curr_val',input.value);
+			this.finalValue = input.value;
 		}
 		this.show();
 	},
