@@ -117,11 +117,12 @@ DragDrop.prototype = {
 			this.dragY && (el.style.top =  moveY + 'px')
 			this.moveX = moveX
 			this.moveY = moveY
+			// drag event
+			if (this.ondrag) {
+				this.ondrag()
+			}
 		}
-		// drag event
-		if (this.ondrag) {
-			this.ondrag()
-		}
+
 	},
 	onMouseUp: function() {
 		var el = this.target
