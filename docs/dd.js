@@ -115,6 +115,8 @@ DragDrop.prototype = {
 			moveY = moveY - (parseInt(el.style.marginTop, 10) || 0)
 			this.dragX && (el.style.left = moveX + 'px')
 			this.dragY && (el.style.top =  moveY + 'px')
+			this.moveX = moveX
+			this.moveY = moveY
 		}
 		// drag event
 		if (this.ondrag) {
@@ -126,6 +128,7 @@ DragDrop.prototype = {
 		el.style.cursor = ''
 		E.un(document, 'mousemove', this.onMouseMove)
 		E.un(document, 'mouseup', this.onMouseUp)
+		this.moveX = this.moveY = undefined
 		
 		if (window.releaseEvents) { //标准DOM
 			E.un(window, 'blur', this.onMouseUp)
