@@ -37,26 +37,25 @@
  *	$('input[name=uname]', '#id')
  */			
 function $(selector,context) {
-	var s = selector,
-		doc = document,
-		regId = /^#[\w\-]+/,
-		regCls = /^([\w\-]+)?\.([\w\-]+)/,
-		regTag = /^([\w\*]+)$/,
-		regNodeAttr = /^([\w\-]+)?\[([\w]+)(=(\w+))?\]/;
+	var s = selector, doc = document,
+		rId = /^#[\w\-]+/,
+		rCls = /^([\w\-]+)?\.([\w\-]+)/,
+		rTag = /^([\w\*]+)$/,
+		rAttr = /^([\w]+)?\[([\w-]+)(=(\w+))?\]/;
 	
 	var context = 
 			context == undefined ?
 			document :
 			typeof context == 'string' ?
-			doc.getElementById(context.substr(1,context.length)) :
+			doc.getElementById(context.substr(1, context.length)) :
 			context;
 			
-	if(regId.test(s)) {
-		return doc.getElementById(s.substr(1,s.length));
+	if (rId.test(s)) {
+		return doc.getElementById( s.substr(1, s.length) );
 	}
 	
-	if(context.querySelectorAll) {
-		if(context.nodeType == 1) {
+	if (context.querySelectorAll) {
+		if (context.nodeType == 1) {
 			var old = context.id, id = context.id = '__$$__';
 			try {
 				return context.querySelectorAll( '#' + id + ' ' + s );
@@ -66,59 +65,53 @@ function $(selector,context) {
 			}
 		}
 		return context.querySelectorAll(s);
-	}
-	
-	if(regCls.test(s)) {
+	}
+	if (rCls.test(s)) {
 		var ary = s.split('.'),
 			tag = ary[0],
 			cls = ary[1],
-			len,
-			all,
-			els = [];
-			if(context.getElementsByClassName) {
-				var res = context.getElementsByClassName(cls);
-				if(tag) {
-					for(var i=0,len=res.length; i<len; i++) {
-						res[i].tagName.toLowerCase()==tag && els.push(res[i]);
-					}
-					return els;
-				}else{
-					return res;
+			len, all, els = [];
+		if (context.getElementsByClassName) {
+			var res = context.getElementsByClassName(cls);
+			if (tag) {
+				for (var i=0, len=res.length; i < len; i++) {
+					res[i].tagName.toLowerCase()===tag && els.push(res[i]);
 				}
-			}else {
-				all = context.getElementsByTagName(tag || '*');
-				return filter(all, 'className', cls);	
+				return els;
+			} else {
+				return res;
 			}
-			
+		} else {
+			all = context.getElementsByTagName(tag || '*');
+			return filter(all, 'className', cls);	
+		}
 	}
 	
-	if(regTag.test(s)) {
+	if (rTag.test(s)) {
 		return context.getElementsByTagName(s);
 	}
 	
-	if(regNodeAttr.test(s)) {
-		var ary = regNodeAttr.exec(s),
-			all = context.getElementsByTagName(ary[1] || '*');
-			
-		return filter(all, ary[2], ary[4]);	
+	if (rAttr.test(s)) {
+		var ary = rAttr.exec(s), all = context.getElementsByTagName(ary[1] || '*');
+		return filter(all, ary[2], ary[4]);
 	}
 	
 	function filter(all, attr, val) {
-		var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)');
+		var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)'),
+			i = -1, el, r = -1, res = [];
 		function test(node) {
 			var v = attr == 'className' ? node.className : node.getAttribute(attr);
-			if(v) {
-				if(val) {
+			if (v) {
+				if (val) {
 					if(reg.test(v)) return true;
-				}else {
+				} else {
 					return true;
 				}
 			}
 			return false;
 		}
-		var i = -1, el, r = -1, res = [];
-		while( (el = all[++i]) ) {
-			if(test(el)) {
+		while ( (el = all[++i]) ) {
+			if ( test(el) ) {
 				res[++r] = el;
 			}
 		}

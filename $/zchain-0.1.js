@@ -182,13 +182,13 @@ function zChain(selector, context) {
 zChain.prototype = {
 	init: function(selector, context) {
 		
-		var regId = /^#[-\w]+/,
+		var rId = /^#[-\w]+/,
 		
-		regCls = /^([-\w]+)?\.([-\w]+)/,
+		rCls = /^([-\w]+)?\.([-\w]+)/,
 		
-		regTag = /^([\w\*]+)$/,
+		rTag = /^([\w\*]+)$/,
 		
-		regNodeAttr = /^([-\w]+)?\[([\w]+)(=(\w+))?\]/,
+		rAttr = /^([\w]+)?\[([\w-]+)(=(\w+))?\]/;
 		
 		simple = /^[-#\w]+$/.test(selector);
 		
@@ -210,7 +210,7 @@ zChain.prototype = {
 			this.length = 1;
 			return;
 		}
-		if (regId.test(selector)) {
+		if (rId.test(selector)) {
 			this[0] = doc.getElementById(selector.substr(1, selector.length));
 			if( this[0] ) {
 				this.length = 1;
@@ -230,17 +230,17 @@ zChain.prototype = {
 			this._toSelf( context.querySelectorAll(selector) );
 			return;
 		}
-		if ( regCls.test(selector) ) {
+		if ( rCls.test(selector) ) {
 			var ary = selector.split('.'),	all = context.getElementsByTagName(ary[0] || '*');
 			this._toSelf( filter(all,'className',ary[1]) );
 			return;
 		}
-		if ( regTag.test(selector) ) {
+		if ( rTag.test(selector) ) {
 			this._toSelf( context.getElementsByTagName(selector) );
 			return;
 		}
-		if ( regNodeAttr.test(selector) ) {
-			var ary = regNodeAttr.exec(selector), all = context.getElementsByTagName(ary[1] || '*');
+		if ( rAttr.test(selector) ) {
+			var ary = rAttr.exec(selector), all = context.getElementsByTagName(ary[1] || '*');
 			this._toSelf( filter(all,ary[2],ary[4]) );
 			return;
 		}

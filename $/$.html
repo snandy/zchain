@@ -11,12 +11,16 @@
 		<script type="text/javascript" src="zchain-0.1.js"></script>
 	</head>
 	<body style="height: 1000px">
-		<div style="height:100px;width:100px;background:gold;position:relative;top:10px;">
+		<p id="pid">id</p>
+		<p class="cls">className</p>
+		
+		<div data-attr="ddd">
 			<div id="sub" style="top:10px;">test</div>
 		</div>
-		<p style="background: gray;width:300px">
-			hello
+		<p id="p2">
+			<span class="cls">span.cls</span>
 		</p>
+		<p data-attr="ppp" data~pp="ss">attr</p>
 	<script>
 		
 		var str = 'var window=(function () {return this;})()';
