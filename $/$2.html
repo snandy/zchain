@@ -7,11 +7,11 @@
 <body>
 <div><a href="http://www.sina.com.cn">SINA</a></div>
 
-<div id="d1" _action="doao" act="a">
+<div id="d1" _action="doao" data-act="a">
 	<p><a href="http://www.sina.com.cn">SINA</a></p>
 </div>
 <script type="text/javascript">	
-	alert($('[act]')[0].tagName)
+	alert($('[data~act=a]')[0].tagName)
 </script>
 </body>
 </html>

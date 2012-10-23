@@ -8,7 +8,7 @@
 				margin: 0;
 			}
 		</style>
-		<script type="text/javascript" src="zchain-0.1.js"></script>
+		<script type="text/javascript" src="zchain.js"></script>
 	</head>
 	<body style="height: 1000px">
 		<p id="pid">id</p>
@@ -23,16 +23,7 @@
 		<p data-attr="ppp" data~pp="ss">attr</p>
 	<script>
 		
-		var str = 'var window=(function () {return this;})()';
-		var win = eval(str); 
-		
-		
-		window.onload = function() {
-			var docElem = document.documentElement;
-			// console.log(window.pageYOffset);
-			// console.log(docElem.scrollTop);
-			// console.log(document.body.scrollTop);
-		};
+		alert($('[data-attr]').length)
 
 		// alert("getBoundingClientRect" in document.documentElement )
 		// $('input').keyup(function(e){

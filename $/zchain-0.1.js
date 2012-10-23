@@ -151,9 +151,9 @@ function filter(all,attr,val) {
 	var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)');
 	function test(node) {
 		var v = attr == 'className' ? node.className : node.getAttribute(attr);
-		if(v) {
-			if(val) {
-				if(reg.test(v))
+		if (v) {
+			if (val) {
+				if (reg.test(v))
 					return true;
 			} else {
 				return true;
@@ -162,9 +162,9 @@ function filter(all,attr,val) {
 		return false;
 	}
 	var i = -1, el, r = -1, res = [];
-	while((el = all[++i])) {
-		if(test(el)){
-		res[++r] = el;
+	while ( (el = all[++i]) ) {
+		if (test(el)) {
+			res[++r] = el;
 		}
 	}
 	return res;
@@ -188,7 +188,7 @@ zChain.prototype = {
 		
 		rTag = /^([\w\*]+)$/,
 		
-		rAttr = /^([\w]+)?\[([\w-]+)(=(\w+))?\]/;
+		rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/,
 		
 		simple = /^[-#\w]+$/.test(selector);
 		
@@ -222,7 +222,7 @@ zChain.prototype = {
 				var old = context.id, id = context.id = '__zchain__';
 				try {
 					return this._toSelf( context.querySelectorAll( '#' + id + ' ' + selector ) );
-				} catch(e){
+				} catch(e) {
 				} finally {
 					old ? context.id = old : context.removeAttribute('id');
 				}

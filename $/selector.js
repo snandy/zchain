@@ -41,7 +41,7 @@ function $(selector,context) {
 		rId = /^#[\w\-]+/,
 		rCls = /^([\w\-]+)?\.([\w\-]+)/,
 		rTag = /^([\w\*]+)$/,
-		rAttr = /^([\w]+)?\[([\w-]+)(=(\w+))?\]/;
+		rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/;
 	
 	var context = 
 			context == undefined ?
@@ -55,7 +55,7 @@ function $(selector,context) {
 	}
 	
 	if (context.querySelectorAll) {
-		if (context.nodeType == 1) {
+		if (context.nodeType === 1) {
 			var old = context.id, id = context.id = '__$$__';
 			try {
 				return context.querySelectorAll( '#' + id + ' ' + s );
@@ -74,7 +74,7 @@ function $(selector,context) {
 		if (context.getElementsByClassName) {
 			var res = context.getElementsByClassName(cls);
 			if (tag) {
-				for (var i=0, len=res.length; i < len; i++) {
+				for (var i=0, len = res.length; i < len; i++) {
 					res[i].tagName.toLowerCase()===tag && els.push(res[i]);
 				}
 				return els;
@@ -100,10 +100,10 @@ function $(selector,context) {
 		var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)'),
 			i = -1, el, r = -1, res = [];
 		function test(node) {
-			var v = attr == 'className' ? node.className : node.getAttribute(attr);
+			var v = attr === 'className' ? node.className : node.getAttribute(attr);
 			if (v) {
 				if (val) {
-					if(reg.test(v)) return true;
+					if (reg.test(v)) return true;
 				} else {
 					return true;
 				}
