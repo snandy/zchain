@@ -23,6 +23,23 @@ function exists(path) {
 	}
 }
 
+function isFile(path) {
+	return fs.statSync(path).isFile();
+}
+
+function isDirectory(path) {
+	return fs.statSync(path).isDirectory();
+}
+
+function renameFile(from, to) {
+	return fs.renameSync(from, to);
+}
+
+function endsWith(str, suffix) {
+	var l = str.length - suffix.length;
+	return l >= 0 && str.indexOf(suffix, l) == l;
+}
+
 function mkDir(dir) {
 	if (!exists(dir)) {
 		fs.mkdirSync(dir, 511);
@@ -45,21 +62,31 @@ function mkFullDir(dir) {
 	});
 }
 
-function isFile(path) {
-	return fs.statSync(path).isFile();
-}
-
-function isDirectory(path) {
-	return fs.statSync(path).isDirectory();
-}
-
-function renameFile(from, to) {
-	return fs.renameSync(from, to);
-}
-
-function endsWith(str, suffix) {
-	var l = str.length - suffix.length;
-	return l >= 0 && str.indexOf(suffix, l) == l;
+function rmDir(path) {
+	var folders = [path];
+	
+	// 自执行递归调用
+	~function rmFile(path) {
+		var dir = fs.readdirSync(path);
+		dir.forEach(function(file) {
+			var fullPath = path + '/' + file;
+			if ( isFile(fullPath) ) {
+				fs.unlinkSync(fullPath); //直接删除文件
+			} else {
+				folders.push(fullPath);
+				rmFile(fullPath);
+			}
+		});
+	}(path);
+	
+	// rmFile(path);
+	// console.log(folders)
+	// 需逆序，否则删除外层文件夹会报错
+	folders.reverse();
+	
+	folders.forEach(function(folder) {
+		fs.rmdirSync(folder)
+	});
 }
 
 /**
@@ -199,17 +226,6 @@ function buildDir(srcPath, destPath) {
 			buildDir(src, dest);
 		}
 	});
-	// fs.mkdir(newpath, function(ex) {
-		// dir.forEach(function(file) {
-			// src  = srcPath + '/' + file;
-			// dest = newpath + '/' + file;
-			// if ( isFile(src) ) {
-				// buildOne(src, dest);
-			// } else if( isDirectory(src) ) {
-				// buildDir(src, dest);
-			// }
-		// });
-	// });
 }
 
 /**
@@ -259,6 +275,8 @@ exports.write = writeFile;
 exports.merge = mergeToOne;
 exports.one   = buildOne;
 exports.dir   = buildDir;
+exports.rmdir = rmDir;
 
+rmDir('../modJS2');
 
 

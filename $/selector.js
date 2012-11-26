@@ -4,7 +4,7 @@
  * Blog: http://snandy.cnglogs.com
  * QQ群: 34580561
  * 
- * $ 获取元素, 在DOM中使用频繁的
+ * $ 获取元素, 在DOM中使用频繁的，根据2/8原则只实现最常用的四种
  * 
  * @param {Object} selector
  * @param {Object} context
@@ -35,7 +35,8 @@
  *	$('input[name=uname]') 获取文档中所有属性name=uname的input元素
  *	$('input[name=uname]', el)
  *	$('input[name=uname]', '#id')
- */			
+ */
+
 function $(selector,context) {
 	var s = selector, doc = document,
 		rId = /^#[\w\-]+/,
