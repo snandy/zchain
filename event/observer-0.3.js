@@ -1,5 +1,5 @@
 /**
- * JavaScript Observer.js v0.2 from Backbone.js
+ * JavaScript Observer.js v0.3 from Backbone.js
  * 
  * 实现观察者模式工具类(单体)
  *	var obj = {};
