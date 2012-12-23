@@ -11,21 +11,60 @@
  * 就象水底下的气泡一样逐渐向上冒。故称为冒泡排序法。
  */
 
-
+// 由左向右移动
 function bubbleSort(ary) {
-    var i, j, temp, len = ary.length;
-    
-    for(var i=1; i<len; i++) {
-        for(j=len-1; j>=i; j--) {
-            temp = ary[j];
-            if(temp < ary[j-1]) {
-                ary[j] = ary[j-1];
-                ary[j-1] = temp;
+	var i, temp, len = ary.length
+	while (len-- >1) {
+		for (i=0; i<len; i++) {
+			temp = ary[i]
+			if (temp>ary[i+1]) {
+				ary[i] = ary[i+1]
+				ary[i+1] = temp
+			}
+		}
+	}
+	return ary
+}
+function bubbleSort(ary) {
+	var i, temp, len = ary.length
+	for (; len>1; len--) {
+		for (i=0; i<len; i++) {
+			temp = ary[i]
+			if (temp>ary[i+1]) {
+				ary[i] = ary[i+1]
+				ary[i+1] = temp
+			}
+		}
+	}
+	return ary
+}
+
+// 由右向左移动
+function bubbleSort(ary) {
+    var i, j, temp, len = ary.length
+    for (var i=1; i<len; i++) {
+        for (j=len-1; j>=i; j--) {
+            temp = ary[j]
+            if (temp < ary[j-1]) {
+                ary[j] = ary[j-1]
+                ary[j-1] = temp
             }
         }
     }
-    
     return ary;
+}
+function bubbleSort(ary) {
+	var i, temp, len = ary.length
+	while (len-- > 1) {
+		for (i=ary.length-1; i>0; i--) {
+			temp = ary[i]
+			if (temp<ary[i-1]) {
+				ary[i] = ary[i-1]
+				ary[i-1] = temp
+			}
+		}
+	}
+	return ary
 }
 var ary = [5,4,3,2,1];
 console.log(bubbleSort(ary));
