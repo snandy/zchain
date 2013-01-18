@@ -8,16 +8,45 @@
  	</style>
  	<script src="callbacks.js"></script>
 	<script>
-		function fn1() {
-			console.log(55)
-			//return false
+function bubbleSort(arr) {
+	var i, j, t, l = arr.length
+	for (i=l-1; i>1; i--) {
+		for (j=0; j<i; j++) {
+			t = arr[j]
+			if (t>arr[j+1]) {
+				arr[j] = arr[j+1]
+				arr[j+1] = t
+			}
 		}
-		function fn2() {
-			console.log(arguments)
+	}
+	return arr
+}
+function BubbleSort(arr) {
+	var i, j, t, l = arr.length
+	while (l-->1) {
+		for (j=0; j<l; j++) {
+			t = arr[j]
+			if (t>arr[j+1]) {
+				arr[j] = arr[j+1]
+				arr[j+1] = t
+			}
 		}
-		var cb = Callbacks('unique')
-		cb.add([fn1], fn2, fn1)
-	</script>
+	}
+}
+function bubbleSort(arr) {
+	var i, j, t, l = arr.length
+	for (i=l-1; i>0; i--) {
+		for (j=l-1; j>0; j--) {
+			
+		}
+	}
+}
+
+
+
+arr = [4,5,3,1,2]
+console.log(bubbleSort(arr))
+	</script> 
   </head>
   <body>
   </body>
