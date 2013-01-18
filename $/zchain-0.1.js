@@ -37,15 +37,14 @@ if(!rwhite.test( '\xA0' )) {
 	trimLeft = /^[\s\xA0]+/;
 	trimRight = /[\s\xA0]+$/;
 }
-
+// For IE9/Firefox/Safari/Chrome/Opera
 var makeArray = function(obj) {
-	// IE9/Firefox/Safari/Chrome/Opera
 	return slice.call(obj,0);
 }
+// For IE6/7/8
 try{
 	slice.call(doc.documentElement.childNodes, 0)[0].nodeType;
 }catch(e){
-	// IE6/7/8
 	makeArray = function(obj) {
 		var res = [];
 		for(var i=0,len=obj.length; i<len; i++) {
@@ -816,7 +815,6 @@ zChain.extend({
 			}
 		}
 	},
-	
 	map: function(obj, fn) {
 		var value, key, ret = [], i = 0, length = obj.length,
 			isArray = length !== undefined && typeof length === 'number';
@@ -840,9 +838,7 @@ zChain.extend({
 		// Flatten any nested arrays
 		return ret.concat.apply( [], ret );
 	},
-	
 	makeArray: makeArray,
-	
 	applyIf: function(o, c) {
 		var args = slice.call(arguments, 1), i = -1, p;
 		if (args.length) {
@@ -854,7 +850,6 @@ zChain.extend({
 		}
 		return o;
 	},
-	
 	contains: function(a, b) {
 		try {
 			return a.contains ? a != b && a.contains(b) : !!(a.compareDocumentPosition(b) & 16);
