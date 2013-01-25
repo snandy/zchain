@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+	<head>
+    	<meta charset='utf-8' />
+    	<title>jQuery Dialog</title>
+    	<style type="text/css">
+    		.dialog {
+    			width: 408px;
+    			height: 171px;
+    			border: 1px solid #b6b6b6;
+    			border-radius: 4px;
+    			box-shadow: 0 2px 3px #a9a9a9;
+    		}
+    		.dialog .head {
+    			height: 18px;
+    		}
+    		.dialog .head .close {
+    			float: right;
+    			width: 10px;
+    			height: 10px;
+    			margin: 8px 15px 0 0;
+    			background: url('icon-close.png') no-repeat;
+    		}
+    		.dialog .head .close:hover {
+    			width: 11px;
+    			height: 11px;
+    			background: url('icon-close-hover.png') no-repeat;
+    		}
+    		.dialog .body {}
+    		.dialog .body div {
+    			width: 345px;
+    			margin: 10px auto;
+    		}
+    		.dialog .body span.title {
+    			margin: 0;
+    			color: #666666;
+    			font-weight: bold;
+    			font-size: 14px;
+    		}
+    		.dialog .body span.loading {
+    			font-size: 12px;
+    			float: right;
+    			padding: 10px 0 0 18px;
+    			disp5lay: none;
+    			background: url(process.png) no-repeat 0 10px;
+    		}
+    		.dialog .body div p {
+    			margin: 15px 0;
+    		}
+    		.dialog .body div p input {
+    			width: 335px;
+    			height: 38px;
+    			line-height: 38px;
+    			color: #b8b8b8;
+    			font-size: 12px;
+    			padding: 0 0 0 10px;
+    			border: 1px solid #d1d1d1;
+    			background: url(icon-search.png) no-repeat 322px 12px;
+    		}
+    	</style>
+  	</head>
+	<body>
+		<div class="dialog">
+			<div class="head">
+				<a href="#" class="close"></a>
+			</div>
+			<div class="body">
+				<div>
+					<p>
+						<span class="loading">正在搜索</span>
+						<span class="title">音乐搜索</span>
+					</p>
+					<p>
+						<input placeholder="请输入歌曲名、歌手名、专辑名"/>
+					</p>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>
