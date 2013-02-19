@@ -23,7 +23,7 @@
 
 function InputSuggest(opt){
     this.win = null;
-    this.doc = null;    
+    this.doc = null;
     this.container = null;
     this.input = opt.input || null;
     this.containerCls = opt.containerCls || 'suggest-container';
@@ -131,7 +131,7 @@ InputSuggest.prototype = {
         var ary   = [],
             input = this.input,
             iCls  = this.itemCls,
-            aCls  = this.activeCls
+            aCls  = this.activeCls,
             container = this.container;
             
         if (this.visible) {
@@ -218,8 +218,10 @@ InputSuggest.prototype = {
         item.innerHTML = val + (has?'':'@') + suffix;
         this.container.appendChild(item);
     },
-    onMouseover: function(){
-        var me = this, icls = this.itemCls, acls = this.activeCls;
+    onMouseover: function() {
+        var me = this,
+            icls = this.itemCls,
+            acls = this.activeCls;
         this.on(this.container, 'mouseover', function(e) {
             var target = e.target || e.srcElement;
             if (target.className === icls){
@@ -231,7 +233,7 @@ InputSuggest.prototype = {
             }
         });
     },
-    onMousedown: function(){
+    onMousedown: function() {
         var me = this;
         this.on(this.container, 'mousedown', function(e) {
             var target = e.target || e.srcElement;

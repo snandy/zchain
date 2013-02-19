@@ -20,7 +20,7 @@
  * 
  */
 
-function InputSuggest(opt){
+function InputSuggest(opt) {
 	this.win = null;
 	this.doc = null;	
 	this.container = null;
@@ -199,10 +199,12 @@ InputSuggest.prototype = {
 		this.show();
 	},
 	onMouseover: function() {
-		var me = this, icls = this.itemCls, acls = this.activeCls;
+		var me = this,
+			icls = this.itemCls,
+			acls = this.activeCls;
 		this.on(this.container, 'mouseover', function(e) {
 			var target = e.target || e.srcElement;
-			if (target.className == icls) {
+			if (target.className === icls) {
 				if (me.active) {
 					me.active.className = icls;
 				}
