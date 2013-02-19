@@ -1,7 +1,7 @@
 /**
- * JavaScript Suggest v0.1
+ * JavaScript Suggest v0.2
  * Copyright (c) 2011 snandy
- * Blog: http://snandy.javaeye.com/
+ * Blog: http://snandy.javaeye.com
  * QQ群: 34580561
  * Date: 2011-10-14 
  * 

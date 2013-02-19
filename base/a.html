@@ -8,11 +8,35 @@
  	</style>
  	<script src="callbacks.js"></script>
 	<script>
+'use strict';
+// console.log(obj.age)
+
+var proto = {school: 'PKU'}
+function Person(n, a) {
+	this.name = n;
+	this.age = a;
+}
+Person.prototype = proto;
+var p = new Person('John Backus');
+// console.log(p instanceof Person); // true
+
 function A(){}
-A.prototype = null;
+function B(){}
+var p = new A();
+B.prototype = p;
+// A.prototype = B.prototype = {a: 1};
+// 
+// var a = new A();
+// A.prototype = {};
+// var b = new B();
+// console.log(a instanceof A); // true
+// console.log(a instanceof B); // true
+// console.log(b instanceof A); // true
+// console.log(b instanceof B); // true
+
+function A(){}
+A.prototype = 1; // A的prototype设为非对象类型
 var a = new A();
-var b;
-// console.log(b instanceof A);
 console.log(a instanceof A);
 
 	</script> 
