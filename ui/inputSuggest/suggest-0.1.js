@@ -12,12 +12,10 @@
  * 	  containerCls	容器className
  * 	  itemCls		容器子项className
  * 	  activeCls		高亮子项className
- * 	  width 		宽度设置 此项将覆盖containerCls的width
- *    opacity		透明度设置 此项将覆盖containerCls的opacity
  * });
  * 
  * 1, 使用getBoundingClientRect获取input位置，去掉else的判断
- * 
+ * 2, 去掉width、opacity参数，让css去控制
  */
 
 function InputSuggest(opt) {
@@ -29,8 +27,6 @@ function InputSuggest(opt) {
 	this.containerCls = opt.containerCls || 'suggest-container';
 	this.itemCls = opt.itemCls || 'suggest-item';
 	this.activeCls = opt.activeCls || 'suggest-active';
-	this.width = opt.width;
-	this.opacity = opt.opacity;
 	this.data = opt.data || [];
 	this.active = null;
 	this.finalValue = '';
@@ -41,12 +37,11 @@ InputSuggest.prototype = {
 	init: function() {
 		this.win = window;
 		this.doc = window.document;
-		this.container = this.$C('div');
-		this.attr(this.container, 'class', this.containerCls);
+		this.container = this.$C('div', this.containerCls);
 		this.doc.body.appendChild(this.container);
 		this.setPos();
+		
 		var me = this, input = this.input;
-
 		this.on(input, 'keyup', function(e) {
 			if (input.value == '') {
 				me.hide();
@@ -61,8 +56,12 @@ InputSuggest.prototype = {
 		this.onMouseover();
 		this.onMousedown();
 	},
-	$C: function(tag) {
-		return this.doc.createElement(tag);
+	$C: function(tag, cls) {
+		var el = this.doc.createElement(tag);
+		if (cls) {
+			el.className = cls;
+		}
+		return el;
 	},
 	getPos: function (el) {
 		var pos=[0,0];
@@ -73,30 +72,14 @@ InputSuggest.prototype = {
 		return pos;
 	},
 	setPos: function() {
-		var input = this.input, 
-			pos = this.getPos(input), 
-			brow = this.brow, 
-			width = this.width,
-			opacity = this.opacity,
-			container = this.container
+		var input = this.input,
+			pos = this.getPos(input),
+			container = this.container;
 		
 		// IE6/7/8/9/Chrome/Safari input[type=text] border默认为2，Firefox为1，因此取offsetWidth-2保证与FF一致
 		container.style.cssText =
-			'position:absolute;overflow:hidden;left:' 
-			+ pos[0] + 'px;top:'
-			+ (pos[1]+input.offsetHeight) + 'px;width:'
-			+ (brow.firefox ? input.clientWidth : input.offsetWidth-2) + 'px;';
-			
-		if (width) {
-			container.style.width = width + 'px';
-		}
-		if (opacity) {
-			if (this.brow.ie) {
-				container.style.filter = 'Alpha(Opacity=' + opacity * 100 + ');';
-			} else {
-				container.style.opacity = (opacity == 1 ? '' : '' + opacity);
-			}
-		}
+			'position:absolute;overflow:hidden;left:' + pos[0] + 'px;top:' +
+			(pos[1]+input.offsetHeight) + 'px;width:' + (input.offsetWidth-2) + 'px;';
 	},
 	show: function() {
 		this.container.style.visibility = 'visible';
@@ -106,24 +89,9 @@ InputSuggest.prototype = {
 		this.container.style.visibility = 'hidden';
 		this.visible = false;	
 	},
-	attr: function(el, name, val) {
-		if (val === undefined) {
-			return el.getAttribute(name);
-		} else {
-			el.setAttribute(name,val);
-			name=='class' && (el.className = val);
-		}
-	},
 	on: function(el, type, fn) {
 		el.addEventListener ? el.addEventListener(type, fn, false) : el.attachEvent('on' + type, fn);
 	},
-	brow: function(ua) {
-		return {
-			ie: /msie/.test(ua) && !/opera/.test(ua),
-			opera: /opera/.test(ua),
-			firefox: /firefox/.test(ua)
-		};
-	}(navigator.userAgent.toLowerCase()),
 	onKeyup: function(e) {
 		var container = this.container, input = this.input, iCls = this.itemCls, aCls = this.activeCls;
 		if (this.visible) {
@@ -137,16 +105,16 @@ InputSuggest.prototype = {
 				case 38: // 方向键上
 					if (this.active == null) {
 						this.active = container.lastChild;
-						this.attr(this.active, 'class', aCls);
+						this.active.className = aCls;
 						input.value = this.active.firstChild.data;
 					} else {
 						if (this.active.previousSibling != null) {
-							this.attr(this.active, 'class', iCls);
+							this.active.className = iCls;
 							this.active = this.active.previousSibling;
-							this.attr(this.active, 'class', aCls);
+							this.active.className = aCls;
 							input.value = this.active.firstChild.data;
 						} else {
-							this.attr(this.active, 'class', iCls);
+							this.active.className = iCls;
 							this.active = null;
 							input.focus();
 							input.value = this.finalValue;
@@ -156,16 +124,16 @@ InputSuggest.prototype = {
 				case 40: // 方向键下
 					if (this.active == null) {
 						this.active = container.firstChild;
-						this.attr(this.active, 'class', aCls);
+						this.active.className = aCls;
 						input.value = this.active.firstChild.data;
 					} else {
 						if (this.active.nextSibling != null) {
-							this.attr(this.active, 'class', iCls);
+							this.active.className = iCls;
 							this.active = this.active.nextSibling;
-							this.attr(this.active, 'class', aCls);
+							this.active.className = aCls;
 							input.value = this.active.firstChild.data;
 						} else {
-							this.attr(this.active, 'class', iCls);
+							this.active.className = iCls;
 							this.active = null;
 							input.focus();
 							input.value = this.finalValue;
@@ -186,7 +154,7 @@ InputSuggest.prototype = {
 			this.container.innerHTML = '';
 			for (var i = 0, len = this.data.length; i<len; i++) {
 				var item = this.$C('div');
-				this.attr(item, 'class', this.itemCls);
+				item.className = this.itemCls;
 				item.innerHTML = input.value + '@' + this.data[i];
 				this.items[i] = item;
 				this.container.appendChild(item);
@@ -196,9 +164,7 @@ InputSuggest.prototype = {
 		this.show();
 	},
 	onMouseover: function() {
-		var me = this,
-			icls = this.itemCls,
-			acls = this.activeCls;
+		var me = this, icls = this.itemCls, acls = this.activeCls;
 		this.on(this.container, 'mouseover', function(e) {
 			var target = e.target || e.srcElement;
 			if (target.className === icls) {
@@ -219,4 +185,3 @@ InputSuggest.prototype = {
 		});
 	}
 };
-

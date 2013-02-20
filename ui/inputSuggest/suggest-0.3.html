@@ -17,27 +17,24 @@
 			window.onload = function(){
 				var sinaSuggest = InputSuggest({
 					input: document.getElementById('sina'),
-					url: 'json.data',
 					data: ['sina.cn','sina.com','vip.sina.com.cn','2008.sina.com','263.sina.com']
 				});
 				var sohuSuggest = InputSuggest({
-					width: 300,
-					opacity: 0.3,
 					input: document.getElementById('sohu'),
-					data: ['sohu.com','sogou.com','chinaren.com','vip.sohu.com','sohu.net','2008.sohu.com','sms.sohu.com']
+					url: 'json.data'
 				});
 				
 			}
 		</script>
 	</head>
 	<body>
-		<div style="width:520px;margin:30px auto;text-align:center;">
+		<div style="width:580px;margin:30px auto;text-align:center;">
 			<div style="float:left">
 				<label>新浪</label>
 				<input type="text" id="sina"/>
 			</div>
 			<div style="float:right">
-				<label>搜狐</label>
+				<label>搜狐(Ajax)</label>
 				<input type="text" id="sohu"/>
 			</div>
 		</div>

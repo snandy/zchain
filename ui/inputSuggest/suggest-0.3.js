@@ -24,9 +24,6 @@
 function bind(el, type, handler) {
 	el.addEventListener ? el.addEventListener(type, handler, false) : el.attachEvent('on' + type, handler);
 }
-function unbind(el, type, handler) {
-	el.removeEventListener ? el.removeEventListener(type, handler, false) : el.detachEvent('on' + type, handler);
-}
 function createEl(tagName, cls) {
 	var el = doc.createElement(tagName);
 	if (cls) {
@@ -45,13 +42,6 @@ function getPos(el) {
 function startsWith(str, prefix) {
 	return str.lastIndexOf(prefix, 0) === 0;
 }
-var browser = function(ua) {
-	return {
-		ie: /msie/.test(ua) && !/opera/.test(ua),
-		opera: /opera/.test(ua),
-		firefox: /firefox/.test(ua)
-	}
-}(navigator.userAgent.toLowerCase());
 
 var Ajax = function(window, undefined) {
 	
@@ -276,13 +266,7 @@ function InputSuggest(opt) {
 		if (width) {
 			suggestEl.style.width = width + 'px';
 		}
-		if (opacity) {
-			if (browser.ie) {
-				suggestEl.style.filter = 'Alpha(Opacity=' + opacity * 100 + ');';
-			} else {
-				suggestEl.style.opacity = (opacity == 1 ? '' : '' + opacity);
-			}
-		}
+		
 	}
 	function createItem(val, suffix) {
 		suffix = suffix || '';
