@@ -117,9 +117,6 @@ InputSuggest.prototype = {
 	on: function(el, type, fn) {
 		el.addEventListener ? el.addEventListener(type, fn, false) : el.attachEvent('on' + type, fn);
 	},
-	un: function(el, type, fn) {
-		el.removeEventListener ? el.removeEventListener(type, fn, false) : el.detachEvent('on' + type, fn);
-	},
 	brow: function(ua) {
 		return {
 			ie: /msie/.test(ua) && !/opera/.test(ua),
