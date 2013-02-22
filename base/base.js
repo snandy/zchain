@@ -22,7 +22,6 @@ function isEmptyObject( obj ) {
 }
 
 function evalJs(str){
-
 	var head = document.getElementsByTagName('head')[0];
 	var script = document.createElement('script');
 	try{
@@ -76,10 +75,8 @@ function removeComments(code) {
         .replace(/(?:^|\n|\r)\s*\/\/.*(?:\r|\n|$)/g, '\n');
 }
 
-/**
- * 预加载JS from <<JavaScript Patterns>>
- * 
- */
+
+// 预加载JS from <<JavaScript Patterns>>
 function preload(url) {
 	var obj, body
 	if (/*@cc_on!@*/!1) {
@@ -95,4 +92,19 @@ function preload(url) {
 	}
 }
 preload('http://code.jquery.com/jquery-1.8.0.js')
+
+// 获取flash对象
+function thisMovie(movieName) {
+	if (navigator.appName.indexOf("Microsoft") != -1) {
+		if(navigator.appVersion.match(/9./i)!="9."){
+			return window[movieName];
+		}else{
+			return document[movieName];
+		}
+	} else {
+		 return document[movieName];
+	}
+}
+
+
 
