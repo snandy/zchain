@@ -7,13 +7,11 @@
  * 
  * InputSuggest({
  *	   input		 HTMLInputElement 必选
- *	   url			 ajax请求的地址  与data二选其一
- *	   data			 Array ['sina.cn','sina.com','2008.sina.com','vip.sina.com.cn'] 与url二选其一
+ *	   url			 ajax请求的地址
+ * 	   queryName     指定传给后台的name
  *	   containerCls  容器className
  *	   itemCls		 容器子项className
  *	   activeCls	 高亮子项className
- *	   width		 宽度设置 此项将覆盖containerCls的width
- *	   opacity		 透明度设置 此项将覆盖containerCls的opacity
  * });
  * 
  */
@@ -24,10 +22,13 @@
 function bind(el, type, handler) {
 	el.addEventListener ? el.addEventListener(type, handler, false) : el.attachEvent('on' + type, handler);
 }
-function createEl(tagName, cls) {
+function createEl(tagName, cls, html) {
 	var el = doc.createElement(tagName);
 	if (cls) {
 		el.className = cls;
+	}
+	if (html) {
+		el.innerHTML = html;
 	}
 	return el;
 }
@@ -38,9 +39,6 @@ function getPos(el) {
 		pos = [box.left, box.top];
 	}
 	return pos;
-}
-function startsWith(str, prefix) {
-	return str.lastIndexOf(prefix, 0) === 0;
 }
 
 var Ajax = function(window, undefined) {
@@ -187,8 +185,8 @@ function InputSuggest(opt) {
 		cCls  = opt.containerCls || 'suggest-container',
 		iCls  = opt.itemCls || 'suggest-item',
 		aCls  = opt.activeCls || 'suggest-active',
-		data  = opt.data || [],
-		url   = opt.url,
+		url   = opt.url || location.href,
+		key   = opt.queryName || 'key',
 		finalVal = '', visible, activeItem;
 		
 	var suggestEl = createEl('div', cCls);
@@ -256,73 +254,44 @@ function InputSuggest(opt) {
 		}
 	}
 	function cssSuggest(obj) {
-		var pos   = getPos(input), width = obj.width, opacity = obj.opacity;
+		var pos   = getPos(input);
 		
 		// IE6/7/8/9/Chrome/Safari input[type=text] border为2，padding为1，Firefox则为1和2px，因此取offsetWidth-2	
 		suggestEl.style.cssText =
 			'position:absolute;overflow:hidden;left:' + pos[0] + 'px;top:' +
 			(pos[1] + input.offsetHeight) + 'px;width:' + (input.offsetWidth-2) + 'px;';
-		
-		if (width) {
-			suggestEl.style.width = width + 'px';
-		}
-		
 	}
-	function createItem(val, suffix) {
-		suffix = suffix || '';
-		var has = val.indexOf('@') !== -1;
-		var item = createEl('div', iCls);
-		item.innerHTML = val + (has ? '' : '@') + suffix;
+	function createItem(val) {
+		var item = createEl('div', iCls, val);
 		return item;
 	}
 	function showSuggest() {
-		var arr = [], strs = [];
-		var val = input.value;
-		suggestEl.innerHTML = '';
-		
-		// ajax 
-		if (url) {
-			Ajax.json(url, {
-				success: function(data) {
-					for (var i=0; i<data.length; i++) {
-						var item = createItem(val, data[i]);
-						suggestEl.appendChild(item);
-					}
-					show();
-					finalVal = val;
-				}
-			});
-		} else {
-			if (finalVal !== input.value) {
-				strs = [];
-				if (input.value.indexOf('@') !== -1) {
-					strs = input.value.split('@');
-					arr.push(strs[1]);
-					for (var i=0, len = data.length; i<len; i++) {
-						if ( startsWith(data[i], strs[1]) ) {
-							arr.push(data[i]);
-						}
-					}
-				}
-				arr = arr.length>=1 ? arr : data;
+		var data = {},
+			val = input.value;
+			
+		data[key] = val;
+		Ajax.json(url, {
+			data: data,
+			success: function(arr) {
+				suggestEl.innerHTML = '';
 				for (var i=0; i<arr.length; i++) {
-					var item = createItem(strs[0]||val, arr[i], iCls);
+					var item = createItem(arr[i]);
 					suggestEl.appendChild(item);
 				}
+				show();
 				finalVal = val;
 			}
-			show();
-		}
+		});
 	}
 	function onKeyup(e) {
+		var kc = e.keyCode;
 		if (input.value === '') {
 			hide();
 		} else {
-			if (visible) {
-				doKey(e);
-			} else {
-				showSuggest();
+			if (kc===13 || kc===27 || kc===38 || kc===40) {
+				return doKey(e);
 			}
+			showSuggest();
 		}
 	}
 	
