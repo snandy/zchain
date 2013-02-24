@@ -57,10 +57,13 @@ InputSuggest.prototype = {
         this.onMouseover();
         this.onMousedown();
     },
-	$C: function(tag, cls) {
+	$C: function(tag, cls, html) {
 		var el = this.doc.createElement(tag);
 		if (cls) {
 			el.className = cls;
+		}
+		if (html) {
+			el.innerHTML = html;
 		}
 		return el;
 	},
@@ -178,8 +181,7 @@ InputSuggest.prototype = {
     createItem: function(val, suffix) {
         suffix = suffix || '';
         var has = val.indexOf('@') !== -1;
-        var item = this.$C('div');
-        item.className = this.itemCls;
+        var item = this.$C('div', this.itemCls);
         item.innerHTML = val + (has?'':'@') + suffix;
         this.container.appendChild(item);
     },
