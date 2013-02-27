@@ -95,15 +95,12 @@ preload('http://code.jquery.com/jquery-1.8.0.js')
 
 // 获取flash对象
 function thisMovie(movieName) {
-	if (navigator.appName.indexOf("Microsoft") != -1) {
-		if(navigator.appVersion.match(/9./i)!="9."){
-			return window[movieName];
-		}else{
-			return document[movieName];
-		}
+	var isIE = /*@cc_on!@*/!1;
+	if (isIE) {
+		return document.getElementById(movieName);
 	} else {
 		 return document[movieName];
-	}
+	}	
 }
 
 

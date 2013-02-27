@@ -1,0 +1,109 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>光标从编辑器移入本页面中的其它输入域后，IE中每次只在编辑器首部插入内容</title>
+    <meta charset="UTF-8">
+ 	<style type="text/css">
+ 		body {margin:5px;padding:0;}
+ 		div.editor {
+ 			width: 505px;
+ 			margin: 0 auto;
+ 		}
+ 		div.wrapper {
+ 			border: 1px solid gray;
+ 		}
+ 	</style>
+ 	<script>
+ 		var isIE = /*@cc_on!@*/!1;
+ 		function byTag(name) {
+ 			return document.getElementsByTagName(name)[0];
+ 		}
+ 		function getEditorWin() {
+ 			var ifr = byTag('iframe');
+ 			var win = ifr.contentWindow;
+ 			return win;
+ 		}
+ 		// http://stackoverflow.com/questions/6690752/insert-html-at-cursor-in-a-contenteditable-div/6691294#6691294
+ 		function pasteHtml(html) {
+ 			var win = getEditorWin(),
+ 				doc = win.document;
+		    var sel, range;
+		    win.focus();
+		    if (!isIE) {
+		        sel = win.getSelection();
+		        if (sel.getRangeAt && sel.rangeCount) {
+		            range = sel.getRangeAt(0);
+		            range.deleteContents();
+		            // Range.createContextualFragment() would be useful here but is
+		            // non-standard and not supported in all browsers (IE9, for one)
+		            var el = doc.createElement("div");
+		            el.innerHTML = html;
+		            var frag = doc.createDocumentFragment(), node, lastNode;
+		            while ( (node = el.firstChild) ) {
+		                lastNode = frag.appendChild(node);
+		            }
+		            range.insertNode(frag);
+		
+		            // Preserve the selection
+		            if (lastNode) {
+		                range = range.cloneRange();
+		                range.setStartAfter(lastNode);
+		                range.collapse(true);
+		                sel.removeAllRanges();
+		                sel.addRange(range);
+		            }
+		        }
+		    } else if (doc.selection && doc.selection.type != "Control") {
+		        doc.selection.createRange().pasteHTML(html);
+		    }
+		}
+ 		function init() {
+ 			var win = getEditorWin();
+ 			var button = byTag('button');
+ 			button.onclick = function() {
+ 				pasteHtml('|||');
+ 			}
+ 			win.document.onclick = function() {
+ 				win.focus()
+ 			};
+ 		}
+ 		window.onload = function() {
+ 			init();
+ 		};
+ 	</script>
+  </head>
+  <body>
+  	<div class="editor">
+  		<button>插入HTML</button>　　　　输入域<input/>
+  		<br/>
+  		<div class="wrapper">
+  			<iframe src="blank.html" height="300" width="500" frameborder="0"></iframe>
+  		</div>
+  		
+  		<h3>重现步骤：</h3>
+		<ol>
+			<li>将光标点到文本“some text”的末尾（想在“some text”后插入内容）</li>
+			<li>将光标点到“输入域”的文本框</li>
+			<li>点击“插入HTML”按钮</li>
+		</ol>
+		
+		<h3>结果：</h3>
+		<ul>
+			<li>IE6-10中每次都在编辑器最前面插入内容</li>
+			<li>Firefox/Chrome/Safari中每次都在编辑器后面插入内容</li>
+		</ul>
+		
+		<h3>原因：</h3>
+		<p>
+			应该是IE bug， 即光标离开编辑器，移入本窗口的另一个输入域后。IE不能记忆编辑器上一次的光标位置，这时插入内容时每次都在最前面插入。
+			其它浏览器则能记忆上一次光标位置，能满足用户需求。
+		</p>
+		
+		<h3>解决方案</h3>
+		<p>
+			所有的编辑器如UEditor、KindEditor、新浪邮箱，博客编辑器都弹出一个窗口级的对话框（内含iframe），该页面里的输入域不会影响。
+		</p>
+  	</div>
+
+  </body>
+</html>
