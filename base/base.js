@@ -103,5 +103,22 @@ function thisMovie(movieName) {
 	}	
 }
 
+// 打开窗口且居中
+// http://www.extremestudio.ro/blog/open-and-center-window-with-javascript/
+// http://stackoverflow.com/questions/6983552/window-open-to-center-of-screen
+function open_window(url, width, height) {
+   var my_window;
 
+   //screen.width = Desktop Width
+   //screen.height = Desktop Height
+
+   var center_left = (screen.width / 2) - (width / 2);
+   var center_top = (screen.height / 2) - (height / 2);
+   var fes = "width="+width+", height="+height+", left="+center_left+", top="+center_top;
+   
+   my_window = window.open(url, "Title", fes);
+   my_window.focus();
+}
+
+	
 
