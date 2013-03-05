@@ -5,11 +5,9 @@ var pro = require("./uglifyJS/uglify-js").uglify;
 function readFile(file) {
 	return fs.readFileSync(file, 'utf8');
 }
-
 function writeFile(fname, str) {
 	fs.writeFileSync(fname, str, 'utf8');
 }
-
 function exists(path) {
 	if (path.charAt(path.length - 1) === '/' &&
 		path.charAt(path.length - 2) !== ':') {
@@ -22,19 +20,15 @@ function exists(path) {
 		return false;
 	}
 }
-
 function isFile(path) {
 	return fs.statSync(path).isFile();
 }
-
 function isDirectory(path) {
 	return fs.statSync(path).isDirectory();
 }
-
 function renameFile(from, to) {
 	return fs.renameSync(from, to);
 }
-
 function endsWith(str, suffix) {
 	var l = str.length - suffix.length;
 	return l >= 0 && str.indexOf(suffix, l) == l;
@@ -92,7 +86,6 @@ function rmDir(path) {
 /**
  * 保留版权信息
  * @param {string} fileContents
- * 
  */
 function preserveLicenseComments(fileContents) {
 	var match,
@@ -136,7 +129,6 @@ function preserveLicenseComments(fileContents) {
  * 
  */
 function compress(origCode, conf) {
-	
 	var ast, finalCode, licenseContents, mangleConfig, squeezeConfig;
 	var conf             = conf || {};
 	var strictSemicolons = conf.strict;
@@ -192,7 +184,6 @@ function compress(origCode, conf) {
  * @param {string} destFile
  * @returns {string}
  * buildOne('../modJS/scripts/es5.js', 'es5.js');
- * 
  */
 function buildOne(srcFile, destFile) {
 	var orig, code;
@@ -210,7 +201,6 @@ function buildOne(srcFile, destFile) {
  * 压缩某目录下的所有JS文件到指定目录，输出目录层次与源目录一致
  * @param {string} srcPath
  * @param {string} destPath
- * 
  */
 function buildDir(srcPath, destPath) {
 	var src, dest;
@@ -227,13 +217,19 @@ function buildDir(srcPath, destPath) {
 		}
 	});
 }
-
+// 合并多个文件
+function mergeFile(/*file1, file2, file3, ..*/) {
+	var arr = [];
+	for (var file, i=0; i<arguments.length; i++) {
+		arr[i] = readFile(arguments[i]);
+	}
+	return arr.join('');
+}
 /**
  * 读取指定目录中JS文件，拼凑成一个字符串返回
  * @param {string} path
  * @param {boolean} mergeSub
  * @returns {string}
- * 
  */
 function merge(path, mergeSub) {
 	var directory = fs.readdirSync(path);
@@ -261,7 +257,6 @@ function merge(path, mergeSub) {
  * @param {string} destFile
  * @param {boolean} mergeSub
  * @returns {string}
- * 
  */
 function mergeToOne(srcPath, destFile, mergeSub) {
 	var destFile = destFile || srcPath + '-merge.js';
