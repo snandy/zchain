@@ -38,21 +38,23 @@
  */
 
 function $(selector,context) {
-	var s = selector, doc = document,
-		rId = /^#[\w\-]+/,
+	var s = selector, doc = document;
+	var rId = /^#[\w\-]+/,
 		rCls = /^([\w\-]+)?\.([\w\-]+)/,
 		rTag = /^([\w\*]+)$/,
 		rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/;
+	var arr = [];
 	
 	var context = 
-			context == undefined ?
+			context === undefined ?
 			document :
-			typeof context == 'string' ?
+			typeof context === 'string' ?
 			doc.getElementById(context.substr(1, context.length)) :
 			context;
 			
 	if (rId.test(s)) {
-		return doc.getElementById( s.substr(1, s.length) );
+		arr[0] = doc.getElementById( s.substr(1, s.length) );
+		return arr;
 	}
 	
 	if (context.querySelectorAll) {
@@ -62,29 +64,29 @@ function $(selector,context) {
 				return context.querySelectorAll( '#' + id + ' ' + s );
 			} catch(e){
 			} finally {
-				old ? context.id = old : context.removeAttribute( 'id' );
+				old ? context.id = old : context.removeAttribute('id');
 			}
 		}
 		return context.querySelectorAll(s);
-	}
+	}	
 	if (rCls.test(s)) {
-		var ary = s.split('.'),
-			tag = ary[0],
+		var ary = s.split('.'),	
+			tag = ary[0], 
 			cls = ary[1],
-			len, all, els = [];
+			i, len, all, els;
 		if (context.getElementsByClassName) {
-			var res = context.getElementsByClassName(cls);
+			els = context.getElementsByClassName(cls);
 			if (tag) {
-				for (var i=0, len = res.length; i < len; i++) {
-					res[i].tagName.toLowerCase()===tag && els.push(res[i]);
+				for (i=0, len = els.length; i < len; i++) {
+					els[i].tagName.toLowerCase()===tag && arr.push(els[i]);
 				}
-				return els;
+				return arr;
 			} else {
-				return res;
+				return els;
 			}
 		} else {
 			all = context.getElementsByTagName(tag || '*');
-			return filter(all, 'className', cls);	
+			return filter(all, 'className', cls);
 		}
 	}
 	
