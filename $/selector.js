@@ -57,18 +57,18 @@ function $(selector,context) {
 		return arr;
 	}
 	
-	if (context.querySelectorAll) {
-		if (context.nodeType === 1) {
-			var old = context.id, id = context.id = '__$$__';
-			try {
-				return context.querySelectorAll( '#' + id + ' ' + s );
-			} catch(e){
-			} finally {
-				old ? context.id = old : context.removeAttribute('id');
-			}
-		}
-		return context.querySelectorAll(s);
-	}	
+	// if (context.querySelectorAll) {
+		// if (context.nodeType === 1) {
+			// var old = context.id, id = context.id = '__$$__';
+			// try {
+				// return context.querySelectorAll( '#' + id + ' ' + s );
+			// } catch(e){
+			// } finally {
+				// old ? context.id = old : context.removeAttribute('id');
+			// }
+		// }
+		// return context.querySelectorAll(s);
+	// }	
 	if (rCls.test(s)) {
 		var ary = s.split('.'),	
 			tag = ary[0], 
@@ -98,24 +98,27 @@ function $(selector,context) {
 		var ary = rAttr.exec(s), all = context.getElementsByTagName(ary[1] || '*');
 		return filter(all, ary[2], ary[4]);
 	}
-	
-	function filter(all, attr, val) {
+
+	function test(attr, val, node) {
 		var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)'),
-			i = -1, el, r = -1, res = [];
-		function test(node) {
-			var v = attr === 'className' ? node.className : node.getAttribute(attr);
-			if (v) {
-				if (val) {
-					if (reg.test(v)) return true;
-				} else {
-					return true;
-				}
+			v = attr === 'className' ? node.className : node.getAttribute(attr);
+		if (v) {
+			if (val) {
+				if (reg.test(v)) return true;
+			} else {
+				return true;
 			}
-			return false;
 		}
-		while ( (el = all[++i]) ) {
-			if ( test(el) ) {
-				res[++r] = el;
+		return false;
+	}
+	function filter(all, attr, val) {
+		var el,
+			i = 0,
+			r = 0,
+			res = [];
+		while ( (el = all[i++]) ) {
+			if ( test(attr, val, el) ) {
+				res[r++] = el;
 			}
 		}
 		return res;
