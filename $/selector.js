@@ -57,18 +57,18 @@ function $(selector,context) {
 		return arr;
 	}
 	
-	// if (context.querySelectorAll) {
-		// if (context.nodeType === 1) {
-			// var old = context.id, id = context.id = '__$$__';
-			// try {
-				// return context.querySelectorAll( '#' + id + ' ' + s );
-			// } catch(e){
-			// } finally {
-				// old ? context.id = old : context.removeAttribute('id');
-			// }
-		// }
-		// return context.querySelectorAll(s);
-	// }	
+	if (context.querySelectorAll) {
+		if (context.nodeType === 1) {
+			var old = context.id, id = context.id = '__$$__';
+			try {
+				return context.querySelectorAll( '#' + id + ' ' + s );
+			} catch(e){
+			} finally {
+				old ? context.id = old : context.removeAttribute('id');
+			}
+		}
+		return context.querySelectorAll(s);
+	}	
 	if (rCls.test(s)) {
 		var ary = s.split('.'),	
 			tag = ary[0], 
