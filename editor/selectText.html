@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <title>光标从编辑器移入本页面中的其它输入域后，IE中每次只在编辑器首部插入内容</title>
+    <meta charset="UTF-8">
+ 	<style type="text/css">
+ 		body {margin:5px;padding:0;}
+ 		div.editor {
+ 			width: 505px;
+ 			margin: 0 auto;
+ 		}
+ 		div.wrapper {
+ 			border: 1px solid gray;
+ 		}
+ 	</style>
+ 	<script src="editor.js"></script>
+ 	<script>
+ 		window.onload = function() {
+ 			editor.init();
+ 		};
+ 	</script>
+  </head>
+  <body>
+  	<div class="editor">
+  		<button>插入HTML</button>　　　　输入域<input/>
+  		<br/>
+  		<div class="wrapper">
+  			<iframe id="editorifr" src="blank.html" height="300" width="500" frameborder="0"></iframe>
+  		</div>
+  	</div>
+  </body>
+</html>
