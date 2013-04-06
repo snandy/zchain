@@ -21,6 +21,10 @@
  	</script>
   </head>
   <body>
+  	<p>dd</p><div>
+  		<span>sp</span>
+  		<p><strong>hello,</strong>world.</p>
+  	</div>
   	<div class="editor">
   		<button>插入HTML</button>　　　　输入域<input/>
   		<br/>
@@ -28,5 +32,11 @@
   			<iframe id="editorifr" src="blank.html" height="300" width="500" frameborder="0"></iframe>
   		</div>
   	</div>
+  	<script>
+  		var el = domUtil.$('div')[0];
+  		var range1 = document.createRange();
+  		range1.selectNode(el);
+  		
+  	</script>
   </body>
 </html>
