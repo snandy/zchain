@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ <head>
+	<title></title>
+	<meta charset="gb2312"/>
+	<style>
+		p {
+			color: red;
+		}
+	</style>
+ </head>
+ <body>
+	<button onclick="loadByWrite('a.js', 'utf-8')">测试</button>
+	<script>
+		function loadByWrite(url, charset) {
+			var str = '<script type="text/javascript"' + ' src="' + url + '" charset="' + charset + '"><' + '/script>';
+			document.write(str);
+		}
+	</script>
+	<script>
+	loadByWrite('a.js', 'utf-8')
+	</script>
+ </body>
+</html>

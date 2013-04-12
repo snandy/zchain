@@ -126,4 +126,18 @@ function toFirst(arr, index) {
 	arr.unshift(index[0]);
 	return arr;
 }
-
+// 提取字符串里的单层JSON {key: value}
+function pickUpJSON(str) {
+	var arr,
+		dest = [],
+		reg = /{[^{]*}/g
+		
+	arr = str.match(reg)
+	if (!arr.length) return dest
+	
+	var ast, i = 0
+	while (ast=arr[i++]) {
+		dest[i-1] = JSON.parse(ast)
+	}
+	return dest
+}
