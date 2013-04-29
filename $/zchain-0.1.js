@@ -180,29 +180,21 @@ function zChain(selector, context) {
 }
 zChain.prototype = {
 	init: function(selector, context) {
-		
 		var rId = /^#[-\w]+/,
+			rCls = /^([-\w]+)?\.([-\w]+)/,
+			rTag = /^([\w\*]+)$/,
+			rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/,
+			simple = /^[-#\w]+$/.test(selector);
 		
-		rCls = /^([-\w]+)?\.([-\w]+)/,
-		
-		rTag = /^([\w\*]+)$/,
-		
-		rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/,
-		
-		simple = /^[-#\w]+$/.test(selector);
-		
-		context = context === undefined ?
-			doc :
-				typeof context === 'string' ?
-					doc.getElementById(context.substr(1, context.length)) :
-						context;
+		context = context === undefined ? doc :
+				typeof context === 'string' ? doc.getElementById(context.substr(1, context.length)) : context;
 		
 		if (selector == null) {
-			return;
+			return
 		}
 		if (typeof selector === 'function') {
-			zChain.ready(selector);
-			return;
+			zChain.ready(selector)
+			return
 		}
 		if (selector.nodeType || selector == window) {
 			this[0] = selector;
@@ -411,13 +403,10 @@ zChain.prototype = {
 					setOffset(this, options, i);
 				});
 		}
-	
 		var el = this[0], doc = el && el.ownerDocument;
-	
 		if (!doc) {
 			return null;
 		}
-	
 		return getOffset(el, doc, doc.documentElement);
 	},
 	isStyle: function(name, val) {
