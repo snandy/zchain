@@ -469,8 +469,10 @@ dom = (function() {
 				el = el.offsetParent;
 			}
 			return {top: x, left: y};
-			
-		}
+		},
+		contains: function(container, el) {
+	        return container.contains ? container.contains(obj) : container === el || !! (container.compareDocumentPosition(el) & 16);
+	    }
 		
 	};
 
