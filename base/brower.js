@@ -15,9 +15,9 @@ B = function(ua){
 	};
 	var mark = '';
 	for (var i in b) {
-		if (b[i]) { mark = "safari" == i ? "version" : i; break; }
+		if (b[i]) { mark = 'safari' == i ? 'version' : i; break; }
 	}
-	b.version = mark && RegExp("(?:" + mark + ")[\\/: ]([\\d.]+)").test(ua) ? RegExp.$1 : "0";
+	b.version = mark && RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)').test(ua) ? RegExp.$1 : '0';
 	b.ie6 = b.msie && parseInt(b.version, 10) == 6;
 	b.ie7 = b.msie && parseInt(b.version, 10) == 7;
 	b.ie8 = b.msie && parseInt(b.version, 10) == 8;
@@ -61,12 +61,12 @@ var isIE = /*@cc_on!@*/!1;
 var isIE = /*@cc_on!@*/false;
 
 // ie不支持垂直制表符
-var ie678 = !+"\v1";
+var ie678 = !+'\v1';
 
 // ie bug
 var ie678 = !-[1,];
 
 var ie6 = /msie 6/i.test(navigator.userAgent);
 var ie6 = !!window.ActiveXObject && !window.XMLHttpRequest;
-var ie6 = navigator.appVersion.indexOf("MSIE 6")>-1;
+var ie6 = navigator.appVersion.indexOf('MSIE 6')>-1;
 

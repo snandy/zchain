@@ -141,3 +141,6 @@ function pickUpJSON(str) {
 	}
 	return dest
 }
+
+// 匹配一串字符串中出现最多的单词（以空白符或标点符号+空白符来区分单词）
+
