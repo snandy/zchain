@@ -3,26 +3,30 @@
  * 
  */
 B = function(ua){
-	var b = {
-		ie: /msie/.test(ua) && !/opera/.test(ua),
-		opera: /opera/.test(ua),
-		safari: /webkit/.test(ua) && !/chrome/.test(ua),
-		firefox: /firefox/.test(ua),
-		chrome: /chrome/.test(ua),
-		maxthon: /maxthon/.test(ua),
-		sogou: /se/.test(ua),
-		tt: /TencentTraveler/.test(ua)
-	};
-	var mark = '';
-	for (var i in b) {
-		if (b[i]) { mark = 'safari' == i ? 'version' : i; break; }
-	}
-	b.version = mark && RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)').test(ua) ? RegExp.$1 : '0';
-	b.ie6 = b.msie && parseInt(b.version, 10) == 6;
-	b.ie7 = b.msie && parseInt(b.version, 10) == 7;
-	b.ie8 = b.msie && parseInt(b.version, 10) == 8;
-	b.ie9 = b.msie && parseInt(b.version, 10) == 9;	
-	return b;
+    var b = {
+        ie: /msie/.test(ua) && !/opera/.test(ua),
+        opera: /opera/.test(ua),
+        safari: /webkit/.test(ua) && !/chrome/.test(ua),
+        firefox: /firefox/.test(ua),
+        chrome: /chrome/.test(ua),
+        maxthon: /maxthon/.test(ua),
+        sogou: /se/.test(ua),
+        tt: /TencentTraveler/.test(ua)
+    }
+    var mark = ''
+    for (var i in b) {
+        if (b[i]) {
+        	mark = 'safari' == i ? 'version' : i;
+        	break;
+    	}
+    }
+    b.version = mark && RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)').test(ua) ? RegExp.$1 : '0'
+    b.ie6  = b.ie && parseInt(b.version, 10) == 6;
+    b.ie7  = b.ie && parseInt(b.version, 10) == 7;
+    b.ie8  = b.ie && parseInt(b.version, 10) == 8;
+    b.ie9  = b.ie && parseInt(b.version, 10) == 9;
+    b.ie10 = b.ie && parseInt(b.version, 10) == 10;
+    return b
 }(navigator.userAgent.toLowerCase());
 
 // ie detector
@@ -59,7 +63,7 @@ var ie = (function(){
 // ie comments
 var isIE = /*@cc_on!@*/!1;
 var isIE = /*@cc_on!@*/false;
-
+g
 // ie不支持垂直制表符
 var ie678 = !+'\v1';
 
