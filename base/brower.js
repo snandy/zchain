@@ -20,12 +20,13 @@ B = function(ua){
         	break;
     	}
     }
-    b.version = mark && RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)').test(ua) ? RegExp.$1 : '0'
-    b.ie6  = b.ie && parseInt(b.version, 10) == 6;
-    b.ie7  = b.ie && parseInt(b.version, 10) == 7;
-    b.ie8  = b.ie && parseInt(b.version, 10) == 8;
-    b.ie9  = b.ie && parseInt(b.version, 10) == 9;
-    b.ie10 = b.ie && parseInt(b.version, 10) == 10;
+    var reg = RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)')
+    b.version = mark && reg.test(ua) ? RegExp.$1 : '0'
+    b.ie6  = b.ie && parseInt(b.version, 10) == 6
+    b.ie7  = b.ie && parseInt(b.version, 10) == 7
+    b.ie8  = b.ie && parseInt(b.version, 10) == 8
+    b.ie9  = b.ie && parseInt(b.version, 10) == 9
+    b.ie10 = b.ie && parseInt(b.version, 10) == 10
     return b
 }(navigator.userAgent.toLowerCase());
 
