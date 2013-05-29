@@ -1,46 +1,78 @@
-<!DOCTYPE HTML>
+<!doctype html>
 <html>
-  <head>
-    <title>拖拽事件</title>
-    <meta charset="UTF-8">
- 	<style type="text/css">
- 		body {margin:0;padding:0;}
- 	</style>
- 	<script src="callbacks.js"></script>
-	<script>
-'use strict';
-// console.log(obj.age)
+<style>
+td{width:30px;height:30px;text-align:center}
+</style>
+<script>
+var $w = function(s){document.write(s)};
 
-var proto = {school: 'PKU'}
-function Person(n, a) {
-	this.name = n;
-	this.age = a;
+//初始化大小
+var n = 2;
+var arr = [];
+for(var i = 0; i < n; i++) {
+  arr.push([]);
 }
-Person.prototype = proto;
-var p = new Person('John Backus');
-// console.log(p instanceof Person); // true
 
-function A(){}
-function B(){}
-var p = new A();
-B.prototype = p;
-// A.prototype = B.prototype = {a: 1};
-// 
-// var a = new A();
-// A.prototype = {};
-// var b = new B();
-// console.log(a instanceof A); // true
-// console.log(a instanceof B); // true
-// console.log(b instanceof A); // true
-// console.log(b instanceof B); // true
+//中点位置，(n - 0.1)取奇数的中点
+//坐标系平移到中点，并采用笛卡尔坐标系
+//(x-mid, mid-y)
+var mid = Math.floor((n - 0.1)/2);
 
-function A(){}
-A.prototype = 1; // A的prototype设为非对象类型
-var a = new A();
-console.log(a instanceof A);
+//x, y坐标绝对值最大数为层 l
+function layer(x,y){
+  return Math.max(Math.abs(x), Math.abs(y));
+}
 
-	</script> 
-  </head>
-  <body>
-  </body>
+//分成4个边，右下左上
+function side(x, y) {
+  var l = layer(x, y)
+  var s = 1 //边的编号，默认为右边
+
+  if (-y == l && x >= y && x != l) //下边
+    s = 2;
+  else if(-x == l && x < y) //左边
+    s = 3;
+  else if(y == l && x <= y) //上边
+    s = 4;
+
+  return s
+}
+//每个边按规律分段计算展开数
+function sideNum(x, y) {
+  var s = side(x, y)
+  var l = layer(x, y)
+  //层l的最大可容纳数为l * 8
+  var maxNum = l * 8 - 1
+
+  //层l最大数为 4l(l+1)
+  var max = 4 * l * (l + 1)
+  
+  //每个边的最大数
+  var temp = l * (s * 2 - 1)
+
+  if(s == 1)
+    temp = temp - y //1 随y递减递增
+  else if(s == 2)
+    temp = temp - x //2 随x递减递增
+  else if(s == 3)
+    temp = temp + y //3 随y递增递增
+  else 
+    temp = temp + x //4 随x递增递增
+
+  return temp + max - maxNum
+}
+
+
+$w('<table border="1">')
+for (var i = 0; i < n; i++) {
+  $w('<tr>')
+  for (var j = 0; j < n; j++) {
+    arr[j][i] = sideNum(j-mid, mid-i)
+    $w('<td>' + arr[j][i] + '</td>')
+  }
+  $w('</tr>')
+}
+$w('</table>')
+
+</script>
 </html>
