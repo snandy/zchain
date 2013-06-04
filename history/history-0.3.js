@@ -15,56 +15,52 @@
  * 
  */
 
-History = function() {
-    
-var 
-   iframe,
-   
-   // 存储历史记录
-   list = [],
-   
-   // 历史记录索引
-   index = 0;
+historyManager = function() {
+  var iframe,
+     
+      list = [], // 存储历史记录
+     
+      index = 0; // 历史记录索引
 
-iframe = document.createElement('iframe');
-iframe.style.display = 'none';
-iframe.onload = function() {
+  iframe = document.createElement('iframe');
+  iframe.style.display = 'none';
+  iframe.onload = function() {
 
+  }
+  document.body.appendChild(iframe);
+      
+  function push(data) {
+      if(typeof data !== 'object') return;
+      
+      if(typeof data.param == undefined || typeof data.func !== 'function') return;
+      
+      list[index] = data;
+      updateIframe();
+      pushing = true;
+      index++;
+  }
 
-}
-document.body.appendChild(iframe);
-    
-function push(data) {
-    if(typeof data !== 'object') return;
-    
-    if(typeof data.param == undefined || typeof data.func !== 'function') return;
-    
-    list[index] = data;
-    updateIframe();
-    pushing = true;
-    index++;
-}
+  function updateIframe() {
+      iframe.src = 'blank.html?' + index;
+  }
 
-function updateIframe() {
-    iframe.src = 'blank.html?' + index;
-}
+  function get(idx) {
+      var item, param, func, scope;
+      if(idx != index) {
+          item = list[idx];
+          if(item) {
+              param = item.param;
+              func  = item.func;
+              scope = item.scope;
+              func.call(scope, param);
+          }
+      }
+      
+  }
 
-function get(idx) {
-    var item, param, func, scope;
-    if(idx != index) {
-        item = list[idx];
-        if(item) {
-            param = item.param;
-            func  = item.func;
-            scope = item.scope;
-            func.call(scope, param);
-        }
-    }
-    
-}
-
-return {
-    push : push,
-    get : get
-};
+  return {
+      push : push,
+      get : get
+  };
+  
 }();

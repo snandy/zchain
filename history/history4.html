@@ -18,11 +18,11 @@
 		    param : i,
 		    func : func
 		};
-		History.push(data);
+		historyManager.push(data);
 		i++;
 	}
 	
-	History.push({param:0, func: func});
+	historyManager.push({param:0, func: func});
 	
 	function func(i) {
 	    info.innerHTML = i;
