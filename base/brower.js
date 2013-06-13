@@ -64,7 +64,7 @@ var ie = (function(){
 // ie comments
 var isIE = /*@cc_on!@*/!1;
 var isIE = /*@cc_on!@*/false;
-g
+
 // ie不支持垂直制表符
 var ie678 = !+'\v1';
 
