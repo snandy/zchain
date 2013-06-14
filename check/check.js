@@ -1,248 +1,180 @@
-function isEmpty( obj )
-{                          
-	if(obj.value.length == 0)
-	{            
+function isEmpty(obj) {
+	if (obj.length === 0) {
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
-	} 
-
+	}
 }
 
-function isSame(obj1,obj2)
-{
-	if( obj1.value == obj2.value )
-	{
+function isSame(obj1, obj2) {
+	if ( obj1 === obj2 ) {
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
 
 }
 
-function isOnelength(obj,len)
-{
-	if(obj.value.length == len)
-	{
+function isOnelength(obj, len) {
+	if (obj.length == len) {
 		 return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
 }
 
-function inOneArea(obj,len1,len2)
-{
-	if(obj.value.length < len1||obj.value.length>len2)
-	{
-		return false;	 
-	}
-	else
-	{
-		return true;
-	}
-}
-
-
-function isEmail(obj)
-{
-	var regu ="^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|mobi|EDU|int|INT)$";
-	var re = new RegExp(regu);   
-
-	if(obj.value.search(re) == -1)
-	{
+function inOneArea(obj, len1, len2) {
+	if (obj.length < len1 || obj.length>len2) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
-function isNumber(obj)
-{
 
+function isEmail(obj) {
+	var str ="^(([0-9a-zA-Z]+)|([0-9a-zA-Z]+[_.0-9a-zA-Z-]*[0-9a-zA-Z]+))@([a-zA-Z0-9-]+[.])+([a-zA-Z]{2}|net|NET|com|COM|gov|GOV|mil|MIL|org|ORG|edu|mobi|EDU|int|INT)$";
+	var reg = RegExp(str);
+	if (obj.search(reg) == -1) {
+		return false;
+	} else {
+		return true;
+	}
+}
+function isNumber(obj) {
 	var re = /^[1-9][0-9]*$/;
-
-	if( !re.test(obj.value))
-	{
+	if ( !re.test(obj)) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
-function isXiaoxie(obj)
-{
-	var re = /[a-z]/g;
+/**
+ *  小写字母 
+ */
+function isLowercase(obj) {
+	var reg = /[a-z]/g;
+	return reg.test(obj);
 }
-function isChinese(obj)
-{
+function isChinese(obj) {
 	var boo = true;
-	for(var i=0;i<obj.value.length;i++)
-	{
-		if(obj.value.charCodeAt(i)<=255)
-		{
+	for (var i=0; i<obj.length; i++) {
+		if (obj.charCodeAt(i)<=255) {
 			boo = false;
 		}
-		
 	}
 	return boo;
 }
-function isChinese2(obj)
-{
-	var text = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ,/()!@$%&\#*~.;'_-";  
+function isChinese2(obj) {
+	var text = "abcdefghijklmnopqrstuvwxyz1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ,/()!@$%&\#*~.;'_-";
 	var boo = false;
-	for(var i=0;i<=obj.value.length-1;i++)   
-    {   			
-        var char1 = obj.value.charAt(i);   
-        var index = text.indexOf(char1); 
-			   
-        if(!(index==-1))  
-        {   
+	for (var i=0; i<=obj.length-1; i++) {
+		var char1 = obj.charAt(i);
+		var index = text.indexOf(char1); 
+		if (!(index==-1)) {	
 			boo = false;
 			break;
-        }  
-    	else
-	    {
+		} else {
 			boo = true;
-		}	  
-    }
+		}
+	}
 	return boo;
 
 }
-function isChinese3(o){
-	for(var i=0,len=o.length;i<len;i++){
-		if(o.charCodeAt(i)<=255){
+function isChinese3(o) {
+	for (var i=0, len=o.length; i<len; i++) {
+		if (o.charCodeAt(i)<=255) {
 			continue;
-		}else{
+		} else {
 			return true;
 		}
 	}
 	return false;
 }
 function isChinese4(o) {
-    var re = /[\u4E00-\u9FA5]/;
-    return re.test(o);
+	var re = /[\u4E00-\u9FA5]/;
+	return re.test(o);
 }
-function isMoney(obj){
-	var re1 = /^[0-9]+.?[0-9]*$/;   
-	var re2 = /^[1-9]+[0-9]*]*$/;   
-	if(!re1.test(obj.value))
-	{
+function isMoney(obj) {
+	var re1 = /^[0-9]+.?[0-9]*$/;
+	var re2 = /^[1-9]+[0-9]*]*$/;
+	if (!re1.test(obj)) {
 		return false;
-	}
-	else
-	{
-		if(re2.test(obj.value)||obj.value == "0")
-		{
-			obj.value += ".00";
+	} else {
+		if (re2.test(obj) || obj == '0') {
+			obj.value += '.00';
 			return true;
-		}
-		else if(obj.value.lastIndexOf(".") == obj.value.length-2 )
-		{
-			obj.value += "0";
+		} else if (obj.lastIndexOf(".") == obj.length-2 ) {
+			obj += '0';
 			return true;
-		}
-		else if(obj.value.lastIndexOf(".") == obj.value.length-3)
-		{
+		} else if (obj.lastIndexOf(".") == obj.length-3) {
 			return true;
-		}
-		else
-		{
+		} else {
 			return false;
 		}
-
 	}
 }
-function isDate(obj){
-	var a = obj.value.match(/^(\d{0,4})-(\d{0,2})-(\d{0,2})$/); 
-	if (a == null)
-	{
+function isDate(obj) {
+	var a = obj.match(/^(\d{0,4})-(\d{0,2})-(\d{0,2})$/); 
+	if (a == null) {
 		return false;
 	}
-	if ( a[2]>=13 || a[3]>=32 || a[4]>=24)
-	{
+	if (a[2]>=13 || a[3]>=32 || a[4]>=24) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	} 
 }
 
-function isTime(obj){
-	var a = obj.value.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/);
-	if (a == null)
-	{
+function isTime(obj) {
+	var a = obj.match(/^(\d{1,2})(:)?(\d{1,2})\2(\d{1,2})$/);
+	if (a == null) {
 		return false;
 	}
-	if(a[1]>=24 || a[3]>=60 || a[4]>=60)
-	{
+	if (a[1]>=24 || a[3]>=60 || a[4]>=60) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
 
-function isDateTime(obj){
+function isDateTime(obj) {
 	var reg = /^(\d{1,4})(-|\/)(\d{1,2})\2(\d{1,2}) (\d{1,2}):(\d{1,2}):(\d{1,2})$/; 
-	var r = obj.value.match(reg); 
-	if(r==null)
-	{
+	var r = obj.match(reg); 
+	if (r==null) {
 		return false;
 	}
 	var d = new Date(r[1], r[3]-1,r[4],r[5],r[6],r[7]); 
-	if(d.getFullYear()==r[1]&&(d.getMonth()+1)==r[3]&&d.getDate()==r[4]&&d.getHours()==r[5]&&d.getMinutes()==r[6]&&d.getSeconds()==r[7])
-	{
+	if (d.getFullYear()==r[1]&&(d.getMonth()+1)==r[3]&&d.getDate()==r[4]&&d.getHours()==r[5]&&d.getMinutes()==r[6]&&d.getSeconds()==r[7]) {
 		return true;
-	}
-	else
-	{
+	} else {
 		return false;
 	}
 }
 
-function isTel(obj){
+function isTel(obj) {
 	var re = /^[1-9]+[0-9]*]*$/;
-	
-	var boo = isOnelength(obj,11);
-
-	if( !re.test(obj.value) || !boo )
-	{
+	var boo = isOnelength(obj, 11);
+	if ( !re.test(obj) || !boo ) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
 
-function isMobile(obj){
+function isMobile(obj) {
 	var re = /^[1-9]+[0-9]*]*$/;
-	
-	var boo = isOnelength(obj,11);
-
-	if( !re.test(obj.value) || !boo )
-	{
+	var boo = isOnelength(obj, 11);
+	if ( !re.test(obj) || !boo ) {
 		return false;
-	}
-	else
-	{
+	} else {
 		return true;
 	}
 }
 // 全角字符
 function isExtra(o) {
-    var a=new RegExp("[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&mdash;—|{}【】‘；：”“'。，、？]");
-    return a.test(o);
+	var str = "[`~!@#$^&*()=|{}':;',\\[\\].<>/?~！@#￥……&*（）&mdash;—|{}【】‘；：”“'。，、？]";
+	var reg = RegExp(str);
+	return reg.test(o);
 }
 // 计算字符串的长度，汉字按两个字符计算
 function computeLength(str) {
