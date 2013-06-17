@@ -1,5 +1,5 @@
 /**
- * JavaScript Selector v0.4
+ * JavaScript Selector
  * Copyright (c) 2010 snandy
  * Blog: http://snandy.cnglogs.com
  * QQ群: 34580561
@@ -36,91 +36,117 @@
  *	$('input[name=uname]', el)
  *	$('input[name=uname]', '#id')
  */
+~function(win, doc, undefined) {
+	
+// Save a reference to core methods
+var slice = Array.prototype.slice
 
-function $(selector,context) {
-	var s = selector, doc = document;
-	var rId = /^#[\w\-]+/,
-		rCls = /^([\w\-]+)?\.([\w\-]+)/,
-		rTag = /^([\w\*]+)$/,
-		rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/;
-	var arr = [];
-	
-	var context = 
-			context === undefined ?
-			document :
-			typeof context === 'string' ?
-			doc.getElementById(context.substr(1, context.length)) :
-			context;
-			
-	if (rId.test(s)) {
-		arr[0] = doc.getElementById( s.substr(1, s.length) );
-		return arr;
-	}
-	
-	if (context.querySelectorAll) {
-		if (context.nodeType === 1) {
-			var old = context.id, id = context.id = '__$$__';
-			try {
-				return context.querySelectorAll( '#' + id + ' ' + s );
-			} catch(e){
-			} finally {
-				old ? context.id = old : context.removeAttribute('id');
-			}
-		}
-		return context.querySelectorAll(s);
-	}	
-	if (rCls.test(s)) {
-		var ary = s.split('.'),	
-			tag = ary[0], 
-			cls = ary[1],
-			i, len, all, els;
-		if (context.getElementsByClassName) {
-			els = context.getElementsByClassName(cls);
-			if (tag) {
-				for (i=0, len = els.length; i < len; i++) {
-					els[i].tagName.toLowerCase()===tag && arr.push(els[i]);
-				}
-				return arr;
-			} else {
-				return els;
-			}
-		} else {
-			all = context.getElementsByTagName(tag || '*');
-			return filter(all, 'className', cls);
-		}
-	}
-	
-	if (rTag.test(s)) {
-		return context.getElementsByTagName(s);
-	}
-	
-	if (rAttr.test(s)) {
-		var ary = rAttr.exec(s), all = context.getElementsByTagName(ary[1] || '*');
-		return filter(all, ary[2], ary[4]);
-	}
+// selector regular expression
+var rId = /^#[\w\-]+/
+var	rTag = /^([\w\*]+)$/
+var	rCls = /^([\w\-]+)?\.([\w\-]+)/
+var	rAttr = /^([\w]+)?\[([\w]+-?[\w]+?)(=(\w+))?\]/
 
-	function test(attr, val, node) {
-		var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)'),
-			v = attr === 'className' ? node.className : node.getAttribute(attr);
-		if (v) {
-			if (val) {
-				if (reg.test(v)) return true;
-			} else {
-				return true;
-			}
+// For IE9/Firefox/Safari/Chrome/Opera
+var makeArray = function(obj) {
+	return slice.call(obj, 0)
+}
+// For IE6/7/8
+try{
+	slice.call(doc.documentElement.childNodes, 0)[0].nodeType
+} catch(e) {
+	makeArray = function(obj) {
+		var result = []
+		for (var i = 0, len = obj.length; i < len; i++) {
+			result[i] = obj[i]
 		}
-		return false;
-	}
-	function filter(all, attr, val) {
-		var el,
-			i = 0,
-			r = 0,
-			res = [];
-		while ( (el = all[i++]) ) {
-			if ( test(attr, val, el) ) {
-				res[r++] = el;
-			}
-		}
-		return res;
+		return result
 	}
 }
+
+function byId(id) {
+	return doc.getElementById(id)
+}
+function check(attr, val, node) {
+	var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)')
+	var	attribute = attr === 'className' ? 
+			node.className : node.getAttribute(attr)
+	if (attribute) {
+		if (val) {
+			if (reg.test(attribute)) return true
+		} else {
+			return true
+		}
+	}
+	return false
+}	
+function filter(all, attr, val) {
+	var el, res = []
+	var	i = 0, r = 0
+	while ( (el = all[i++]) ) {
+		if ( check(attr, val, el) ) {
+			res[r++] = el
+		}
+	}
+	return res
+}
+	
+function query(selector, context) {
+	var s = selector, arr = []
+	var context = context === undefined ? doc : typeof context === 'string' ?
+			byId(context.substr(1, context.length)) : context
+	
+	// id 还是用docuemnt.getElementById最快
+	if ( rId.test(s) ) {
+		arr[0] = byId( s.substr(1, s.length) )
+		return arr
+	}
+	// 优先使用querySelector，现代浏览器都实现它了
+	if (context.querySelectorAll) {
+		if (context.nodeType === 1) {
+			var old = context.id, id = context.id = '__ZZ__'
+			try {
+				return context.querySelectorAll('#' + id + ' ' + s)
+			} catch(e){
+				throw new Error('querySelectorAll: ' + e)
+			} finally {
+				old ? context.id = old : context.removeAttribute('id')
+			}
+		}
+		return makeArray(context.querySelectorAll(s))
+	}
+	// className
+	if ( rCls.test(s) ) {
+		var ary = s.split('.')
+		var	tag = ary[0] 
+		var	cls = ary[1]
+		if (context.getElementsByClassName) {
+			var elems = context.getElementsByClassName(cls)
+			if (tag) {
+				for (var i = 0, len = elems.length; i < len; i++) {
+					var el = elems[i]
+					el.tagName.toLowerCase() === tag && arr.push(el)
+				}
+				return arr
+			} else {
+				return makeArray(elems)
+			}
+		} else {
+			var all = context.getElementsByTagName(tag || '*')
+			return filter(all, 'className', cls)
+		}
+	}
+	// Tag name
+	if ( rTag.test(s) ) {
+		return makeArray(context.getElementsByTagName(s))
+	}
+	// Attribute
+	if ( rAttr.test(s) ) {
+		var result = rAttr.exec(s)
+		var all = context.getElementsByTagName(result[1] || '*')
+		return filter(all, result[2], result[4])
+	}
+}
+
+win.query = win.$ = query
+}(this, document);
