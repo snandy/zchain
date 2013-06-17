@@ -81,14 +81,14 @@ function check(attr, val, node) {
 	return false
 }	
 function filter(all, attr, val) {
-	var el, res = []
+	var el, result = []
 	var	i = 0, r = 0
 	while ( (el = all[i++]) ) {
 		if ( check(attr, val, el) ) {
-			res[r++] = el
+			result[r++] = el
 		}
 	}
-	return res
+	return result
 }
 	
 function query(selector, context) {
@@ -115,7 +115,7 @@ function query(selector, context) {
 		}
 		return makeArray(context.querySelectorAll(s))
 	}
-	// className
+	// ClassName
 	if ( rCls.test(s) ) {
 		var ary = s.split('.')
 		var	tag = ary[0] 
