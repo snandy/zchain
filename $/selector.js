@@ -95,6 +95,8 @@ function query(selector, context) {
     var s = selector, arr = []
     var context = context === undefined ? doc : typeof context === 'string' ?
             byId(context.substr(1, context.length)) : context
+            
+    if (!selector) return arr
     
     // id 还是用docuemnt.getElementById最快
     if ( rId.test(s) ) {
