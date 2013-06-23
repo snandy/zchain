@@ -1,26 +1,26 @@
 var build  = require('./build');
 
 var intro = function() {
-	var date = new Date,
-		h = date.getHours(),
-		m = date.getMinutes(),
-		s = date.getSeconds();
-	
-	h = h<10 ? '0'+h : h;
-	m = m<10 ? '0'+m : m;
-	s = s<10 ? '0'+s : s;
-	
-	var str = 	'/**\n' +
-				' * Author: @snandy\n' +
-				' * Date: ' + date.getFullYear() + '-' + 
-							  (date.getMonth()+1) + '-' + 
-							  date.getDate() + ' ' +
-							  h + ':' +
-							  m + ':' +
-							  s + '\n' +
-				' */\n';
-	
-	return str;
+    var date = new Date,
+        h = date.getHours(),
+        m = date.getMinutes(),
+        s = date.getSeconds();
+    
+    h = h<10 ? '0'+h : h;
+    m = m<10 ? '0'+m : m;
+    s = s<10 ? '0'+s : s;
+    
+    var str =     '/**\n' +
+                ' * Author: @snandy\n' +
+                ' * Date: ' + date.getFullYear() + '-' + 
+                              (date.getMonth()+1) + '-' + 
+                              date.getDate() + ' ' +
+                              h + ':' +
+                              m + ':' +
+                              s + '\n' +
+                ' */\n';
+    
+    return str;
 }();
 
 // mkFullDir('a/b/c/d.js')

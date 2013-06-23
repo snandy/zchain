@@ -15,18 +15,18 @@
  */
 
 History = function() {
-	
-	var 
-	   iframe,
-	   
-	   // 存储历史记录
-	   list = [],
-	   
-	   // 历史记录索引
-	   index = 0,
-	   
-	   pushing;
-	
+    
+    var 
+       iframe,
+       
+       // 存储历史记录
+       list = [],
+       
+       // 历史记录索引
+       index = 0,
+       
+       pushing;
+    
     iframe = document.createElement('iframe');
     iframe.style.display = 'none';
     iframe.onload = function() {
@@ -47,22 +47,22 @@ History = function() {
     }
     document.body.appendChild(iframe);
     
-	function push(data) {
-	    if(typeof data !== 'object') return;
-	    
-	    if(typeof data.param == undefined || typeof data.func !== 'function') return;
-	    
-		list[index] = data;
-		updateIframe();
-		pushing = true;
-		index++;
-		
-		setTimeout(function(){
-		    pushing = false;
-		}, 1000);
-	}
-	
-	function updateIframe() {
+    function push(data) {
+        if(typeof data !== 'object') return;
+        
+        if(typeof data.param == undefined || typeof data.func !== 'function') return;
+        
+        list[index] = data;
+        updateIframe();
+        pushing = true;
+        index++;
+        
+        setTimeout(function(){
+            pushing = false;
+        }, 1000);
+    }
+    
+    function updateIframe() {
         var doc = iframe.contentWindow.document;
         try{
             doc.open();
@@ -71,23 +71,23 @@ History = function() {
         }catch(e){
             
         }
-	}
-	
-	function get(idx) {
-	    var item, param, func, scope;
-		if(idx != index) {
-		    item = list[idx];
-			if(item) {
+    }
+    
+    function get(idx) {
+        var item, param, func, scope;
+        if(idx != index) {
+            item = list[idx];
+            if(item) {
                 param = item.param;
                 func  = item.func;
                 scope = item.scope;
                 func.call(scope, param);
-			}
-		}
-		
-	}
-	
-	return {
-		push : push
-	};
+            }
+        }
+        
+    }
+    
+    return {
+        push : push
+    };
 }();
