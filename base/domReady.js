@@ -84,12 +84,3 @@
 	}
 
 })(document, window);
-
-
-// http://dustindiaz.com/smallest-domready-ever
-function domReady(fn){
-	// "uninitalized"、"loading"、"interactive"、"complete" 、"loaded"
-	/in/.test(document.readyState) ?
-	setTimeout(function(){domReady(fn);},5) :
-	fn();
-}
