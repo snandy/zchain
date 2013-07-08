@@ -1,0 +1,18 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <meta charset="utf-8" />
+        <title>DOMContentLoaded</title>
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log('DOMContentLoaded')
+            }, false)
+        </script>
+    </HEAD>
+    <BODY>
+        <h4>1. window.onload会在页面所有的资源全部下载后才会执行，包括css文件、JavaScript资源、图片、iframe</h4>
+        <p>http://javascript.info/tutorial/onload-ondomcontentloaded</p>
+        <img onload="console.log('img loaded')" src="http://img.itc.cn/photo/oNuc1vNC9y0"><br/>
+        <script onload="console.log('script loaded')" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    </BODY
+</HTML>

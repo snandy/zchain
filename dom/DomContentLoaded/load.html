@@ -1,0 +1,20 @@
+<!DOCTYPE HTML>
+<HTML>
+    <HEAD>
+        <meta charset="utf-8" />
+        <title>window.onload</title>
+        <link onload="console.log('css')" rel="stylesheet" type="text/css" href="http://jquery.com/jquery-wp-content/themes/jquery/css/base.css">
+    </HEAD>
+    <BODY>
+        <h4>1. window.onload会在页面所有的资源全部下载后才会执行，包括css资源、JavaScript资源、图片、iframe</h4>
+        <h4>2. 与link、script、img、iframe位置无关。无论它们位置在哪，window.onload都会最后执行</h4>
+        <img onload="console.log('img loaded')" src="http://img.itc.cn/photo/oNuc1vNC9y0"><br/>
+        <iframe src="http://mail.sina.com.cn" onload="console.log('iframe loaded')"></iframe>
+        <script type="text/javascript">
+            window.onload = function() {
+                console.log('window.onload')
+            }
+        </script>
+        <script onload="console.log('script loaded')" src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    </BODY
+</HTML>
