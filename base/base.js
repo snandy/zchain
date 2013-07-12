@@ -141,6 +141,13 @@ function pickUpJSON(str) {
 	}
 	return dest
 }
-
 // 匹配一串字符串中出现最多的单词（以空白符或标点符号+空白符来区分单词）
 
+// 将html转成实体
+function escape(html){
+    var o = document.createElement('div'),
+        t = document.createTextNode(html);
+    o.appendChild(t);
+    return o.innerHTML;
+}
+var txt = escape('<div><a href="">a<b>b</b>c</a></div>');
