@@ -91,7 +91,7 @@ function preload(url) {
 		body.appendChild(obj)
 	}
 }
-preload('http://code.jquery.com/jquery-1.8.0.js')
+// preload('http://code.jquery.com/jquery-1.8.0.js')
 
 // 获取flash对象
 function thisMovie(movieName) {
@@ -145,9 +145,57 @@ function pickUpJSON(str) {
 
 // 将html转成实体
 function escape(html){
-    var o = document.createElement('div'),
-        t = document.createTextNode(html);
-    o.appendChild(t);
-    return o.innerHTML;
+    var elem = document.createElement('div')
+    var txt = document.createTextNode(html)
+    elem.appendChild(txt)
+    return elem.innerHTML;
 }
-var txt = escape('<div><a href="">a<b>b</b>c</a></div>');
+
+function unescape(str) {
+    var elem = document.createElement('div')
+    elem.innerHTML = str
+    return elem.innerText || elem.textContent
+}
+// var txt = escape('<div><a href="">a<b>b</b>c</a></div>');
+
+
+var keys = Object.keys || function(obj) {
+    obj = Object(obj)
+    var arr = []    
+    for (var a in obj) arr.push(a)
+    return arr
+}
+var invert = function(obj) {
+    obj = Object(obj)
+    var result = {}
+    for (var a in obj) result[obj[a]] = a
+    return result
+}
+var entityMap = {
+    escape: {
+      '&': '&amp;',
+      '<': '&lt;',
+      '>': '&gt;',
+      '"': '&quot;',
+      "'": '&#x27;'
+    }
+}
+entityMap.unescape = invert(entityMap.escape)
+var entityReg = {
+    escape: RegExp('[' + keys(entityMap.escape).join('') + ']', 'g'),
+    unescape: RegExp('(' + keys(entityMap.unescape).join('|') + ')', 'g')
+}
+
+function escape(html) {
+    if (typeof html !== 'string') return ''
+    return html.replace(entityReg.escape, function(match) {
+        return entityMap.escape[match]
+    })
+}
+
+function unescape(str) {
+    if (typeof str !== 'string') return ''
+    return str.replace(entityReg.unescape, function(match) {
+        return entityMap.unescape[match]
+    })    
+}

@@ -37,11 +37,11 @@ function nodeByIndex(index, head) {
     var node = head;
     var i = 0;
     // 第一个
-    if(index===0) {
+    if (index===0) {
         return node;
     }
-    while(node.next) {
-        if(i===index) {
+    while (node.next) {
+        if (i===index) {
             return node;
         }
         node = node.next && node.next;
@@ -60,23 +60,23 @@ function LinkedList() {
 
 LinkedList.prototype = {
     add: function(index, obj) {
-        if(obj === undefined || obj === null || typeof index != 'number') {
+        if (obj === undefined || obj === null || typeof index != 'number') {
             throw new Error('add failed, invalid param');
         }
         // 逆向取 -1，如取最后一个元素
-        if(index < 0) {
+        if (index < 0) {
             index = this.length + index;
         }
         // 空链表/索引越界
-        if(index<0 || index>=this.length) {
+        if (index<0 || index>=this.length) {
             throw new Error('add failed, invalid index');
         }
         var newNode = new Node(obj);
-        if(index==0) {
+        if (index==0) {
             newNode.setNext(this.head);
             this.head = newNode;
             
-        }else {
+        } else {
             var node = nodeByIndex(index-1, this.head),
                 next = node.next;
             node.setNext(newNode);
@@ -86,15 +86,15 @@ LinkedList.prototype = {
         
     },
     get: function(index) {
-        if(typeof index !== 'number') {
+        if (typeof index !== 'number') {
             throw new Error('get failed, invalid param');
         }
         // 逆向取 -1，如取最后一个元素
-        if(index < 0) {
+        if (index < 0) {
             index = this.length + index;
         }
         // 空链表/索引越界
-        if(this.isEmpty() || index<0 || index>=this.length) {
+        if (this.isEmpty() || index<0 || index>=this.length) {
             return null;
         }
         
@@ -105,11 +105,11 @@ LinkedList.prototype = {
     set: function(index, obj) {
         
         // 逆向取 -1，如取最后一个元素
-        if(index < 0) {
+        if (index < 0) {
             index = this.length + index;
         }
         // 空链表/索引越界
-        if(this.isEmpty() || index<0 || index>=this.length) {
+        if (this.isEmpty() || index<0 || index>=this.length) {
             return null;
         }
         
@@ -128,7 +128,7 @@ LinkedList.prototype = {
     remove: function(obj) {
         var nodes = getDouble(obj, this);
         
-        if(nodes === null) {
+        if (nodes === null) {
             throw new Error('remove failed, the node does not exist');
         }
         
@@ -136,12 +136,11 @@ LinkedList.prototype = {
             prev = nodes.prev;
         
         // 删除第一个元素，注意第一个元素没有前驱
-        if(prev === null) {
+        if (prev === null) {
             this.head = curr.next;
             curr.next = null;
             curr = null;
-        }
-        else {
+        } else {
             prev.setNext(curr.next);
             curr.next = null;
             curr = null;
@@ -152,14 +151,13 @@ LinkedList.prototype = {
         return this.head === null;
     },
     addLast: function(obj) {
-        if(obj === undefined || obj === null) {
+        if (obj === undefined || obj === null) {
             throw new Error('push failed, invalid param');
         }
         var node = new Node(obj);
-        if(!this.head) {
+        if (!this.head) {
             this.head = this.tail = node;
-        }
-        else {
+        } else {
             this.tail.setNext(node);
             this.tail = node;
         }
@@ -170,17 +168,17 @@ LinkedList.prototype = {
     },
     contains: function(obj) {
         var node = this.head;
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             return false;
         }
-        while(node.next) {
+        while (node.next) {
             if(node.value == obj) {
                 return true;
             }
             node = node.next;
         }
         // 第一个(length为1时)和最后一个元素
-        if(node.value == obj) {
+        if (node.value == obj) {
             return true;
         }
         return false;
@@ -189,11 +187,11 @@ LinkedList.prototype = {
         var str = '',
             node = this.head;
             
-        if(this.isEmpty()) {
+        if (this.isEmpty()) {
             return '[]';
         }
         str = '[' + node.value;
-        while(node.next) {
+        while (node.next) {
             node = node.next;
             str += ',' + node.value;
         }
