@@ -1,104 +1,84 @@
-/**
- * @param {String} className
- * @param {String/Function} superCls
- * @param {Function} classImp
- */
-function $class(className, superCls, classImp) {
-	var p, supr
-	if(superCls === '') superCls = Object
-	function clazz() {
-		if(typeof this.init == "function") {
-			this.init.apply(this, arguments)
-		}
-	}
-	p = clazz.prototype = new superCls()
-	clazz.prototype.constructor = clazz
-	clazz.prototype.className = className
-	supr = superCls.prototype
-	window[className] = clazz
-	classImp.apply(p, [supr])
-}
+~function(global, undefined) {
 
+var U = {}
+var toString = Object.prototype.toString
 
-/**
- * 父类 Person
- */
-$class('Person','',function() {
-	this.init = function(n, a){
-		this.name = n;
-		this.age = a;
-	};
-	this.getName = function(){
-		return this.name;
-	};
-	this.setName = function(name){
-		this.name = name;
-	}
-	this.getAge = function(){
-		return this.age;
-	};
-	this.setAge = function(a){
-		this.age = a;
-	};
-});
-
-$class("Man",Person, function(supr) {
-	this.init = function(n, a, s) {
-		supr.init.apply(this, [n,a]);
-		this.school = s;
-	}
-	this.getSchool = function(){
-		return this.school;
-	};
-	this.setSchool = function(s){
-		this.school = s;
-	};
-});
-
-var p = new Person('lily', 20);
-var m = new Man('tom', 25, 'pku');
-
-console.log(m.name); // tom 继承父类的共有属性name可以直接使用点操作符获取
-console.log(m.age);  // undefined 父类的私有属性age不能直接使用点操作符获取
-console.log(m.getAge()); // 25 可通过父类的共有方法getAge获取私有属性age
-console.log(m.school); // undefined Man自己的私有属性仍然不能通过点操作符获取
-
-
-
-// clone/copy
-function clone(obj) { 
-    var o
-    if (typeof obj == "object") {
-        if (obj === null) {
-            o = null
-        } else {
-            if (obj instanceof Array) {
-                o = []
-                for (var i=0; i<obj.length; i++) {
-                	o[i] = clone(obj[i])
-                }
-            } else { 
-                o = {}
-                for (var k in obj) {
-                    o[k] = clone(obj[k])
-                } 
-            } 
+// Iterator
+function forEach(obj, iterator, context) {
+    if ( obj.length === +obj.length ) {
+        for (var i=0; i<obj.length; i++) {
+            if (iterator.call(context, obj[i], i, obj) === true) return
         }
-         
     } else {
-        o = obj
+        for (var k in obj) {
+            if (iterator.call(context, obj[k], k, obj) === true) return
+        }
     }
-    return o
-}
-function clone(obj) { 
-    function fn(){} 
-    fn.prototype = obj
-    var o = new fn()
-    for (var a in o) { 
-        if (typeof o[a] === 'object') { 
-            o[a] = clone(o[a])
-        } 
-    } 
-    return o
 }
 
+// U.isArray, U.isBoolean, ...
+forEach(['Array', 'Boolean', 'Function', 'Object', 'String', 'Number'], function(name) {
+    U['is' + name] = function(obj) {
+        return toString.call(obj) === '[object ' + name + ']'
+    }
+})
+
+// initialize namespace
+function namespace(classPath, globalNamespace) {
+    if ( !U.isString(classPath) ) throw new Error('classPath must be a string')
+    globalNamespace = U.isObject(globalNamespace) ? globalNamespace : global
+    var arr = classPath.split('.')
+    var namespace = globalNamespace
+    var className = arr.pop()
+
+    // initialize namespace
+    while (arr.length) {
+        var name = arr.shift()
+        var obj = namespace[name]
+        if (!obj) {
+            namespace[name] = obj = {}
+        }
+        namespace = obj
+    }
+
+    var clazz = namespace[className]
+    if ( U.isFunction(clazz) ) throw new Error(className + ' is already defined')
+    namespace[className] = undefined
+    return {
+        namespace: namespace,
+        className: className
+    }
+}
+
+// define a class
+function Class(classPath, superClass, classImp) {
+    if (!classImp) {
+        classImp = superClass
+        superClass = Object
+    }
+    function Constructor() {
+        if ( U.isFunction(this.init) ) {
+            this.init.apply(this, arguments)
+        }
+    }
+    var proto = Constructor.prototype = new superClass()
+    Constructor.prototype.constructor = classImp
+    var supr = superClass.prototype
+    classImp.call(proto, supr)
+    
+    var obj = namespace(classPath, Class.globalNamespace)
+    obj.namespace[obj.className] = Constructor
+}
+
+// defaults
+// Class.globalNamespace = global
+
+// Expose IO to the global object or as AMD module
+if (typeof define === 'function' && define.amd) {
+    define('IO', [], function() { return Class } )
+} else {
+    // global.namespace = namespace
+    global.Class = Class
+}
+
+}(this);
