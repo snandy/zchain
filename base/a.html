@@ -3,19 +3,23 @@
 <head> 
   <meta charset="utf-8">
   <title>html5shim - all</title>
-  <script type="text/javascript" src="base.js"></script>
+  <script type="text/javascript" src="class.js"></script>
 </head> 
 <body>
   <script type="text/javascript">
 
+Class('Person', function() {
+    function log() {alert(3)}
+    this.init = function(name, age) {
+        this.name = name
+        this.age = age
+    }
+    this.getName = function() {
+        log()
+    }
+})
 
-~function() {
-
-  var hash = {
-
-  }
-
-}();
+var p = new Person('jack', 33)
   </script>
 </body>
 </html>
