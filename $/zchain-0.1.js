@@ -413,7 +413,7 @@ zChain.prototype = {
         return this.css(name) == val;
     },
     text: function(val) {
-        return this.prop(this[0].innerText === undefined ? 'innerText' : 'textContent', val);
+        return this.prop(this[0].innerText === undefined ? 'textContent' : 'innerText', val);
     },
     html: function(val) {
         return this.prop('innerHTML', val);
@@ -478,7 +478,7 @@ zChain.prototype = {
         });
     },
     delegate: function(selector, type, fn) {
-        if(arguments.length === 2 && zChain.isFunction(type)) {
+        if (arguments.length === 2 && zChain.isFunction(type)) {
             fn = type;
             type = 'click';
         }
@@ -1182,13 +1182,13 @@ var event = function() {
         }
     }
     function add(opt) {
-        var el      = opt.el,
-        fn     = opt.fn,
-        once = opt.once,
-        live = opt.live,
-        type = opt.type || 'click',
-        listeners,
-        eventHandle;
+        var el = opt.el,
+            fn   = opt.fn,
+            once = opt.once,
+            live = opt.live,
+            type = opt.type || 'click',
+            listeners,
+            eventHandle;
         
         if (el==window || el.nodeType === 3 || el.nodeType === 8) {
             return;
@@ -1217,7 +1217,7 @@ var event = function() {
         
         if (once) {
             listeners.push({one: fn});
-        } else if(live){
+        } else if (live) {
             listeners.push({handler: fn, live: live});
         } else{
             listeners.push(fn);
@@ -1226,10 +1226,10 @@ var event = function() {
         eventHandle.el = el;
         
         function evtHandle(e) {
-            var evt = fixEvent(e || window.event),
-                listeners  = zChain.data(this, 'events')[evt.type];
+            var evt = fixEvent(e || window.event)
+            var listeners  = zChain.data(this, 'events')[evt.type]
                 
-            for (var i=0,fn; fn=listeners[i++];) {
+            for (var i = 0, fn; fn=listeners[i++];) {
                 if (typeof fn == 'function') {
                     // 非IE浏览器加入对mouseenter，mouseleave的支持
                     if (!zChain.ie && (type=='mouseenter' || type=='mouseleave')) {
