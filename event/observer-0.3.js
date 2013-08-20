@@ -14,10 +14,10 @@ var Observer = {
     // Bind one or more space separated events, `events`, to a `callback`
     // function. Passing `"all"` will bind the callback to all events fired.
     on: function(events, callback, context) {
-    	var calls, event, node, tail, list
-    	if (!callback) return this
-    	events = events.split(eventSplitter)
-    	calls = this._callbacks || (this._callbacks = {})
+    	  var calls, event, node, tail, list
+    	  if (!callback) return this
+    	  events = events.split(eventSplitter)
+    	  calls = this._callbacks || (this._callbacks = {})
 
 		// Create an immutable callback list, allowing traversal during
     	// modification.  The tail is an empty object that will always be used
@@ -38,31 +38,31 @@ var Observer = {
     // with that function. If `callback` is null, removes all callbacks for the
     // event. If `events` is null, removes all bound callbacks for all events.
     off: function(events, callback, context) {
-    	var event, calls, node, tail, cb, ctx
+    	  var event, calls, node, tail, cb, ctx
 
       	// No events, or removing *all* events.
       	if (!(calls = this._callbacks)) return
       	if (!(events || callback || context)) {
-        	delete this._callbacks
-        	return this
+        	  delete this._callbacks
+        	  return this
       	}
 
       	// Loop through the listed events and contexts, splicing them out of the
       	// linked list of callbacks if appropriate.
       	events = events ? events.split(eventSplitter) : _.keys(calls)
       	while (event = events.shift()) {
-        	node = calls[event]
-        	delete calls[event]
-        	if (!node || !(callback || context)) continue;
-        	// Create a new list, omitting the indicated callbacks.
-        	tail = node.tail
-        	while ((node = node.next) !== tail) {
-          		cb = node.callback
-          		ctx = node.context
-          		if ((callback && cb !== callback) || (context && ctx !== context)) {
-            		this.on(event, cb, ctx)
-          		}
-        	}
+        	  node = calls[event]
+        	  delete calls[event]
+        	  if (!node || !(callback || context)) continue;
+        	  // Create a new list, omitting the indicated callbacks.
+        	  tail = node.tail
+        	  while ((node = node.next) !== tail) {
+          		  cb = node.callback
+          		  ctx = node.context
+          		  if ((callback && cb !== callback) || (context && ctx !== context)) {
+            		    this.on(event, cb, ctx)
+          		  }
+        	  }
       	}
 
       	return this
@@ -85,14 +85,14 @@ var Observer = {
         	if (node = calls[event]) {
           		tail = node.tail
           		while ((node = node.next) !== tail) {
-            		node.callback.apply(node.context || this, rest)
+            		  node.callback.apply(node.context || this, rest)
           		}
         	}
         	if (node = all) {
           		tail = node.tail
           		args = [event].concat(rest)
           		while ((node = node.next) !== tail) {
-            		node.callback.apply(node.context || this, args)
+            		  node.callback.apply(node.context || this, args)
           		}
         	}
       	}
