@@ -493,7 +493,7 @@ zChain.prototype = {
             }, null, fn);
         });
     },
-    undelegate: function(selector, type, fn) {
+    undelegate: function(type, fn) {
         return this.each( function(el) {
             zChain(el).un(type, fn);
         } );
@@ -1302,9 +1302,9 @@ zChain.extend({
 
 zChain.each('click,dblclick,mouseover,mouseout,mouseenter,mouseleave,mousedown,mouseup,keydown,keyup,keypress,focus,blur'.split(','), function(name, i){
     zChain.fn[name] = function(fn, once){
-        if(arguments.length == 0){
+        if (arguments.length === 0) {
             this.fire(name);
-        }else{
+        } else {
             this.on(name, fn, once);
         }
         return this;
