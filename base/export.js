@@ -5,7 +5,7 @@
         
     } else {
         // Browser globals (glob is window)
-        // Raphael adds itself to window
+        // Z adds itself to window
         factory(glob)
     }
 }(this, function (window) {
