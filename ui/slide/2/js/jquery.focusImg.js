@@ -40,7 +40,7 @@ $.fn.focusImg = function(config, imgs) {
 			title = obj.t;
 			
 		if (typeof curr != 'undefined') {
-			lis.eq(curr).hide();
+			lis.eq(curr).fadeOut(300);
 		}
 		lis.eq(i).fadeIn(1000);
 		curr = i;
