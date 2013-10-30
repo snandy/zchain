@@ -87,7 +87,7 @@ $.fn.focusImg = function(config, imgs) {
 		var thum = thumLis.eq(idx);
 		
 		if (currShowLi) {
-			currShowLi.hide();
+			currShowLi.fadeOut(300);
 		}
 		if (currThumLi) {
 			currThumLi.find('.pic').removeClass('cur');
