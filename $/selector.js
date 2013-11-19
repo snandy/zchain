@@ -10,7 +10,7 @@
  * @param {Object} context
  * 
  * 1, 通过id获取,该元素是唯一的
- *       $('#id')
+ *    $('#id')
  * 
  * 2, 通过className获取
  *    $('.cls') 获取文档中所有className为cls的元素
