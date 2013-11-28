@@ -1,6 +1,6 @@
 ~function($) {
 
-$.fn.uniqClick = function(handler, time) {
+$.fn.uniClick = function(handler, time) {
     time = time || 1000
     this.each(function(i, el) {
         var canClick = true
