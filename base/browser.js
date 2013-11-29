@@ -1,6 +1,7 @@
 /**
  * 浏览器嗅探，采用传统的userAgent
- * 
+ * 注意：IE11+ 去掉了 msie，因此Browser.ie会返回false，IE11+提醒大家不要叫它IE
+ * IE11的变化：http://www.cnblogs.com/snandy/p/3174777.html
  */
 Browser = function(ua) {
     var b = {
