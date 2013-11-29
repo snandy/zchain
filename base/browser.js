@@ -2,31 +2,32 @@
  * 浏览器嗅探，采用传统的userAgent
  * 
  */
-B = function(ua){
+Browser = function(ua) {
     var b = {
-        ie: /msie/.test(ua) && !/opera/.test(ua),
-        opera: /opera/.test(ua),
-        safari: /webkit/.test(ua) && !/chrome/.test(ua),
-        firefox: /firefox/.test(ua),
-        chrome: /chrome/.test(ua),
-        maxthon: /maxthon/.test(ua),
         sogou: /se/.test(ua),
-        tt: /TencentTraveler/.test(ua)
+        opera: /opera/.test(ua),
+        chrome: /chrome/.test(ua),
+        firefox: /firefox/.test(ua),
+        maxthon: /maxthon/.test(ua),
+        tt: /TencentTraveler/.test(ua),
+        ie: /msie/.test(ua) && !/opera/.test(ua),
+        safari: /webkit/.test(ua) && !/chrome/.test(ua)
     }
     var mark = ''
     for (var i in b) {
         if (b[i]) {
-        	mark = 'safari' == i ? 'version' : i;
-        	break;
+        	mark = 'safari' == i ? 'version' : i
+        	break
     	}
     }
     var reg = RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)')
     b.version = mark && reg.test(ua) ? RegExp.$1 : '0'
-    b.ie6  = b.ie && parseInt(b.version, 10) == 6
-    b.ie7  = b.ie && parseInt(b.version, 10) == 7
-    b.ie8  = b.ie && parseInt(b.version, 10) == 8
-    b.ie9  = b.ie && parseInt(b.version, 10) == 9
-    b.ie10 = b.ie && parseInt(b.version, 10) == 10
+
+    var iv = parseInt(b.version, 10)
+    for (var i = 6; i < 11; i++) {
+        b['ie'+i] = iv === i
+    }
+    
     return b
 }(navigator.userAgent.toLowerCase());
 
@@ -47,18 +48,17 @@ B = function(ua){
 //     ie > 7 // IE8, IE9 ... 
 //     ie < 9 // Anything less than IE9 
 // ---------------------------------------------------------- 
-var ie = (function(){
-    var undef,
-        v = 3,
-        div = document.createElement('div'),
-        all = div.getElementsByTagName('i');
+var ie = (function() {
+    var undef, v = 3
+    var div = document.createElement('div')
+    var all = div.getElementsByTagName('i')
  
     while (
         div.innerHTML = '<!--[if gt IE ' + (++v) + ']><i></i><![endif]-->',
         all[0]
     );
  
-    return v > 4 ? v : undef;
+    return v > 4 ? v : undef
 }());
 
 // ie comments
