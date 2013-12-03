@@ -1,0 +1,1655 @@
+.w {
+    width: 990px;
+    margin: 0 auto
+}
+.fl {
+    float: left
+}
+.fr {
+    float: right
+}
+.posr {
+    position: relative
+}
+.posa {
+    position: absolute
+}
+.posf {
+    position: fixed
+}
+.fotmv {
+    font-family: Verdana
+}
+.textover {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+.p-img {
+    padding: 0
+}
+.p-img a {
+    float: none
+}
+.tab li {
+    float: none;
+    text-align: left
+}
+.game2013 {
+    background: url(i/bg.gif) repeat;
+    padding-bottom: 20px
+}
+#service-2013 {
+    margin-top: 10px
+}
+.top {
+    background: url(i/topbg.png) no-repeat center 0;
+    height: 377px;
+    overflow: hidden
+}
+.top .focus {
+    position: relative;
+    z-index: 5;
+    overflow: visible
+}
+.top .focus .slide {
+    width: 990px;
+    margin: 0 auto;
+    height: 270px;
+    margin: 10px auto;
+    position: relative
+}
+.top .focus .slide .slide-items {
+    width: 990px;
+    margin: 0 auto;
+    position: absolute;
+    height: 270px;
+    overflow: hidden
+}
+.top .focus .slide .slide-items li {
+    width: 990px;
+    margin: 0 auto;
+    height: 270px;
+    overflow: hidden
+}
+.top .focus .slide-controls {
+    width: 970px;
+    text-align: right;
+    margin: 0 auto;
+    position: absolute;
+    bottom: 3px;
+    z-index: 1;
+    height: 22px;
+    padding: 4px 10px
+}
+.top .focus .slide-controls span {
+    width: 22px;
+    height: 22px;
+    line-height: 22px;
+    display: inline-block;
+    margin: 0 1px;
+    background: #999;
+    text-align: center;
+    cursor: pointer;
+    color: #fff;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%
+}
+.top .focus .slide-controls span.curr {
+    background: #e4393c
+}
+.opacity {
+    background: #181818;
+    opacity: .8;
+    filter: alpha(opacity=80);
+    display: block;
+    width: 210px;
+    height: 270px;
+    position: absolute
+}
+.game-charge {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 210px;
+    height: 270px
+}
+.game-charge .game-tab {
+    *zoom: 1
+}
+.game-charge .game-tab: before,.game-charge .game-tab: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.game-charge .game-tab: after {
+    clear: both
+}
+.game-charge .game-tab li {
+    float: left;
+    width: 105px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    font-family: microsoft yahei
+}
+.game-charge .game-tab li a {
+    text-decoration: none
+}
+.game-charge .game-tab li.curr {
+    border-top: 2px solid #e4393c;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px
+}
+.game-charge .game-tab li.curr a {
+    color: #e4393c
+}
+.game-charge .topicon {
+    background-image: url(i/topicon.png);
+    background-repeat: no-repeat
+}
+.game-charge .tab {
+    overflow: visible
+}
+.game-charge .tab-con {
+    padding: 0 10px
+}
+.game-charge .title {
+    *zoom: 1
+}
+.game-charge .title: before,.game-charge .title: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.game-charge .title: after {
+    clear: both
+}
+.game-charge .title h3 {
+    float: left;
+    width: 105px;
+    height: 45px;
+    line-height: 45px;
+    color: #fff;
+    text-align: center;
+    font-size: 14px;
+    font-family: "宋体"
+}
+.game-charge .title h3.curr {
+    border-top: 2px solid #e33c3f;
+    color: #e33c3f
+}
+.game-charge .item {
+    background: #d9d9d9;
+    height: 23px;
+    line-height: 23px;
+    border: 1px solid #d9d9d9;
+    width: 188px;
+    margin-bottom: 10px
+}
+.game-charge .item .category {
+    width: 39px;
+    float: left;
+    text-align: center;
+    font-size: 12px;
+    color: #1f1f1f;
+    font-family: "宋体"
+}
+.game-charge .item .choice {
+    width: 149px;
+    float: right;
+    position: relative
+}
+.game-charge .item .choice .text {
+    border: 0;
+    height: 23px;
+    line-height: 23px;
+    width: 139px;
+    padding-left: 9px;
+    color: #666;
+    font-family: "宋体"
+}
+.game-charge .item .choice .topicon {
+    position: absolute;
+    top: 7px;
+    right: 4px;
+    display: block;
+    width: 12px;
+    height: 12px;
+    cursor: pointer
+}
+.game-charge .item .choice .amount {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    width: 148px;
+    background: #fff;
+    display: none;
+    border: 1px solid #d9d9d9
+}
+.game-charge .item .choice .amount li {
+    float: left;
+    width: 73px;
+    height: 31px;
+    line-height: 31px;
+    border: 1px solid #d9d9d9;
+    border-width: 0 1px 1px 0;
+    overflow: hidden
+}
+.game-charge .item .choice .amount li a {
+    padding-left: 10px;
+    display: block;
+    width: 100%;
+    height: 100%
+}
+.game-charge .item .choice .amount li a: hover {
+    background: #a5a5a5;
+    color: #fff;
+    text-decoration: none
+}
+.game-charge .QQ .choice .text {
+    color: #e4e4e4
+}
+.game-charge .QQ .category {
+    font-family: Arial
+}
+.game-charge .number .topicon {
+    background-position: 0 -16px
+}
+.game-charge .game .choice {
+    z-index: 5
+}
+.check {
+    height: 25px;
+    line-height: 25px;
+    padding: 0 10px;
+    width: 190px;
+    overflow: hidden
+}
+.check .label {
+    float: left;
+    color: #fff;
+    height: 25px;
+    margin-right: 10px;
+    line-height: 25px;
+    overflow: hidden;
+    _margin-top: 5px
+}
+.check .label b {
+    display: inline-block;
+    width: 15px;
+    height: 15px;
+    background-position: 0 -31px;
+    vertical-align: middle
+}
+.check .label b.checked {
+    background-position: 0 -53px
+}
+.price {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    width: 190px;
+    color: #999
+}
+.price .ftx01 {
+    color: #de1b1b;
+    padding: 0 1px
+}
+.charge-btn {
+    height: 35px;
+    line-height: 35px;
+    padding: 0 10px;
+    width: 190px
+}
+.charge-btn .btn {
+    width: 80px;
+    height: 25px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 25px;
+    border: 0;
+    color: #fff;
+    cursor: pointer;
+    background: #e74649;
+    background: -webkit-gradient(linear,left top,left bottom,from(#e74649),to(#df3033));
+    background: -webkit-linear-gradient(top,#e74649,#df3033);
+    background: -moz-linear-gradient(top,#e74649,#df3033);
+    background: -o-linear-gradient(top,#e74649,#df3033)
+}
+.city {
+    position: absolute;
+    top: 24px;
+    left: 0;
+    background: #fff;
+    width: 308px;
+    border: 1px solid #d9d9d9;
+    z-index: 5;
+    *zoom: 1
+}
+.city .extra {
+    height: 32px;
+    line-height: 32px;
+    padding-left: 5px;
+    font-size: 12px;
+    font-family: "宋体";
+    color: #999
+}
+.city .title li {
+    float: left;
+    border-top: 2px solid #b5b5b5
+}
+.city .title li.curr {
+    color: #e33c3f;
+    border-top: 2px solid #e33c3f
+}
+.city .title li {
+    height: 30px;
+    line-height: 30px;
+    margin-right: 1px;
+    text-align: center
+}
+.city .title li.fore1 {
+    width: 60px
+}
+.city .title li.fore2,.city .title li.fore3 {
+    width: 70px;
+    font-family: Verdana
+}
+.city .title li.fore4 {
+    width: 105px;
+    margin-right: 0;
+    font-family: Verdana
+}
+.city .city-con {
+    *zoom: 1
+}
+.city .city-con: before,.city .city-con: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.city .city-con: after {
+    clear: both
+}
+.city .city-con .list {
+    width: 288px;
+    overflow: hidden;
+    float: right;
+    *zoom: 1
+}
+.city .city-con .list: before,.city .city-con .list: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.city .city-con .list: after {
+    clear: both
+}
+.city .city-con .list li {
+    float: left;
+    margin-right: 20px;
+    height: 25px;
+    line-height: 25px
+}
+.city .city-con .list li a {
+    word-wrap: break-word;
+    white-space: nowrap;
+    overflow: hidden
+}
+.city .city-con .list li a: hover {
+    color: #e33c3f;
+    text-decoration: underline
+}
+.city .city-con .head {
+    color: #e33c3f;
+    font-family: Verdana;
+    font-weight: bold;
+    margin-left: 4px;
+    line-height: 25px
+}
+.icon-guide {
+    width: 990px;
+    margin: 0 auto;
+    height: 87px;
+    z-index: 1;
+    position: relative
+}
+.icon-guide li {
+    width: 141.42857142857142px;
+    height: 87px;
+    float: left;
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+    background-image: url(i/mbicon.png);
+    background-repeat: no-repeat;
+    background-position: 85px -386px
+}
+.icon-guide li.fore7 {
+    background: 0
+}
+.icon-guide li a {
+    color: #ffe400;
+    width: 60px;
+    margin: 10px auto 0;
+    height: 50px;
+    display: block;
+    background-image: url(i/mbicon.png);
+    background-repeat: no-repeat;
+    text-align: center;
+    cursor: pointer
+}
+.icon-guide li a: hover {
+    color: #ffe400;
+    text-decoration: none
+}
+.icon-guide li a b {
+    position: absolute;
+    top: 55px;
+    left: 0;
+    width: 141.42857142857142px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: normal
+}
+.icon-guide li.fore2 a {
+    background-position: 3px -50px
+}
+.icon-guide li.fore3 a {
+    background-position: -1px -106px
+}
+.icon-guide li.fore4 a {
+    background-position: 7px -153px
+}
+.icon-guide li.fore5 a {
+    background-position: -1px -215px
+}
+.icon-guide li.fore6 a {
+    background-position: 0 -278px
+}
+.icon-guide li.fore7 a {
+    background-position: 0 -341px
+}
+.g-item {
+    width: 990px;
+    margin: 0 auto;
+    margin-top: 20px
+}
+.g-item .title {
+    width: 990px;
+    margin: 0 auto;
+    height: 25px;
+    background-image: url(i/g-title.png);
+    background-repeat: no-repeat
+}
+.g-item .title .extra {
+    color: #e4393c;
+    float: right;
+    font-size: 12px;
+    font-family: "宋体";
+    font-weight: normal
+}
+.g-item .title .extra: hover {
+    color: #e4393c
+}
+.g-item .con {
+    width: 990px;
+    margin: 0 auto;
+    overflow: hidden;
+    background: #fff
+}
+.g-item .con .item {
+    height: 220px;
+    margin: 10px 10px 0 0;
+    float: left;
+    _display: inline
+}
+.hot .title {
+    background-position: 0 0
+}
+.equip .title {
+    background-position: 0 -25px
+}
+.equip .con,.online .con {
+    position: relative;
+    width: 970px;
+    padding: 10px;
+    height: 240px
+}
+.notes li,.list-tips span {
+    background-image: url(i/tips.png);
+    background-repeat: no-repeat
+}
+.g-tips {
+    position: absolute;
+    left: 10px;
+    bottom: 20px;
+    width: 103px
+}
+.g-tips li {
+    height: 31px;
+    line-height: 31px;
+    width: 92px;
+    text-align: center;
+    background-position: 0 -31px;
+    font-size: 16px;
+    font-family: microsoft yahei;
+    color: #fff;
+    cursor: pointer;
+    margin-bottom: 1px
+}
+.g-tips li.curr {
+    width: 103px;
+    background-position: 0 0
+}
+.star h3 {
+    background-image: url(i/g-title2.jpg);
+    background-repeat: no-repeat
+}
+.rexiao h3 {
+    background-position: 0 0;
+    height: 23px;
+    overflow: hidden;
+    text-indent: -9999px
+}
+.zixun {
+    color: #333
+}
+.zixun h3 {
+    font-weight: bold;
+    font-size: 12px;
+    height: 30px;
+    line-height: 38px
+}
+.zixun .inform li {
+    width: 235px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    height: 20px;
+    line-height: 20px
+}
+.zixun .inform span {
+    width: 2px;
+    height: 3px;
+    overflow: hidden;
+    background: #333;
+    display: inline-block;
+    margin: 0 10px 0 0;
+    vertical-align: middle
+}
+.list-tips li {
+    height: 20px;
+    line-height: 20px;
+    margin-top: 1px;
+    color: #333;
+    width: 200px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal
+}
+.list-tips li.list1 span,.list-tips li.list2 span,.list-tips li.list3 span {
+    background-position: 0 -68px
+}
+.list-tips li.list1,.list-tips li.list3,.list-tips li.list5,.list-tips li.list7,.list-tips li.list9 {
+    background: #fff
+}
+.list-tips li.list2,.list-tips li.list4,.list-tips li.list6,.list-tips li.list8,.list-tips li.list10 {
+    background: #f3f3f3;
+    padding: 1px 0
+}
+.list-tips span {
+    background-position: -20px -68px;
+    display: block;
+    width: 20px;
+    height: 20px;
+    text-align: center;
+    line-height: 20px;
+    color: #fff;
+    font-family: Verdana;
+    float: left;
+    margin-right: 10px
+}
+.equip-tab {
+    width: 970px;
+    height: 240px
+}
+.equip-tab .tab-con {
+    height: 240px;
+    width: 770px;
+    padding-left: 200px;
+    background-image: url(i/equip.jpg);
+    background-repeat: no-repeat;
+    background-color: #f3f3f3;
+    overflow: hidden
+}
+.equip-tab .tab-con .item1 {
+    width: 215px
+}
+.equip-tab .tab-con .item1 .p-img .mask {
+    width: 215px
+}
+.equip-tab .tab-con .item1 .p-img .extra {
+    width: 205px
+}
+.equip-tab .tab-con .item1 .p-img .extra .name {
+    width: 160px
+}
+.equip-tab .tab-con .item2 {
+    width: 100px
+}
+.equip-tab .tab-con .item2 .fore1 {
+    margin-bottom: 10px;
+    width: 100px;
+    height: 105px
+}
+.equip-tab .tab-con .item3 {
+    width: 180px
+}
+.equip-tab .tab-con .item4 {
+    width: 235px
+}
+.equip-tab .tab-con .item4 .fore1 {
+    margin-bottom: 10px
+}
+.equip-tab .tab-con .item4 .rexiao .list-tips li {
+    width: 235px
+}
+.equip-tab .tab-con .item4 .p-img {
+    height: 105px
+}
+.equip-tab .tab-con .item4 .p-img .mask {
+    width: 235px
+}
+.equip-tab .tab-con .item4 .p-img .extra {
+    width: 225px
+}
+.equip-tab .tab-con .item4 .p-img .extra .name {
+    width: 189px
+}
+.equip-tab .wrap1 {
+    background-position: 0 0
+}
+.equip-tab .wrap2 {
+    background-position: 0 -240px
+}
+.equip-tab .wrap3 {
+    background-position: 0 -480px
+}
+.equip-tab .wrap4 {
+    background-position: 0 -720px
+}
+.equip-tab .item .p-img {
+    position: relative
+}
+.equip-tab .item .p-img .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 245px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.equip-tab .item .p-img .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 235px;
+    color: #fff;
+    padding: 0 5px
+}
+.equip-tab .item .p-img .extra .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 170px;
+    display: block;
+    float: left
+}
+.equip-tab .item .p-img .extra .rate {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #e4393c;
+    float: right;
+    width: 36px;
+    overflow: hidden;
+    cursor: default
+}
+.equip-tab .item .p-img .extra .rate: hover {
+    text-decoration: none
+}
+.equip-tab .item .p-img .mask {
+    width: 180px
+}
+.equip-tab .item .p-img .extra {
+    width: 170px
+}
+.equip-tab .item .p-img .extra .name {
+    width: 134px
+}
+.hot .scroll-wrap {
+    float: left;
+    height: 278px;
+    width: 718px;
+    overflow: hidden
+}
+.hot .scroll-wrap #mscroll {
+    position: relative;
+    height: 278px
+}
+.hot .scroll-wrap #mscroll .ctrl {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    position: absolute;
+    transition: all .2s ease-in 0s;
+    -moz-transition: all .2s ease-in 0s;
+    -webkit-transition: all .2s ease-in 0s;
+    -o-transition: all .2s ease-in 0s;
+    width: 30px;
+    z-index: 6;
+    height: 278px
+}
+.hot .scroll-wrap #mscroll .ctrl: hover {
+    background: #f5f5f5
+}
+.hot .scroll-wrap #mscroll .ctrl b {
+    background-image: url("http: //misc.360buyimg.com/product/skin/2013/i/20130330B_1.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 33px;
+    width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    margin-top: -50%
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-prev {
+    left: 0
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-prev b {
+    background-position: -85px -45px
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-prev: hover b {
+    background: url(http: //misc.360buyimg.com/product/skin/2013/i/15.png) no-repeat 0 0
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-next {
+    right: 0
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-next b {
+    background-position: -53px -45px
+}
+.hot .scroll-wrap #mscroll #mscroll-ctrl-next: hover b {
+    background: url(http: //misc.360buyimg.com/product/skin/2013/i/15.png) no-repeat 2px -37px
+}
+.hot .scroll-wrap #mscroll #mscroll-list {
+    position: relative;
+    overflow: hidden;
+    margin: 0 33px;
+    width: 652px
+}
+.hot .scroll-wrap #mscroll {
+    width: 718px;
+    overflow: hidden
+}
+.hot .scroll-wrap #mscroll #mscroll-list {
+    margin-left: 40px
+}
+.hot .scroll-wrap .list {
+    height: 278px
+}
+.hot .scroll-wrap .list ul {
+    margin: 14px 0
+}
+.hot .scroll-wrap .list ul .p-img {
+    width: 400px;
+    height: 250px;
+    float: left
+}
+.hot .scroll-wrap .list ul .p-extra {
+    float: left;
+    margin-left: 10px;
+    width: 228px;
+    height: 250px
+}
+.hot .scroll-wrap .list ul .p-extra h3 {
+    font-size: 16px;
+    font-family: microsoft yahei;
+    margin: 10px 0;
+    color: #333
+}
+.hot .scroll-wrap .list ul .p-extra .depict {
+    font-family: "宋体";
+    font-size: 12px;
+    color: #333;
+    height: 210px;
+    overflow: hidden;
+    line-height: 24px
+}
+.hot .extra {
+    width: 240px;
+    height: 278px;
+    background: url(i/dashed.png) no-repeat left center;
+    float: left;
+    padding: 0 15px
+}
+.hot .extra .game-tab {
+    *zoom: 1;
+    height: 40px
+}
+.hot .extra .game-tab: before,.hot .extra .game-tab: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.hot .extra .game-tab: after {
+    clear: both
+}
+.hot .extra .game-tab li {
+    float: left;
+    width: 120px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    font-family: microsoft yahei
+}
+.hot .extra .game-tab li a {
+    text-decoration: none
+}
+.hot .extra .game-tab li.curr {
+    border-top: 2px solid #e4393c;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px
+}
+.hot .extra .game-tab li.curr a {
+    color: #e4393c
+}
+.hot .extra .p-extra {
+    line-height: 18px;
+    height: 53px;
+    overflow: hidden;
+    margin-top: 8px
+}
+.single .title {
+    background-position: 0 -50px
+}
+.single h3 {
+    background-position: -14px -16px;
+    height: 32px
+}
+.single .con {
+    padding: 0 0 10px 10px;
+    width: 980px;
+    margin: 0 auto
+}
+.single .rexiao {
+    width: 200px;
+    float: left
+}
+.single .single-list {
+    float: left;
+    margin: 0;
+    margin-left: 10px;
+    width: 770px
+}
+.single .single-list .item {
+    float: left;
+    margin: 0 10px 0 0
+}
+.single .single-list .item .p-img {
+    position: relative
+}
+.single .single-list .item .p-img .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 245px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.single .single-list .item .p-img .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 235px;
+    color: #fff;
+    padding: 0 5px
+}
+.single .single-list .item .p-img .extra .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 170px;
+    display: block;
+    float: left
+}
+.single .single-list .item .p-img .extra .rate {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #e4393c;
+    float: right;
+    width: 36px;
+    overflow: hidden;
+    cursor: default
+}
+.single .single-list .item .p-img .extra .rate: hover {
+    text-decoration: none
+}
+.single .single-list .item .p-img .mask {
+    width: 180px
+}
+.single .single-list .item .p-img .extra {
+    width: 170px
+}
+.single .single-list .item .p-img .extra .name {
+    width: 134px
+}
+.single .single-list .item4 {
+    margin-right: 0
+}
+.single .single-list .item4 .fore1 {
+    margin-bottom: 10px
+}
+.single .single-list .item4 .p-img {
+    height: 105px
+}
+.single .single-list .item4 .p-img .mask {
+    width: 235px
+}
+.single .single-list .item4 .p-img .extra {
+    width: 225px
+}
+.single .single-list .item4 .p-img .extra .name {
+    width: 189px
+}
+.single .single-list .item1 .p-img .mask {
+    width: 215px
+}
+.single .single-list .item1 .p-img .extra {
+    width: 205px
+}
+.single .single-list .item1 .p-img .extra .name {
+    width: 160px
+}
+.single .single-list .item2 a {
+    float: none
+}
+.single .single-list .item2 .fore1 {
+    margin-bottom: 10px;
+    width: 100px;
+    height: 105px
+}
+.single .single-list .game-tab {
+    *zoom: 1;
+    height: 32px
+}
+.single .single-list .game-tab: before,.single .single-list .game-tab: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.single .single-list .game-tab: after {
+    clear: both
+}
+.single .single-list .game-tab li {
+    float: left;
+    width: 125px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    font-family: microsoft yahei
+}
+.single .single-list .game-tab li a {
+    text-decoration: none
+}
+.single .single-list .game-tab li.curr {
+    border-top: 2px solid #e4393c;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px
+}
+.single .single-list .game-tab li.curr a {
+    color: #e4393c
+}
+.single .single-list .game-tab li {
+    height: 32px;
+    line-height: 32px
+}
+.single .single-list .game-tab li.curr {
+    height: 30px;
+    line-height: 30px
+}
+.introduce {
+    float: left;
+    margin-right: 10px;
+    _display: inline
+}
+.introduce .p-img {
+    float: left;
+    width: 215px;
+    margin-right: 10px;
+    position: relative
+}
+.introduce .p-img .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 245px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.introduce .p-img .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 235px;
+    color: #fff;
+    padding: 0 5px
+}
+.introduce .p-img .extra .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 170px;
+    display: block;
+    float: left
+}
+.introduce .p-img .extra .rate {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #e4393c;
+    float: right;
+    width: 36px;
+    overflow: hidden;
+    cursor: default
+}
+.introduce .p-img .extra .rate: hover {
+    text-decoration: none
+}
+.introduce .p-img .mask {
+    width: 215px
+}
+.introduce .p-img .extra {
+    width: 205px
+}
+.introduce .p-img .extra .name {
+    width: 150px
+}
+.introduce .p-extra {
+    float: left;
+    width: 132px;
+    margin: 10px 18px 0 0;
+    _display: inline
+}
+.introduce .p-extra h2 {
+    font-size: 12px;
+    font-family: "宋体";
+    font-weight: bold;
+    color: #333;
+    height: 25px;
+    line-height: 25px
+}
+.introduce .p-extra .text {
+    line-height: 20px;
+    height: 180px;
+    overflow: hidden
+}
+.online .title {
+    background-position: 0 -75px
+}
+.online .tab-con {
+    padding-left: 200px;
+    background-image: url(i/online.jpg);
+    background-repeat: no-repeat;
+    background-color: #f3f3f3;
+    height: 220px;
+    overflow: hidden
+}
+.online .tab-con li.item {
+    float: left;
+    margin-right: 11px;
+    width: 245px;
+    height: 200px
+}
+.online .tab-con li.item .p-img {
+    position: relative;
+    width: 245px;
+    height: 200px
+}
+.online .tab-con li.item .p-img .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 245px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.online .tab-con li.item .p-img .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 235px;
+    color: #fff;
+    padding: 0 5px
+}
+.online .tab-con li.item .p-img .extra .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 170px;
+    display: block;
+    float: left
+}
+.online .tab-con li.item .p-img .extra .rate {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #e4393c;
+    float: right;
+    width: 36px;
+    overflow: hidden;
+    cursor: default
+}
+.online .tab-con li.item .p-img .extra .rate: hover {
+    text-decoration: none
+}
+.online .wrap1 {
+    background-position: 0 0
+}
+.online .wrap2 {
+    background-position: 0 -221px
+}
+.online .wrap3 {
+    background-position: 0 -442px
+}
+.online .con {
+    height: 220px
+}
+.flagship .title {
+    background-position: 0 -100px
+}
+.flagship .shipwrap {
+    padding: 10px 0;
+    width: 990px;
+    margin: 0 auto;
+    height: 200px
+}
+.flagship .shipwrap .shipimg {
+    width: 460px;
+    height: 200px;
+    float: left;
+    margin-left: 23.333333333333332px;
+    _display: inline
+}
+.flagship #mscroll {
+    position: relative;
+    height: 60px
+}
+.flagship #mscroll .ctrl {
+    background: none repeat scroll 0 0 #fff;
+    display: block;
+    position: absolute;
+    transition: all .2s ease-in 0s;
+    -moz-transition: all .2s ease-in 0s;
+    -webkit-transition: all .2s ease-in 0s;
+    -o-transition: all .2s ease-in 0s;
+    width: 30px;
+    z-index: 6;
+    height: 60px
+}
+.flagship #mscroll .ctrl: hover {
+    background: #f5f5f5
+}
+.flagship #mscroll .ctrl b {
+    background-image: url("http: //misc.360buyimg.com/product/skin/2013/i/20130330B_1.png");
+    background-repeat: no-repeat;
+    display: block;
+    height: 33px;
+    width: 25px;
+    position: absolute;
+    top: 50%;
+    left: 2px;
+    margin-top: -50%
+}
+.flagship #mscroll #mscroll-ctrl-prev {
+    left: 0
+}
+.flagship #mscroll #mscroll-ctrl-prev b {
+    background-position: -85px -45px
+}
+.flagship #mscroll #mscroll-ctrl-prev: hover b {
+    background: url(http: //misc.360buyimg.com/product/skin/2013/i/15.png) no-repeat 0 0
+}
+.flagship #mscroll #mscroll-ctrl-next {
+    right: 0
+}
+.flagship #mscroll #mscroll-ctrl-next b {
+    background-position: -53px -45px
+}
+.flagship #mscroll #mscroll-ctrl-next: hover b {
+    background: url(http: //misc.360buyimg.com/product/skin/2013/i/15.png) no-repeat 2px -37px
+}
+.flagship #mscroll #mscroll-list {
+    position: relative;
+    overflow: hidden;
+    margin: 0 33px;
+    width: 884px
+}
+.flagship .scroll-wrap {
+    margin: 0 20px 10px;
+    width: 950px
+}
+.flagship .scroll-wrap #mscroll-list {
+    height: 60px
+}
+.flagship .scroll-wrap #mscroll-list li {
+    float: left;
+    _display: inline;
+    margin-left: 5.666666666666667px;
+    _margin-left: 6.8px
+}
+.webpage .title {
+    background-position: 0 -125px
+}
+.webpage .con {
+    padding: 10px;
+    width: 970px
+}
+.webpage .con .new {
+    width: 200px;
+    height: 180px;
+    overflow: hidden;
+    float: left
+}
+.webpage .con .new .game-tab {
+    background: #f3f3f3;
+    *zoom: 1
+}
+.webpage .con .new .game-tab: before,.webpage .con .new .game-tab: after {
+    display: table;
+    content: "";
+    line-height: 0
+}
+.webpage .con .new .game-tab: after {
+    clear: both
+}
+.webpage .con .new .game-tab li {
+    float: left;
+    width: 100px;
+    height: 40px;
+    line-height: 40px;
+    font-size: 14px;
+    color: #999;
+    text-align: center;
+    font-family: microsoft yahei
+}
+.webpage .con .new .game-tab li a {
+    text-decoration: none
+}
+.webpage .con .new .game-tab li.curr {
+    border-top: 2px solid #e4393c;
+    font-weight: bold;
+    height: 38px;
+    line-height: 38px
+}
+.webpage .con .new .game-tab li.curr a {
+    color: #e4393c
+}
+.webpage .con .new .game-tab li {
+    height: 36px;
+    line-height: 36px
+}
+.webpage .con .new .game-tab li.curr {
+    height: 34px;
+    line-height: 34px
+}
+.webpage .con .item-wrap {
+    width: 770px;
+    float: left
+}
+.webpage .con .item-wrap .item {
+    float: left;
+    width: 180px;
+    height: 180px;
+    margin: 0 0 0 12.5px
+}
+.webpage .con .item-wrap .item .p-img {
+    position: relative;
+    width: 180px;
+    height: 180px
+}
+.webpage .con .item-wrap .item .p-img .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 180px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.webpage .con .item-wrap .item .p-img .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 170px;
+    padding: 0 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    color: #fff
+}
+.webpage-list li {
+    height: 25px;
+    line-height: 25px;
+    color: #333;
+    padding: 0 10px;
+    width: 180px;
+    overflow: hidden;
+    margin: 0
+}
+.webpage-list li.list1,.webpage-list li.list3,.webpage-list li.list5,.webpage-list li.list7,.webpage-list li.list9 {
+    background: #fff
+}
+.webpage-list li.list2,.webpage-list li.list4,.webpage-list li.list6,.webpage-list li.list8,.webpage-list li.list10 {
+    background: #f3f3f3
+}
+.webpage-list li img {
+    float: left;
+    margin: 3px 5px 0 0
+}
+.webpage-list li .text {
+    width: 115px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    font-family: "宋体";
+    text-align: left
+}
+.webpage-list li .time {
+    float: right;
+    color: #999;
+    font-family: Verdana;
+    font-size: 12px
+}
+.mobile .title {
+    background-position: 0 -150px
+}
+.mobile .con {
+    background: url(i/mobile.jpg) no-repeat center 0;
+    height: 271px;
+    position: relative
+}
+.mobile .con .game {
+    position: absolute;
+    top: 130px;
+    left: 340px;
+    width: 400px;
+    height: 120px
+}
+.mobile .con .game li {
+    float: left;
+    width: 60px;
+    margin-right: 20px
+}
+.mobile .con .game li .p-name {
+    width: 60px;
+    margin-top: 5px;
+    height: 40px;
+    line-height: 20px;
+    overflow: hidden
+}
+.girl .title {
+    background-position: 0 -175px
+}
+.girl .con {
+    padding: 10px 0
+}
+.girl .list li {
+    float: left;
+    position: relative;
+    width: 230px;
+    height: 180px;
+    margin-left: 14px;
+    _display: inline
+}
+.girl .list li .mask {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000
+}
+.girl .list li .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    color: #fff;
+    padding: 0 5px;
+    width: 220px
+}
+.girl .list li .extra .name {
+    width: 165px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    float: left
+}
+.girl .list li .extra .praise {
+    display: block;
+    height: 12px;
+    padding-left: 15px;
+    float: right;
+    margin-top: 10px;
+    line-height: 12px;
+    color: #e4393c;
+    background: url(i/praise.png) no-repeat
+}
+.girl .list li .extra .praise: hover {
+    text-decoration: none;
+    color: #e4393c
+}
+.girl .list li .extra .visited {
+    background: url(i/praise.png) no-repeat 0 -14px
+}
+.bop {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.mask-bottom .mask {
+    opacity: .8;
+    filter: alpha(opacity=80);
+    background: #000;
+    width: 245px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden
+}
+.mask-bottom .extra {
+    width: 230px;
+    height: 30px;
+    line-height: 30px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    overflow: hidden;
+    width: 235px;
+    color: #fff;
+    padding: 0 5px
+}
+.mask-bottom .extra .name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    word-wrap: normal;
+    width: 170px;
+    display: block;
+    float: left
+}
+.mask-bottom .extra .rate {
+    display: block;
+    height: 30px;
+    line-height: 30px;
+    color: #e4393c;
+    float: right;
+    width: 36px;
+    overflow: hidden;
+    cursor: default
+}
+.mask-bottom .extra .rate: hover {
+    text-decoration: none
+}
+.game-nav {
+    width: 100%;
+    background: #e4393c
+}
+.game-nav #nav-2013 {
+    width: 780px;
+    margin: 0 auto
+}
+.floor {
+    position: fixed;
+    right: 0;
+    top: 100px;
+    width: 50px;
+    height: 397px;
+    overflow: hidden
+}
+.floor li a {
+    background: url(i/floor.png);
+    background-repeat: no-repeat;
+    background-position: 0 0;
+    display: block;
+    width: 50px;
+    height: 51px;
+    text-indent: -999px
+}
+.floor li a: hover {
+    background: url(i/floor.png);
+    background-repeat: no-repeat;
+    background-position: -50px 0
+}
+.floor li.fore2 a {
+    background-position: 0 -51px
+}
+.floor li.fore2 a: hover {
+    background-position: -50px -51px
+}
+.floor li.fore3 a {
+    background-position: 0 -102px
+}
+.floor li.fore3 a: hover {
+    background-position: -50px -102px
+}
+.floor li.fore4 a {
+    background-position: 0 -153px;
+    height: 48px
+}
+.floor li.fore4 a: hover {
+    background-position: -50px -153px
+}
+.floor li.fore5 a {
+    background-position: 0 -201px;
+    height: 50px
+}
+.floor li.fore5 a: hover {
+    background-position: -50px -201px
+}
+.floor li.fore6 a {
+    background-position: 0 -251px;
+    height: 50px
+}
+.floor li.fore6 a: hover {
+    background-position: -50px -251px
+}
+.floor li.fore7 a {
+    background-position: 0 -301px;
+    height: 50px
+}
+.floor li.fore7 a: hover {
+    background-position: -50px -301px
+}
+.floor li.fore8 a {
+    background-position: 0 -351px
+}
+.floor li.fore8 a: hover {
+    background-position: 0 -351px
+}
