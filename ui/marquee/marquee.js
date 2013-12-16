@@ -119,7 +119,7 @@
                         marginLeft: -width + 'px'
                     });
                     s.pos.clone = -width;
-                    break
+                    break;
             }
             if (s.auto) {
                 initMainTimer()
@@ -279,11 +279,11 @@
                         if (y_object <= -height) {
                             y_object = y_clone + height;
                             s.pos.object = y_object
-                        };
+                        }
                         if (y_clone <= -height) {
                             y_clone = y_object + height;
                             s.pos.clone = y_clone
-                        };
+                        }
                         setPos((y_object - y_ceil), (y_clone - y_ceil))
                     };
                     break;
@@ -296,11 +296,11 @@
                         if (y_object >= height) {
                             y_object = y_clone - height;
                             s.pos.object = y_object
-                        };
+                        }
                         if (y_clone >= height) {
                             y_clone = y_object - height;
                             s.pos.clone = y_clone
-                        };
+                        }
                         setPos((y_object + y_ceil), (y_clone + y_ceil))
                     };
                     break;
@@ -313,11 +313,11 @@
                         if (y_object <= -width) {
                             y_object = y_clone + width;
                             s.pos.object = y_object
-                        };
+                        }
                         if (y_clone <= -width) {
                             y_clone = y_object + width;
                             s.pos.clone = y_clone
-                        };
+                        }
                         setPos((y_object - y_ceil), (y_clone - y_ceil))
                     };
                     break;
@@ -330,11 +330,11 @@
                         if (y_object >= width) {
                             y_object = y_clone - width;
                             s.pos.object = y_object
-                        };
+                        }
                         if (y_clone >= width) {
                             y_clone = y_object - width;
                             s.pos.clone = y_clone
-                        };
+                        }
                         setPos((y_object + y_ceil), (y_clone + y_ceil))
                     };
                     break
