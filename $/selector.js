@@ -93,8 +93,8 @@ function filter(all, attr, val) {
     
 function query(selector, context) {
     var s = selector, arr = []
-    var context = context === undefined ? doc : typeof context === 'string' ?
-            byId(context.substr(1, context.length)) : context
+    var context = context === undefined ? doc : 
+        typeof context === 'string' ? query(context)[0] : context
             
     if (!selector) return arr
     
@@ -109,7 +109,7 @@ function query(selector, context) {
             var old = context.id, id = context.id = '__ZZ__'
             try {
                 return context.querySelectorAll('#' + id + ' ' + s)
-            } catch(e){
+            } catch(e) {
                 throw new Error('querySelectorAll: ' + e)
             } finally {
                 old ? context.id = old : context.removeAttribute('id')

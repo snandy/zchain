@@ -1,0 +1,12 @@
+.marquee {width: 608px;position: relative;}
+.reco-list{padding:10px 30px 0}
+.reco-list li{float:left;width:142px;padding:0 18px;text-align:center;}
+.reco-list .p-img {height:104px}
+
+
+.mleft,.mright{position:absolute;width:30px;height:183px;top:0;z-index:2;cursor:pointer;background:#ffffff}
+.mleft{left:0;}
+.mright{right:0}
+.mleft s,.mright s{background:url(i/index.png) no-repeat;width:21px;height:116px;margin-top:37px}
+.mleft s{background-position:0 -33px;float:right}
+.mright s{background-position:-20px -33px;float:left}
