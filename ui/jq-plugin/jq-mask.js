@@ -6,16 +6,15 @@
  * }) 
  * 
  */
-(function(global) {
+(function(win) {
 	
-	var $ = global.jQuery
+	var $ = win.jQuery
 	
 	if (!$) return
 	
-	var	$win = $(window),
-		docEl = global.document.documentElement
-		
-	var mask = $('<div>')
+	var	$win = $(window)
+	var docEl = win.document.documentElement
+	var ie6 = /msie 6/i.test(navigator.userAgent)
 	
 	function viewSize() {
 		return {
@@ -24,46 +23,43 @@
 		}
 	}
 	
-	function fixedie6(el) {
-		el.style.position = 'absolute'
+	function fixedie6($el) {
+        $el.css('position', 'absolute')
 		$win.bind('scroll', function() {
-			$(el).css({
+			$el.css({
 				top: docEl.scrollTop
 			})
 		})
 	}
 	
-	var size = viewSize()
-	
-	mask.css({
-		position: 'fixed',
-		left: 0,
-		top: 0,
-		width: size.w,
-		height: size.h
-	})
-	
-	
-	$.viewSize = viewSize
 	$.mask = function(conf) {
 		conf || (conf={})
 		
-		var opacity = conf.opactiy || 0.2,
-			bgColor = conf.bgColor || 'gray',
-			zIndex  = conf.zIndex || 100
+        // some options
+		var opacity = conf.opactiy || 0.2
+		var bgColor = conf.bgColor || 'gray'
+		var zIndex  = conf.zIndex  || 100
+
+        // create DOM & add styles
+        var $mask = $('<div>')
+        var size = viewSize()
+        $mask.css({
+            position: 'fixed',
+            left: 0,
+            top: 0,
+            width: size.w,
+            height: size.h,
+            opacity: opacity,
+            background: bgColor,
+            zIndex: zIndex
+        })
 		
-		mask.css({
-			opacity: opacity,
-			background: bgColor,
-			zIndex: zIndex
-		})
-		
-		var ie6 = /msie 6/i.test(navigator.userAgent)
 		if (ie6) {
-			fixedie6(mask[0])
+			fixedie6($mask)
 		}
 		
-		$(document.body).append(mask)
+        // append to body
+		$(document.body).append($mask)
 	}
 	
 })(this)
