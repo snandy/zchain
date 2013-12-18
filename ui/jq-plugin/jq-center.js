@@ -47,10 +47,12 @@
 			fixedie6(el)
 		}
 		
-		var x, y, size
+		var x, y, size, scrollTop
 		size = viewSize()
+        // Chrome / Safari 在两种文档模式下均使用 document.body.scrollTop获取
+        scrollTop = docEl.scrollTop || document.body.scrollTop
 		x = (size.w)/2 - (el.clientWidth)/2 
-		y = (size.h)/2 - (el.clientHeight)/2 + docEl.scrollTop
+		y = (size.h)/2 - (el.clientHeight)/2 + scrollTop
 		this.css({
 			left: x,
 			top: y
