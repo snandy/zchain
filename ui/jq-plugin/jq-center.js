@@ -2,21 +2,21 @@
  * $(selector).center(conf)
  * 
  * conf: {
- * 	 position: 'absolute' 随页面滚动条拖动而发生位置改变
- *   position: 'fixed' 不随页面滚动条拖动而发生位置改变
+ *        
  * }
  * 
  */
-(function(global) {
+(function(win) {
 	
-	var $ = global.jQuery
+	var $ = win.jQuery
 	
 	if (!$) return
 	
-	var	$win = $(window),
-		doc = global.document,
-		docEl = doc.documentElement
-	
+	var	$win = $(win)
+	var doc = win.document
+	var docEl = doc.documentElement
+	var ie6 = /msie 6/i.test(navigator.userAgent)
+
 	function viewSize() {
 		return {
 			w: $win.width(),
@@ -24,39 +24,37 @@
 		}
 	}
 	
-	function fixedie6(el) {
-		el.style.position = 'absolute'
+	function fixedie6($el, y) {
+        $el.css({
+            position: 'absolute',
+            top: y + docEl.scrollTop
+        })
 		$win.bind('scroll', function() {
-			$(el).center()
+            $el.css('top', y + docEl.scrollTop)
 		})
 	}
 	
 	$.fn.center = function(conf) {
 		conf || (conf = {})
-		var position = conf.position || 'absolute', zIndex = conf.zIndex || 9999
+        var el = this[0]
+        var zIndex = conf.zIndex || 9999
+		var position = conf.position || 'absolute'
+        var size = size = viewSize()
+		
+		var x = (size.w)/2 - (el.clientWidth)/2 
+		var y = (size.h)/2 - (el.clientHeight)/2
 		this.css({
-			display: 'block',
-			position: position,
-			zIndex: zIndex
-		})
-		
-		var el = this[0], ie6 = /msie 6/i.test(navigator.userAgent)
-		
-		// ie6 don't support position 'fixed'
-		if (position === 'fixed' && ie6) {
-			fixedie6(el)
-		}
-		
-		var x, y, size, scrollTop
-		size = viewSize()
-        // Chrome / Safari 在两种文档模式下均使用 document.body.scrollTop获取
-        scrollTop = docEl.scrollTop || document.body.scrollTop
-		x = (size.w)/2 - (el.clientWidth)/2 
-		y = (size.h)/2 - (el.clientHeight)/2 + scrollTop
-		this.css({
+            display: 'block',
+            position: 'fixed',
+            zIndex: zIndex,            
 			left: x,
 			top: y
 		})
+
+        // ie6 don't support position 'fixed'
+        if (ie6) {
+            fixedie6(this, y)
+        }
 	}
 	
 })(this)

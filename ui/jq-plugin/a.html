@@ -5,15 +5,17 @@
     <meta charset="utf-8">
     <style type="text/css">
     	html {overflow-x: hidden}
+        #dialog {
+            width: 200px;
+            height: 200px;
+            background: gray;
+        }
     </style>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.js"></script>
-    <script src="../jq-plugin/jq-uniq.js"></script>
+    <script src="../jq-plugin/jq-center.js"></script>
     <script>
     $(function() {
-        $('p').uniqClick(function(e) {
-            console.log(this)
-            console.log(e)
-        })
+        $('#dialog').center()
     })
     </script>
   </head>
