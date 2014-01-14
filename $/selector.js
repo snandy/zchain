@@ -98,11 +98,19 @@ function query(selector, context) {
             
     if (!selector) return arr
     
-    // id 还是用docuemnt.getElementById最快
+    // id和tagName 直接使用 getElementById 和 getElementsByTagName
+
+    // id 
     if ( rId.test(s) ) {
         arr[0] = byId( s.substr(1, s.length) )
         return arr
     }
+    
+    // Tag name
+    if ( rTag.test(s) ) {
+        return makeArray(context.getElementsByTagName(s))
+    }
+
     // 优先使用querySelector，现代浏览器都实现它了
     if (context.querySelectorAll) {
         if (context.nodeType === 1) {
@@ -117,6 +125,7 @@ function query(selector, context) {
         }
         return makeArray(context.querySelectorAll(s))
     }
+    
     // ClassName
     if ( rCls.test(s) ) {
         var ary = s.split('.')
@@ -138,10 +147,7 @@ function query(selector, context) {
             return filter(all, 'className', cls)
         }
     }
-    // Tag name
-    if ( rTag.test(s) ) {
-        return makeArray(context.getElementsByTagName(s))
-    }
+
     // Attribute
     if ( rAttr.test(s) ) {
         var result = rAttr.exec(s)
