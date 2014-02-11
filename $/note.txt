@@ -1,0 +1,68 @@
+如何创建你自己Grunt任务
+
+任务（Tasks）是grunt的核心概念，你所做的很多工作比如资源合并（concat）、压缩（uglify）都是在配置任务。
+每次grunt运行的时候，你指定的一个或多个任务也在运行，如果你没有指定任务，那么一个默认名为“default”的任务将自动运行。
+
+准备
+1. 新建一个目录g1
+2. 新建package.json，放入g1
+3. 新建Gruntfile.js，放入g1
+
+package.json
+{
+    "name": "g1",
+    "version": "0.1.0",
+    "author": "@snandy",
+    "homepage": "http://www.g1.com",
+    "devDependencies": {
+        "grunt": "~0.4.0"
+    }
+}
+
+Gruntfile.js暂时空着。
+
+
+
+创建一个最简单的任务
+
+grunt.registerTask(taskName, [description,] taskFunction)
+
+taskName 任务名称，命令行里使用 grunt + taskName
+description  任务的描述
+taskFunction 任务的实现
+
+例如Gruntfile.js
+
+module.exports = function(grunt) {
+    'use strict'
+
+    grunt.registerTask('mytask', '一个最简单的任务演示，根据参数打印不同的输出.', function(arg1, arg2) {
+        if (arguments.length === 0) {
+            grunt.log.writeln('任务' + this.name + ", 没有传参数");
+        } else if (arguments.length === 1) {
+            grunt.log.writeln('任务' + this.name + ", 有一个参数是" + arg1);
+        } else {
+            grunt.log.writeln('任务' + this.name + ", 有两个参数分别是" + arg1 + ", " + arg2);
+        }
+    });
+};
+
+注册了一个任务“mytask”，实现一个最简单的根据所传参数不同实现不同的打印输出。
+
+看运行结果我们需要进入命令行，
+
+进入到g1目录
+
+
+输入 grunt mytask
+
+
+再输入 grunt mytask:snandy
+任务名后面加一个冒号就可以传参了
+
+再输入 grunt mytask:snandy:backus
+冒号间隔可以传多个参数
+
+
+
+
