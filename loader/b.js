@@ -1,9 +1,4 @@
-define('b', function(exports, Z){
-	exports({
-		show: function() {
-			console.log('module b');
-		}
-	}, true);
-});
+var el = document.getElementById('p2')
+console.log(el.innerHTML)
 
 

@@ -1,9 +1,3 @@
-define('a', function(exports, Z){
-	exports({
-		show: function() {
-			console.log('module a');
-		}
-	}, true);
-});
-
+var el = document.getElementById('p1')
+console.log(el.innerHTML)
 
