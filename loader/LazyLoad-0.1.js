@@ -26,28 +26,28 @@
 
 LazyLoad = function(global) {
     
-var isIE = /*@cc_on!@*/!1,
-    hash = {},
-    doc  = global.document,
-    head = doc.head || doc.getElementsByTagName('head')[0],
-    noop = function(){};
+var isIE = /*@cc_on!@*/!1
+var hash = {}
+var doc  = global.document
+var head = doc.head || doc.getElementsByTagName('head')[0]
+var noop = function() {}
 
 function createEl(type, attrs) {
-    var el = doc.createElement(type), attr;
+    var el = doc.createElement(type), attr
     for (attr in attrs) {
-        el.setAttribute(attr, attrs[attr]);
+        el.setAttribute(attr, attrs[attr])
     }
-    return el;
+    return el
 }
 function done(list,obj) {
-    hash[obj.url] = true;
-    list.shift();
+    hash[obj.url] = true
+    list.shift()
     if (!list.length) {
-        obj.callback.call(obj.scope);
+        obj.callback.call(obj.scope)
     }
 }
 function load(type, urls, config) {
-    var charset = config.charset;
+    var charset = config.charset
     var obj = {
         scope: config.scope || global,
         callback: config.callback || noop
@@ -60,6 +60,11 @@ function load(type, urls, config) {
         if (hash[url]) {
             throw new Error('warning: ' + url + ' has loaded!');
         }
+        
+        if (charset) {
+            el.setAttribute('charset', charset)
+        }
+
         if (type=='js') {
             el = createEl('script', {
                 src: url,
@@ -73,43 +78,38 @@ function load(type, urls, config) {
                 type : 'text/css'
             });
         }
-        
-        if (charset) {
-            el.setAttribute('charset', charset)
-        }
-        
-        (function(url){
+
+        (function(url) {
             if (isIE) {
                 el.onreadystatechange = function() {
                     var readyState = this.readyState;
                     if(readyState == 'loaded' || readyState == 'complete') {
-                        obj.url = url;
-                        this.onreadystatechange = null;
-                        done(list, obj);
+                        obj.url = url
+                        this.onreadystatechange = null
+                        done(list, obj)
                     }
                 }
                 
-            }else {
+            } else {
                 if (type == 'js') {
                     el.onload = el.onerror = function() {
-                        obj.url = url;
-                        done(list, obj);
-                    };
+                        obj.url = url
+                        done(list, obj)
+                    }
                 } else {
                     setTimeout(function() {
-                        obj.url = url;
-                        done(list, obj);
-                    }, 100);
+                        obj.url = url
+                        done(list, obj)
+                    }, 100)
                 }
             }
         })(url);
         
         if (type=='js') {
-            head.insertBefore(el, head.firstChild);
+            head.insertBefore(el, head.firstChild)
         } else {
-            head.appendChild(el);
+            head.appendChild(el)
         }
-        
     }
 
 }
@@ -121,5 +121,5 @@ return {
     css : function(urls, callback, scope) {
         load('css', urls, callback, scope);
     }
-};
+}
 }(this);

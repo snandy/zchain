@@ -12,9 +12,10 @@
  * 接口
  * QueueLazyLoad.js([
  *         {
- *             url   // JS路径
- *             fn      // 回调函数
- *             scope // 回调函数执行上下文，默认为window
+ *             url:     // JS路径
+               charset: // utf-8
+ *             fn:      // 回调函数
+ *             scope:   // 回调函数执行上下文，默认为window
  *         },
  *         ...
  * ]);
@@ -29,55 +30,55 @@
  * 
  */
 
-QueueLazyLoad = function(win){
-    var index = 0,
-        hash  = {},
-        doc   = win.document,
-        isIE  = /*@cc_on!@*/!1,
-        head  = doc.getElementsByTagName('head')[0];
+QueueLazyLoad = function(win) {
+    var index = 0
+    var hash  = {}
+    var doc   = win.document
+    var isIE  = /*@cc_on!@*/!1
+    var head  = doc.getElementsByTagName('head')[0]
 
-    function load(libs){
-        var lib = libs[index++];
-        if(!lib || !lib.url){
-            index = 0;
-            return;
+    function load(libs) {
+        var lib = libs[index++]
+        if (!lib || !lib.url) {
+            index = 0
+            return
         }
-        if(hash[lib.url]){
-            alert('warning: ' + lib.url + ' has loaded!');
-            return;
+        if (hash[lib.url]) {
+            alert('warning: ' + lib.url + ' has loaded!')
+            return
         }
         
-        var src = lib.url,
-            fn = lib.fn || function(){},
-            scope = lib.scope || win;
+        var src = lib.url
+        var charset = lib.charset
+        var fn = lib.fn || function() {}
+        var scope = lib.scope || win
             
-        var script = doc.createElement('script');
-            script.src = src;
+        var script = doc.createElement('script')
+        script.charset = charset
+        script.src = src
         
-        function callback(){
-            hash[src] = true;
-            fn.call(scope);
-            load(libs);
+        function callback() {
+            hash[src] = true
+            fn.call(scope)
+            load(libs)
         }
         // IE9/10中同时支持onload和onreadystatechange事件
         // http://www.cnblogs.com/snandy/archive/2011/04/26/2029537.html
-        if(isIE){
-            script.onreadystatechange = function(){
+        if (isIE) {
+            script.onreadystatechange = function() {
                 //脚本如果缓存状态为 complete，否则为 loaded
-                var readyState = this.readyState;
-                if(readyState == "loaded" || readyState == "complete"){
+                var readyState = this.readyState
+                if (readyState == 'loaded' || readyState == 'complete') {
                     callback()
                 }
             }
-        }else{
+        } else {
             script.onload = function(){
-                callback();
-            };
+                callback()
+            }
         }
-        head.appendChild(script);
+        head.appendChild(script)
     }
     
-    return {
-        js : load
-    };
+    return {js: load}
 }(this);
