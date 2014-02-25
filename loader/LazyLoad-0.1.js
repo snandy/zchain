@@ -51,39 +51,39 @@ function load(type, urls, config) {
     var obj = {
         scope: config.scope || global,
         callback: config.callback || noop
-    };
-    var list = [].concat(urls);
-    for (var i=0,len=urls.length; i<len; i++) {
-        var el, url = urls[i];
+    }
+    var list = [].concat(urls)
+    for (var i = 0, len = urls.length; i < len; i++) {
+        var el, url = urls[i]
             
         // 已经加载的不再加载
         if (hash[url]) {
-            throw new Error('warning: ' + url + ' has loaded!');
+            throw new Error('warning: ' + url + ' has loaded!')
         }
         
         if (charset) {
             el.setAttribute('charset', charset)
         }
 
-        if (type=='js') {
+        if (type === 'js') {
             el = createEl('script', {
                 src: url,
-                async : 'async'
-            });
+                async: 'async'
+            })
             
         } else {
             el = createEl('link', {
-                href : url,
-                rel  : 'stylesheet',
-                type : 'text/css'
-            });
+                href: url,
+                rel: 'stylesheet',
+                type: 'text/css'
+            })
         }
 
         (function(url) {
             if (isIE) {
                 el.onreadystatechange = function() {
-                    var readyState = this.readyState;
-                    if(readyState == 'loaded' || readyState == 'complete') {
+                    var readyState = this.readyState
+                    if(readyState === 'loaded' || readyState === 'complete') {
                         obj.url = url
                         this.onreadystatechange = null
                         done(list, obj)
@@ -105,7 +105,7 @@ function load(type, urls, config) {
             }
         })(url);
         
-        if (type=='js') {
+        if (type === 'js') {
             head.insertBefore(el, head.firstChild)
         } else {
             head.appendChild(el)
@@ -115,11 +115,11 @@ function load(type, urls, config) {
 }
 
 return {
-    js : function(urls, callback, scope) {
-        load('js', urls, callback, scope);
+    js: function(urls, callback, scope) {
+        load('js', urls, callback, scope)
     },
-    css : function(urls, callback, scope) {
-        load('css', urls, callback, scope);
+    css: function(urls, callback, scope) {
+        load('css', urls, callback, scope)
     }
 }
 }(this);
