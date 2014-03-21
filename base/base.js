@@ -1,24 +1,14 @@
-/*
- */
-function isFunction( obj ) {
-	return Object.prototype.toString.call(obj) === "[object Function]";
+// 世界上最短的判断
+function isString(obj) {
+    return obj+'' === obj
 }
 
-function isArray( obj ) {
-	return Object.prototype.toString.call(obj) === "[object Array]";
+function isBoolean(obj) {
+    reutrn !!obj === obj
 }
 
-function isPlainObject( obj ) {
-	if(!obj || obj===window || obj===document || obj===document.body ) 
-		return false;
-	return 'isPrototypeOf' in obj && Object.prototype.toString.call(obj)==='[object Object]';
-}
-
-function isEmptyObject( obj ) {
-	for ( var name in obj ) {
-		return false;
-	}
-	return true;
+function isNumber(obj) {
+    return obj === +obj
 }
 
 function evalJs(str){
