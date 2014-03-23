@@ -35,13 +35,18 @@ function clone(obj) {
     return o
 }
 
-
-grunt.registerTask('mytask', '一个最简单的任务演示，根据参数打印不同的输出.', function(arg1, arg2) {
-    if (arguments.length === 0) {
-        grunt.log.writeln('任务' + this.name + ", 没有传参数");
-    } else if (arguments.length === 1) {
-        grunt.log.writeln('任务' + this.name + ", 有一个参数是" + arg1);
-    } else {
-        grunt.log.writeln('任务' + this.name + ", 有两个参数分别是" + arg1 + ", " + arg2);
-    }
-});
+/*
+ * JS instanceof 的伪代码实现
+ */
+function instance_of(L, R) {// L 表示左表达式，R 表示右表达式
+    var O = R.prototype // 取 R 的显示原型
+    // 取 L 的隐式原型
+    L = L.__proto__ 
+    while (true) { 
+        if (L === null) return false
+        // 这里重点：当 O 严格等于 L 时，返回 true 
+        if (O === L) return true
+        // 不断的取__proto__
+        L = L.__proto__
+    } 
+ }
