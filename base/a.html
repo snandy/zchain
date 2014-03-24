@@ -3,22 +3,33 @@
 <head> 
   <meta charset="utf-8">
   <title>html5shim - all</title>
-  <script src="browser.js"></script>
 </head> 
 <body>
-<p>Just do</p>
+<p>Just </p>
 <script type="text/javascript">
-    // Class('Person', function() {
-    //     function log() {alert(3)}
-    //     this.init = function(name, age) {
-    //         this.name = name
-    //         this.age = age
-    //     }
-    //     this.getName = function() {
-    //         log()
-    //     }
-    // })
-    // var p = new Person('jack', 33)
+function instance_of(obj, Clazz) {
+    // 取Clazz的显示原型
+    var pro = Clazz.prototype
+    // 取obj的隐式原型
+    var _p = obj.__proto__ 
+    while (true) {
+        if (_p === null) return false
+        // 这里重点：当p严格等于 L 时，返回 true 
+        if (pro === _p) return true
+        // 不断的取__proto__
+        _p = _p.__proto__
+    }
+}
+
+function Person() {}
+Person.prototype.name = 'John'
+function Woman(){}
+Woman.prototype = new Person
+Woman.prototype.age = 30
+
+var m1 = new Woman
+
+
 
 </script>
 </body>

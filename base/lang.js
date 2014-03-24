@@ -38,15 +38,16 @@ function clone(obj) {
 /*
  * JS instanceof 的伪代码实现
  */
-function instance_of(L, R) {// L 表示左表达式，R 表示右表达式
-    var O = R.prototype // 取 R 的显示原型
-    // 取 L 的隐式原型
-    L = L.__proto__ 
-    while (true) { 
-        if (L === null) return false
-        // 这里重点：当 O 严格等于 L 时，返回 true 
-        if (O === L) return true
+function instance_of(obj, Clazz) {
+    // 取Clazz的显示原型
+    var pro = Clazz.prototype
+    // 取obj的隐式原型
+    var _p = obj.__proto__ 
+    while (true) {
+        if (_p === null) return false
+        // 这里重点：当p严格等于 L 时，返回 true 
+        if (pro === _p) return true
         // 不断的取__proto__
-        L = L.__proto__
-    } 
+        _p = _p.__proto__
+    }
  }
