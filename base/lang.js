@@ -36,7 +36,7 @@ function clone(obj) {
 }
 
 /*
- * JS instanceof 的伪代码实现
+ * JS instanceof 的大概实现
  */
 function instance_of(obj, Clazz) {
     // 取Clazz的显示原型
@@ -50,4 +50,4 @@ function instance_of(obj, Clazz) {
         // 不断的取__proto__
         _p = _p.__proto__
     }
- }
+}
