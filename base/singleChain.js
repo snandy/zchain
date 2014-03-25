@@ -34,14 +34,16 @@ function chain(obj){
  * chain 精简版
  * @param {Object} obj
  */
-function chain(obj){
-	return function(){
-		var Self = arguments.callee; Self.obj = obj;
-		if(arguments.length==0){
-			return Self.obj;
+function chain(obj) {
+	var slice = [].slice
+	return function() {
+		var Self = arguments.callee
+		var Self.obj = obj
+		if (arguments.length === 0) {
+			return Self.obj
 		} 
-		Self.obj[arguments[0]].apply(Self.obj,[].slice.call(arguments,1));
-		return Self;
+		Self.obj[arguments[0]].apply(Self.obj, slice.call(arguments, 1))
+		return Self
 	}
 }
 
