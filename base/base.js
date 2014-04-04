@@ -110,12 +110,7 @@ function open_window(url, width, height) {
    my_window.focus();
 }
 
-// 把数组中指定位置的元素放到第一个位置
-function toFirst(arr, index) {
-	index = arr.splice(index, 1);
-	arr.unshift(index[0]);
-	return arr;
-}
+
 // 提取字符串里的单层JSON {key: value}
 function pickUpJSON(str) {
 	var arr,

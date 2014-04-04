@@ -227,6 +227,13 @@ function getRepeated(arr) {
     return newArray
 }
 
+// 把数组中指定位置的元素放到第一个位置
+function toFirst(arr, index) {
+    index = arr.splice(index, 1);
+    arr.unshift(index[0]);
+    return arr;
+}
+
 return {
     isArray : isArray,
     indexOf : indexOf,

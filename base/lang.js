@@ -14,8 +14,8 @@ function clone(obj) {
                 o = {}
                 for (var k in obj) {
                     o[k] = clone(obj[k])
-                } 
-            } 
+                }
+            }
         }
          
     } else {
@@ -30,8 +30,8 @@ function clone(obj) {
     for (var a in o) { 
         if (typeof o[a] === 'object') { 
             o[a] = clone(o[a])
-        } 
-    } 
+        }
+    }
     return o
 }
 
@@ -51,3 +51,19 @@ function instance_of(obj, Clazz) {
         _p = _p.__proto__
     }
 }
+
+/*
+ * JS getPrototypeOf
+ */
+function getPrototypeOf(obj) {
+    var __proto = obj.__proto
+    if (__proto || __proto === null) {
+        return __proto
+    } else if (obj.constructor) {
+        return obj.constructor.prototype
+    } else {
+        return Object.prototype
+    }
+}
+
+
