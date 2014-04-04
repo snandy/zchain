@@ -189,3 +189,13 @@ function unescape(str) {
         return entityMap.unescape[match]
     })    
 }
+
+/*
+ * 手机号分隔
+ * 13581599317 -> 135 8159 9317
+ */
+function separateMobile(num) {
+    var arr = ( '0' + num ).replace(/(\d{4})(?=\d)/g,"$1 ").split('')
+    arr.shift()
+    return arr.join('')
+}
