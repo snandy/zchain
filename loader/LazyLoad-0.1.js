@@ -39,7 +39,7 @@ function createEl(type, attrs) {
     }
     return el
 }
-function done(list,obj) {
+function done(list, obj) {
     hash[obj.url] = true
     list.shift()
     if (!list.length) {
