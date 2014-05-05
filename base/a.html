@@ -3,33 +3,32 @@
 <head> 
   <meta charset="utf-8">
   <title>html5shim - all</title>
+  <style type="text/css">
+      span {
+        background: gold;
+        position: absolute;
+        left: 1000px;
+      }
+  </style>
 </head> 
 <body>
 <p>Just </p>
+<span id="s1">text</span>
 <script type="text/javascript">
-function instance_of(obj, Clazz) {
-    // 取Clazz的显示原型
-    var pro = Clazz.prototype
-    // 取obj的隐式原型
-    var _p = obj.__proto__ 
-    while (true) {
-        if (_p === null) return false
-        // 这里重点：当p严格等于 L 时，返回 true 
-        if (pro === _p) return true
-        // 不断的取__proto__
-        _p = _p.__proto__
-    }
+// 判断一个元素是否在视图窗口中
+// Determine if an element is in the visible viewport
+function isInViewport(element) {
+    var rect = element.getBoundingClientRect()
+    var html = document.documentElement
+    return (
+      rect.top >= 0 &&
+      rect.left >= 0 &&
+      rect.bottom <= (window.innerHeight || html.clientHeight) &&
+      rect.right <= (window.innerWidth || html.clientWidth)
+    )
 }
 
-function Person() {}
-Person.prototype.name = 'John'
-function Woman(){}
-Woman.prototype = new Person
-Woman.prototype.age = 30
-
-var m1 = new Woman
-
-
+alert(isInViewport(s1))
 
 </script>
 </body>
