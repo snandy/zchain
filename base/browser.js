@@ -74,6 +74,9 @@ var ie678 = !+'\v1';
 // ie bug
 var ie678 = !-[1,];
 
+// ie678 parseInt实现bug
+var ie678 = parseInt('08') === 0;
+
 var ie6 = /msie 6/i.test(navigator.userAgent);
 var ie6 = !!window.ActiveXObject && !window.XMLHttpRequest;
 var ie6 = navigator.appVersion.indexOf('MSIE 6')>-1;

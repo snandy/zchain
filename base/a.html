@@ -12,8 +12,9 @@
   </style>
 </head> 
 <body>
-<p>Just </p>
-<span id="s1">text</span>
+<p>
+    <input value="9">
+</p>
 <script type="text/javascript">
 // 判断一个元素是否在视图窗口中
 // Determine if an element is in the visible viewport
@@ -28,7 +29,31 @@ function isInViewport(element) {
     )
 }
 
-alert(isInViewport(s1))
+// alert(isInViewport(s1))
+
+// radix 不传或为假值时，默认按10进制处理 (JS六个假值)
+// alert(parseInt('9'))
+// alert(parseInt('9', null))
+// alert(parseInt('9', undefined))
+// alert(parseInt('9', 0))
+// alert(parseInt('9', ''))
+// alert(parseInt('9', NaN))
+// alert(parseInt('9', false))
+
+// 默认会去掉左右空白符
+// alert(parseInt(' 9'))
+// alert(parseInt('9 '))
+// alert(parseInt(' 9 '))
+
+// 但不会去掉中间的空白符，且默认忽略中间空白符后所有的字符
+// alert(parseInt('9 0'))
+// alert(parseInt(' 9 0 '))
+// alert(parseInt(' 9 a '))
+
+// radix为假值时
+alert(parseInt('08'))
+
+
 
 </script>
 </body>
