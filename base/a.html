@@ -51,11 +51,28 @@ function isInViewport(element) {
 // alert(parseInt(' 9 a '))
 
 // radix为假值时
-alert(parseInt('08'))
+// 仅IE6/7/8中parseInt第一个参数为非法八进制字符串第二个参数不传时返回值为0
 
+// 我们知道JavaScript中数字有十进制，八进制，十六进制。以0开头的是八进制，0x开头的是十六进制。
+// alert(parseInt('08'))
+// alert(parseInt('09'))
 
+// alert(parseInt('01'))
+// alert(parseInt('07'))
+
+// alert(parseInt('01')) // 1 
+// alert(parseInt('07')) // 7
+
+alert(parseInt('0xa'))     // 10
+alert(parseInt('0xa'), 8)  // 10
+alert(parseInt('0xa'), 16) // 10
+
+alert(parseInt('0Xa'))     // 10
+alert(parseInt('0Xa'), 8)  // 10
+alert(parseInt('0Xa'), 16) // 10
 
 </script>
+
 </body>
 </html>
 
