@@ -234,6 +234,12 @@ function toFirst(arr, index) {
     return arr;
 }
 
+// 随机返回数组中的一个
+function random(arr){
+    var i = Math.round(Math.random() * (arr.length-1))
+    return arr[i]
+}
+    
 return {
     isArray : isArray,
     indexOf : indexOf,
