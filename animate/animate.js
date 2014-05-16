@@ -7,6 +7,7 @@ var bottom = 'Bottom'
 var left = 'Left'
 var mutex = 1
 var reUnit = /\d(\D+)$/
+var reOpac = /alpha\(opacity=(\d+)\b/i
 var reRgba = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
 
 var getStyle = 
@@ -178,15 +179,22 @@ A.fx = {
 		A.fx._(obj, el, from, to, name)
 	},
 	opacity: function(obj, el, from, to, name) {
-		if (isNaN(from = from || obj._fr)) {
+		if (isNaN(from)) {
 			from = el.style
 			from.zoom = 1
-			from = obj._fr = (/alpha\(opacity=(\d+)\b/i.exec(from.filter) || {})[1] / 100 || 1
+			from = (reOpac.exec(from.filter) || {})[1] / 100 || 1
 		}
 		from *= 1
 		to = obj.p * (to - from) + from
-		el = el.style
-		name in el ? el[name] = to : el.filter = 1 <= to ? '' : 'alpha(' + name + '=' + Math.round(100 * to) + ')'
+
+		var style = el.style
+        if (name in el) {
+            style[name] = to
+        } else if (to >= 0) {
+            style.filter = ''
+        } else {
+            style.filter = 'alpha(' + name + '=' + Math.round(100 * to) + ')'
+        }
 	},
 	color: function(obj, el, from, to, name) {
 		if (!obj.ok) {
