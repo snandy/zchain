@@ -1,16 +1,39 @@
-var animate = function(window) {
+animate = function(window) {
 
 var slice = [].slice
 var top = 'Top'
 var right = 'Right'
 var bottom = 'Bottom'
 var left = 'Left'
-var reUnit = /\d(\D+)$/
 var mutex = 1
+var reUnit = /\d(\D+)$/
+var reRgba = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
 
 var getStyle = 
 	window.getComputedStyle ? function(elem, name) {return getComputedStyle(elem, null)[name]} 
 	: function(elem, name) {return elem.currentStyle[name]}
+
+var timeout = function(win, str) {
+    return win['webkitR' + str] || win['mozR' + str] || win['msR' + str] || win['oR' + str] || win['r' + str]
+}(window, 'equestAnimationFrame')
+
+function expand(obj, dim, arr) {
+    var name, i, it
+    for (name in obj) {
+        if (name in dim) {
+            var ci = obj[name]
+            for (i = 0; it = arr[i]; i++) {
+                var str = name.replace(dim[name], '') + it + (dim[name] || '')
+                obj[str] = {
+                    to: 0 === ci.to ? ci.to : ci.to || ci,
+                    from: ci.from,
+                    e: ci.dim
+                }
+            }
+            delete obj[name]
+        }
+    }
+}
 
 function A(elem, prop, duration, ease) {
 	var arr = []
@@ -58,28 +81,6 @@ function A(elem, prop, duration, ease) {
 	}
 }
 
-function expand(obj, dim, arr) {
-	var name, i, it
-	for (name in obj) {
-		if (name in dim) {
-			var ci = obj[name]
-			for (i = 0; it = arr[i]; i++) {
-				var str = name.replace(dim[name], '') + it + (dim[name] || '')
-				obj[str] = {
-					to: 0 === ci.to ? ci.to : ci.to || ci,
-					from: ci.from,
-					e: ci.dim
-				}
-			}
-			delete obj[name]
-		}
-	}
-}
-
-var timeout = function(win, str) {
-	return win['webkitR' + str] || win['mozR' + str] || win['msR' + str] || win['r' + str] || win['oR' + str]
-}(window, 'equestAnimationFrame')
-
 A.defs = function(elem, obj, name, ease) {
 	var style = elem.style
 	obj.name = name
@@ -100,7 +101,9 @@ A.iter = function(prop, duration, callback) {
 	var eTime = +new Date + duration
 	var func = function(l) {
 		var obj, key, ease
-		sTime = eTime - (l || (new Date).getTime())
+        // IE10+ l值总是负数
+		// sTime = eTime - (l || (new Date).getTime())
+        sTime = eTime - (new Date).getTime()
 		if (50 > sTime) {
 			for (key in prop) {
 				obj = prop[key]
@@ -137,15 +140,41 @@ A.iter = function(prop, duration, callback) {
 	func()
 }
 
+A.toRGBA = function(str) {
+    var arr = [0, 0, 0, 0]
+    str.replace(/\s/g, '').replace(reRgba, function(str, b, g, d, c, z, k, l, m, n, p, q, r, s, t) {
+        k = [b + b || c, g + g || z, d + d || k]
+        b = [l, m, n]
+        for (a = 0; 3 > a; a++) {
+            k[a] = parseInt(k[a], 16)
+            b[a] = Math.round(2.55 * b[a])
+        }
+        arr = [k[0] || b[0] || q || 0, k[1] || b[1] || r || 0, k[2] || b[2] || s || 0, p || t || 1]
+    })
+    return arr
+}
+
 A.fx = {
 	_: function(obj, el, from, to, name) {
 		to = parseFloat(to) || 0
 		from = parseFloat(from) || 0
-		obj.styl[name] = (1 <= obj.p ? to : obj.p * (to - from) + from) + obj.unit
+        var num = 0
+        if (obj.p >= 1) {
+            num = to
+        } else {
+            num = obj.p * (to - from) + from
+        }
+		obj.styl[name] = num + obj.unit
 	},
 	width: function(obj, el, from, to, name) {
 		from = parseFloat(from)
-		from = !isNaN(from) ? from : 'width' == name ? el.clientWidth : el.clientHeight
+        if ( !isNaN(from) ) {
+            from = from
+        } else if ( name === 'width' ) {
+            from = el.clientWidth
+        } else if (name === 'height') {
+            from = el.clientHeight
+        }
 		A.fx._(obj, el, from, to, name)
 	},
 	opacity: function(obj, el, from, to, name) {
@@ -159,35 +188,38 @@ A.fx = {
 		el = el.style
 		name in el ? el[name] = to : el.filter = 1 <= to ? '' : 'alpha(' + name + '=' + Math.round(100 * to) + ')'
 	},
-	color: function(obj, e, from, to, name, d, c, j) {
-		obj.ok || (to = obj.to = A.toRGBA(to), from = obj.from = A.toRGBA(from), 0 == to[3] && (to = [].concat(from), to[3] = 0), 0 == from[3] && (from = [].concat(to), from[3] = 0), obj.ok = 1);
-		j = [0, 0, 0, obj.p * (to[3] - from[3]) + 1 * from[3]];
-		for (c = 2; 0 <= c; c--) j[c] = Math.round(obj.p * (to[c] - from[c]) + 1 * from[c]);
-		(1 <= j[3] || A.rgbaIE) && j.pop();
+	color: function(obj, el, from, to, name) {
+		if (!obj.ok) {
+            to = obj.to = A.toRGBA(to)
+            from = obj.from = A.toRGBA(from)
+            if (to[3] === 0) {
+                to = [].concat(from)
+                to[3] = 0
+            }
+            if (from[3] === 0) {
+                from = [].concat(to)
+                from[3] = 0
+            }
+            obj.ok = 1
+        }
+
+        var arr = [0, 0, 0, obj.p * (to[3] - from[3]) + 1 * from[3]]
+
+		for (var i = 2; 0 <= i; i--) {
+            arr[i] = Math.round(obj.p * (to[i] - from[i]) + 1 * from[i])
+        }
+
+        if (1 <= arr[3] || A.rgbaIE) {
+            arr.pop()
+        }
 		try {
-			obj.styl[name] = (3 < j.length ? 'rgba(' : 'rgb(') + j.join(',') + ')'
+			obj.styl[name] = (3 < arr.length ? 'rgba(' : 'rgb(') + arr.join(',') + ')'
 		} catch (k) {
 			A.rgbaIE = 1
 		}
 	}
 }
 A.fx.height = A.fx.width
-
-A.RGBA = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
-
-A.toRGBA = function(str, arr) {
-	arr = [0, 0, 0, 0];
-	str.replace(/\s/g, '').replace(A.RGBA, function(str, b, g, d, c, z, k, l, m, n, p, q, r, s, t) {
-		k = [b + b || c, g + g || z, d + d || k]
-		b = [l, m, n]
-		for (a = 0; 3 > a; a++) {
-			k[a] = parseInt(k[a], 16)
-			b[a] = Math.round(2.55 * b[a])
-		}
-		arr = [k[0] || b[0] || q || 0, k[1] || b[1] || r || 0, k[2] || b[2] || s || 0, p || t || 1]
-	})
-	return arr
-}
 
 return A
 
