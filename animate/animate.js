@@ -1,18 +1,18 @@
 animate = function(window) {
 
-var slice = [].slice
-var top = 'Top'
-var right = 'Right'
+var slice  = [].slice
+var top    = 'Top'
+var right  = 'Right'
 var bottom = 'Bottom'
-var left = 'Left'
-var mutex = 1
+var left   = 'Left'
+var mutex  = 1
 var reUnit = /\d(\D+)$/
 var reOpac = /alpha\(opacity=(\d+)\b/i
 var reRgba = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
 
 var getStyle = 
-	window.getComputedStyle ? function(elem, name) {return getComputedStyle(elem, null)[name]} 
-	: function(elem, name) {return elem.currentStyle[name]}
+	window.getComputedStyle ? function(elem, name) { return getComputedStyle(elem, null)[name] } 
+	: function(elem, name) { return elem.currentStyle[name] }
 
 var timeout = function(win, str) {
     return win['webkitR' + str] || win['mozR' + str] || win['msR' + str] || win['oR' + str] || win['r' + str]
