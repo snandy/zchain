@@ -2,18 +2,34 @@
 <html>
 	<head>
 		<meta charset="utf-8"/>
-		<title>IE9/10 getBoundingClientRect bug</title>
+		<title>IE6-IE9中tbody的innerHTML不能复制bug</title>
 	</head>
 	<body style="height:3000px">
-        <p style="margin-top:400px">
-		<label>Top：<input id="_bound" type="text"/></label>
+        <table id="t1">
+            <tbody>
+                <tr><td>aaa</td></tr>
+            </tbody>
+        </table>
+        <p>
+            <button id="btn1">GET</button><button id="btn2">SET</button>
         </p>
     	<script>
-            var el = document.getElementById('_bound')
-            document.onclick = function() {
-                var rect = document.documentElement.getBoundingClientRect()
-                el.value = rect.top            
+            var tbody = document.getElementsByTagName('tbody')[0]
+            function setTbody() {
+                tbody.innerHTML = '<tr><td>bbb</td></tr>'
             }
+            function getTbody() {
+                alert(tbody.innerHTML)
+            }
+            btn1.onclick = function() {
+                getTbody()
+            }
+            btn2.onclick = function() {
+                setTbody()
+            }
+
+            t1.innerHTML = '<tr><td>xxx</td></tr>'
+
     	</script>
 	</body>
 </html>

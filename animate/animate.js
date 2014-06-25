@@ -1,5 +1,6 @@
 animate = function(window) {
 
+<<<<<<< HEAD
 var slice   = [].slice
 var mutex   = 1
 var top     = 'Top'
@@ -14,6 +15,21 @@ var reRgba  = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|
 var getSty = 
 	window.getComputedStyle ? function(elem, name) {return getComputedStyle(elem, null)[name]} 
 	: function(elem, name) {return elem.currentStyle[name]}
+=======
+var slice  = [].slice
+var top    = 'Top'
+var right  = 'Right'
+var bottom = 'Bottom'
+var left   = 'Left'
+var mutex  = 1
+var reUnit = /\d(\D+)$/
+var reOpac = /alpha\(opacity=(\d+)\b/i
+var reRgba = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
+
+var getStyle = 
+	window.getComputedStyle ? function(elem, name) { return getComputedStyle(elem, null)[name] } 
+	: function(elem, name) { return elem.currentStyle[name] }
+>>>>>>> 8487568bd5233abd6a0a8b95c8aa9e38044cc5b7
 
 var RAF = function(win, str) {
     return win['webkitR' + str] || win['mozR' + str] || win['msR' + str] || win['oR' + str] || win['r' + str]

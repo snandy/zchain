@@ -1,0 +1,391 @@
+body,
+dl,
+dd,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+form {
+  margin: 0;
+}
+ol,
+li,
+ul {
+  margin: 0;
+  padding: 0;
+}
+html {
+  -webkit-text-size-adjust: none;
+}
+html {
+  _background-image: url(about:blank);
+  _background-attachment: fixed;
+}
+body {
+  font: 12px/1.2 "Microsoft Yahei", "Arial";
+  color: #666;
+}
+div {
+  outline: medium none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-size: 100%;
+}
+a {
+  color: #000;
+  text-decoration: none;
+  outline: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+img {
+  border: 0;
+}
+li {
+  list-style: none;
+}
+.fr {
+  float: right;
+}
+.fl {
+  float: left;
+}
+.clearfix:after {
+  content: ".";
+  height: 0;
+  visibility: hidden;
+  display: block;
+  clear: both;
+  font-size: 0;
+  line-height: 0;
+}
+.clearfix {
+  *zoom: 1;
+}
+b {
+  font-weight: normal;
+}
+em {
+  font-style: normal;
+}
+button,
+input,
+select,
+textarea {
+  font-size: 100%;
+  vertical-align: middle;
+}
+input,
+button,
+select,
+textarea,
+div {
+  outline: none;
+}
+input[type="text"] {
+  -webkit-appearance: none;
+}
+textarea {
+  resize: none;
+}
+.hide {
+  display: none;
+}
+.ic,
+.bg,
+.scrollzone {
+  background-image: url(i/ic.png);
+  _background-image: url(i/ic8.png);
+  background-repeat: no-repeat;
+}
+.w {
+  width: 990px;
+  margin: 40px auto;
+}
+.award {
+  overflow: hidden;
+  height: 450px;
+  padding-right: 20px;
+}
+.award .notice {
+  width: 352px;
+  height: 387px;
+  background-position: 0 -480px;
+}
+.award .notice .title {
+  overflow: hidden;
+  height: 60px;
+  padding-left: 75px;
+}
+.award .notice .title li {
+  float: left;
+  width: 100px;
+  height: 67px;
+}
+.award .notice .title li a {
+  display: block;
+  width: 100px;
+  height: 67px;
+  text-indent: -9999em;
+}
+.award .notice .mc {
+  padding: 59px 35px 0;
+  font-family: verdana,microsoft yahei;
+  color: #010101;
+  font-size: 20px;
+}
+.award .notice .mc .tab-con {
+  width: 282px;
+  height: 218px;
+  overflow: hidden;
+}
+.award .notice .mc .cate {
+  font-size: 17px;
+}
+.award .notice .mc .name {
+  display: inline-block;
+  width: 97px;
+  overflow: hidden;
+  vertical-align: top;
+}
+.award .notice .mc .red {
+  color: #e40000;
+}
+.award .notice .mc li {
+  padding-bottom: 10px;
+}
+.award .notice .land {
+  width: 240px;
+  height: 200px;
+  margin: 0 auto;
+  background-position: -362px -480px;
+  overflow: hidden;
+}
+.award .notice .land a {
+  display: block;
+  width: 197px;
+  height: 45px;
+  text-indent: -9999em;
+}
+.award .notice .land .denglu {
+  margin: 89px auto 0;
+}
+.award .notice .land .zhuce {
+  margin: 13px auto 0;
+}
+.award .bandit {
+  width: 600px;
+  height: 440px;
+  background-position: 0 0;
+  position: relative;
+}
+.award .bandit .order {
+  background: none;
+  border: 0;
+  width: 200px;
+  height: 37px;
+  line-height: 37px;
+  color: #c8c7c3;
+  font-size: 16px;
+  font-family: verdana, microsoft yahei;
+  position: absolute;
+  top: 52px;
+  left: 114px;
+}
+.award .bandit .yaojiang {
+  position: absolute;
+  display: block;
+  width: 55px;
+  height: 55px;
+  text-indent: -9999em;
+  top: 91px;
+  left: 540px;
+}
+.award .bandit .lingqu {
+  position: absolute;
+  display: block;
+  width: 95px;
+  height: 95px;
+  text-indent: -9999em;
+  left: 325px;
+  top: 15px;
+}
+.award .bandit .surplus {
+  position: absolute;
+  width: 285px;
+  top: 118px;
+  left: 187px;
+  line-height: 30px;
+}
+.award .bandit .surplus .number {
+  font-size: 36px;
+  color: #fff;
+  font-family: verdana;
+  font-weight: bold;
+  line-height: 40px;
+}
+.award .bandit .surplus .go {
+  color: #5adbff;
+  line-height: 50px;
+  font-family: simsun;
+}
+.award .bandit .surplus .text {
+  color: #000;
+  line-height: 50px;
+}
+.award .bandit .scrollwrap {
+  height: 177px;
+  overflow: hidden;
+  position: absolute;
+  top: 174px;
+  left: 49px;
+}
+.award .bandit .scrollwrap .scrollzone {
+  float: left;
+  width: 147px;
+  height: 177px;
+  text-align: center;
+  overflow: hidden;
+  background-position: 15px -1209px;
+}
+.award .bandit .scrollwrap .scrollzone .scrollbox {
+  position: relative;
+  *zoom: 1;
+}
+.award .bandit .scrollwrap .scrollzone li img {
+  padding: 20px 0;
+}
+.award .bandit .scrollwrap .scrollzone .border {
+  width: 136px;
+  height: 151px;
+  display: block;
+  position: absolute;
+  top: 10px;
+  left: 3px;
+  overflow: hidden;
+}
+.award .bandit .scrollwrap .scrollzone .bg {
+  display: block;
+  width: 147px;
+  height: 177px;
+  background-position: -142px -1215px;
+  _background-position: -312px -1215px;
+  position: absolute;
+  left: 0;
+  z-index: 2;
+}
+.play {
+  border: 3px solid #6e3d04;
+  width: 950px;
+  margin: 20px auto 0;
+  overflow: hidden;
+  border-radius: 30px;
+  box-shadow: 3px 3px 5px #6a3b04;
+  background-color: #f0d591;
+  padding: 10px 0;
+}
+.play .title {
+  background-position: -365px -717px;
+  width: 187px;
+  height: 40px;
+  text-indent: -9999em;
+}
+.play .mc ul {
+  width: 930px;
+  margin: 0 auto;
+}
+.play .mc li {
+  float: left;
+  width: 310px;
+  height: 40px;
+  line-height: 40px;
+  color: #000;
+  font-size: 16px;
+  margin-top: 10px;
+}
+.play .mc li img {
+  vertical-align: middle;
+  float: left;
+}
+.play .mc li i {
+  font-size: normal;
+  font-weight: bold;
+  font-family: verdana;
+  padding: 0 3px;
+  float: left;
+}
+.play2 {
+  border: none;
+  width: 950px;
+  margin: 20px auto 0;
+  overflow: hidden;
+  border-radius: none;
+  box-shadow: none;
+  background-color: #f0d591;
+  padding: 10px 0;
+}
+.play2 .top,
+.play2 .bottom {
+  background-image: url(i/ic2.png);
+  background-repeat: no-repeat;
+}
+.play2 .top {
+  height: 58px;
+}
+.play2 .bottom {
+  height: 68px;
+}
+.panel {
+  background-position: -8px -898px;
+  width: 575px;
+  height: 270px;
+  position: absolute;
+  left: 100px;
+  top: 130px;
+  z-index: 3;
+  padding-top: 30px;
+}
+.panel .text {
+  font-size: 24px;
+  line-height: 30px;
+  font-family: verdana,microsoft yahei;
+  width: 575px;
+  height: 170px;
+  color: #6e3d04;
+  text-align: center;
+}
+.panel .sure {
+  text-indent: -9999em;
+  display: block;
+  width: 260px;
+  height: 60px;
+  position: absolute;
+  top: 198px;
+  left: 175px;
+}
+.nostart {
+  position: absolute;
+  left: 56px;
+  top: 184px;
+  z-index: 3;
+  width: 420px;
+  height: 154px;
+  line-height: 154px;
+  text-align: center;
+  border-radius: 30px;
+  font-size: 30px;
+  color: #6e3d04;
+  font-family: microsoft yahei;
+  border: 3px solid #6E3D04;
+  background-color: #F0D591;
+  background: rgba(240, 213, 145, 0.8);
+}
