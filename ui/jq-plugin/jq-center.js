@@ -39,10 +39,12 @@
         var el = this[0]
         var zIndex = conf.zIndex || 9999
 		var position = conf.position || 'absolute'
+        var width = conf.width
+        var height = conf.height
         var size = size = viewSize()
 		
-		var x = (size.w)/2 - (el.clientWidth)/2 
-		var y = (size.h)/2 - (el.clientHeight)/2
+		var x = (size.w)/2 - (el.clientWidth||width)/2 
+		var y = (size.h)/2 - (el.clientHeight||height)/2
 		this.css({
             display: 'block',
             position: 'fixed',
