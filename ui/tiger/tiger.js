@@ -18,7 +18,7 @@ $.fn.tigerGame = function(option) {
             marginTop: -animHeight
         }, {
             easing: 'linear',
-            duration: 600,
+            duration: 900,
             complete: function() {
                 $ul.css({
                     marginTop: 0
@@ -34,7 +34,7 @@ $.fn.tigerGame = function(option) {
     function winPrize(idx) {
         stop = true
         var i = 0
-        $ul.stop(true).css({marginTop:0})
+        $ul.stop(true)
 
         $ul.eq(0).animate({
             marginTop: -idx * oneHeight
@@ -75,7 +75,7 @@ $.fn.tigerGame = function(option) {
 
     // 模拟中奖
     $self.find('.lingqu').click(function() {
-        winPrize(3)
+        winPrize(0)
     })
 
 
