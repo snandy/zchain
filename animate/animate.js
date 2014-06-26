@@ -142,9 +142,11 @@ function getConfig(prop, elem, ease) {
 	var config = {}
 	var sty = elem.style
 	for (var key in prop) {
+		var obj = null
 		var val = prop[key]
-		var obj = {}
-		if (!val.to) {
+		if (val.to) {
+			obj = val
+		} else {
 			obj = {to: val}
 		}
 		obj.name = key
@@ -185,7 +187,7 @@ function exec(prop, duration, callback) {
 				obj = prop[key]
 				ease = obj.ease
 				cTime = sTime
-				if (ease === 'lin') {
+				if (ease === 'linear') {
 					cTime = 1 - cTime
 				} else if (ease === 'ease') {
 					cTime = 2 * (0.5 - cTime)
@@ -206,6 +208,7 @@ function exec(prop, duration, callback) {
 }
 
 function A(elem, prop, duration, ease) {
+	if (!elem) return
 	var arr = []
 	var callback = function(a) {
 		if (a = arr.shift()) {

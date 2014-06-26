@@ -29,13 +29,13 @@ td {width:50%}
 animate(a1, {width:"90%"}, 3, "ease-in").animate(1).animate(a1, {width:0}, 1, "ease-in");
 animate(a2, {width:"90%"}, 3, "ease-out").animate(1).animate(a2, {width:0}, 1, "ease-out");
 animate(a3, {width:"90%"}, 3, "ease").animate(1).animate(a3, {width:0}, 1, "ease").animate(1);
-animate(a4, {width:"90%"}, 3, "lin").animate(1).animate(a4, {width:0}, 1, "lin").animate(1);
+animate(a4, {width:"90%"}, 3, "linear").animate(1).animate(a4, {width:0}, 1, "linear").animate(1);
       </textarea>
     <script>
-animate(a1, {width:"90%"}, 3, "ease-in").animate(3).animate(a1, {width:0}, 1, "ease-in");
-animate(a2, {width:"90%"}, 3, "ease-out").animate(1).animate(a2, {width:0}, 1, "ease-out");
-animate(a3, {width:"90%"}, 3, "ease").animate(1).animate(a3, {width:0}, 1, "ease").animate(1);
-animate(a4, {width:"90%"}, 3, "lin").animate(1).animate(a4, {width:0}, 1, "lin").animate(1);
+// animate(a1, {width:"90%"}, 3, "ease-in").animate(3).animate(a1, {width:0}, 1, "ease-in");
+// animate(a2, {width:"90%"}, 3, "ease-out").animate(1).animate(a2, {width:0}, 1, "ease-out");
+// animate(a3, {width:"90%"}, 3, "ease").animate(1).animate(a3, {width:0}, 1, "ease").animate(1);
+// animate(a4, {width:"90%"}, 3, "linear").animate(1).animate(a4, {width:0}, 1, "linear").animate(1);
     </script>
     </td>
   </tr>
@@ -57,7 +57,7 @@ animate(1)
         .animate(b1, {width:{to:"60px", e:"ease-in"}, height:"60px"}, 0.5).animate(0.5)
         .animate(goB);
       }
-      goB()
+      // goB()
     </script>
     </td>
   </tr>
@@ -74,14 +74,14 @@ animate("c1", {borderRadius:"30px", left:"50%"}, 1.5, "ease-out")
 .animate(goC);
       </textarea>
     <script>
-    // function goC() { 
-    //     animate("c1", {borderRadius:"30px", left:"50%"}, 1.5, "ease-out")
-    //     .animate(0.1)
-    //     .animate("c1", {borderRadius:0, left:0}, 1.5, "ease-in")
-    //     .animate(1)
-    //     .animate(goC);
-    // }
-    // goC();
+    function goC() { 
+        animate(c1, {borderRadius:"30px", left:"50%"}, 1.5, "ease-out")
+        .animate(0.1)
+        .animate(c1, {borderRadius:0, left:0}, 1.5, "ease-in")
+        .animate(1)
+        .animate(goC);
+    }
+    goC();
     </script>
     </td>
   </tr>
@@ -91,13 +91,14 @@ animate("c1", {borderRadius:"30px", left:"50%"}, 1.5, "ease-out")
       <div id=d1 style="padding:1em; display:inline; font-family:courier; border:1px solid #faa; background-color:#fff">RED</div>
     </td><td>
       <textarea id=dt readonly>
-animate("d1", {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.innerHTML="GRN"})
-.animate("d1", {backgroundColor:"#6f6", border:0}, 1).animate(function(){ d1.innerHTML="BLU"})
-.animate("d1", {backgroundColor:"#66f", borderLeftWidth:10, borderTopWidth:3, borderRightWidth:10, borderBottomWidth:3}, 1).animate(function(){d1.innerHTML="RED"})
+animate(d1, {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.innerHTML="GRN"})
+.animate(d1, {backgroundColor:"#6f6", border:0}, 1).animate(function(){ d1.innerHTML="BLU"})
+.animate(d1, {backgroundColor:"#66f", borderLeftWidth:10, borderTopWidth:3, borderRightWidth:10, borderBottomWidth:3}, 1)
+.animate(function(){d1.innerHTML="RED"})
 .animate(goD);
       </textarea>
     <script>
-    // function goD() { eval(dt.value) } goD();
+    function goD() { eval(dt.value) } goD();
     </script>
     </td>
   </tr>
@@ -107,8 +108,8 @@ animate("d1", {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.inn
       <div id=e1 style="padding:3px; font-size:12pt">font size</div>
     </td><td>
       <textarea id=et readonly>
-animate("e1", {fontSize:{fr:"12pt", to:30}, opacity:0.4}, 1)
-.animate("e1", {fontSize:{fr:"30pt", to:12}, opacity:1}, 1)
+animate(e1, {fontSize:{fr:"12pt", to:30}, opacity:0.4}, 1)
+.animate(e1, {fontSize:{fr:"30pt", to:12}, opacity:1}, 1)
 .animate(goE);
       </textarea>
     <script>
@@ -143,12 +144,12 @@ animate("f1", {height: newHeight}, 0.5)
       <div id=g3 style="width:100px">hover</div>
     </td><td>
       <textarea id=gt readonly>
-g1.onmouseover = function(){ animate("g1", {width:"300px"}, 1) }
-g1.onmouseout = function(){ animate("g1", {width:"100px"}, 0.3) }
-g2.onmouseover = function(){ animate("g2", {width:"300px"}, 1) }
-g2.onmouseout = function(){ animate("g2", {width:"100px"}, 0.3) }
-g3.onmouseover = function(){ animate("g3", {width:"300px"}, 1) }
-g3.onmouseout = function(){ animate("g3", {width:"100px"}, 0.3) }
+g1.onmouseover = function(){ animate(g1, {w idth:"300px"}, 1) }
+g1.onmouseout = function(){ animate(g1, {width:"100px"}, 0.3) }
+g2.onmouseover = function(){ animate(g2, {width:"300px"}, 1) }
+g2.onmouseout = function(){ animate(g2, {width:"100px"}, 0.3) }
+g3.onmouseover = function(){ animate(g3, {width:"300px"}, 1) }
+g3.onmouseout = function(){ animate(g3, {width:"100px"}, 0.3) }
       </textarea>
     <script>
     // function goG() { eval(gt.value) } goG();
