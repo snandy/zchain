@@ -1,8 +1,6 @@
 animate = function(window) {
 
-<<<<<<< HEAD
 var slice   = [].slice
-var mutex   = 1
 var top     = 'Top'
 var right   = 'Right'
 var bottom  = 'Bottom'
@@ -15,21 +13,6 @@ var reRgba  = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|
 var getSty = 
 	window.getComputedStyle ? function(elem, name) {return getComputedStyle(elem, null)[name]} 
 	: function(elem, name) {return elem.currentStyle[name]}
-=======
-var slice  = [].slice
-var top    = 'Top'
-var right  = 'Right'
-var bottom = 'Bottom'
-var left   = 'Left'
-var mutex  = 1
-var reUnit = /\d(\D+)$/
-var reOpac = /alpha\(opacity=(\d+)\b/i
-var reRgba = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
-
-var getStyle = 
-	window.getComputedStyle ? function(elem, name) { return getComputedStyle(elem, null)[name] } 
-	: function(elem, name) { return elem.currentStyle[name] }
->>>>>>> 8487568bd5233abd6a0a8b95c8aa9e38044cc5b7
 
 var RAF = function(win, str) {
     return win['webkitR' + str] || win['mozR' + str] || win['msR' + str] || win['oR' + str] || win['r' + str]
@@ -141,17 +124,42 @@ function toRGBA(str) {
     return arr
 }
 
-function process(elem, obj, name, ease) {
-	var style = elem.style
-	obj.name = name
-	obj.elem = elem
-	obj.sty = name in style ? style : elem
-	obj.ease = obj.ease || ease
-	if (!obj.from) {
-		obj.from = obj.from === 0 ? 0 : elem[name] ? elem[name] : getSty(elem, name)
+/*
+    {
+ 		width: {
+ 			name:
+ 			elem:
+ 			sty:
+			from:
+			to:
+			ease:
+			unit:
+			fn:
+ 		}
+    }
+ */
+function getConfig(prop, elem, ease) {
+	var config = {}
+	var sty = elem.style
+	for (var key in prop) {
+		var val = prop[key]
+		var obj = {}
+		if (!val.to) {
+			obj = {to: val}
+		}
+		obj.name = key
+		obj.elem = elem
+		obj.sty = key in sty ? sty : elem
+		obj.ease = obj.ease || ease
+		if (!obj.from) {
+			obj.from = obj.from === 0 ? 0 : elem[key] ? elem[key] : getSty(elem, key)
+		}
+		obj.unit = ( reUnit.exec(obj.to) || reUnit.exec(obj.from) || [0, 0] )[1]
+		obj.fn = reColor.test(key) ? fx.color : fx[key] || fx._
+
+		config[key] = obj
 	}
-	obj.unit = (reUnit.exec(obj.to) || reUnit.exec(obj.from) || [0, 0])[1]
-	obj.fn = reColor.test(name) ? fx.color : fx[name] || fx._
+	return config
 }
 
 function exec(prop, duration, callback) {
@@ -215,21 +223,14 @@ function A(elem, prop, duration, ease) {
 	if (elem > 0 || !elem) {
 		prop = {}
 		duration = 0
-		callback(arr = [[elem || 0]])
+		arr = [[elem || 0]]
+		callback(arr)
 	}
 
 	expand(prop, {padding: 0, margin: 0, border: 'Width'}, [top, right, bottom, left])
 	expand(prop, {borderRadius: 'Radius'}, [top+left, top+right, bottom+right, bottom+left])
 
-	++mutex
-
-	for (var key in prop) {
-		var obj = prop[key]
-		if (!obj.to && obj.to !== 0) {
-			obj = prop[key] = {to: obj}
-		}
-		process(elem, obj, key, ease)
-	}
+	prop = getConfig(prop, elem, ease)
 	exec(prop, 1000 * duration, callback)
 
 	return {

@@ -32,7 +32,7 @@ animate(a3, {width:"90%"}, 3, "ease").animate(1).animate(a3, {width:0}, 1, "ease
 animate(a4, {width:"90%"}, 3, "lin").animate(1).animate(a4, {width:0}, 1, "lin").animate(1);
       </textarea>
     <script>
-animate(a1, {width:"90%"}, 3, "ease-in").animate(1).animate(a1, {width:0}, 1, "ease-in");
+animate(a1, {width:"90%"}, 3, "ease-in").animate(3).animate(a1, {width:0}, 1, "ease-in");
 animate(a2, {width:"90%"}, 3, "ease-out").animate(1).animate(a2, {width:0}, 1, "ease-out");
 animate(a3, {width:"90%"}, 3, "ease").animate(1).animate(a3, {width:0}, 1, "ease").animate(1);
 animate(a4, {width:"90%"}, 3, "lin").animate(1).animate(a4, {width:0}, 1, "lin").animate(1);
@@ -46,15 +46,18 @@ animate(a4, {width:"90%"}, 3, "lin").animate(1).animate(a4, {width:0}, 1, "lin")
     </td><td>
       <textarea id=bt readonly>
 animate(1)
-.animate("b1", {width:"150px", height:"150px"}, 0.5).animate(0.5)
-.animate("b1", {width:{to:"60px", e:"ease-in"}, height:"60px"}, 0.5).animate(0.5)
+.animate(b1, {width:"150px", height:"150px"}, 0.5).animate(0.5)
+.animate(b1, {width:{to:"60px", e:"ease-in"}, height:"60px"}, 0.5).animate(0.5)
 .animate(goB);
       </textarea>
     <script>
-// animate("a1", {width:"90%"}, 3, "ease-in").animate(1).animate("a1", {width:0}, 1, "ease-in");
-// animate("a2", {width:"90%"}, 3, "ease-out").animate(1).animate("a2", {width:0}, 1, "ease-out");
-// animate("a3", {width:"90%"}, 3, "ease").animate(1).animate("a3", {width:0}, 1, "ease").animate(1);
-// animate("a4", {width:"90%"}, 3, "lin").animate(1).animate("a4", {width:0}, 1, "lin").animate(1);
+      function goB() {
+        animate(1)
+        .animate(b1, {width:"150px", height:"150px"}, 0.5).animate(0.5)
+        .animate(b1, {width:{to:"60px", e:"ease-in"}, height:"60px"}, 0.5).animate(0.5)
+        .animate(goB);
+      }
+      goB()
     </script>
     </td>
   </tr>
@@ -94,7 +97,7 @@ animate("d1", {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.inn
 .animate(goD);
       </textarea>
     <script>
-    function goD() { eval(dt.value) } goD();
+    // function goD() { eval(dt.value) } goD();
     </script>
     </td>
   </tr>
@@ -109,7 +112,7 @@ animate("e1", {fontSize:{fr:"12pt", to:30}, opacity:0.4}, 1)
 .animate(goE);
       </textarea>
     <script>
-    function goE() { eval(et.value) } goE();
+    // function goE() { eval(et.value) } goE();
     </script>
     </td>
   </tr>
