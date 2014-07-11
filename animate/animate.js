@@ -1,14 +1,16 @@
 animate = function(window) {
 
 var slice   = [].slice
-var top     = 'Top'
-var right   = 'Right'
-var bottom  = 'Bottom'
-var left    = 'Left'
 var reColor = /color/i
 var reUnit  = /\d(\D+)$/
 var reOpac  = /alpha\(opacity=(\d+)\b/i
 var reRgba  = /#(.)(.)(.)\b|#(..)(..)(..)\b|(\d+)%,(\d+)%,(\d+)%(?:,([\d\.]+))?|(\d+),(\d+),(\d+)(?:,([\d\.]+))?\b/
+var staticObj = {
+	margin: ['marginTop', 'marginRight', 'marginBottom', 'marginLeft'],
+	padding: ['paddingTop', 'paddingRight', 'paddingBottom', 'paddingLeft'],
+	border: ['borderTopWidth', 'borderRightWidth', 'borderBottomWidth', 'borderLeftWidth'],
+	borderRadius: ['borderTopLeftRadius', 'borderTopRightRadius', 'borderBottomRightRadius', 'borderBottomLeftRadius']
+}
 
 var getSty = 
 	window.getComputedStyle ? function(elem, name) {return getComputedStyle(elem, null)[name]} 
@@ -93,20 +95,19 @@ var fx = {
 fx.height = fx.width
 
 function expand(obj, dim, arr) {
-    var name, i, it
-    for (name in obj) {
-        if (name in dim) {
-            var ci = obj[name]
-            for (i = 0; it = arr[i]; i++) {
-                var str = name.replace(dim[name], '') + it + (dim[name] || '')
-                obj[str] = {
-                    to: 0 === ci.to ? ci.to : ci.to || ci,
-                    from: ci.from,
-                    e: ci.dim
-                }
-            }
-            delete obj[name]
-        }
+    for (var name in obj) {
+    	var ci = obj[name]
+    	var arr = staticObj[name]
+    	if (arr) {
+    		for (var i = 0; i < arr.length; i++) {
+    			var ne = arr[i]
+    			obj[ne] = {
+    				from: ci.from,
+    				to: ci.to === 0 ? ci.to : ci.to || ci 
+    			}
+    		}
+    		delete obj[name]
+    	}
     }
 }
 
@@ -138,8 +139,8 @@ function toRGBA(str) {
  		}
     }
  */
-function getConfig(prop, elem, ease) {
-	var config = {}
+function Config(prop, elem, ease) {
+	var cObj = {}
 	var sty = elem.style
 	for (var key in prop) {
 		var obj = null
@@ -159,9 +160,9 @@ function getConfig(prop, elem, ease) {
 		obj.unit = ( reUnit.exec(obj.to) || reUnit.exec(obj.from) || [0, 0] )[1]
 		obj.fn = reColor.test(key) ? fx.color : fx[key] || fx._
 
-		config[key] = obj
+		cObj[key] = obj
 	}
-	return config
+	return cObj
 }
 
 function exec(prop, duration, callback) {
@@ -208,7 +209,7 @@ function exec(prop, duration, callback) {
 }
 
 function A(elem, prop, duration, ease) {
-	if (!elem) return
+	if (!elem || !prop) return
 	var arr = []
 	var callback = function(a) {
 		if (a = arr.shift()) {
@@ -223,17 +224,19 @@ function A(elem, prop, duration, ease) {
 		}
 	}
 	
-	if (elem > 0 || !elem) {
+	// number
+	if (elem > 0) {
 		prop = {}
 		duration = 0
 		arr = [[elem || 0]]
 		callback(arr)
 	}
 
-	expand(prop, {padding: 0, margin: 0, border: 'Width'}, [top, right, bottom, left])
-	expand(prop, {borderRadius: 'Radius'}, [top+left, top+right, bottom+right, bottom+left])
+	// padding, margin, border, borderRadius处理
+	expand(prop)
 
-	prop = getConfig(prop, elem, ease)
+	// 配置对象并执行
+	prop = Config(prop, elem, ease)
 	exec(prop, 1000 * duration, callback)
 
 	return {

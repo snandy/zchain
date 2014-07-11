@@ -90,7 +90,7 @@ animate("c1", {borderRadius:"30px", left:"50%"}, 1.5, "ease-out")
     <td class="sect">
       <div id=d1 style="padding:1em; display:inline; font-family:courier; border:1px solid #faa; background-color:#fff">RED</div>
     </td><td>
-      <textarea id=dt readonly>
+      <textarea id="dt" readonly="true">
 animate(d1, {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.innerHTML="GRN"})
 .animate(d1, {backgroundColor:"#6f6", border:0}, 1).animate(function(){ d1.innerHTML="BLU"})
 .animate(d1, {backgroundColor:"#66f", borderLeftWidth:10, borderTopWidth:3, borderRightWidth:10, borderBottomWidth:3}, 1)
@@ -98,7 +98,7 @@ animate(d1, {backgroundColor:"#f66", border:10}, 1).animate(function(){ d1.inner
 .animate(goD);
       </textarea>
     <script>
-    function goD() { eval(dt.value) } goD();
+    // function goD() { eval(dt.value) } goD();
     </script>
     </td>
   </tr>

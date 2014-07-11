@@ -63,13 +63,43 @@ function isInViewport(element) {
 // alert(parseInt('01')) // 1 
 // alert(parseInt('07')) // 7
 
-alert(parseInt('0xa'))     // 10
-alert(parseInt('0xa'), 8)  // 10
-alert(parseInt('0xa'), 16) // 10
+// alert(parseInt('0xa'))     // 10
+// alert(parseInt('0xa'), 8)  // 10
+// alert(parseInt('0xa'), 16) // 10
 
-alert(parseInt('0Xa'))     // 10
-alert(parseInt('0Xa'), 8)  // 10
-alert(parseInt('0Xa'), 16) // 10
+// alert(parseInt('0Xa'))     // 10
+// alert(parseInt('0Xa'), 8)  // 10
+// alert(parseInt('0Xa'), 16) // 10
+
+
+function isInteger(obj) {
+    return obj%1 === 0
+}
+isInteger(3) // true
+isInteger(3.3) // false
+
+
+
+// function isInteger(obj) {
+//     return typeof obj === 'number' && obj%1 === 0
+// }
+
+
+// // Math.round, Math.ceil
+// function isInteger(obj) {
+//     return Math.floor(obj) === obj
+// }
+
+// function isInteger(obj) {
+//     return (obj | 0) === obj
+// }
+
+function isInteger(obj) {
+    return parseInt(obj, 10) === obj
+}
+
+
+
 
 </script>
 

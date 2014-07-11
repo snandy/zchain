@@ -8,7 +8,7 @@
 				margin: 0;
 			}
 		</style>
-		<script type="text/javascript" src="zchain.js"></script>
+		<script type="text/javascript" src="zchain-0.1.js"></script>
 	</head>
 	<body style="height: 1000px">
 		<p id="pid">id</p>
@@ -17,13 +17,20 @@
 		<div data-attr="ddd">
 			<div id="sub" style="top:10px;">test</div>
 		</div>
-		<p id="p2">
+		<p id="p2" style="padding:50px;background:gold;">
+			P2
 			<span class="cls">span.cls</span>
 		</p>
 		<p data-attr="ppp" data~pp="ss">attr</p>
+
+		<ul>
+            <li>11</li>
+            <li>22</li>
+            <li>33</li>
+        </ul>
 	<script>
 		
-		alert($('[data-attr]').length)
+		// alert($('[data-attr]').length)
 
 		// alert("getBoundingClientRect" in document.documentElement )
 		// $('input').keyup(function(e){
@@ -51,6 +58,14 @@
 			// width: 100,
 			// height: 300
 		// });
+
+		// $('ul').delegate('li', 'mouseenter', function() {
+		// 	console.log(4)
+		// })
+		
+		$('#p2').mouseenter(function() {
+			console.log(6)
+		})
 	</script>
 	</body>
 </html>
