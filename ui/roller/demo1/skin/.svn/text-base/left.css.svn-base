@@ -1,0 +1,82 @@
+.item .list {
+float: left;
+line-height: 25px;
+width: 140px;
+position: relative;
+}
+#chongzhi{
+	width:300px;
+	height:130px;
+	background:none;
+}
+#chongzhi .item{
+	overflow:hidden;
+	padding:7px 0;
+	line-height:22px;
+	zoom:1;
+}
+#chongzhi .fl{
+	width:140px;
+}
+#chongzhi label{
+	width:50px;
+	text-align:right;
+	color:#666;
+}
+#chongzhi select{
+	height:22px;
+	margin-right:5px;
+	margin-left:0;
+}
+#chongzhi .select2{
+	margin-right:0;
+}
+#chongzhi .text1{
+	width:133px;
+	height:16px;
+	padding:2px;
+	margin-right:5px;
+}
+#chongzhi .button{
+	float:left;
+	width:73px;
+	height:25px;
+	line-height:25px;
+	background:url(http://misc.360buyimg.com/lib/skin/2012/i/20111221B.png) no-repeat -124px -220px;
+	margin-right:5px;
+}
+#chongzhi .button-gray,.yanz .yanz-btn{
+	background: #e74649;
+	color:#fff;
+	border-radius: 3px;
+	height: 25px;
+	line-height: 25px;
+	border:0;
+	width:60px;
+	cursor:pointer;
+}
+#chongzhi .label{
+	color:#999;
+}
+#chongzhi a{
+	color:#005EA7;
+}
+#chongzhi strong,
+#chongzhi .error{
+	color:#c30;
+}
+#chongzhi #promotwords{
+	line-height:25px;
+}
+.root61 #chongzhi{
+	width:300px;
+}
+.root61 #chongzhi .fl{
+	width:220px;
+}
+.root61 #chongzhi #promotwords{
+	display:block;
+}
+#defaultMobileInfo{
+	color:#666;
+}

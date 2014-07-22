@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>充值活动</title>
+    <link href="http://misc.360buyimg.com/lib/skin/2013/base.css?v=20140107" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="skin/index.css">
+    <script type="text/javascript" src="http://misc.360buyimg.com/lib/js/e/jquery-1.6.4-min.js"></script>
+    <script type="text/javascript" src="../luckyRoller.js"></script>
+    <script type="text/javascript">
+        window.pageConfig = {
+            compatible: true,
+            navId: 'home'
+        }
+    </script>
+</head>
+<body>
+	<div class="banner">冲50元话费或以上，玩转盘，抢美菱对开门冰箱，更有10万手机充值京券等您拿！</div>
+	<div class="jiangpin">
+	<div class="innerwrap">
+		<div class="inner">
+			<iframe src="inner.html" frameborder="0" width="990" height="51" scrolling="no" marginheight="0" marginwidth="0" ></iframe>
+		</div>
+		</div>
+	</div>
+	<div class="zhuanpan">
+		<div class="w">
+			<div class="xinxi m fr">
+				<div class="dingdan">
+					<input type="text" placeholder="输入订单号验证获取机会" class="text">
+					<input type="button" value="获取抽奖机会" class="btn">
+				</div>
+				<div class="xinxi-list">
+					<div class="m">
+						<div class="mt"><h2>我的最新中奖</h2></div>
+						<div class="mc">
+							<div class="con">
+								<ul>
+									<li><span class="extra fr"><b class="red">3</b>台</span>一等奖：美菱智能控温对开门冰箱</li>
+									<li><span class="extra fr"><b class="red">3</b>份</span>二等奖：浙江特产大礼包</li>
+									<li><span class="extra fr"><b class="red">3</b>张</span>三等奖：100元手机充值定向京券</li>
+									<li><span class="extra fr">0张</span>四等奖：5元手机充值定向京券</li>
+									<li><span class="extra fr"><b class="red">3</b>张</span>五等奖：1元手机充值定向京券</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+					<div class="m">
+						<div class="mt"><h2>今日奖品剩余</h2></div>
+						<div class="mc">
+							<div class="con">
+								<ul>
+									<li><span class="extra fr">1台</span>一等奖：美菱智能控温对开门冰箱</li>
+									<li><span class="extra fr">1份</span>二等奖：浙江特产大礼包</li>
+									<li><span class="extra fr">20张</span>三等奖：100元手机充值定向京券</li>
+									<li><span class="extra fr">1000张</span>四等奖：5元手机充值定向京券</li>
+									<li><span class="extra fr">3000张</span>五等奖：1元手机充值定向京券</li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="chou m fl">
+				<div class="keyong">当前可用抽奖次数：<b>10次</b></div>
+                <div><canvas id="roller" width="471px" height="471px">请升级您的浏览器!</canvas></div>
+			</div>
+		</div>
+	</div>
+	<div class="guize">
+		<div class="w clearfix">
+			<div class="zhongjiang m fr">
+				<div class="mt">
+					<ul class="title">
+						<li class="curr" data-widget="tab-item">最新中奖</li>
+						<li data-widget="tab-item">今日排行</li>
+					</ul>
+				</div>
+				<div class="mc">
+					<div class="tab-content">
+						<div class="detail" data-widget="tab-content">
+							<ul class="list">
+								<li class="list-head">
+									<span class="fore1">时间</span>
+									<span class="fore2">账户</span>
+									<span class="fore3">中奖</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">美菱智能控温对开门冰箱</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">美菱智能控温对开门冰箱</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">美菱智能控温对开门冰箱</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">美菱智能控温对开门冰箱</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+
+							</ul>
+						</div>
+						<div class="detail hide" data-widget="tab-content">
+							<ul class="list">
+								<li class="list-head">
+									<span class="fore1">时间</span>
+									<span class="fore2">账户</span>
+									<span class="fore3">中奖</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+								<li>
+									<span class="fore1">12:40:30</span>
+									<span class="fore2">yriowehgkdhbisdhjkbfg</span>
+									<span class="fore3">50元手机充值京券</span>
+								</li>
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="shuoming m fl">
+				<div class="mt"><h2 class="title">活动规则</h2></div>
+				<div class="mc">
+					<div class="detail">
+						<div class="text">
+							<strong class="font1">活动时间：</strong>2014年07月15-21日
+						</div>
+						<div class="text">
+							<strong class="font1">参与活动资格说明：</strong><br />活动期间，单笔订单成功充值50元面值或以上用户（全国手机用户均可，仅限快充）
+						</div>
+						<div class="text">
+							<strong class="font1">活动规则：</strong><br />
+							<div class="line1 line"><span class="number1">1、</span>每日<strong class="font2">00:00—23:30</strong>单笔订单成功充值50元面值获1次抽奖机会，充值100元面值或以上可获3次抽奖机会；</div>
+							2、订单状态为<strong class="font2">“充值成功”</strong>后，复制订单号至<strong class="font2"> 获取抽奖框 </strong>进行验证，可获得相应次数；<br />
+							3、成功充值订单仅限当日进行验证并抽奖，次日无效；<br />
+							4、下单时间、支付时间、充值成功时间以京东充值系统时间为准；<br />
+							5、单个京东账户单日仅限参与5次验证；<br />
+							6、本次活动为答谢京东充值新老用户,如发现恶意刷单等不符合京东正常下单流程，奖品将不予派发。<br />
+						</div>
+						<div class="text">
+							<strong class="font1">奖品发放：</strong><br />
+							<div class="line2 line"><span class="number2">1、</span>①实物中奖者需将订单号、联系方式、“奖品配送信息填写”页截图邮件发送至<br />linweibin@ jd.com，工作人员核实后将与您联系，截止2014年7月31日，仍无法联系上视为放弃本次奖品；②手机充值定向京券将于1个工作日内派发至下单的京东账户。</div>
+							2、手机充值定向京券有效期：自派发至京东账户日-2014年8月31日。
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="bingxi cuxiao">
+		<div class="m">
+			<div class="mt">
+				<h2 class="title">更多冰洗促销</h2>
+			</div>
+			<div class="mc">
+				<div class="con">
+					<ul class="list clearfix">
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="shipin cuxiao">
+		<div class="m">
+			<div class="mt">
+				<h2 class="title">食品特产专区</h2>
+			</div>
+			<div class="mc">
+				<div class="con">
+					<ul class="list clearfix">
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+						<li><a href="" target="_blank"><img src="" alt="" /></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+<div class="m popup first hide">
+	<div class="mt">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font1">恭喜您！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font2">获得一等奖美菱双对门冰箱一台！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">填写信息将大奖拿回家吧～</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="mc">
+		<div class="item item1 clearfix">
+			<div class="label">姓名：</div>
+			<div class="con"><input type="text" value="姓名"></div>
+		</div>
+		<div class="item item2 clearfix">
+			<div class="label">电话：</div>
+			<div class="con"><input type="text" value="仔细核对电话"></div>
+		</div>
+		<div class="item item3 clearfix">
+			<div class="label">地址：</div>
+			<div class="con"><input type="text" value="请仔细核对地址"></div>
+		</div>
+		<div class="item item4 clearfix">
+			<div class="label">&nbsp;</div>
+			<div class="con"><span class="tishi">填写信息不可以为空</span></div>
+		</div>
+		<div class="pop-btn">
+			<input type="button" value="确认提交" class="tijiao">
+		</div>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup second hide">
+	<div class="mt">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font1">恭喜您！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font2">获得二等奖浙江大礼包一份！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">填写信息将大奖拿回家吧～</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="mc">
+		<div class="item item1 clearfix">
+			<div class="label">姓名：</div>
+			<div class="con"><input type="text" value="姓名"></div>
+		</div>
+		<div class="item item2 clearfix">
+			<div class="label">电话：</div>
+			<div class="con"><input type="text" value="仔细核对电话"></div>
+		</div>
+		<div class="item item3 clearfix">
+			<div class="label">地址：</div>
+			<div class="con"><input type="text" value="请仔细核对地址"></div>
+		</div>
+		<div class="item item4 clearfix">
+			<div class="label">&nbsp;</div>
+			<div class="con"><span class="tishi">填写信息不可以为空</span></div>
+		</div>
+		<div class="pop-btn">
+			<input type="button" value="确认提交" class="tijiao">
+		</div>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup third hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font1">恭喜您！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font2">获得三等奖100元充值定向京券！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">发放方式参照活动详情</div></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="继续抽奖" class="tijiao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup fourth hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font1">恭喜您！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font2">获得四等奖5元充值定向京券！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">发放方式参照活动详情</div></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="继续抽奖" class="tijiao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup fifth hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font1">恭喜您！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font2">获得五等奖1元充值定向京券！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">发放方式参照活动详情</div></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="继续抽奖" class="tijiao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup nothing hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font2">很遗憾！本次您未中奖！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">继续抽取大奖吧！</div></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="继续抽奖" class="tijiao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup sysErr hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font2">抱歉！系统异常，待会再来吧！</div></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<div class="m popup empty hide">
+	<div class="pop2"></div>
+	<div class="small">
+		<table class="textcon">
+			<tbody>
+				<tr>
+					<td><div class="font2">很遗憾！您的机会用完了！</div></td>
+				</tr>
+				<tr>
+					<td><div class="font3">继续充值抽取大奖吧！</div></td>
+				</tr>
+				<tr>
+					<td><input type="button" value="立即充值" class="tijiao"></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="jiao"></div>	
+</div>
+<script type="text/javascript" src="util.js"></script>
+
+<script type="text/javascript">
+var lucky = new LuckyRoller({
+    canvas: "#roller",
+    width: 471,
+    height: 471,
+    plate: "skin/i/bg.png",
+    roller: "plate",
+    // arrow: {
+    //     x: 205,
+    //     y: 126,
+    //     width: 30,
+    //     height: 34,
+    //     image: "img/arrownew_source.png"
+    // },
+    button: {
+        x: 143,
+        y: 60,
+        width: 188,
+        height: 266,
+        image: "skin/i/btn-wrap.png",
+        click: auto
+    },
+    prizes: [
+        {id: "0", range: [330, 390]},
+        {id: "1", range: [30, 90]},
+        {id: "2", range: [90, 150]},
+        {id: "3", range: [150, 210]},
+        {id: "4", range: [210, 270]},
+        {id: "5", range: [270, 330]}
+    ],
+    onStop: function (id) {
+        isHaveChace(id);
+    },
+    onRolling: function () {
+
+    }
+});
+
+
+function auto() {
+    // if($('#number').html()>0){
+        lucky.rolling();
+    // }
+
+    setTimeout(function() {
+        lucky.prize(3)
+    }, 1000)
+}
+
+function isHaveChace(price){
+    //将剩余中奖数量重新
+    // showPlayMessage(price);
+    // if(price >=0  || price<=5){
+    //     //抽奖后,奖级在1-5,更新页面数据
+    //     userInfo();
+    // }
+}
+
+</script>
+</body>
+</html>
