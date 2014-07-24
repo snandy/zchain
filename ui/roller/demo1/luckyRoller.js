@@ -80,9 +80,7 @@ var Clazz = function (option) {
         plate: '', //盘子图片地址
         prizes: [], //奖级配置
         angle: 0, //初始化角度
-        arrow: null,  // 箭头图片,{x:235,y:0,width:30,height:260,image:'img/arrow.png'}
         button: null, // 按钮图片,{x:235,y:0,width:30,height:260,image:'img/arrow.png',click:function}
-        roller: 'plate', // plate or arrow 是盘子转还是箭头转
         angularSpeed: 1000, // 角速度:角度/秒
         startDuration: 2000, // 起步阶段时长,单位毫秒
         stopDuration: 10000, // 结束阶段时长,单位毫秒
@@ -91,19 +89,17 @@ var Clazz = function (option) {
         onStop: null // 当转盘停止转动时候的回调
     }, option)
 
-    //确保必要属性存在
+    // 确保必要属性存在
     if (!this.option.canvas || !this.option.plate) {
         return null
     }
-    //获取转盘根元素
+    // 获取转盘根元素
     this.$canvas = $(this.option.canvas)
     if (this.$canvas.length == 0) {
         return null
     }
-    //如果是盘子转则需要修理一下中奖的区域
-    if (this.option.roller == 'plate') {
-        this.fixRange()
-    }
+    // 如果是盘子转则需要修理一下中奖的区域
+    this.fixRange()
     // 盘子图片实例
     this._image = null
     // 当前的状态: stop,停止; start,旋转的起步阶段; rolling&waitting,旋转中并等待中奖结果; rolling, 减速旋转中;
@@ -114,8 +110,6 @@ var Clazz = function (option) {
     this._angularSpeed = 0
     // 中奖结果
     this._prize = null
-    // 箭头图片实例
-    this._arrow = null
     // 按钮图片实例
     this._button = null
     // 绘图事件id
@@ -144,26 +138,6 @@ Clazz.prototype = {
         // 此值代表画布每行上有多少个像素
         this.canvas.height = h
         
-        // 根据旋转对象的不同,创建不同的渲染方法,这么做是为了效率的考量
-        this.innerRender = option.roller != 'plate' ? function() {
-            //先画盘子作为底图
-            context.drawImage(this._image, 0, 0, w, h, 0, 0, w, h)
-            //根据旋转的角度画箭头
-            this.rotate(this._arrow, oArrow.width, oArrow.height, oArrow.x, oArrow.y)
-            // this.rotate(this._button, oBtn.width, oBtn.height, oBtn.x, oBtn.y)
-        } : function() {
-            // 底图是按角度旋转过的盘子
-            this.rotate(this._image, w, h, 0, 0)
-            // 如果需要则绘制箭头
-            if (this._arrow) {
-                context.drawImage(this._arrow, 0, 0, oArrow.width, oArrow.height, oArrow.x, oArrow.y, oArrow.width, oArrow.height)
-            }
-        }
-
-        //初始化箭头图片实例
-        if (oArrow) {
-            this.loadImage('_arrow', oArrow)
-        }
         //初始化按钮图片实例
         if (oBtn) {
             this.loadImage('_button', oBtn)
@@ -182,7 +156,6 @@ Clazz.prototype = {
     },
     checkImageComplete: function() {
         //当所有图片都加载完成后,组建转盘
-        if (this.option.arrow && !this._arrow) return
         if (this.option.button && !this._button) return
         if (!this._image) return
         this.buildRoller()
@@ -220,7 +193,7 @@ Clazz.prototype = {
      */    
     fixRange: function() {
         var prizes = this.option.prizes
-        for (var i in prizes) {
+        for (var i = 0; i< prizes.length; i++) {
             var p = prizes[i]
             var t = p.range[0]
             p.range[0] = 360 - p.range[1]
@@ -317,12 +290,9 @@ Clazz.prototype = {
         var ele = this.$canvas[0]
         ele.innerHTML = html.join('')
 
-        //确定旋转时需要操控的对象
-        if (option.roller != 'plate') {
-            this._image = ele.firstChild.firstChild.childNodes[1]
-        } else {
-            this._image = ele.firstChild.firstChild.firstChild
-        }
+        // 确定旋转时需要操控的对象
+        this._image = ele.firstChild.firstChild.firstChild
+
         if (oBtn && typeof oBtn.click == 'function') {
             // 如果有按钮则设定按钮的行为
             // 处理起来比canvas容易了很多
@@ -334,12 +304,13 @@ Clazz.prototype = {
         this.render()
     },
     render: useCanvas ? function() {
+        var option = this.option
         var context = this.context
-        var oBtn = this.option.button
+        var oBtn = option.button
         // 重置上一次执行时间
         this._prevTime = performanceNow()
         //初始化时提前创建好的渲染方法
-        this.innerRender()
+        this.rotate(this._image, option.width, option.height, 0, 0)
         // 有按钮就画按钮
         if (this._button) {
             context.drawImage(this._button, 0, 0, oBtn.width, oBtn.height, oBtn.x, oBtn.y, oBtn.width, oBtn.height)

@@ -15,7 +15,13 @@ var lucky = new LuckyRoller({
     width: 575,
     height: 573,
     plate: "skin/i/bg5.png",
-    roller: "plate",
+    // arrow: {
+    //     x: 205,
+    //     y: 126,
+    //     width: 30,
+    //     height: 34,
+    //     image: 'skin/i/bg6.png'
+    // },
     button: {
         x: 195,
         y: 115,

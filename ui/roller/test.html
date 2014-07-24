@@ -3,15 +3,130 @@
 <head>
 	<meta charset="UTF-8">
 	<title>充值活动</title>
-    <link href="http://misc.360buyimg.com/lib/skin/2013/base.css?v=20140107" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="skin/index.css">
     <script type="text/javascript" src="http://misc.360buyimg.com/lib/js/e/jquery-1.6.4-min.js"></script>
 </head>
 <body>
 
+<div style="width:200px;height:20px;"><div id="progress" style="background:gold;height:20px;"></div></div>
+
 <canvas id="c1" width="471" height="471"></canvas>
+<canvas id="myCanvas" width="578" height="200"></canvas>
+
+
 <script type="text/javascript">
 
+var $canvas = $('#c1')
+var canEl = $canvas[0]
+var context = canEl.getContext('2d')
+var img = new Image()
+img.onload = function() {
+	context.drawImage(img, 0, 0)
+}
+img.src = 'demo2/skin/i/bg.png'
+img.width = 471
+img.height = 471
+
+
+//角度到弧度
+function angleToRadian(angle) {
+    return angle * Math.PI / 180
+}
+
+//获取时间, 如果支持HRT(High Resolution Time,高精度时间)就用HRT
+function performanceNow() {
+    if (window.performance && window.performance.now) {
+        return window.performance.now() //纳秒级别
+    } else {
+        return new Date() //毫秒级别
+    }
+}
+
+// 浏览器更新页面事件,避免过度渲染或者丢帧
+var requestAFrame = function() {
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        // 都不行就还用setTimeout
+        function (callback) {
+            //每秒60帧
+            return setTimeout(callback, 1000 / 60)
+        }
+}()
+
+// 取消事件的注册
+var cancelAFrame = function() {
+    return window.cancelAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.oCancelAnimationFrame ||
+        window.msCancelAnimationFrame ||
+        function(id) {
+            clearTimeout(id)
+        }
+}()
+
+//获取时间, 如果支持HRT(High Resolution Time,高精度时间)就用HRT
+function performanceNow() {
+    if (window.performance && window.performance.now) {
+        return window.performance.now() //纳秒级别
+    } else {
+        return new Date() //毫秒级别
+    }
+}
+var angle = 0
+var startTime = 0
+var startDuration = 2000
+var angularSpeed = 1000
+
+function start() {
+	var now = performanceNow()
+	var timeStamp = now - startTime
+    var vt = -(Math.pow((timeStamp / startDuration - 1), 4) - 1) * angularSpeed   
+    // 更新角度
+    angle += vt * (now - startTime) / 1000
+
+	rotate(img, 468, 468, 0, 0)	
+	requestAFrame(start)
+}
+function rotate(el, iw, ih, ix, iy) {
+    //此方法只有canvas模式时会调用
+    //主要用于图片的旋转
+    startTime = performanceNow()
+
+    var width = 471
+    var height = 471
+    context.save()
+    context.translate(width/2, height/2)
+    context.rotate(angleToRadian(angle % 360))
+    context.translate(-width/2, -height/2)
+    context.drawImage(el, 0, 0, iw, ih, ix, iy, iw, ih)
+    context.restore()
+    // angle += 2
+}
+
+~function() {
+	var i = 0
+	var reqId = null
+	function add() {
+		if (i == 101) {
+			cancelAFrame(reqId)
+			return	
+		}
+		progress.style.width = i + '%'
+		i++
+		reqId = requestAFrame(add)
+	}
+
+	// add()
+
+	setTimeout(function() {
+		start()
+	}, 1000)
+	
+
+}();
 
 </script>
 </body>

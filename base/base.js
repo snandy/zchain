@@ -302,3 +302,29 @@ function isInViewport(element) {
     )
 }
 
+// 浏览器更新页面事件,避免过度渲染或者丢帧
+var requestAFrame = function() {
+    return window.requestAnimationFrame ||
+        window.webkitRequestAnimationFrame ||
+        window.mozRequestAnimationFrame ||
+        window.oRequestAnimationFrame ||
+        window.msRequestAnimationFrame ||
+        // 都不行就还用setTimeout
+        function (callback) {
+            //每秒60帧
+            return setTimeout(callback, 1000 / 60)
+        }
+}()
+
+// 取消事件的注册
+var cancelAFrame = function() {
+    return window.cancelAnimationFrame ||
+        window.webkitCancelAnimationFrame ||
+        window.mozCancelAnimationFrame ||
+        window.oCancelAnimationFrame ||
+        window.msCancelAnimationFrame ||
+        function(id) {
+            clearTimeout(id)
+        }
+}()
+
