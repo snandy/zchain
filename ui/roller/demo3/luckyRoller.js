@@ -103,7 +103,7 @@ $.fn.luckyRoller = function(option) {
 
     var $canvas = $(this)
     var canvas = $canvas[0]
-    var context = canvas.getContext('2d')
+    var context = useCanvas && canvas.getContext('2d')
     var elChassis = null
     var elButton  = null
 
@@ -243,7 +243,7 @@ $.fn.luckyRoller = function(option) {
             // 如果有按钮则设定按钮的行为, 处理起来比canvas容易了很多
             var elBtn = canvas.firstChild.firstChild.childNodes[1]
             elBtn.style.cursor = 'pointer'
-            elBtn.onclick = oBtn.click
+            elBtn.onclick = start
         }
 
         // 渲染
@@ -264,7 +264,7 @@ $.fn.luckyRoller = function(option) {
         // 重置上一次执行时间
         prevTime = performanceNow()
         // 直接旋转图片
-        elChassis.Rotation = this.angle % 360
+        elChassis.Rotation = angle % 360
     }
 
     var rotate = function(el, iw, ih, ix, iy) {
