@@ -101,6 +101,7 @@ function auto() {
     setTimeout(function() {
         lucky.winPrize(3)
     }, 10)
+    
 }
 
 function isHaveChace(price){

@@ -122,8 +122,20 @@ function rotate(el, iw, ih, ix, iy) {
 	// add()
 
 	setTimeout(function() {
-		start()
+		// start()
 	}, 1000)
+
+	function ffn() {
+		console.log(i)
+		if (i==5) {
+			// cancelAFrame(reqId)
+			return
+		}
+		i++
+		reqId = requestAFrame(ffn)
+	}
+
+	ffn()
 	
 
 }();
