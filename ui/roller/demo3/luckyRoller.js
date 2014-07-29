@@ -165,10 +165,6 @@ $.fn.luckyRoller = function(option) {
     var buildRoller = useCanvas ? function() {
         var oBtn = option.button
 
-        // canvas:组装转盘
-        // 如果设置了按钮图片并且绑定了按钮点击事件,则初始化按钮
-        var click = oBtn.click
-
         //保存按钮的位置和大小
         var buttonRect = {
             x: oBtn.x,
@@ -204,7 +200,10 @@ $.fn.luckyRoller = function(option) {
         $canvas.bind('mousemove', function(e) {
             canvas.style.cursor = inRect(e) ? 'pointer' : ''
         }).click(function (e) {
-            if ( inRect(e) ) start()
+            if ( inRect(e) ) {
+                start()
+                oBtn.click()
+            }
         })
 
         // 渲染
@@ -244,6 +243,7 @@ $.fn.luckyRoller = function(option) {
             var elBtn = canvas.firstChild.firstChild.childNodes[1]
             elBtn.style.cursor = 'pointer'
             elBtn.onclick = start
+            oBtn.click()
         }
 
         // 渲染
