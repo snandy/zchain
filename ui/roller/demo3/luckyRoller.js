@@ -201,7 +201,6 @@ $.fn.luckyRoller = function(option) {
             canvas.style.cursor = inRect(e) ? 'pointer' : ''
         }).click(function (e) {
             if ( inRect(e) ) {
-                start()
                 oBtn.click()
             }
         })
@@ -242,8 +241,7 @@ $.fn.luckyRoller = function(option) {
             // 如果有按钮则设定按钮的行为, 处理起来比canvas容易了很多
             var elBtn = canvas.firstChild.firstChild.childNodes[1]
             elBtn.style.cursor = 'pointer'
-            elBtn.onclick = start
-            oBtn.click()
+            elBtn.onclick = oBtn.click
         }
 
         // 渲染
@@ -430,6 +428,7 @@ $.fn.luckyRoller = function(option) {
 
     this.rolling = rolling
     this.winPrize = winPrize
+    this.start = start
     this.stop = stop
 
     return this
