@@ -451,13 +451,6 @@ var lucky = new LuckyRoller({
     height: 471,
     plate: "skin/i/bg.png",
     roller: "plate",
-    // arrow: {
-    //     x: 205,
-    //     y: 126,
-    //     width: 30,
-    //     height: 34,
-    //     image: "img/arrownew_source.png"
-    // },
     button: {
         x: 143,
         y: 60,
@@ -474,10 +467,10 @@ var lucky = new LuckyRoller({
         {id: "4", range: [210, 270]},
         {id: "5", range: [270, 330]}
     ],
-    onStop: function (id) {
-        isHaveChace(id);
+    onStop: function(id) {
+        isHaveChace(id)
     },
-    onRolling: function () {
+    onRolling: function() {
 
     }
 });

@@ -149,8 +149,8 @@ Clazz.prototype = {
             //先画盘子作为底图
             context.drawImage(this._image, 0, 0, w, h, 0, 0, w, h)
             //根据旋转的角度画箭头
-            this.rotate(this._arrow, oArrow.width, oArrow.height, oArrow.x, oArrow.y)
-            // this.rotate(this._button, oBtn.width, oBtn.height, oBtn.x, oBtn.y)
+            // this.rotate(this._arrow, oArrow.width, oArrow.height, oArrow.x, oArrow.y)
+            this.rotate(this._button, oBtn.width, oBtn.height, oBtn.x, oBtn.y)
         } : function() {
             // 底图是按角度旋转过的盘子
             this.rotate(this._image, w, h, 0, 0)
@@ -341,7 +341,7 @@ Clazz.prototype = {
         //初始化时提前创建好的渲染方法
         this.innerRender()
         // 有按钮就画按钮
-        if (this._button) {
+        if (this.option.roller == 'plate' && this._button) {
             context.drawImage(this._button, 0, 0, oBtn.width, oBtn.height, oBtn.x, oBtn.y, oBtn.width, oBtn.height)
         }
     } : function() {
