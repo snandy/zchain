@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>充值活动</title>
+    <script type="text/javascript" src="../jquery-1.11.0.js"></script>
+    <script charset="utf-8" src="demo3/luckyRoller.js"></script>
+</head>
+<body>
+<canvas id="roller" width="471px" height="271px" style="border:1px solid red">请升级您的浏览器!</canvas>
+<canvas id="roller2" width="471px" height="471px" style="border:1px solid red">请升级您的浏览器!</canvas>
+<script>
+var requestAFrame = function() {
+    // return window.requestAnimationFrame ||
+    //     window.webkitRequestAnimationFrame ||
+    //     window.mozRequestAnimationFrame ||
+    //     window.oRequestAnimationFrame ||
+    //     window.msRequestAnimationFrame ||
+        // 都不行就还用setTimeout
+    return function (callback) {
+            //每秒60帧
+            return setTimeout(callback, 1000/60)
+        }
+}()
+
+var context = roller.getContext('2d')
+context.fillRect(20, 20, 25, 25)
+
+
+
+
+var i = 1
+function drawScreen() {
+
+    // context.setTransform(1, 0, 0, 1, 0, 0)
+    if (i == 360) {
+        i = 1
+    }
+    var angleInRadians = i * Math.PI / 180
+    // console.log(i)
+    var x = 100
+    var y = 100
+    var width = 50
+    var height = 50
+
+    context.save()
+    context.fillStyle = 'blue'
+    context.translate(x+0.5*width, y+0.5*height)
+    context.rotate(angleInRadians)
+    context.fillRect(-0.5*width, -0.5*height, width, height)
+    context.clearRect(-0.5*width, -0.5*height, width, height)
+    context.restore()
+
+    i = i + 1
+    // requestAFrame(drawScreen)
+}
+
+// drawScreen()
+
+var context2 = roller2.getContext('2d')
+var img = new Image()
+img.onload = function() {
+    context2.drawImage(img, 0, 0)
+}
+img.src = 'demo2/skin/i/bg.png'
+img.width = 471
+img.height = 471
+
+var j = 1
+function rotate() {
+    // context.setTransform(1, 0, 0, 1, 0, 0)
+    if (j == 360) {
+        j = 1
+    }
+    var angleInRadians = j * Math.PI / 180
+    // console.log(i)
+    var width = 471
+    var height = 471
+
+    context2.save()
+    context2.translate(0.5*width, 0.5*height)
+    context2.rotate(angleInRadians)
+    context2.translate(-width/2, -height/2)
+    context2.drawImage(img, 0, 0, 471, 471, 0, 0, 471, 471)
+    context2.restore()
+
+    j = j + 1
+    requestAFrame(rotate)    
+}
+
+var k = 1
+function drawRect() {
+
+    if (k == 360) {
+        k = 1
+    }
+    var angleInRadians = k * Math.PI / 180
+
+    context.save()
+    context.translate(288, 100)
+    context.rotate(angleInRadians)
+    context.translate(-50, -25)
+    context.beginPath()
+    context.rect(0, 0, 100, 50)
+    context.fillStyle = 'yellow'
+    context.lineWidth = 1
+    context.strokeStyle = 'black'
+    context.stroke()
+    // context.clearRect(0, 0, 100, 50)
+    context.restore()
+    // 
+    k = k + 1
+    // requestAFrame(drawRect)    
+}
+
+drawRect()
+</script>
+</body>
+</html>

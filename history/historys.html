@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<title>0</title>
+</head>
+<body>
+	<input type="button" value="加1" onclick="add()" />
+	<div id="info" style="border:red 1px solid;width:200px;padding:10px;">0</div>
+</body>
+</html>
+<script src="history-0.5.js"></script>
+<script>
+	var info = document.getElementById('info');
+	var i = 1;
+	function add() {
+		var data = {
+		    param : i,
+		    func : func
+		};
+		info.innerHTML = i;
+		document.title = i;
+		HistoryManager.push(data);
+		i++;
+	}
+	function func(i) {
+	    info.innerHTML = i;
+	    document.title = i;
+	}
+</script>
