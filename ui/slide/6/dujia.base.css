@@ -1,0 +1,231 @@
+/* virtuals-dujia dujia.base.css Date:2014-08-07 10:10:33 */
+.w {
+  width: 1210px;
+}
+.search-bar .location .place b,
+.search-bar .search .button {
+  background-image: url(http://misc.360buyimg.com/virtuals/dujia/css/i/bg.png);
+  background-repeat: no-repeat;
+}
+.search-bar {
+  margin-bottom: 10px;
+}
+.search-bar .location {
+  border: 2px solid #ffae2e;
+  height: 38px;
+  line-height: 38px;
+  width: 148px;
+  padding: 0 10px;
+  margin-right: 10px;
+  position: relative;
+  z-index: 4;
+}
+.search-bar .location .line {
+  display: none;
+}
+.search-bar .location .dujia-city {
+  display: none;
+  width: 360px;
+  border: 2px solid #ffae2e;
+  position: absolute;
+  left: -2px;
+  top: 38px;
+  background: #fff;
+  padding: 0 20px;
+}
+.search-bar .location .dujia-city .hot {
+  color: #ffae2e;
+  font-size: 16px;
+  font-size: simsun;
+}
+.search-bar .location .dujia-city .hot-con {
+  border-bottom: 1px dotted #b6b6b6;
+  overflow: hidden;
+  padding-bottom: 10px;
+}
+.search-bar .location .dujia-city .hot-con a {
+  padding-right: 5px;
+  display: block;
+  float: left;
+  white-space: nowrap;
+  line-height: 23px;
+}
+.search-bar .location .dujia-city .mc {
+  padding-top: 10px;
+}
+.search-bar .location .dujia-city .mc .list li {
+  background: #f4f4f4;
+  float: left;
+  height: 21px;
+  line-height: 21px;
+  width: 90px;
+  text-align: center;
+  cursor: pointer;
+}
+.search-bar .location .dujia-city .mc .list li.curr {
+  background: #ffae2e;
+}
+.search-bar .location .dujia-city .mc .list li.curr a {
+  color: #fff;
+}
+.search-bar .location .dujia-city .mc .tabcon {
+  margin-top: 10px;
+}
+.search-bar .location .dujia-city .mc .tabcon .item {
+  position: relative;
+  line-height: 20px;
+  padding: 0 0 5px 30px;
+  overflow: hidden;
+}
+.search-bar .location .dujia-city .mc .tabcon .item .label {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 20px;
+  line-height: 20px;
+  width: 20px;
+  background: #ffae2e;
+  text-align: center;
+  color: #fff;
+}
+.search-bar .location .dujia-city .mc .tabcon .item .detail a {
+  display: block;
+  float: left;
+  white-space: nowrap;
+  width: 50px;
+}
+.search-bar .location .dujia-city .mc .tabcon .item .detail a:hover {
+  color: #005ea7;
+  text-decoration: none;
+}
+.search-bar .location.hover .line {
+  display: block;
+  height: 3px;
+  width: 168px;
+  position: absolute;
+  top: 37px;
+  left: 0;
+  background: #fff;
+  z-index: 4;
+}
+.search-bar .location.hover .dujia-city {
+  display: block;
+}
+.search-bar .location.hover .start .arrow {
+  border-style: dashed dashed solid;
+  border-color: transparent transparent #ffae2e;
+  top: 9px;
+}
+.search-bar .location .place {
+  font-size: 20px;
+  font-weight: normal;
+  width: 68px;
+  float: left;
+  padding-left: 30px;
+}
+.search-bar .location .place b {
+  width: 28px;
+  height: 24px;
+  position: absolute;
+  left: 10px;
+  top: 5px;
+}
+.search-bar .location .start {
+  width: 50px;
+  height: 38px;
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+.search-bar .location .start .arrow {
+  border-style: solid dashed dashed;
+  border-width: 6px;
+  border-color: #ffae2e transparent transparent;
+  width: 0;
+  height: 0;
+  overflow: hidden;
+  position: absolute;
+  top: 15px;
+}
+.search-bar .search {
+  border: 2px solid #ffae2e;
+  width: 486px;
+  height: 38px;
+  position: relative;
+}
+.search-bar .search .button {
+  width: 118px;
+  height: 38px;
+  background-color: #ffae2e;
+  background-position: -28px 0;
+  padding-left: 27px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  font-family: microsoft yahei;
+  color: #fff;
+}
+.search-bar .search .text {
+  display: block;
+  width: 358px;
+  height: 18px;
+  line-height: 18px;
+  padding: 10px 0;
+  position: absolute;
+  top: 0;
+  left: 10px;
+  border: 0 none;
+  background: none;
+  color: #999;
+}
+.search-bar .hotwords {
+  padding-left: 20px;
+  width: 290px;
+  line-height: 40px;
+}
+.search-bar .hotwords .label {
+  color: #999;
+}
+.search-bar .hotwords a {
+  padding-right: 10px;
+  color: #e4393c;
+}
+.search-bar .hotwords a:hover {
+  color: #e4393c;
+}
+.page {
+  padding: 10px 0;
+  height: 40px;
+  text-align: right;
+}
+.page a {
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  background-image: url(http://misc.360buyimg.com/virtuals/dujia/css/i/listbg.png);
+  background-repeat: no-repeat;
+  line-height: 40px;
+  text-align: center;
+  font-family: simsun;
+  background-position: -93px -399px;
+  color: #333;
+  font-size: 14px;
+}
+.page a:hover {
+  background-position: -93px -449px;
+  color: #e4393c;
+  text-decoration: none;
+}
+.page .prev,
+.page .next {
+  width: 83px;
+  height: 40px;
+  background-position: 0 -399px;
+}
+.page .prev:hover,
+.page .next:hover {
+  background-position: 0 -449px;
+  text-decoration: none;
+  color: #e4393c;
+}
+
