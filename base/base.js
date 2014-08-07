@@ -302,6 +302,14 @@ function isInViewport(element) {
     )
 }
 
+// 琪力
+function inWindow(el) {
+    var wHeight = $(window).height()
+    var bTop = $('body').scrollTop() || $('html').scrollTop()
+    var eTop = $(el).offset().top
+    return wHeight + bTop > eTop && bTop < eTop
+}
+
 // 浏览器更新页面事件,避免过度渲染或者丢帧
 var requestAFrame = function() {
     return window.requestAnimationFrame ||
