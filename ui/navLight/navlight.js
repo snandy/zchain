@@ -47,9 +47,13 @@ $.throttle = function(func, wait) {
 /*
  * 标题吸顶
  */
-$.fn.topSuction = function(fixedFunc, resetFunc, cls) {
+$.fn.topSuction = function(option) {
+    option = option || {}
+    var fixCls = option.fixCls || 'fixed'
+    var fixedFunc = option.fixedFunc
+    var resetFunc = option.resetFunc
+
     var $self = $(this)
-    var fixCls = cls || 'fixed'
     if (!$self.length) return
 
     var fTop = $self.offset().top
