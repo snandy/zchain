@@ -225,7 +225,33 @@ function parseURL(url) {
         segments: a.pathname.replace(/^\//,'').split('/')
     };
 }
+/*
+ * 根据日期返回星期几？
+ */
+function getDay(year, month, day) {
+    var date = new Date(year, month-1, day)
+    return date.getDay()
+}
+/*
+ * 判断两个日期是否一样
+ */
+function isEqual(date1, date2) {
+    var arr1 = date1.split('-')
+    var arr2 = date2.split('-')
 
+    var year1  = arr1[0] - 0
+    var month1 = arr[1] - 0
+    var date1  = arr[2] - 0
+    var year2  = arr2[0] - 0
+    var month2 = arr2[1] - 0
+    var date2  = arr2[2] -0
+
+    if (year1===year2 && month1 === month2 && date1 === date2) {
+        return true
+    } else {
+        return false
+    }
+}
 /*
  * 获取当前日期的后一天，如 
  *    2014-04-03 返回 2014-04-04
