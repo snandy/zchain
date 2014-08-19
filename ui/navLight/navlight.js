@@ -53,21 +53,31 @@ $.fn.topSuction = function(option) {
     var fixedFunc = option.fixedFunc
     var resetFunc = option.resetFunc
 
-    var $self = $(this)
+    var $self = this
+    var $win  = $(window)
     if (!$self.length) return
 
-    var fTop = $self.offset().top
-    $(window).scroll(function() {
+    var offset = $self.offset()
+    var fTop   = offset.top
+    var fLeft  = offset.left
+
+    // 缓存下
+    $self.data('def', offset)
+    $win.resize(function() {
+        $self.data('def', $self.offset())
+    })
+
+    $win.scroll(function() {
         var dTop = $(document).scrollTop()
         if (fTop < dTop) {
             $self.addClass(fixCls)
             if (fixedFunc) {
-                fixedFunc($self, fTop)
+                fixedFunc.call($self, fTop)
             }
         } else {
             $self.removeClass(fixCls)
             if (resetFunc) {
-                resetFunc($self, fTop)
+                resetFunc.call($self, fTop)
             }
         }
     })
