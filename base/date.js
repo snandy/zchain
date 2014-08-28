@@ -35,6 +35,9 @@ function getDate(date, offset) {
     }
 
     // 补齐当月
+    var newYear  = 0
+    var newMonth = 0
+    var newDate  = 0
     var currMonthDiff = days - date1
     var realDiff = offset - currMonthDiff
     var diffMonth = 1
@@ -42,8 +45,8 @@ function getDate(date, offset) {
         diffMonth++
     }
 
-    console.log(diffMonth)
 
+    console.log(diffMonth)
 }
 
 /*
