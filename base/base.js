@@ -336,3 +336,11 @@ var cancelAFrame = function() {
         }
 }()
 
+// 计算页面的实际高度，iframe自适应会用到
+function calcPageHeight() {
+    var cHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+    var sHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+    var height  = Math.max(cHeight, sHeight)
+    return height
+}
+
