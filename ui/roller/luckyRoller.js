@@ -155,8 +155,11 @@ Clazz.prototype = {
             // 底图是按角度旋转过的盘子
             this.rotate(this._image, w, h, 0, 0)
             // 如果需要则绘制箭头
-            if (this._arrow) {
-                context.drawImage(this._arrow, 0, 0, oArrow.width, oArrow.height, oArrow.x, oArrow.y, oArrow.width, oArrow.height)
+            // if (this._arrow) {
+            //     context.drawImage(this._arrow, 0, 0, oArrow.width, oArrow.height, oArrow.x, oArrow.y, oArrow.width, oArrow.height)
+            // }
+            if (this._button) {
+                context.drawImage(this._button, 0, 0, oBtn.width, oBtn.height, oBtn.x, oBtn.y, oBtn.width, oBtn.height)
             }
         }
 
@@ -323,6 +326,7 @@ Clazz.prototype = {
         } else {
             this._image = ele.firstChild.firstChild.firstChild
         }
+        console.log(this._image.outerHTML)
         if (oBtn && typeof oBtn.click == 'function') {
             // 如果有按钮则设定按钮的行为
             // 处理起来比canvas容易了很多

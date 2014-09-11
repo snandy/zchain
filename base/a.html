@@ -10,93 +10,11 @@
         left: 1000px;
       }
   </style>
+  <script type="text/javascript" src="date.js"></script>
 </head> 
 <body>
-<p>
-    <input value="9">
-</p>
+
 <script type="text/javascript">
-// 判断一个元素是否在视图窗口中
-// Determine if an element is in the visible viewport
-function isInViewport(element) {
-    var rect = element.getBoundingClientRect()
-    var html = document.documentElement
-    return (
-      rect.top >= 0 &&
-      rect.left >= 0 &&
-      rect.bottom <= (window.innerHeight || html.clientHeight) &&
-      rect.right <= (window.innerWidth || html.clientWidth)
-    )
-}
-
-// alert(isInViewport(s1))
-
-// radix 不传或为假值时，默认按10进制处理 (JS六个假值)
-// alert(parseInt('9'))
-// alert(parseInt('9', null))
-// alert(parseInt('9', undefined))
-// alert(parseInt('9', 0))
-// alert(parseInt('9', ''))
-// alert(parseInt('9', NaN))
-// alert(parseInt('9', false))
-
-// 默认会去掉左右空白符
-// alert(parseInt(' 9'))
-// alert(parseInt('9 '))
-// alert(parseInt(' 9 '))
-
-// 但不会去掉中间的空白符，且默认忽略中间空白符后所有的字符
-// alert(parseInt('9 0'))
-// alert(parseInt(' 9 0 '))
-// alert(parseInt(' 9 a '))
-
-// radix为假值时
-// 仅IE6/7/8中parseInt第一个参数为非法八进制字符串第二个参数不传时返回值为0
-
-// 我们知道JavaScript中数字有十进制，八进制，十六进制。以0开头的是八进制，0x开头的是十六进制。
-// alert(parseInt('08'))
-// alert(parseInt('09'))
-
-// alert(parseInt('01'))
-// alert(parseInt('07'))
-
-// alert(parseInt('01')) // 1 
-// alert(parseInt('07')) // 7
-
-// alert(parseInt('0xa'))     // 10
-// alert(parseInt('0xa'), 8)  // 10
-// alert(parseInt('0xa'), 16) // 10
-
-// alert(parseInt('0Xa'))     // 10
-// alert(parseInt('0Xa'), 8)  // 10
-// alert(parseInt('0Xa'), 16) // 10
-
-
-function isInteger(obj) {
-    return obj%1 === 0
-}
-isInteger(3) // true
-isInteger(3.3) // false
-
-
-
-// function isInteger(obj) {
-//     return typeof obj === 'number' && obj%1 === 0
-// }
-
-
-// // Math.round, Math.ceil
-// function isInteger(obj) {
-//     return Math.floor(obj) === obj
-// }
-
-// function isInteger(obj) {
-//     return (obj | 0) === obj
-// }
-
-function isInteger(obj) {
-    return parseInt(obj, 10) === obj
-}
 
 
 

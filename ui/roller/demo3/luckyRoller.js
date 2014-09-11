@@ -284,7 +284,6 @@ $.fn.luckyRoller = function(option) {
     /*
      * 开始转动
      */
-
     var start = function() {
         // 让转盘启动
         if (isRolling()) return

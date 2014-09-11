@@ -226,46 +226,6 @@ function parseURL(url) {
     };
 }
 
-/*
- * 获取当前日期的后一天，如 
- *    2014-04-03 返回 2014-04-04
- *    2014-04-30 返回 2014-05-01
- *    2014-12-31 返回 2015-01-01
- * 
- *  闰年
- *    2008-02-28 返回 2014-02-29
- *    2008-02-29 返回 2014-03-01
- */
-function getAfterDay(str) {
-    var months = [31,28,31,30,31,30,31,31,30,31,30,31]
-    var arr = str.split('-')
-    var year = arr[0] - 0
-    var month = arr[1] - 1
-    var day = arr[2] - 0
-
-    // 闰年2月有29天
-    var isRunNian = false
-    if ( 1 == month && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ) {
-        isRunNian = true
-        months[1] = 29
-    }
-
-    var result = []
-    if (month === 11 && day === 31) {
-        result = [ (year+1) + '', '01', '01']
-    } else {
-        var days = months[month]
-        if (day < days) {
-            day = day + 1
-            result = [year + '', (month+1) + '', day + '']
-        } else {
-            result = [year + '', (month+2) + '', '1']
-        }
-    }
-
-    return result.join('-')
-}
-
 // 获取图片的最大尺寸， naturalWidth在FF，Chrome，Safari, Opera, IE9中已实现
 function hasDimensions(img) {
   return !!((img.complete && typeof img.naturalWidth !== "undefined") || img.width);
@@ -302,6 +262,14 @@ function isInViewport(element) {
     )
 }
 
+// 琪力
+function inWindow(el) {
+    var wHeight = $(window).height()
+    var bTop = $('body').scrollTop() || $('html').scrollTop()
+    var eTop = $(el).offset().top
+    return wHeight + bTop > eTop && bTop < eTop
+}
+
 // 浏览器更新页面事件,避免过度渲染或者丢帧
 var requestAFrame = function() {
     return window.requestAnimationFrame ||
@@ -327,4 +295,12 @@ var cancelAFrame = function() {
             clearTimeout(id)
         }
 }()
+
+// 计算页面的实际高度，iframe自适应会用到
+function calcPageHeight() {
+    var cHeight = Math.max(document.body.clientHeight, document.documentElement.clientHeight)
+    var sHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight)
+    var height  = Math.max(cHeight, sHeight)
+    return height
+}
 
