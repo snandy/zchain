@@ -115,7 +115,6 @@ $.fn.luckyRoller = function(option) {
         p.range[1] = 360 - t
     }
 
-
     function loadImage(option) {
         var img = new Image()
         // 检查所有图片是否已经加载完毕
@@ -264,8 +263,8 @@ $.fn.luckyRoller = function(option) {
         elChassis.Rotation = angle % 360
     }
 
+    // 此方法只有canvas模式时会调用,主要用于图片的旋转
     var rotate = function(el, iw, ih, ix, iy) {
-        // 此方法只有canvas模式时会调用,主要用于图片的旋转
         var width = option.width 
         var height = option.height
         context.save()
