@@ -64,7 +64,6 @@ var cancelAFrame = function() {
 }()
 
 $.fn.luckyRoller = function(option) {
-
     var option = $.extend(true, {
         width: 350, //宽度
         height: 150, //高度
@@ -425,6 +424,7 @@ $.fn.luckyRoller = function(option) {
 
     init()
 
+    // exports
     this.rolling = rolling
     this.winPrize = winPrize
     this.start = start
