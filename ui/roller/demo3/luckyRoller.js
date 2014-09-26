@@ -64,7 +64,6 @@ var cancelAFrame = function() {
 }()
 
 $.fn.luckyRoller = function(option) {
-
     var option = $.extend(true, {
         width: 350, //宽度
         height: 150, //高度
@@ -115,7 +114,6 @@ $.fn.luckyRoller = function(option) {
         p.range[0] = 360 - p.range[1]
         p.range[1] = 360 - t
     }
-
 
     function loadImage(option) {
         var img = new Image()
@@ -265,8 +263,8 @@ $.fn.luckyRoller = function(option) {
         elChassis.Rotation = angle % 360
     }
 
+    // 此方法只有canvas模式时会调用,主要用于图片的旋转
     var rotate = function(el, iw, ih, ix, iy) {
-        // 此方法只有canvas模式时会调用,主要用于图片的旋转
         var width = option.width 
         var height = option.height
         context.save()
@@ -425,6 +423,7 @@ $.fn.luckyRoller = function(option) {
 
     init()
 
+    // exports
     this.rolling = rolling
     this.winPrize = winPrize
     this.start = start
