@@ -45,7 +45,12 @@ $.throttle = function(func, wait) {
 }
 
 /*
- * 标题吸顶
+ * 吸顶灯
+ * option {
+ *    fixCls: className，默认 “fixed”
+ *    fixedFunc: 吸顶时回调函数
+ *    resetFunc: 不吸顶时回调函数
+ * }
  */
 $.fn.topSuction = function(option) {
     option = option || {}
@@ -61,7 +66,7 @@ $.fn.topSuction = function(option) {
     var fTop   = offset.top
     var fLeft  = offset.left
 
-    // 缓存下
+    // 暂存
     $self.data('def', offset)
     $win.resize(function() {
         $self.data('def', $self.offset())
