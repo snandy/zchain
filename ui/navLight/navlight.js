@@ -48,6 +48,7 @@ $.throttle = function(func, wait) {
  * 吸顶灯
  * option {
  *    fixCls: className，默认 “fixed”
+ *    refTop: 拖动到底部指定的元素位置后就不在继续下沉，这里可以取参照dom元素的offsetTop减去吸顶元素的高度
  *    fixedFunc: 吸顶时回调函数
  *    resetFunc: 不吸顶时回调函数
  * }
@@ -57,7 +58,8 @@ $.fn.topSuction = function(option) {
     var fixCls = option.fixCls || 'fixed'
     var fixedFunc = option.fixedFunc
     var resetFunc = option.resetFunc
-
+    var refTop = option.refTop
+    
     var $self = this
     var $win  = $(window)
     if (!$self.length) return
@@ -75,10 +77,17 @@ $.fn.topSuction = function(option) {
     $win.scroll(function() {
         var dTop = $(document).scrollTop()
         if (fTop < dTop) {
+            $self.removeAttr('style')
             $self.addClass(fixCls)
             if (fixedFunc) {
                 fixedFunc.call($self, fTop)
             }
+            if (refTop && refTop < dTop) {
+                $self.css({
+                    position: 'absolute',
+                    top: refTop
+                })
+            }            
         } else {
             $self.removeClass(fixCls)
             if (resetFunc) {
