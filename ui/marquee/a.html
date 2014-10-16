@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>scroll.js</title>
+        <link rel="stylesheet" href="../tab/base.css"/>
+        <link rel="stylesheet" href="a.css"/>
+		<script src="../jquery-1.11.0.js"></script>
+		<script src="imgScroll.js"></script>
+	</head>
+	<body>
+    <div class="banner">
+        <div class="title">
+            <h4>精品甄选</h4>
+            <ul class="banner-pic-nav clearfix">
+            </ul>
+        </div>
+        <div class="banner-pic">
+            <ul>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>
+                <li>
+                    <a href="" target="_blank">
+                        <img src="http://i1.s2.dpfile.com/pc/mc/59128d6106f9bc7d5fe1bd39633dc65d(353c221)/thumb.jpg" alt="">
+                        <p class="pic-title">
+                            万达国际影城（民乐园店）
+                            <span>￥11.8</span>
+                        </p>
+                    </a>
+                </li>                               
+            </ul>
+        </div>
+        <a href="javascript:;" class="btn-prev">上一页</a>
+        <a href="javascript:;" class="btn-next">下一页</a>
+    </div>    
+ 	</body>
+    <script>
+        // 京品甄选 滚动图
+        $('.banner-pic').imgScroll({
+            visible: 2,
+            step: 2,
+            navItems: true,
+            navCanClick: true,
+            navItmesWrapClass: 'banner-pic-nav',
+            autoPlay: true,
+            next: '.btn-next',
+            prev: '.btn-prev'
+        }, function(index, tatol, all, view) {
+        })
+    </script>
+</html>
