@@ -16,7 +16,6 @@
  *
  */
 $.fn.tab = function(option, callback) {
-
     if (!this.length) return
 
     if (typeof option === 'function') {
