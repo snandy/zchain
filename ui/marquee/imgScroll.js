@@ -1,13 +1,10 @@
-
 /**
- *
  * 图片滚动插件
+ * 
  */
 $.fn.imgScroll = function(options, callback) {
     // 默认参数
     var defaults = {
-        // 事件类型=click,mouseover
-        evtType: 'click',
         // 可见图片个数
         visible: 1,
         // 按钮-下一张，默认为元素选择器字符串，也可以是jQuery对象
@@ -57,7 +54,6 @@ $.fn.imgScroll = function(options, callback) {
             step = settings.step,
             visible = settings.visible,
             total = Math.ceil((len - visible) / step) + 1,
-            evt = settings.evtType,
 
             nav = settings.navItems,
             navWrap = settings.navItmesWrapClass,
@@ -217,11 +213,11 @@ $.fn.imgScroll = function(options, callback) {
         }
 
         function bindEvent() {
-            $btnPrev.unbind(evt).bind(evt, function() {
+            $btnPrev.unbind('click').bind('click', function() {
                 current--
                 switchTo(true)
             })
-            $btnNext.unbind(evt).bind(evt, function() {
+            $btnNext.unbind('click').bind('click', function() {
                 current++
                 switchTo(false)
             })
