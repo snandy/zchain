@@ -30,7 +30,7 @@ $.fn.imgScroll = function(options, callback) {
         // 是否显示滚动当前状态(1,2,3,4,...)
         navItems: false,
         // 包围元素的class，默认为'scroll-nav-wrap'
-        navItmesWrapClass: 'nav-wrap',
+        navItmesWrap: 'nav-wrap',
         // 当前项目高亮class
         navItemActivedClass: 'cur',
         // 导航项目事件名称
