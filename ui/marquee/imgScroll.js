@@ -35,8 +35,6 @@ $.fn.imgScroll = function(options, callback) {
         navItemActivedClass: 'cur',
         // 导航项目事件名称
         navItemEvent: 'click',
-        // nav是否可点击
-        navCanClick: false,
 
         end: function() {}
     };
@@ -218,15 +216,31 @@ $.fn.imgScroll = function(options, callback) {
             clearInterval(intervalTimer)
         }
 
+        // 防止左右箭头点击太快
+        function throttle(func, wait) {
+            var canSwitch = true
+            return function() {
+                if (!canSwitch) return
+                func()
+                canSwitch = false
+                setTimeout(function() {
+                    canSwitch = true
+                }, wait)
+            }
+        }
+
         function bindEvent() {
-            $btnPrev.unbind('click').bind('click', function() {
+            var prevHander = throttle(function() {
                 current--
                 switchTo(true)
-            })
-            $btnNext.unbind('click').bind('click', function() {
+            }, 500)
+            var nextHander = throttle(function() {
                 current++
                 switchTo(false)
-            })
+            }, 500)
+            $btnPrev.unbind('click').bind('click', prevHander)
+            $btnNext.unbind('click').bind('click', nextHander)
+
             if (settings.autoPlay) {
                 $btnPrev.mouseover(function() {
                     stop()
@@ -245,11 +259,12 @@ $.fn.imgScroll = function(options, callback) {
                 })
                 play()
             }
-            if (navItems && navEvent) {
+
+            if (navItems && navEvent) {                
                 $navWrap.delegate('li', navEvent, function() {
                     var idx = $(this).attr('data-i')
                     var isPrev = idx < current ? true : false
-                    current = idx   
+                    current = idx
                     switchTo(isPrev)
                 })
                 $navWrap.mouseover(function() {
