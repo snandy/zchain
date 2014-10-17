@@ -1,0 +1,37 @@
+/*home banner*/
+#home_banner{width:744px;height:160px;position:relative;margin:10px auto;overflow:hidden;}
+#home_banner .scroll {float: left;}
+#home_banner .banner_bg{list-style:none;margin:0;padding:0;width:612px;height:160px;overflow:hidden;position:relative;left:0}
+.banner_bg li{display:block;width:612px;height:160px;}
+#home_banner .banner_control{
+	float:right;
+	width:121px;
+	height:160px;
+	position:relative;
+	right:0;
+	top:0
+}
+#home_banner .banner_control em{
+	width:127px;
+	height:50px;
+	background:url(i/current.png) 0 0 no-repeat;
+	position:absolute;
+	z-index:21;
+	top:0;
+	left:-6px
+}
+#home_banner .thumbs{list-style:none;margin:0;padding:0}
+#home_banner .thumbs li {
+	width:113px;
+	height:42px;
+	border:4px solid #d3d3d3;
+	position:relative;
+	margin: 0 0 5px;
+}
+#home_banner .thumbs li img {
+	width: 113px;
+	height: 42px;
+}
+#home_banner .thumbs li i{background:url(i/cover.png) no-repeat;width:113px;height:42px;position:absolute}
+#home_banner .thumbs li.cur {background:url(i/current.png)}
+#home_banner .thumbs li.cur i{background:0}

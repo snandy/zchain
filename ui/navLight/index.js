@@ -49,16 +49,16 @@ var jph  = $.jph
     $('.bascroll-list').imgScroll({
         visible: 3,
         step: 3,
-        showNavItem: true,
         autoPlay: true,
         autoPlayTime: 5000,
         next: '.bascroll .right',
-        prev: '.bascroll .left'
-    }, function(index, tatol, all, view) {
-        view.each(function() {
-            var $self = $(this).find('img')
-            $self.attr('src', $self.attr('data-lazyload'))
-        })
+        prev: '.bascroll .left',
+        end: function(index, tatol, all, view) {
+            view.each(function() {
+                var $self = $(this).find('img')
+                $self.attr('src', $self.attr('data-lazyload'))
+            })
+        }
     })
 
     // 修复ul的宽度，去掉头尾li的border宽度
@@ -109,21 +109,19 @@ var $narrowMenu = $('.narrow-menu')
  * 今日推荐 - 图片滚动
  */
 var $mscroll = $('#mscroll-list')
-
-// 滚动图
 $mscroll.imgScroll({
     visible: 3,
     step: 3,
-    showNavItem: true,
     autoPlay: true,
     autoPlayTime: 5000,
     next: '#mscroll-ctrl-next',
-    prev: '#mscroll-ctrl-prev'
-}, function(index, tatol, all, view) {
-    view.each(function() {
-        var $self = $(this).find('img')
-        $self.attr('src', $self.attr('data-lazyload'))
-    })
+    prev: '#mscroll-ctrl-prev',
+    end: function(index, tatol, all, view) {
+        view.each(function() {
+            var $self = $(this).find('img')
+            $self.attr('src', $self.attr('data-lazyload'))
+        })
+    }
 })
 
 

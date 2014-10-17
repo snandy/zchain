@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<title>B scroll.js</title>
+        <link rel="stylesheet" href="../tab/base.css"/>
+        <link rel="stylesheet" href="b.css"/>
+		<script src="../jquery-1.11.0.js"></script>
+		<script src="imgScroll.js"></script>
+	</head>
+	<body>
+        <div id="home_banner">
+            <div class="scroll">
+                <ul class="banner_bg">
+                    <li class="banner_bg_1 current">
+                        <a target="_blank" href="http://www.lagou.com/speed/speed5.html?utm_source=DH__lagou&amp;utm_medium=jiaodian&amp;utm_campaign=jisuruzhi"><img height="160" width="612" src="i/b1.png"></a>
+                    </li>
+                    <li class="banner_bg_2">
+                        <a target="_blank" href="http://www.lagou.com/subject/s_zhenge.html?utm_source=DH__lagou&amp;utm_medium=jiaodian&amp;utm_campaign=zhenge"><img height="160" width="612" src="i/b2.png"></a>
+                    </li>
+                    <li class="banner_bg_3">
+                        <a target="_blank" href="http://www.lagou.com/subject/s_siliconValley.html?utm_source=DH__lagou&amp;utm_medium=jiaodian&amp;utm_campaign=shangguigu"><img height="160" width="612" src="i/b3.png"></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="banner_control">
+                <em class="cover"></em> 
+                <ul class="thumbs"></ul>
+            </div>
+        </div>
+ 	</body>
+    <script>
+        // 垂直滚动图
+        $('.scroll').imgScroll({
+            visible: 1,
+            step: 1,
+            direction: 'y',
+            navItems: function(i) {
+                var num = i+1
+                return '<i></i>' + '<img src="i/bcg' + num + '.png">'
+            },
+            navItemEvent: 'mouseenter',
+            navItmesWrap: 'ul.thumbs',
+            autoPlay: true,
+            end: function(i) {
+                $('#home_banner .cover').animate({
+                    top: 55 * i + 'px'
+                }, 100)
+            }
+        }, function() {
+            var $banner = $('#home_banner')
+            $banner.find('ul.thumbs').delegate('li', 'mouseenter', function() {
+                var i = $(this).attr('data-i')
+                $banner.find('.cover').animate({
+                    top: 55 * i + 'px'
+                }, 100)
+            })
+        })
+    </script>
+</html>

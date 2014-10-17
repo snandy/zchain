@@ -27,7 +27,8 @@
     line-height: 0;
     margin-left: 2px;
     overflow: hidden;
-    background-color: #e4e4e4; 
+    background-color: #e4e4e4;
+    text-indent: 100px;
 }
 .banner .title li.cur, .index-menu .banner .title li a:hover {
     background-color: #ff8400; 
@@ -104,5 +105,5 @@
     right: -12px;
     _right: 2px;
     background: url(i/sprite_index-menu.png) 0 0 no-repeat;background-position:0px -168px; 
-  }
+}
 
