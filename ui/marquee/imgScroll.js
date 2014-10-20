@@ -217,7 +217,7 @@ $.fn.imgScroll = function(options, callback) {
         }
 
         // 防止左右箭头点击太快
-        function throttle(func, wait) {
+        function debounce(func, wait) {
             var canSwitch = true
             return function() {
                 if (!canSwitch) return
@@ -230,11 +230,11 @@ $.fn.imgScroll = function(options, callback) {
         }
 
         function bindEvent() {
-            var prevHander = throttle(function() {
+            var prevHander = debounce(function() {
                 current--
                 switchTo(true)
             }, 500)
-            var nextHander = throttle(function() {
+            var nextHander = debounce(function() {
                 current++
                 switchTo(false)
             }, 500)
