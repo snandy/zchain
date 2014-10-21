@@ -305,7 +305,7 @@ function calcPageHeight() {
 }
 
 // 防止函数执行太快，比如用在提交按钮等，须在指定时间后才能再次执行
-function throttle(func, wait) {
+function debounce(func, wait) {
     var canSwitch = true
     return function() {
         if (!canSwitch) return
@@ -317,3 +317,16 @@ function throttle(func, wait) {
     }
 }
 
+function debounce2(func, wait) {
+    var timestamp, timeout
+    return function() {
+        if (timeout) {
+          func()
+          timeout = null
+        } else {
+            timeout = setTimeout(function() {
+                debounce2()
+            }, wait)
+        }
+    }
+}
