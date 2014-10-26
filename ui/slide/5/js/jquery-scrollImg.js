@@ -65,7 +65,7 @@ $.fn.scrollImg = function(config, imgs) {
 			return buildLi(o, i);
 		}).join('')
 		ul.html(htmlStr);
-		wraper.hide();
+		wraper.fadeOut();
 		wraper.fadeIn(inTime);
 	}
 	

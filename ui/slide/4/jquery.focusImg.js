@@ -13,7 +13,7 @@ $.fn.focusImg = function(config, imgs) {
 	
 	// 动画等配置参数
 	var	len       = imgs.length,
-		fadeNum   = config.fadeNum || 800,
+		fadeNum   = config.fadeNum || 300,
 		autoNum   = config.autoNum || 2000,
 		effectNum = config.effectNum || 400;
 

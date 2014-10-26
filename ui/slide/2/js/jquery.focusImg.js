@@ -42,7 +42,7 @@ $.fn.focusImg = function(config, imgs) {
 		if (typeof curr != 'undefined') {
 			lis.eq(curr).fadeOut(300);
 		}
-		lis.eq(i).fadeIn(1000);
+		lis.eq(i).fadeIn(300);
 		curr = i;
 		fittLi.html('<h3><a target="_blank" href="' +  link + '">' + title + '</a></h3>');
 	}
