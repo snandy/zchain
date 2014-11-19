@@ -12,16 +12,16 @@ function isNumber(obj) {
 }
 
 function evalJs(str){
-	var head = document.getElementsByTagName('head')[0];
-	var script = document.createElement('script');
-	try{
-		script.appendChild( document.createTextNode(str) );
-	}catch(e){
-		script.text = str;
-	}
+  var head = document.getElementsByTagName('head')[0];
+  var script = document.createElement('script');
+  try{
+    script.appendChild( document.createTextNode(str) );
+  }catch(e){
+    script.text = str;
+  }
 
-	head.insertBefore(script,head.firstChild);
-	head.removeChild(script);
+  head.insertBefore(script,head.firstChild);
+  head.removeChild(script);
 }
 
 /*
@@ -31,31 +31,31 @@ function evalJs(str){
  */
 function isHtmlControl(obj) { 
 
-	var d = document.createElement("div");
-	try{
-		d.appendChild(obj.cloneNode(true));
-		return obj.nodeType==1 ? true : false;
-	}catch(e){
-		return obj==window || obj==document;
-	}
-}	
+  var d = document.createElement("div");
+  try{
+    d.appendChild(obj.cloneNode(true));
+    return obj.nodeType==1 ? true : false;
+  }catch(e){
+    return obj==window || obj==document;
+  }
+} 
 
 var makeArray = function(obj) {
-	// IE9/Firefox/Safari/Chrome/Opera
-	return slice.call(obj,0);
+  // IE9/Firefox/Safari/Chrome/Opera
+  return slice.call(obj,0);
 }
 try{
-	slice.call(document.documentElement.childNodes, 0)[0].nodeType;
+  slice.call(document.documentElement.childNodes, 0)[0].nodeType;
 }catch(e){
-	// IE6/7/8
-	makeArray = function(obj) {
-		var res = [];
-		for(var i=0,len=obj.length; i<len; i++) {
-			res[i] = obj[i];
-		}
-		return res;
+  // IE6/7/8
+  makeArray = function(obj) {
+    var res = [];
+    for(var i=0,len=obj.length; i<len; i++) {
+      res[i] = obj[i];
+    }
+    return res;
 
-	}
+  }
 }
 
 // from seajs
@@ -68,29 +68,29 @@ function removeComments(code) {
 
 // 预加载JS from <<JavaScript Patterns>>
 function preload(url) {
-	var obj, body
-	if (/*@cc_on!@*/!1) {
-		obj = new Image()
-		obj.src = url 
-	} else {
-		obj = document.createElement('object')
-		body = document.body
-		obj.width = 0
-		obj.height = 0
-		obj.data = url
-		body.appendChild(obj)
-	}
+  var obj, body
+  if (/*@cc_on!@*/!1) {
+    obj = new Image()
+    obj.src = url 
+  } else {
+    obj = document.createElement('object')
+    body = document.body
+    obj.width = 0
+    obj.height = 0
+    obj.data = url
+    body.appendChild(obj)
+  }
 }
 // preload('http://code.jquery.com/jquery-1.8.0.js')
 
 // 获取flash对象
 function thisMovie(movieName) {
-	var isIE = /*@cc_on!@*/!1;
-	if (isIE) {
-		return document.getElementById(movieName);
-	} else {
-		 return document[movieName];
-	}	
+  var isIE = /*@cc_on!@*/!1;
+  if (isIE) {
+    return document.getElementById(movieName);
+  } else {
+     return document[movieName];
+  } 
 }
 
 // 打开窗口且居中
@@ -113,18 +113,18 @@ function open_window(url, width, height) {
 
 // 提取字符串里的单层JSON {key: value}
 function pickUpJSON(str) {
-	var arr,
-		dest = [],
-		reg = /{[^{]*}/g
-		
-	arr = str.match(reg)
-	if (!arr.length) return dest
-	
-	var ast, i = 0
-	while (ast=arr[i++]) {
-		dest[i-1] = JSON.parse(ast)
-	}
-	return dest
+  var arr,
+    dest = [],
+    reg = /{[^{]*}/g
+    
+  arr = str.match(reg)
+  if (!arr.length) return dest
+  
+  var ast, i = 0
+  while (ast=arr[i++]) {
+    dest[i-1] = JSON.parse(ast)
+  }
+  return dest
 }
 // 匹配一串字符串中出现最多的单词（以空白符或标点符号+空白符来区分单词）
 
@@ -199,8 +199,8 @@ function separateMobile(num) {
  * 解析URL各部分的通用方法, 来自http://james.padolsey.com/javascript/parsing-urls-with-the-dom/
  */
 function parseURL(url) {
-    var a =  document.createElement('a');
-    a.href = url;
+    var a =  document.createElement('a')
+    a.href = url
     return {
         source: url,
         protocol: a.protocol.replace(':',''),
@@ -208,22 +208,23 @@ function parseURL(url) {
         port: a.port,
         query: a.search,
         params: (function(){
-            var ret = {},
-                seg = a.search.replace(/^\?/,'').split('&'),
-                len = seg.length, i = 0, s;
-            for (;i<len;i++) {
-                if (!seg[i]) { continue; }
-                s = seg[i].split('=');
-                ret[s[0]] = s[1];
+            var ret = {}
+            var seg = a.search.replace(/^\?/,'').split('&')
+            var len = seg.length
+            var s
+            for (var i = 0; i < len; i++) {
+                if (!seg[i]) continue 
+                s = seg[i].split('=')
+                ret[s[0]] = s[1]
             }
-            return ret;
+            return ret
         })(),
         file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
         hash: a.hash.replace('#',''),
         path: a.pathname.replace(/^([^\/])/,'/$1'),
         relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
         segments: a.pathname.replace(/^\//,'').split('/')
-    };
+    }
 }
 
 // 获取图片的最大尺寸， naturalWidth在FF，Chrome，Safari, Opera, IE9中已实现
@@ -329,4 +330,16 @@ function debounce2(func, wait) {
             }, wait)
         }
     }
+}
+
+/*
+ * RGB转成16进制色值， 如 "rgb(255,0,0)" 会转成 "#ff0000"
+ */
+function rgbToHex(str) {
+    var arr = str.match(/\d+/g)
+    if (!arr) return ''
+    var red   = arr[0]
+    var green = arr[1]
+    var black = arr[2]
+    return "#" + (16777216 | black | (green << 8) | (red << 16)).toString(16).slice(1)
 }
