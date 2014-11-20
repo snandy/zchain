@@ -318,20 +318,6 @@ function debounce(func, wait) {
     }
 }
 
-function debounce2(func, wait) {
-    var timestamp, timeout
-    return function() {
-        if (timeout) {
-          func()
-          timeout = null
-        } else {
-            timeout = setTimeout(function() {
-                debounce2()
-            }, wait)
-        }
-    }
-}
-
 /*
  * RGB转成16进制色值， 如 "rgb(255,0,0)" 会转成 "#ff0000"
  */
@@ -343,3 +329,4 @@ function rgbToHex(str) {
     var black = arr[2]
     return "#" + (16777216 | black | (green << 8) | (red << 16)).toString(16).slice(1)
 }
+

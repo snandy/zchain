@@ -108,3 +108,41 @@ function getAfterDay(str) {
 
     return result.join('-')
 }
+
+function fixMonthDay(num) {
+    if ( (num+'').length == 1 ) {
+        return '0'+num
+    }
+    return num
+}
+
+/*
+ * 计算从今天开始后的1年后的时间
+ * 例如
+ * 2014-11-20 返回 2015-11-19
+ * 2014-11-01 返回 2014-10-31
+ */
+function getNextYear(date) {
+    var MON = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+    // 提取年，月，日
+    var arr   = date.split('-')
+    var year  = arr[0] - 0 + 1
+    var month = arr[1]
+    var day   = arr[2] - 1
+
+    // 1号时月数需要减1
+    if (day == 0) {
+        month = month - 1
+        // 1月特殊处理
+        if (month == 0) {
+            month = 12
+            year--
+        }
+        day = MON[month-1]
+    }
+
+    month = fixMonthDay(month)
+    day = fixMonthDay(day)
+    return [year, month, day].join('-')
+}
