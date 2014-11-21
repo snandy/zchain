@@ -109,6 +109,7 @@ function getAfterDay(str) {
     return result.join('-')
 }
 
+// 补齐月/天的0
 function fixMonthDay(num) {
     if ( (num+'').length == 1 ) {
         return '0'+num
@@ -131,6 +132,9 @@ function getNextYear(date) {
     var month = arr[1]
     var day   = arr[2] - 1
 
+    if (isLeapYear(year)) {
+        MON[1] = 29
+    }
     // 1号时月数需要减1
     if (day == 0) {
         month = month - 1
