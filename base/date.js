@@ -69,6 +69,29 @@ function isEqual(date1, date2) {
         return false
     }
 }
+
+// 比较两个时间字符串，比如 compareDate('2014-05-18', '2014-05-10') 返回false，入住时间不能大于退房时间
+function compareDate(date1, date2) {
+    var a1 = date1.split('-')
+    var a2 = date2.split('-')
+
+    // year
+    if (a1[0] > a2[0]) {
+        return false
+    } else if (a1[0] < a2[0]) {
+        return true
+    }
+    // month
+    if (a1[1] > a2[1]) {
+        return false
+    } else if (a1[1] < a2[1]) {
+        return true
+    }
+    // day
+    if (a1[2] > a2[2]) return false
+    return true
+}
+
 /*
  * 获取当前日期的后一天，如 
  *    2014-04-03 返回 2014-04-04
