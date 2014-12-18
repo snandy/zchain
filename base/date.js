@@ -44,8 +44,6 @@ function getDate(date, offset) {
     while ( (realDiff = realDiff - months[++month1]) > 0) {
         diffMonth++
     }
-
-
     console.log(diffMonth)
 }
 
@@ -92,6 +90,33 @@ function compareDate(date1, date2) {
     return true
 }
 
+function dateFormat(date, hasDay) {
+    var arr, m, d, day
+    var week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
+    if (typeof date == 'string') {
+        arr = date.split('-')
+        date = new Date(arr[0], arr[1]-1, arr[2])
+    }
+    var mm = date.getMonth()
+    var dd = date.getDate()
+    if (mm < 9) {
+        m = '0' + (mm + 1)
+    } else {
+        m = mm + 1
+    }
+    if (dd < 10) {
+        d = '0' + dd
+    } else {
+        d = dd
+    }
+    var str = date.getFullYear() + '-' + m + '-' + d
+    if (hasDay) {
+        day = week[date.getDay()]
+        str += ' ' + day
+    }
+    return str
+}
+
 /*
  * 获取当前日期的后一天，如 
  *    2014-04-03 返回 2014-04-04
@@ -103,33 +128,14 @@ function compareDate(date1, date2) {
  *    2008-02-29 返回 2014-03-01
  */
 function getAfterDay(str) {
-    var months = [31,28,31,30,31,30,31,31,30,31,30,31]
-    var arr = str.split('-')
-    var year = arr[0] - 0
-    var month = arr[1] - 1
-    var day = arr[2] - 0
-
-    // 闰年2月有29天
-    var isRunNian = false
-    if ( 1 == month && ((year % 4 == 0 && year % 100 != 0) || year % 400 == 0) ) {
-        isRunNian = true
-        months[1] = 29
-    }
-
-    var result = []
-    if (month === 11 && day === 31) {
-        result = [ (year+1) + '', '01', '01']
-    } else {
-        var days = months[month]
-        if (day < days) {
-            day = day + 1
-            result = [year + '', (month+1) + '', day + '']
-        } else {
-            result = [year + '', (month+2) + '', '1']
-        }
-    }
-
-    return result.join('-')
+    var arr    = str.split('-')
+    var year   = arr[0] - 0
+    var month  = arr[1] - 1
+    var day    = arr[2] - 0
+    var curr = new Date(year, month, day)
+    var next = curr.getTime() + (1000 * 60 * 60 * 24)
+    next = new Date(next)
+    return dateFormat(next)
 }
 
 // 补齐月/天的0
