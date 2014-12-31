@@ -1,66 +1,104 @@
-// 是否是闰年
+// 一些常量
+var reDate = /^\d{4}\-\d{1,2}\-\d{1,2}/
+var weekArr1 = ['周日','周一','周二','周三','周四','周五','周六']
+var weekArr2 = ['星期日', '星期一','星期二','星期三','星期四','星期五','星期六']
+
+/*
+ * 判断闰年
+ * @param  {Number} 年
+ * @return {Blooean}
+ */
 function isLeapYear(year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
 }
 /*
- * 根据日期返回星期几？
+ * 补齐数字位数
+ * @param {number|string} n 需要补齐的数字
+ * @return {string} 补齐两位后的字符
  */
-function getDay(year, month, day) {
-    var date = new Date(year, month-1, day)
-    return date.getDay()
+function getTwoBit(n) {
+    return (n > 9 ? '' : '0') + n
 }
-
+/*
+ * 日期字符串转成Date对象
+ * @param {String} str
+ *   "2014-12-31" 
+ *   "2014/12/31"
+ * @return {Date} 
+ */
+function str2Date(str) {
+    var date = null
+    if (reDate.test(str)) {
+        date = str.replace(/-/g, '/')
+    }
+    return new Date(date)
+}
+/*
+ * 日期对象转成字符串
+ * @param {Date} new Date()
+ * @return {string} "2014-12-31" 
+ */
+function date2Str(date, split) {
+    split = split || '-'
+    var y = date.getFullYear()
+    var m = getTwoBit(date.getMonth() + 1)
+    var d = getTwoBit(date.getDate())
+    return [y, m, d].join(split)    
+}
+/*
+ * 返回日期格式字符串
+ * @param {Number} 0返回今天的日期、1返回明天的日期，2返回后天得日期，依次类推
+ * @return {string} '2014-12-31'
+ */
+function getDay(i) {
+    i = i || 0
+    var date = new Date
+    var diff = i * (1000 * 60 * 60 * 24)
+    date = new Date(date.getTime() + diff)
+    return date2Str(date)
+}
+/*
+ * 返回明天日期字符串
+ * @param  {String} '2014-12-30'
+ * @return {String} '2014-12-31'
+ */
+function getAfterDay(str) {
+    var curr = str2Date(str)
+    var next = curr.getTime() + (1000 * 60 * 60 * 24)
+    next = new Date(next)
+    return date2Str(next)
+}
+/*
+ * 根据Date对象获取周几
+ * @param date {Date|String} 如 '2014-12-22'
+ * @return '周一' 或 '星期一'
+ */ 
+function getWeekByDate(date, isFormal) {
+    var obj = null
+    if (typeof date == 'string') {
+        obj = str2Date(date)
+    } else if (date instanceof Date) {
+        obj = date
+    }
+    var num = obj.getDay()
+    return isFormal ? weekArr2[num] : weekArr1[num]
+}
 /*
  * 根据所传Date对象和offset计算
  * 例如：date:2014-08-28，offset为5，则返回的Date为2014-09-02
  */
-function getDate(date, offset) {
-    var months = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
-    var year1  = date.getFullYear()
-    var month1 = date.getMonth()
-    var date1  = date.getDate()
-
-    // 误差
-    var sum  = date1 + offset
-    var days = months[month1]
-
-    // 返回结果
-    var result = {date:null, str: ''}
-    
-    // 当月的情况最简单，直接把Date相加
-    if (sum < days) {
-        result.date = new Date(year1, month1, sum)
-        result.str  = year1 + '-' + (month1+1) + '-' + sum
-        return result
-    }
-
-    // 补齐当月
-    var newYear  = 0
-    var newMonth = 0
-    var newDate  = 0
-    var currMonthDiff = days - date1
-    var realDiff = offset - currMonthDiff
-    var diffMonth = 1
-    while ( (realDiff = realDiff - months[++month1]) > 0) {
-        diffMonth++
-    }
-    console.log(diffMonth)
-}
-
 /*
  * 判断两个日期是否一样
  */
 function isEqual(date1, date2) {
     var arr1 = date1.split('-')
     var arr2 = date2.split('-')
-
     var year1  = arr1[0] - 0
     var month1 = arr[1] - 0
     var date1  = arr[2] - 0
     var year2  = arr2[0] - 0
     var month2 = arr2[1] - 0
     var date2  = arr2[2] -0
-
     if (year1===year2 && month1 === month2 && date1 === date2) {
         return true
     } else {
@@ -89,63 +127,21 @@ function compareDate(date1, date2) {
     if (a1[2] > a2[2]) return false
     return true
 }
-
-function dateFormat(date, hasDay) {
-    var arr, m, d, day
-    var week = ['周日', '周一', '周二', '周三', '周四', '周五', '周六']
-    if (typeof date == 'string') {
-        arr = date.split('-')
-        date = new Date(arr[0], arr[1]-1, arr[2])
+/*
+ * 根据date返回字符串格式日期，可含中文星期
+ */ 
+function formatDate(date, hasDay) {
+    var day = null
+    if (typeof date === 'string') {
+        date = str2Date(date)
     }
-    var mm = date.getMonth()
-    var dd = date.getDate()
-    if (mm < 9) {
-        m = '0' + (mm + 1)
-    } else {
-        m = mm + 1
-    }
-    if (dd < 10) {
-        d = '0' + dd
-    } else {
-        d = dd
-    }
-    var str = date.getFullYear() + '-' + m + '-' + d
+    var str = date2Str(date)
     if (hasDay) {
-        day = week[date.getDay()]
+        day = weekArr1[date.getDay()]
         str += ' ' + day
     }
     return str
 }
-
-/*
- * 获取当前日期的后一天，如 
- *    2014-04-03 返回 2014-04-04
- *    2014-04-30 返回 2014-05-01
- *    2014-12-31 返回 2015-01-01
- * 
- *  闰年
- *    2008-02-28 返回 2014-02-29
- *    2008-02-29 返回 2014-03-01
- */
-function getAfterDay(str) {
-    var arr    = str.split('-')
-    var year   = arr[0] - 0
-    var month  = arr[1] - 1
-    var day    = arr[2] - 0
-    var curr = new Date(year, month, day)
-    var next = curr.getTime() + (1000 * 60 * 60 * 24)
-    next = new Date(next)
-    return dateFormat(next)
-}
-
-// 补齐月/天的0
-function fixMonthDay(num) {
-    if ( (num+'').length == 1 ) {
-        return '0'+num
-    }
-    return num
-}
-
 /*
  * 计算从今天开始后的1年后的时间
  * 例如
