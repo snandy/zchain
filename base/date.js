@@ -12,7 +12,7 @@ function isLeapYear(year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0)
 }
 /*
- * 补齐数字位数
+ * 补齐月，日数字位数
  * @param {number|string} n 需要补齐的数字
  * @return {string} 补齐两位后的字符
  */
@@ -35,8 +35,9 @@ function str2Date(str) {
 }
 /*
  * 日期对象转成字符串
- * @param {Date} new Date()
- * @return {string} "2014-12-31" 
+ * @param  {Date} new Date()
+ * @split  {String} "-" 或 "/"
+ * @return {String} "2014-12-31" 
  */
 function date2Str(date, split) {
     split = split || '-'
