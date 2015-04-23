@@ -194,16 +194,17 @@ remove(arr, {a:2}, function(obj, item) {
  * var o = arr.distinct();
  *    console.log(o)
  */
-Array.prototype.distinct = function(){
-    var newArray=[];
-    var provisionalTable = {};
-    for (var i = 0, item; (item=this[i]) != null; i++) {
-        if (!provisionalTable[item]) {
-            newArray.push(item);
-            provisionalTable[item] = 1;
+Array.prototype.distinct = function() {
+    var destArr = []    
+    var item    = null
+    var hash    = {}
+    for (var i = 0; (item = this[i]) != null; i++) {
+        if (!hash[item]) {
+            destArr.push(item)
+            hash[item] = 1
         }
     }
-    return newArray;
+    return destArr
 }
 /**
  * 获取数组中有重复的元素 

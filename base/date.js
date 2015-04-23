@@ -27,11 +27,10 @@ function getTwoBit(n) {
  * @return {Date} 
  */
 function str2Date(str) {
-    var date = null
     if (reDate.test(str)) {
-        date = str.replace(/-/g, '/')
+        str = str.replace(/-/g, '/')
     }
-    return new Date(date)
+    return new Date(str)
 }
 /*
  * 日期对象转成字符串
