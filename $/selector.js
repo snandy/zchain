@@ -69,8 +69,9 @@ function byId(id) {
 }
 function check(attr, val, node) {
     var reg = RegExp('(?:^|\\s+)' + val + '(?:\\s+|$)')
-    var    attribute = attr === 'className' ? 
-            node.className : node.getAttribute(attr)
+    var attribute = attr === 'className' 
+            ? node.className
+            : node.getAttribute(attr)
     if (attribute) {
         if (val) {
             if (reg.test(attribute)) return true
@@ -82,7 +83,7 @@ function check(attr, val, node) {
 }    
 function filter(all, attr, val) {
     var el, result = []
-    var    i = 0, r = 0
+    var i = 0, r = 0
     while ( (el = all[i++]) ) {
         if ( check(attr, val, el) ) {
             result[r++] = el
@@ -93,8 +94,9 @@ function filter(all, attr, val) {
     
 function query(selector, context) {
     var s = selector, arr = []
-    var context = context === undefined ? doc : 
-        typeof context === 'string' ? query(context)[0] : context
+    var context = context === undefined 
+            ? doc 
+            : typeof context === 'string' ? query(context)[0] : context
             
     if (!selector) return arr
     
@@ -129,8 +131,8 @@ function query(selector, context) {
     // ClassName
     if ( rCls.test(s) ) {
         var ary = s.split('.')
-        var    tag = ary[0] 
-        var    cls = ary[1]
+        var tag = ary[0] 
+        var cls = ary[1]
         if (context.getElementsByClassName) {
             var elems = context.getElementsByClassName(cls)
             if (tag) {
