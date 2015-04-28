@@ -175,3 +175,38 @@ function getNextYear(date) {
     day = fixMonthDay(day)
     return [year, month, day].join('-')
 }
+
+/*
+ * 根据年/月返回该月的天数
+ * 
+ * **参数**
+ * year   {Number|Date|String} 必选
+ * month  {Number} 可选
+ * 
+ * **示例1**
+ * var date = new Date()
+ * var days = getDaysInMonth(date)
+
+ * **示例2**
+ * var days = getDaysInMonth('2015-04-28')
+ * var days = getDaysInMonth('2015/04/28')
+ *
+ * **示例3**
+ * var days = getDaysInMonth(2015, 4)
+ * 
+ */
+function getDaysInMonth(year, month) {
+    var date, y, m
+    if (typeof year == 'string') {
+        date = str2Date(year)
+    }
+    if (year instanceof Date) {
+        date = year
+        y = date.getFullYear()
+        m = date.getMonth()
+    } else {
+        y = year
+        m = month
+    }
+    return 32 - new Date(y, m, 32).getDate()
+}
