@@ -330,3 +330,26 @@ function rgbToHex(str) {
     return "#" + (16777216 | black | (green << 8) | (red << 16)).toString(16).slice(1)
 }
 
+/*
+ * URL里的中文都encodeURIComponent下，IE低版本有时出现乱码
+ * 
+ * 如 http://dujia.jd.com/search?country=中国&name=冯军
+ * 输出 http://dujia.jd.com/search?country=%E4%B8%AD%E5%9B%BD&name=%E5%86%AF%E5%86%9B
+ */
+function encodeChinese(str) {
+    var regCH = /[\u4E00-\u9FA5]+/g;
+    var result = str.match(regCH);
+    var i = 0;
+    var j = 0;
+    var len = result.length;
+    var chanst = [];
+    if (result && len) {
+      while (i < len) {
+        var res = result[i];
+        var enc = encodeURIComponent(res)
+        str = str.replace(res, enc);
+         i++;
+      }
+    }
+    return str;
+}
