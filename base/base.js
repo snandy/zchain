@@ -337,19 +337,20 @@ function rgbToHex(str) {
  * 输出 http://dujia.jd.com/search?country=%E4%B8%AD%E5%9B%BD&name=%E5%86%AF%E5%86%9B
  */
 function encodeChinese(str) {
-    var regCH = /[\u4E00-\u9FA5]+/g;
-    var result = str.match(regCH);
-    var i = 0;
-    var j = 0;
-    var len = result.length;
-    var chanst = [];
+    var regCH = /[\u4E00-\u9FA5]+/g
+    var result = str.match(regCH)
+    if (!result) return
+    var i = 0
+    var j = 0
+    var len = result.length
+    var chanst = []
     if (result && len) {
-      while (i < len) {
-        var res = result[i];
-        var enc = encodeURIComponent(res)
-        str = str.replace(res, enc);
-         i++;
-      }
+        while (i < len) {
+            var res = result[i]
+            var enc = encodeURIComponent(res)
+            str = str.replace(res, enc)
+            i++
+        }
     }
-    return str;
+    return str
 }
