@@ -5,8 +5,8 @@
  * 注意：IE11+ 去掉了 msie，因此Browser.ie会返回false，IE11+提醒大家不要叫它IE
  * IE11的变化：http://www.cnblogs.com/snandy/p/3174777.html
  */
-Browser = function(ua) {
-    var b = {
+var Browser = function(ua) {
+    var brow = {
         sogou: /se/.test(ua),
         opera: /opera/.test(ua),
         chrome: /chrome/.test(ua),
@@ -17,22 +17,22 @@ Browser = function(ua) {
         safari: /webkit/.test(ua) && !/chrome/.test(ua)
     }
     var mark = ''
-    for (var i in b) {
-        if (b[i]) {
-        	mark = 'safari' == i ? 'version' : i
-        	break
-    	}
+    for (var i in brow) {
+        if (brow[i]) {
+            mark = 'safari' == i ? 'version' : i
+            break
+        }
     }
     var reg = RegExp('(?:' + mark + ')[\\/: ]([\\d.]+)')
-    b.version = mark && reg.test(ua) ? RegExp.$1 : '0'
+    brow.version = mark && reg.test(ua) ? RegExp.$1 : '0'
 
-    var iv = parseInt(b.version, 10)
+    var iv = parseInt(brow.version, 10)
     for (var i = 6; i < 11; i++) {
-        b['ie'+i] = iv === i
+        brow['ie' + i] = iv === i
     }
-    
-    return b
+    return brow
 }(navigator.userAgent.toLowerCase());
+
 
 // ie detector
 

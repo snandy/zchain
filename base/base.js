@@ -354,3 +354,4 @@ function encodeChinese(str) {
     }
     return str
 }
+
