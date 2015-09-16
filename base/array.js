@@ -33,7 +33,7 @@ function indexOf( ary, obj, from ){
 function lastIndexOf( ary, obj, from ){
     if(ary.lastIndexOf) {
         return isNaN(from) ? ary.lastIndexOf(obj) : ary.lastIndexOf(obj, from);
-    }else {
+    } else {
         var len = ary.length;
         from = isNaN(from) || from >= len - 1 ? len - 1
             : from < 0 ? Math.ceil(from) + len : Math.floor(from);
