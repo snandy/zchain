@@ -12,7 +12,7 @@ function isArray( obj ){
 function indexOf( ary, obj, from ){
     if(ary.indexOf) {
         return isNaN(from) ? ary.indexOf(obj) : ary.indexOf(obj, from);
-    }else {
+    } else {
         var len = ary.length;
         from = isNaN(from) ? 0
             : from < 0 ? Math.ceil(from) + len : Math.floor(from);
