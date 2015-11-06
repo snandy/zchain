@@ -99,4 +99,4 @@ var env = function() {
         weixin: u.indexOf('MicroMessenger') > -1, // 微信环境
         qq: (/qq\/([\d\.]+)*/i).test(u) > -1 // 手Q环境
     };
- }();
+}();
