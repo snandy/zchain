@@ -1,0 +1,17 @@
+修复浮点数运算精度丢失问题
+
+我们知道计算机编程语言里浮点数计算会存在精度丢失问题（或称舍入误差），其根本原因是二进制和实现位数限制有些数无法有限表示。
+
+以下是十进制小数对应的二进制表示
+0.1 >> 0.0001 1001 1001 1001…（1001无限循环） 
+0.2 >> 0.0011 0011 0011 0011…（0011无限循环）
+
+计算机里每种数据类型的存储是一个有限宽度，多数语言是遵循 IEEE 754 规范（https://en.wikipedia.org/wiki/IEEE_floating_point） 比如 JavaScript 使用 64 位存储数字类型，因此超出的会舍去。舍去的部分就是精度丢失的部分。
+http://www.ecma-international.org/ecma-262/6.0/#sec-ecmascript-language-types-number-type
+
+
+先将小数转成整数（放大），运算后再变回小数（缩小）。利用整数运算不存在精度丢失问题来解决（大整数还是会丢失精度的，但这已经能满足绝大多数的业务需求了）。
+
+
+
+http://demon.tw/copy-paste/javascript-precision.html

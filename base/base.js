@@ -203,15 +203,14 @@ function parseURL(url) {
     a.href = url
     return {
         source: url,
-        protocol: a.protocol.replace(':',''),
+        protocol: a.protocol.replace(':', ''),
         host: a.hostname,
         port: a.port,
         query: a.search,
-        params: (function(){
-            var ret = {}
-            var seg = a.search.replace(/^\?/,'').split('&')
+        params: (function() {
+            var s, ret = {}
+            var seg = a.search.replace(/^\?/, '').split('&')
             var len = seg.length
-            var s
             for (var i = 0; i < len; i++) {
                 if (!seg[i]) continue 
                 s = seg[i].split('=')
@@ -219,11 +218,11 @@ function parseURL(url) {
             }
             return ret
         })(),
-        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [,''])[1],
-        hash: a.hash.replace('#',''),
-        path: a.pathname.replace(/^([^\/])/,'/$1'),
-        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [,''])[1],
-        segments: a.pathname.replace(/^\//,'').split('/')
+        file: (a.pathname.match(/\/([^\/?#]+)$/i) || [, ''])[1],
+        hash: a.hash.replace('#', ''),
+        path: a.pathname.replace(/^([^\/])/, '/$1'),
+        relative: (a.href.match(/tps?:\/\/[^\/]+(.+)/) || [, ''])[1],
+        segments: a.pathname.replace(/^\//, '').split('/')
     }
 }
 
