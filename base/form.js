@@ -1,6 +1,6 @@
 /**
- * °Ñ±íµ¥ÄÚÈİ×ª»»Îªhash¶ÔÏó
- * @param {HTMLElement} form¶ÔÏó
+ * æŠŠè¡¨å•å†…å®¹è½¬æ¢ä¸ºhashå¯¹è±¡
+ * @param {HTMLElement} formå¯¹è±¡
  * @return {hash}
  * @example
  *         formToHash(document.forms[0]);
@@ -61,22 +61,37 @@ function formToHash(form){
 	return hash;
 }
 /**
- * °Ñº¬ÓĞ±íµ¥Êı¾İµÄhash¶ÔÏó×ª»¯ÎªÊı×é
- * @param {obj} hash¶ÔÏó
+ * æŠŠå«æœ‰è¡¨å•æ•°æ®çš„hashå¯¹è±¡è½¬åŒ–ä¸ºæ•°ç»„
+ * @param {obj} hashå¯¹è±¡
  * @return {Array}
  * @example
  *   var aData = formHashToArray(hash);
  */
-function formHashToArray(hash){
-	var a = [];
-	for(var k in hash){
-		if(typeof hash[k] == "string"){
-			a.push(k + "=" + encodeURIComponent(hash[k]));
-		}else{
-			for(var i = 0, len = hash[k].length; i < len; i++){
-				a.push( k + "=" + encodeURIComponent(hash[k][i]));
+function formHashToArray(hash) {
+	var arr = [];
+	for (var k in hash) {
+		if (typeof hash[k] == 'string') {
+			arr.push( k + '=' + encodeURIComponent(hash[k]) );
+		} else {
+			for (var i = 0, len = hash[k].length; i < len; i++) {
+				arr.push( k + "=" + encodeURIComponent(hash[k][i]) );
 			}
 		}
 	}
-	return a;
+	return arr;
+}
+
+/**
+ * æŠŠå«æœ‰è¡¨å•æ•°æ®çš„hashå¯¹è±¡è½¬åŒ–ä¸ºæ•°ç»„
+ * @param {object} hashå¯¹è±¡
+ * @return {string}
+ * @example
+ *    {a:1,b:2,c:3} -> a=1&b=2&c=3
+ */
+function toQueryString(hash) {
+    var arr = [];
+    for (var k in hash) {
+        arr.push( k + '=' + encodeURIComponent(hash[k]) );
+    }
+    return arr.join('&');
 }
