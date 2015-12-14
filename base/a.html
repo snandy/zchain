@@ -3,28 +3,11 @@
 <head>
 	<meta charset="utf-8">
     <title>仅F</title>
+	<script src="math.js"></script>
 </head>
 <body>
 <script type="text/javascript">
-function encodeChinese(str) {
-		var regCH = /[\u4E00-\u9FA5]+/g;
-		var result = str.match(regCH);
-		var i = 0;
-		var j = 0;
-		var len = result.length;
-		var chanst = [];
-		if (result && len) {
-			while (i < len) {
-				var res = result[i];
-				var enc = encodeURIComponent(res)
-				str = str.replace(res, enc);
-				 i++;
-			}
-		}
-		return str;
-}
-var res = encodeChinese('http://dujia.jd.com/search?country=中国&name=冯军');
-console.log(res)
+
 </script>
 </body>
 </html>
