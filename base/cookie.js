@@ -174,3 +174,49 @@
 
 
 }(document);
+
+
+// ----------------------------------------------------------------------------------------------------------------------------
+
+var cookie = function(name, value, options) {
+	if (value != undefined) { // set 
+		options = options || {}
+		if (value === null) {
+			value = ''
+			options.expires = -1
+		}
+		var expires = ''
+		if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+			var date = new Date
+			if (typeof options.expires == 'number') {
+				date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000))
+			} else {
+				date = options.expires
+			}
+			// for IE
+			expires = '; expires=' + date.toUTCString()
+		}
+		var path   = options.path ? '; path=' + options.path : ''
+		var domain = options.domain ? '; domain=' + options.domain : ''
+		var secure = options.secure ? '; secure' : ''
+		document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('')
+
+	} else { // get 
+		var cookieValue = null
+		if (document.cookie && document.cookie != '') {
+			var cookies = document.cookie.split(';')
+			for (var i = 0; i < cookies.length; i++) {
+				var cookie = $.trim(cookies[i]).split('=')
+				if ( cookie[0] == name && cookie.length > 1 ) {
+					try {
+						cookieValue = decodeURIComponent(cookie[1])
+					} catch(e) {
+						cookieValue = cookie[1]
+					}
+					break
+				}
+			}
+		}
+		return cookieValue
+	}
+};
