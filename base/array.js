@@ -240,18 +240,23 @@ function random(arr){
     var i = Math.round(Math.random() * (arr.length-1))
     return arr[i]
 }
-    
-return {
-    isArray : isArray,
-    indexOf : indexOf,
-    lastIndexOf : lastIndexOf,
-    forEach : forEach,
-    every : every,
-    filter : filter,
-    some : some,
-    each : each,
-    mapp  : mapp,
-    grep : grep
+
+/**
+* Convert an Array-like object to a real Array.
+*
+* @param {Array-like} list
+* @param {Number} [start] - start index
+* @return {Array}
+*/
+function toArray(list, start) {
+    start = start || 0;
+    var i = list.length - start;
+    var ret = new Array(i);
+    while (i--) {
+      ret[i] = list[i + start];
+    }
+    return ret;
 }
+
     
 }();

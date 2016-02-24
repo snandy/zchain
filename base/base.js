@@ -190,7 +190,7 @@ function unescape(str) {
  * 13581599317 -> 135 8159 9317
  */
 function separateMobile(num) {
-    var arr = ( '0' + num ).replace(/(\d{4})(?=\d)/g,"$1 ").split('')
+    var arr = ('0' + num).replace(/(\d{4})(?=\d)/g,"$1 ").split('')
     arr.shift()
     return arr.join('')
 }

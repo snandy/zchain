@@ -178,33 +178,44 @@
 
 // ----------------------------------------------------------------------------------------------------------------------------
 
-var cookie = function(name, value, options) {
+/*
+ * JS写cookie和读cookie操作
+ *
+ * **取cookie**
+ *   cookie(name)
+ *
+ * **写cookie**
+ *   cookie(name, value)
+ *   cookie(name, value, option)
+ */
+var cookie = function(name, value, option) {
+	var doc = document
 	if (value != undefined) { // set 
-		options = options || {}
+		option = option || {}
 		if (value === null) {
 			value = ''
-			options.expires = -1
+			option.expires = -1
 		}
 		var expires = ''
-		if (options.expires && (typeof options.expires == 'number' || options.expires.toUTCString)) {
+		if (option.expires && (typeof option.expires == 'number' || option.expires.toUTCString)) {
 			var date = new Date
-			if (typeof options.expires == 'number') {
-				date.setTime(date.getTime() + (options.expires * 24 * 60 * 60 * 1000))
+			if (typeof option.expires == 'number') {
+				date.setTime(date.getTime() + (option.expires * 24 * 60 * 60 * 1000))
 			} else {
-				date = options.expires
+				date = option.expires
 			}
 			// for IE
 			expires = '; expires=' + date.toUTCString()
 		}
-		var path   = options.path ? '; path=' + options.path : ''
-		var domain = options.domain ? '; domain=' + options.domain : ''
-		var secure = options.secure ? '; secure' : ''
-		document.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('')
+		var path   = option.path ? '; path=' + option.path : ''
+		var domain = option.domain ? '; domain=' + option.domain : ''
+		var secure = option.secure ? '; secure' : ''
+		doc.cookie = [name, '=', encodeURIComponent(value), expires, path, domain, secure].join('')
 
 	} else { // get 
 		var cookieValue = null
-		if (document.cookie && document.cookie != '') {
-			var cookies = document.cookie.split(';')
+		if (doc.cookie && doc.cookie != '') {
+			var cookies = doc.cookie.split(';')
 			for (var i = 0; i < cookies.length; i++) {
 				var cookie = $.trim(cookies[i]).split('=')
 				if ( cookie[0] == name && cookie.length > 1 ) {

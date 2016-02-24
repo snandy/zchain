@@ -1,13 +1,54 @@
-<!DOCTYPE HTML>
 <html>
 <head>
-	<meta charset="utf-8">
-    <title>仅F</title>
-	<script src="math.js"></script>
-</head>
-<body>
-<script type="text/javascript">
-
-</script>
-</body>
-</html>
+<meta charset="utf-8">
+<TITLE>带农历的日历</TITLE>          
+<script type="text/javascript" src="rl.js"></script>
+<BODY onload=initial()>
+<CENTER>
+<FORM name=CLD>
+<TABLE>
+  <TR>
+    <TD align=middle>
+      <TABLE border=1 cellpadding="0" cellspacing="0" bordercolordark="#FFFFFF" bordercolor="#ffffff" bordercolorlight="#EEEEEE">
+        <TR bgcolor="#006600">
+          <TD colSpan=7><FONT color=#ffffff style="FONT-SIZE: 9pt">公历 
+            <SELECT name=SY onchange=changeCld() style="FONT-SIZE: 9pt"> 
+            <SCRIPT language="JavaScript">
+            for(i=1900;i<2050;i++) document.write('<option>'+i);
+            </SCRIPT>
+            </SELECT> 年 <SELECT name=SM onchange=changeCld() style="FONT-SIZE: 9pt"> 
+            <SCRIPT language="JavaScript">
+            for(i=1;i<13;i++) document.write('<option>'+i);
+            </SCRIPT>
+            </SELECT> 月 </FONT> <FONT color=#ffffff face=宋体 id=GZ style="FONT-SIZE: 12pt"></FONT><BR></TD>
+        </TR>
+        <TR align=middle bgColor=#e0e0e0>
+          <TD width=54 style="font-size:9pt; padding:5pt;">日</TD>
+          <TD width=54 style="font-size:9pt ">一</TD>
+          <TD width=54 style="font-size:9pt ">二</TD>
+          <TD width=54 style="font-size:9pt ">三</TD>
+          <TD width=54 style="font-size:9pt ">四</TD>
+          <TD width=54 style="font-size:9pt ">五</TD>
+          <TD width=54 style="font-size:9pt ">六</TD></TR>
+          <SCRIPT language="JavaScript">
+            var gNum;
+            for(i=0;i<6;i++) {
+               document.write('<tr align=center>');
+               for(j=0;j<7;j++) {
+                  gNum = i*7+j;
+                  document.write('<td id="GD' + gNum +'"><font id="SD' + gNum +'" size=2 face="Arial Black"');
+                  if(j == 0) document.write(' color=red');
+                  if(j == 6) document.write(' color=#000080');
+                  document.write(' TITLE=""> </font><br><font id="LD' + gNum + '" size=2 style="font-size:9pt"> </font></td>');
+               }
+               document.write('</tr>');
+            }
+           </SCRIPT>
+        </TABLE>
+</TD>
+  </TR>
+</TABLE>
+</FORM>
+</CENTER>
+</BODY>
+</HTML>
