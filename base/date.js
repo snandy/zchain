@@ -210,3 +210,88 @@ function getDaysInMonth(year, month) {
     }
     return 32 - new Date(y, m, 32).getDate()
 }
+
+/*
+ * 根据年获取生肖
+ *
+ * **参数**
+ *  year {number} 年
+ *
+ * **示例**
+ *  getAnimal(1980) // "猴"
+ *  getAnimal(1981) // "鸡"
+ *  getAnimal(2013) // "蛇"
+ */ 
+function getAnimal(year) {
+    var animals = ['鼠', '牛', '虎', '兔', '龙', '蛇', '马', '羊', '猴', '鸡', '狗', '猪'];
+    var i = (year - 4) % 12;
+    return animals[i];
+}
+
+/*
+ * 根据年月返回该月的两个节气，一个公历月有两个节气
+ * 
+ * **节气算法**
+ *  http://www.azg168.com/huangli/24sijieqi/28337.html
+ *  http://blog.csdn.net/orbit/article/details/7910220
+ *
+ * **参数**
+ *  year  {number} 年 
+ *  month {number} 月
+ *
+ * **返回**
+ *  object
+ * 
+ * **示例**
+ *  getSolarTerm(2016, 4); // {day1: 4, term1: "清明", day2: 19, term2: "谷雨"}
+ *
+ */
+function getSolarTerm(year, month) {
+    var solarTerm = [
+        "小寒", "大寒", 
+        "立春", "雨水", 
+        "惊蛰", "春分", 
+        "清明", "谷雨", 
+        "立夏", "小满", 
+        "芒种", "夏至", 
+        "小暑", "大暑", 
+        "立秋", "处暑", 
+        "白露", "秋分", 
+        "寒露", "霜降", 
+        "立冬", "小雪", 
+        "大雪", "冬至"
+    ];
+    var termInfo = [
+        0, 21208, 42467, 63836, 85337, 107014, 
+        128867, 150921, 173149, 195551, 218072, 
+        240693, 263343, 285989, 308563, 331033, 
+        353350, 375494, 397447, 419210, 440795, 
+        462224, 483532, 504758
+    ];
+    // 返回某年的第n个节气为几日(从0小寒起算)
+    function computeTermDay(y, n) {
+        var d = new Date((31556925974.7 * (y - 1900) + termInfo[n] * 60000) + Date.UTC(1900, 0, 6, 2, 5));
+        return d.getUTCDate();
+    }
+
+    // month 转为 [0-11] 范畴
+    month = month - 1;
+
+    // 计算节气
+    var n1 = month * 2;
+    var n2 = month * 2 + 1;
+    // day1, day2 为当月的两个节气日
+    var day1 = computeTermDay(year, n1);
+    var day2 = computeTermDay(year, n2);
+    // 当月的两个节气名称
+    var term1 = solarTerm[n1];
+    var term2 = solarTerm[n2];
+
+    // 返回结果
+    return {
+        day1: day1,
+        term1: term1,
+        day2: day2,
+        term2: term2
+    };
+}

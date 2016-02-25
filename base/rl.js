@@ -1,14 +1,12 @@
 var lunarInfo = [0x04bd8, 0x04ae0, 0x0a570, 0x054d5, 0x0d260, 0x0d950, 0x16554, 0x056a0, 0x09ad0, 0x055d2, 0x04ae0, 0x0a5b6, 0x0a4d0, 0x0d250, 0x1d255, 0x0b540, 0x0d6a0, 0x0ada2, 0x095b0, 0x14977, 0x04970, 0x0a4b0, 0x0b4b5, 0x06a50, 0x06d40, 0x1ab54, 0x02b60, 0x09570, 0x052f2, 0x04970, 0x06566, 0x0d4a0, 0x0ea50, 0x06e95, 0x05ad0, 0x02b60, 0x186e3, 0x092e0, 0x1c8d7, 0x0c950, 0x0d4a0, 0x1d8a6, 0x0b550, 0x056a0, 0x1a5b4, 0x025d0, 0x092d0, 0x0d2b2, 0x0a950, 0x0b557, 0x06ca0, 0x0b550, 0x15355, 0x04da0, 0x0a5d0, 0x14573, 0x052d0, 0x0a9a8, 0x0e950, 0x06aa0, 0x0aea6, 0x0ab50, 0x04b60, 0x0aae4, 0x0a570, 0x05260, 0x0f263, 0x0d950, 0x05b57, 0x056a0, 0x096d0, 0x04dd5, 0x04ad0, 0x0a4d0, 0x0d4d4, 0x0d250, 0x0d558, 0x0b540, 0x0b5a0, 0x195a6, 0x095b0, 0x049b0, 0x0a974, 0x0a4b0, 0x0b27a, 0x06a50, 0x06d40, 0x0af46, 0x0ab60, 0x09570, 0x04af5, 0x04970, 0x064b0, 0x074a3, 0x0ea50, 0x06b58, 0x055c0, 0x0ab60, 0x096d5, 0x092e0, 0x0c960, 0x0d954, 0x0d4a0, 0x0da50, 0x07552, 0x056a0, 0x0abb7, 0x025d0, 0x092d0, 0x0cab5, 0x0a950, 0x0b4a0, 0x0baa4, 0x0ad50, 0x055d9, 0x04ba0, 0x0a5b0, 0x15176, 0x052b0, 0x0a930, 0x07954, 0x06aa0, 0x0ad50, 0x05b52, 0x04b60, 0x0a6e6, 0x0a4e0, 0x0d260, 0x0ea65, 0x0d530, 0x05aa0, 0x076a3, 0x096d0, 0x04bd7, 0x04ad0, 0x0a4d0, 0x1d0b6, 0x0d250, 0x0d520, 0x0dd45, 0x0b5a0, 0x056d0, 0x055b2, 0x049b0, 0x0a577, 0x0a4b0, 0x0aa50, 0x1b255, 0x06d20, 0x0ada0];
 var solarMonth = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-var Animals = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
-var solarTerm = ["小寒", "大寒", "立春", "雨水", "惊蛰", "春分", "清明", "谷雨", "立夏", "小满", "芒种", "夏至", "小暑", "大暑", "立秋", "处暑", "白露", "秋分", "寒露", "霜降", "立冬", "小雪", "大雪", "冬至"];
-var sTermInfo = [0, 21208, 42467, 63836, 85337, 107014, 128867, 150921, 173149, 195551, 218072, 240693, 263343, 285989, 308563, 331033, 353350, 375494, 397447, 419210, 440795, 462224, 483532, 504758];
 var nStr1 = ['日', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十'];
 var nStr2 = ['初', '十', '廿', '卅'];
 // 公历节日
 var sFtv = ["0101 元旦", "0214 情人节", "0308 妇女节", "0312 植树节", "0315 消费者权益日", "0401 愚人节", "0501 劳动节", "0504 青年节", "0512 护士节", "0601 儿童节", "0701 建党节", "0801 建军节", "0910 教师节", "0928 孔子诞辰", "1001 国庆节", "1006 老人节", "1024 联合国日", "1224 平安夜", "1225 圣诞节"];
 // 农历节日
 var lFtv = ["0101 春节", "0115 元宵节", "0505 端午节", "0707 七夕情人节", "0715 中元节", "0815 中秋节", "0909 重阳节", "1208 腊八节", "1224 小年"];
+
 // 返回农历y年的总天数
 function lYearDays(y) {
     var i, sum = 348;
@@ -34,6 +32,88 @@ function leapMonth(y) {
 // 返回农历y年m月的总天数
 function monthDays(y, m) {
     return ((lunarInfo[y - 1900] & (0x10000 >> m)) ? 30 : 29);
+}
+
+//返回公历y年m+1月的天数
+function solarDays(y, m) {
+    if (m == 1)
+        return (((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)) ? 29 : 28);
+    else
+        return (solarMonth[m]);
+}
+
+function getAnimal(year) {
+    var animals = ["鼠", "牛", "虎", "兔", "龙", "蛇", "马", "羊", "猴", "鸡", "狗", "猪"];
+    var i = (year - 4) % 12;
+    return animals[i];
+}
+
+/*
+ * 根据年月返回该月的两个节气，一个公历月有两个节气
+ * 
+ * **节气算法**
+ *  http://www.azg168.com/huangli/24sijieqi/28337.html
+ *  http://blog.csdn.net/orbit/article/details/7910220
+ *
+ * **参数**
+ *  year  {number} 年
+ *  month {number} 月
+ *
+ * **返回**
+ *  object
+ * 
+ * **示例**
+ *  getSolarTerm(2016, 4); // {day1: 4, term1: "清明", day2: 19, term2: "谷雨"}
+ *
+ */
+function getSolarTerm(year, month) {
+    var solarTerm = [
+        "小寒", "大寒", 
+        "立春", "雨水", 
+        "惊蛰", "春分", 
+        "清明", "谷雨", 
+        "立夏", "小满", 
+        "芒种", "夏至", 
+        "小暑", "大暑", 
+        "立秋", "处暑", 
+        "白露", "秋分", 
+        "寒露", "霜降", 
+        "立冬", "小雪", 
+        "大雪", "冬至"
+    ];
+    var termInfo = [
+        0, 21208, 42467, 63836, 85337, 107014, 
+        128867, 150921, 173149, 195551, 218072, 
+        240693, 263343, 285989, 308563, 331033, 
+        353350, 375494, 397447, 419210, 440795, 
+        462224, 483532, 504758
+    ];
+    // 返回某年的第n个节气为几日(从0小寒起算)
+    function computeTermDay(y, n) {
+        var offDate = new Date((31556925974.7 * (y - 1900) + termInfo[n] * 60000) + Date.UTC(1900, 0, 6, 2, 5));
+        return offDate.getUTCDate();
+    }
+
+    // month 转为 [0-11] 范畴
+    month = month - 1;
+
+    // 计算节气
+    var n1 = month * 2;
+    var n2 = month * 2 + 1;
+    // day1, day2 为当月的两个节气日
+    var day1 = computeTermDay(year, n1);
+    var day2 = computeTermDay(year, n2);
+    // 当月的两个节气名称
+    var term1 = solarTerm[n1];
+    var term2 = solarTerm[n2];
+
+    // 返回结果
+    return {
+        day1: day1,
+        term1: term1,
+        day2: day2,
+        term2: term2
+    };
 }
 
 // 算出当前月第一天的农历日期和当前农历日期下一个月农历的第一天日期
@@ -87,13 +167,6 @@ function Dianaday(objDate) {
     this.day = offset + 1;
 }
 
-//返回公历y年m+1月的天数
-function solarDays(y, m) {
-    if (m == 1)
-        return (((y % 4 == 0) && (y % 100 != 0) || (y % 400 == 0)) ? 29 : 28);
-    else
-        return (solarMonth[m]);
-}
 
 //记录公历和农历某天的日期
 function calElement(sYear, sMonth, sDay, week, lYear, lMonth, lDay, isLeap) {
@@ -117,19 +190,13 @@ function calElement(sYear, sMonth, sDay, week, lYear, lMonth, lDay, isLeap) {
     //节气
 }
 
-//返回某年的第n个节气为几日(从0小寒起算)
-function sTerm(y, n) {
-    var offDate = new Date((31556925974.7 * (y - 1900) + sTermInfo[n] * 60000) + Date.UTC(1900, 0, 6, 2, 5));
-    return (offDate.getUTCDate())
-}
-
 //保存y年m+1月的相关信息
 var fat = mat = 9;
 var eve = 0;
 
 function calendar(y, m) {
     fat = mat = 0;
-    var sDObj, lDObj, lY, lM, lD = 1, lL, lX = 0, tmp1, tmp2;
+    var sDObj, lDObj, lY, lM, lD = 1, lL, lX = 0;
     var lDPOS = new Array(3);
     var n = 0;
     var firstLM = 0;
@@ -175,10 +242,13 @@ function calendar(y, m) {
         }
     }
     //节气
-    tmp1 = sTerm(y, m * 2) - 1;
-    tmp2 = sTerm(y, m * 2 + 1) - 1;
-    this[tmp1].solarTerms = solarTerm[m * 2];
-    this[tmp2].solarTerms = solarTerm[m * 2 + 1];
+    var termObj = getSolarTerm(y, m+1);
+    var day1 = termObj.day1 - 1;
+    var day2 = termObj.day2 - 1;
+    var term1 = termObj.term1;
+    var term2 = termObj.term2;
+    this[day1].solarTerms = term1;
+    this[day2].solarTerms = term2;
     if ((this.firstWeek + 12) % 7 == 5) { //黑色星期五 
         this[12].solarFestival += '黑色星期五';
     }
@@ -218,7 +288,8 @@ function drawCld(SY, SM) {
     var i, sD, s, size;
     cld = new calendar(SY, SM);
     console.log(cld);
-    GZ.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【' + Animals[(SY - 4) % 12] + '】';
+    var animal = getAnimal(SY);
+    GZ.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【' + animal + '】';
     //生肖
     for ( i = 0; i < 42; i++) {
         sObj = eval('SD' + i);
