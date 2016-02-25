@@ -196,7 +196,7 @@ var eve = 0;
 
 function calendar(y, m) {
     fat = mat = 0;
-    var sDObj, lDObj, lY, lM, lD = 1, lL, lX = 0;
+    var sDObj, lDObj, lY, lM, lDay = 1, lL, lX = 0;
     var lDPOS = new Array(3);
     var n = 0;
     var firstLM = 0;
@@ -213,7 +213,7 @@ function calendar(y, m) {
         mat = sDObj.getDay()
     }
     for (var i = 0; i < this.length; i++) {
-        if (lD > lX) {
+        if (lDay > lX) {
             sDObj = new Date(y, m, i + 1);
             //当月第一天的日期
             lDObj = new Dianaday(sDObj);
@@ -222,7 +222,7 @@ function calendar(y, m) {
             //农历年
             lM = lDObj.month;
             //农历月
-            lD = lDObj.day;
+            lDay = lDObj.day;
             //农历日
             lL = lDObj.isLeap;
             //农历是否闰月
@@ -234,9 +234,9 @@ function calendar(y, m) {
             if (n == 0) {
                 firstLM = lM;
             }
-            lDPOS[n++] = i - lD + 1;
+            lDPOS[n++] = i - lDay + 1;
         }
-        this[i] = new calElement(y, m + 1, i + 1, nStr1[(i + this.firstWeek) % 7], lY, lM, lD++, lL);
+        this[i] = new calElement(y, m + 1, i + 1, nStr1[(i + this.firstWeek) % 7], lY, lM, lDay++, lL);
         if ((i + this.firstWeek) % 7 == 0) {
             this[i].color = 'red'; //周日颜色
         }
@@ -279,99 +279,98 @@ function cDay(d) {
 
 //在表格中显示公历和农历的日期,以及相关节日 http://www.cnblogs.com/jihua/
 var cld;
-
 function drawCld(SY, SM) {
-    var TF = true;
     var p1 = p2 = "";
-    var i, sD, s, size;
+    var i, j, s, size;
     cld = new calendar(SY, SM);
     console.log(cld);
     var animal = getAnimal(SY);
     GZ.innerHTML = '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;【' + animal + '】';
     //生肖
     for ( i = 0; i < 42; i++) {
-        sObj = eval('SD' + i);
-        lObj = eval('LD' + i);
-        sObj.className = '';
-        sD = i - cld.firstWeek;
-        if (sD > -1 && sD < cld.length) {//日期内
-            sObj.innerHTML = sD + 1;
-            if (cld[sD].isToday) {
-                sObj.style.color = '#9900FF';
-            }//今日颜色
-            else {
-                sObj.style.color = '';
-            }
-            if (cld[sD].lDay == 1) {//显示农历月
-                lObj.innerHTML = '<b>' + (cld[sD].isLeap ? '闰' : '') + cld[sD].lMonth + '月' + (monthDays(cld[sD].lYear, cld[sD].lMonth) == 29 ? '小' : '大') + '</b>';
+        sd = eval('SD' + i);
+        ld = eval('LD' + i);
+        sd.className = '';
+        j = i - cld.firstWeek;
+        if (j > -1 && j < cld.length) {//日期内
+            sd.innerHTML = j + 1;
+            var item = cld[j];
+
+            if (item.isToday) { //今日颜色
+                sd.style.color = '#9900FF';
             } else {
-                lObj.innerHTML = cDay(cld[sD].lDay);
+                sd.style.color = '';
+            }
+            if (item.lDay == 1) {//显示农历月
+                ld.innerHTML = '<b>' + (item.isLeap ? '闰' : '') + item.lMonth + '月' + (monthDays(item.lYear, item.lMonth) == 29 ? '小' : '大') + '</b>';
+            } else {
+                ld.innerHTML = cDay(item.lDay);
             }//显示农历日
             var Slfw = Ssfw = null;
-            s = cld[sD].solarFestival;
-            for (var ipp = 0; ipp < lFtv.length; ipp++) {//农历节日
-                if (parseInt(lFtv[ipp].substr(0, 2)) == (cld[sD].lMonth)) {
-                    if (parseInt(lFtv[ipp].substr(2, 4)) == (cld[sD].lDay)) {
-                        lObj.innerHTML = lFtv[ipp].substr(5);
-                        Slfw = lFtv[ipp].substr(5);
+            s = item.solarFestival;
+            for (var k = 0; k < lFtv.length; k++) { //农历节日
+                if (parseInt(lFtv[k].substr(0, 2)) == item.lMonth) {
+                    if (parseInt(lFtv[k].substr(2, 4)) == item.lDay) {
+                        ld.innerHTML = lFtv[k].substr(5);
+                        Slfw = lFtv[k].substr(5);
                     }
                 }
-                if (12 == (cld[sD].lMonth)) {//判断是否为除夕
-                    if (eve == (cld[sD].lDay)) {
-                        lObj.innerHTML = "除夕";
+                if (12 == item.lMonth) {//判断是否为除夕
+                    if (eve == item.lDay) {
+                        ld.innerHTML = "除夕";
                         Slfw = "除夕";
                     }
                 }
             }
-            for (var ipp = 0; ipp < sFtv.length; ipp++) {//公历节日
-                if (parseInt(sFtv[ipp].substr(0, 2)) == (SM + 1)) {
-                    if (parseInt(sFtv[ipp].substr(2, 4)) == (sD + 1)) {
-                        lObj.innerHTML = sFtv[ipp].substr(5);
-                        Ssfw = sFtv[ipp].substr(5);
+            for (var k = 0; k < sFtv.length; k++) {//公历节日
+                if (parseInt(sFtv[k].substr(0, 2)) == (SM + 1)) {
+                    if (parseInt(sFtv[k].substr(2, 4)) == (j + 1)) {
+                        ld.innerHTML = sFtv[k].substr(5);
+                        Ssfw = sFtv[k].substr(5);
                     }
                 }
             }
-            if ((SM + 1) == 5) {//母亲节
+            if (SM + 1 == 5) { //母亲节
                 if (fat == 0) {
-                    if ((sD + 1) == 7) {
+                    if (j + 1 == 7) {
                         Ssfw = "母亲节";
-                        lObj.innerHTML = "母亲节"
+                        ld.innerHTML = "母亲节"
                     }
                 } else if (fat < 9) {
-                    if ((sD + 1) == ((7 - fat) + 8)) {
+                    if ((j + 1) == (7 - fat + 8)) {
                         Ssfw = "母亲节";
-                        lObj.innerHTML = "母亲节"
+                        ld.innerHTML = "母亲节"
                     }
                 }
             }
-            if ((SM + 1) == 6) {//父亲节
+            if (SM + 1 == 6) {//父亲节
                 if (mat == 0) {
-                    if ((sD + 1) == 14) {
+                    if (j + 1 == 14) {
                         Ssfw = "父亲节";
-                        lObj.innerHTML = "父亲节"
+                        ld.innerHTML = "父亲节"
                     }
                 } else if (mat < 9) {
-                    if ((sD + 1) == ((7 - mat) + 15)) {
+                    if ((j + 1) == (7 - mat + 15)) {
                         Ssfw = "父亲节";
-                        lObj.innerHTML = "父亲节"
+                        ld.innerHTML = "父亲节"
                     }
                 }
             }
             if (s.length <= 0) {//设置节气的颜色
-                s = cld[sD].solarTerms;
+                s = item.solarTerms;
                 if (s.length > 0)
                     s = s.fontcolor('limegreen');
             }
             if (s.length > 0) {
-                lObj.innerHTML = s;
+                ld.innerHTML = s;
                 Slfw = s;
             }//节气
             if ((Slfw != null) && (Ssfw != null)) {
-                lObj.innerHTML = Slfw + "/" + Ssfw;
+                ld.innerHTML = Slfw + "/" + Ssfw;
             }
         } else {//非日期
-            sObj.innerHTML = '';
-            lObj.innerHTML = '';
+            sd.innerHTML = '';
+            ld.innerHTML = '';
         }
     }
 }
