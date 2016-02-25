@@ -267,10 +267,8 @@ function cDay(d) {
         case 20:
             s = '二十';
             break;
-            break;
         case 30:
             s = '三十';
-            break;
             break;
         default:
             s = nStr2[Math.floor(d / 10)];
