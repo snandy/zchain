@@ -296,3 +296,33 @@ function getSolarTerm(year, month) {
         term2: term2
     };
 }
+
+/*
+ * 获取Y年的清明节是哪一天
+ *  
+ * **参数**
+ *  yare {number} 年
+ *
+ * **示例**
+ *  getQingMing(2015); // 0405
+ *  getQingMing(2016); // 0404
+ */
+function getQingMing(year) {
+    // 返回某年的第n个节气为几日(从0小寒起算)
+    function getTerm(y, n) {
+        var d = new Date((31556925974.7 * (y - 1900) + 128867 * 60000) + Date.UTC(1900, 0, 6, 2, 5))
+        return d.getUTCDate();
+    }    
+    var day = getTerm(year);
+    return '040' + day;
+}
+
+function getQingMing(year) {
+    // [Y*D+C]-L
+    // Y=年数后2位，D=0.2422，L=闰年数，21世纪C=4.81，20世纪=5.59
+    var d = 0.2422;
+    var c = 4.81;
+    var y = (year + '').substr(2);
+    var day = parseInt(y*d+c) - parseInt(y/4);
+    return day;
+}
