@@ -232,6 +232,7 @@ function getAnimal(year) {
  * 根据年月返回该月的两个节气，一个公历月有两个节气
  * 
  * **节气算法**
+ *  http://ershisijieqi.baike.com/article-284624.html
  *  http://www.azg168.com/huangli/24sijieqi/28337.html
  *  http://blog.csdn.net/orbit/article/details/7910220
  *
