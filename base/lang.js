@@ -66,4 +66,12 @@ function getPrototypeOf(obj) {
     }
 }
 
-
+/*
+ * JS warn
+ */
+var warn = function() {
+    var hasConsole = typeof console !== 'undefined'
+    return function(msg) {
+        console.warn('[warn]: ' + msg)
+    }
+}()
