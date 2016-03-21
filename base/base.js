@@ -1,3 +1,15 @@
+/*
+ *  获取内置元素的类型
+ *    getType(1) // Number
+ *    getType('a') // String
+ *    getType(true) // Boolean
+ *    getType({})   // Object
+ *    getType([])   // Array
+ */
+function getType(val) {
+    return Object.prototype.toString.call(val).slice(8, -1);
+}
+
 // 世界上最短的判断
 function isString(obj) {
     return obj+'' === obj
