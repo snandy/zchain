@@ -75,3 +75,16 @@ var warn = function() {
         console.warn('[warn]: ' + msg)
     }
 }()
+
+
+/**
+ * Hyphenate a camelCase string.
+ *
+ * **示例**
+ *  "reNum" -> "re-num"
+ *
+ */
+function hyphenate(str) {
+    var hyphenateRE = /([a-z\d])([A-Z])/g;
+    return str.replace(hyphenateRE, '$1-$2').toLowerCase();
+}
