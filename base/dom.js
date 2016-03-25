@@ -85,3 +85,63 @@ var stringToFragment = function() {
 	    return frag;    	
     }
 }();
+
+
+/**
+ * Check if a node is a DocumentFragment.
+ *
+ * @param {Node} node
+ * @return {Boolean}
+ */
+
+function isFragment(node) {
+	return node && node.nodeType === 11;
+}
+
+/**
+ * Get outerHTML of elements, taking care
+ * of SVG elements in IE as well.
+ *
+ * @param {Element} el
+ * @return {String}
+ */
+
+function getOuterHTML(el) {
+	if (el.outerHTML) {
+		return el.outerHTML;
+	} else {
+		var container = document.createElement('div');
+		container.appendChild(el.cloneNode(true));
+		return container.innerHTML;
+	}
+}
+
+
+/*
+ *  页面滚动到达元素位置时触发，比如楼层 HTML/CSS/JS/IMG 资源懒加载
+ *  
+ * **参数**
+ *  callback($el) 到达元素位置时触发回调函数
+ *  diff 偏移位置，比如离元素还有 100px 时触发，可以设为 100，提前触发回调，可选，默认为 0
+ *  throttle 事件节流时间间隔，默认为20，可选，多数时候可不设
+ */
+$.fn.arrive = function(callback, diff, throttle) {
+	var $win = $(window)
+	var $doc = $(document)
+    var winHeight = $win.height()
+    var diff = diff || 0
+    var wait = throttle || 20
+    return this.each(function() {
+        var $el = $(this)
+        var elTop = $el.offset().top || 0
+        var scrollFn = function() {
+            var docTop = $doc.scrollTop()
+            if ( elTop < winHeight + docTop + diff) {
+                callback($el)
+                $win.unbind('scroll', scrollFn)
+            }                
+        }
+        scrollFn = $.throttle(scrollFn, wait)
+        $win.scroll(scrollFn)
+    })
+}
