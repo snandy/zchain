@@ -366,3 +366,29 @@ function encodeChinese(str) {
     return str
 }
 
+/*
+ *  处理句子，对于中文需要拆开。
+ *  第一个函数是我写的，第二个永忠用纯正则实现，短码之美
+ *  如 'I love 中国'，返回 ["I", "love", "中", "国"]
+ */
+function processSentence(str) {
+    var res = []
+    var reg = /[\u4e00-\u9fa5]/
+    var arr1 = str.split(' ')
+    arr1.forEach(function(it) {
+        if (reg.test(it)) {
+            var arr2 = it.split('')
+            res = res.concat(arr2)
+        } else {
+            res.push(it)
+        }
+    })
+    return res
+}
+function processSentence(str) {
+    return str.match(/[a-zA-Z]+|[\u4e00-\u9fa5]/g)
+}
+var str = processSentence('I love 中国')    
+console.log(str)
+
+
