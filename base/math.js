@@ -99,7 +99,7 @@ var floatTool = function() {
      * @param op {string} 运算类型，有加减乘除（add/subtract/multiply/divide）
      *
      */
-    function operation(a, b, digits, op) {
+    function operation(a, b, op) {
         var o1 = toInteger(a)
         var o2 = toInteger(b)
         var n1 = o1.num
@@ -131,23 +131,26 @@ var floatTool = function() {
             	result = (n1 * n2) / (t1 * t2)
                 return result
             case 'divide':
-            	result = (n1 / n2) * (t2 / t1)
-                return result
+                return result = function() {
+                    var r1 = n1 / n2
+                    var r2 = t2 / t1
+                    return operation(r1, r2, 'multiply')
+                }()
         }
     }
    
     // 加减乘除的四个接口
-    function add(a, b, digits) {
-        return operation(a, b, digits, 'add')
+    function add(a, b) {
+        return operation(a, b, 'add')
     }
-    function subtract(a, b, digits) {
-        return operation(a, b, digits, 'subtract')
+    function subtract(a, b) {
+        return operation(a, b, 'subtract')
     }
-    function multiply(a, b, digits) {
-        return operation(a, b, digits, 'multiply')
+    function multiply(a, b) {
+        return operation(a, b, 'multiply')
     }
-    function divide(a, b, digits) {
-        return operation(a, b, digits, 'divide')
+    function divide(a, b) {
+        return operation(a, b, 'divide')
     }
    
     // exports
