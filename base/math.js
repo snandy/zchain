@@ -1,6 +1,6 @@
 // 去除给定整数的余数
 function floor(num, integer) {
-	return num - num % integer
+    return num - num % integer
 }
 
 // ------------------------------------------------------------------------------------------------------------------
@@ -12,11 +12,11 @@ function floor(num, integer) {
  * https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Number/toFixed
  */
 function toFixed(num, digits) {
-	var times = Math.pow(10, digits)
-	// 为什么是0.5，这是一个很微妙的数字
-	var des = num * times + 0.5
-	des = parseInt(des, 10) / times
-	return des + ''
+    var times = Math.pow(10, digits)
+    // 为什么是0.5，这是一个很微妙的数字
+    var des = num * times + 0.5
+    des = parseInt(des, 10) / times
+    return des + ''
 }
 
 // 问题如下
@@ -38,7 +38,7 @@ toFixed(1.3335) // 1.334
 // ------------------------------------------------------------------------------------------------------------------
 
 /**
- * floatTool 包含加减乘除四个方法，能确保浮点数运算不丢失精度
+ * floatObj 包含加减乘除四个方法，能确保浮点数运算不丢失精度
  *
  * 我们知道计算机编程语言里浮点数计算会存在精度丢失问题（或称舍入误差），其根本原因是二进制和实现位数限制有些数无法有限表示
  * 以下是十进制小数对应的二进制表示
@@ -58,7 +58,7 @@ toFixed(1.3335) // 1.334
  * floatObj.multiply(19.9, 100) >> 1990
  *
  */
-var floatTool = function() {
+var floatObj = function() {
    
     /*
      * 判断obj是否为一个整数
@@ -75,6 +75,7 @@ var floatTool = function() {
      */
     function toInteger(floatNum) {
         var ret = {times: 1, num: 0}
+        var isNegative = floatNum < 0
         if (isInteger(floatNum)) {
             ret.num = floatNum
             return ret
@@ -83,9 +84,12 @@ var floatTool = function() {
         var dotPos = strfi.indexOf('.')
         var len    = strfi.substr(dotPos+1).length
         var times  = Math.pow(10, len)
-        var intNum = parseInt(floatNum * times + 0.5, 10)
+        var intNum = parseInt(Math.abs(floatNum) * times + 0.5, 10)
         ret.times  = times
-        ret.num    = intNum
+        if (isNegative) {
+            intNum = -intNum
+        }
+        ret.num = intNum
         return ret
     }
    
@@ -99,7 +103,7 @@ var floatTool = function() {
      * @param op {string} 运算类型，有加减乘除（add/subtract/multiply/divide）
      *
      */
-    function operation(a, b, op) {
+    function operation(a, b, digits, op) {
         var o1 = toInteger(a)
         var o2 = toInteger(b)
         var n1 = o1.num
@@ -128,29 +132,26 @@ var floatTool = function() {
                 }
                 return result / max
             case 'multiply':
-            	result = (n1 * n2) / (t1 * t2)
+                result = (n1 * n2) / (t1 * t2)
                 return result
             case 'divide':
-                return result = function() {
-                    var r1 = n1 / n2
-                    var r2 = t2 / t1
-                    return operation(r1, r2, 'multiply')
-                }()
+                result = (n1 / n2) * (t2 / t1)
+                return result
         }
     }
    
     // 加减乘除的四个接口
-    function add(a, b) {
-        return operation(a, b, 'add')
+    function add(a, b, digits) {
+        return operation(a, b, digits, 'add')
     }
-    function subtract(a, b) {
-        return operation(a, b, 'subtract')
+    function subtract(a, b, digits) {
+        return operation(a, b, digits, 'subtract')
     }
-    function multiply(a, b) {
-        return operation(a, b, 'multiply')
+    function multiply(a, b, digits) {
+        return operation(a, b, digits, 'multiply')
     }
-    function divide(a, b) {
-        return operation(a, b, 'divide')
+    function divide(a, b, digits) {
+        return operation(a, b, digits, 'divide')
     }
    
     // exports
